@@ -13,6 +13,7 @@
 		4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
+		417044DC219C6288007A936E /* ExampleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417044DB219C6288007A936E /* ExampleClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4137E231219C364D0009DFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		417044DB219C6288007A936E /* ExampleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleClass.swift; sourceTree = "<group>"; };
 		AFD5BD1A964A26B142AB3C15 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B773D7F08E90CD4BE59F6DF5 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; sourceTree = "<group>"; };
 		FB95815995E4EFDD49612C45 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,14 +63,55 @@
 		4137E229219C364D0009DFBE /* IOS_Vietnam_Surgery_App */ = {
 			isa = PBXGroup;
 			children = (
-				4137E22A219C364D0009DFBE /* AppDelegate.swift */,
-				4137E22C219C364D0009DFBE /* ViewController.swift */,
+				417044DA219C61FE007A936E /* Code */,
+				417044D9219C61C4007A936E /* CustomView */,
+				417044D8219C6182007A936E /* ViewController */,
+				417044D6219C6136007A936E /* Model */,
 				4137E22E219C364D0009DFBE /* Main.storyboard */,
 				4137E231219C364D0009DFBE /* Assets.xcassets */,
 				4137E233219C364D0009DFBE /* LaunchScreen.storyboard */,
 				4137E236219C364D0009DFBE /* Info.plist */,
 			);
 			path = IOS_Vietnam_Surgery_App;
+			sourceTree = "<group>";
+		};
+		417044D6219C6136007A936E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		417044D7219C6157007A936E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		417044D8219C6182007A936E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4137E22C219C364D0009DFBE /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		417044D9219C61C4007A936E /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		417044DA219C61FE007A936E /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				4137E22A219C364D0009DFBE /* AppDelegate.swift */,
+				417044D7219C6157007A936E /* Helper */,
+				417044DB219C6288007A936E /* ExampleClass.swift */,
+			);
+			path = Code;
 			sourceTree = "<group>";
 		};
 		ECBFB774EE5D0C29F4C95A59 /* Frameworks */ = {
@@ -215,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4137E22D219C364D0009DFBE /* ViewController.swift in Sources */,
+				417044DC219C6288007A936E /* ExampleClass.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
