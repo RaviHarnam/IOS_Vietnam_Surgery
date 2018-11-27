@@ -6,5 +6,6 @@ target 'IOS_Vietnam_Surgery_App' do
   use_frameworks!
 
   # Pods for IOS_Vietnam_Surgery_App
-
+  pod 'Alamofire'
+  
 end

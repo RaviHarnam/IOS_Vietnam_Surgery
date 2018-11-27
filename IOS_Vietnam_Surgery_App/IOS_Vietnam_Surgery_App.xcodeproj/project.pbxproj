@@ -14,6 +14,15 @@
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
 		5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
 		BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA57B21AD407500904B6A /* Localizable.strings */; };
+		BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */; };
+		BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */; };
+		BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */; };
+		BF7AA58821AD530B00904B6A /* SimpleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */; };
+		BF7AA58B21AD55A800904B6A /* FormTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58A21AD55A800904B6A /* FormTemplate.swift */; };
+		BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */; };
+		BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */; };
+		BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */; };
+		BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA59321AD86DF00904B6A /* FormHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +37,15 @@
 		A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
 		BF7AA57B21AD407500904B6A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateAPIManager.swift; sourceTree = "<group>"; };
+		BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIManager.swift; sourceTree = "<group>"; };
+		BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLabelTableViewCell.swift; sourceTree = "<group>"; };
+		BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleLabelTableViewCell.xib; sourceTree = "<group>"; };
+		BF7AA58A21AD55A800904B6A /* FormTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplate.swift; sourceTree = "<group>"; };
+		BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
+		BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFillInViewController.swift; sourceTree = "<group>"; };
+		BF7AA59321AD86DF00904B6A /* FormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +81,14 @@
 		4137E229219C364D0009DFBE /* IOS_Vietnam_Surgery_App */ = {
 			isa = PBXGroup;
 			children = (
+				BF7AA58121AD519600904B6A /* Code */,
 				4137E22A219C364D0009DFBE /* AppDelegate.swift */,
-				4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */,
 				4137E22E219C364D0009DFBE /* Main.storyboard */,
 				4137E231219C364D0009DFBE /* Assets.xcassets */,
 				4137E233219C364D0009DFBE /* LaunchScreen.storyboard */,
 				4137E236219C364D0009DFBE /* Info.plist */,
 				BF7AA57B21AD407500904B6A /* Localizable.strings */,
+				BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */,
 			);
 			path = IOS_Vietnam_Surgery_App;
 			sourceTree = "<group>";
@@ -91,6 +110,70 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BF7AA58121AD519600904B6A /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA59521AD86E500904B6A /* Helper */,
+				BF7AA58C21AD5CE700904B6A /* ViewController */,
+				BF7AA58921AD559300904B6A /* Model */,
+				BF7AA58321AD51D000904B6A /* View */,
+				BF7AA58221AD51A200904B6A /* API */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		BF7AA58221AD51A200904B6A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */,
+				BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BF7AA58321AD51D000904B6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA58621AD52EA00904B6A /* TableViewCells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF7AA58621AD52EA00904B6A /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */,
+				BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		BF7AA58921AD559300904B6A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA58A21AD55A800904B6A /* FormTemplate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF7AA58C21AD5CE700904B6A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */,
+				BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BF7AA59521AD86E500904B6A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA59321AD86DF00904B6A /* FormHelper.swift */,
+				BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,6 +185,7 @@
 				4137E223219C364D0009DFBE /* Sources */,
 				4137E224219C364D0009DFBE /* Frameworks */,
 				4137E225219C364D0009DFBE /* Resources */,
+				30A8ABB28498AB28EE4DFB43 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,7 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */,
+				BF7AA58821AD530B00904B6A /* SimpleLabelTableViewCell.xib in Resources */,
 				BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */,
+				BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */,
 				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
 				4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
 			);
@@ -160,6 +246,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		30A8ABB28498AB28EE4DFB43 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D451D48F63ED8600BD0EC7E9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,7 +298,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
+				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
+				BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */,
+				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
+				BF7AA58B21AD55A800904B6A /* FormTemplate.swift in Sources */,
+				BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */,
+				BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */,
+				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

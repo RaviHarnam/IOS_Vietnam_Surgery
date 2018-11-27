@@ -34,14 +34,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SCx-A0-5Fc">
-                                <rect key="frame" x="40" y="164" width="295" height="400"/>
+                                <rect key="frame" x="70" y="164" width="235" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="lfY-jB-wke"/>
+                                    <constraint firstAttribute="height" constant="300" id="lfY-jB-wke"/>
                                 </constraints>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kJ-MZ-MMa">
-                                <rect key="frame" x="55" y="134" width="310" height="22"/>
+                                <rect key="frame" x="70" y="134" width="245" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,25 +49,39 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1kJ-MZ-MMa" secondAttribute="trailing" constant="10" id="JXl-NX-wPD"/>
-                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="top" secondItem="1kJ-MZ-MMa" secondAttribute="bottom" constant="8" id="Pfo-uu-sn4"/>
-                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Yg9-me-8qU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1kJ-MZ-MMa" secondAttribute="trailing" constant="60" id="JXl-NX-wPD"/>
+                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="top" secondItem="1kJ-MZ-MMa" secondAttribute="bottom" constant="2" id="Pfo-uu-sn4"/>
+                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="Yg9-me-8qU"/>
                             <constraint firstItem="SCx-A0-5Fc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Yym-BC-B6T"/>
                             <constraint firstItem="1kJ-MZ-MMa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="kkP-NW-Obn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SCx-A0-5Fc" secondAttribute="trailing" constant="40" id="uOz-hn-ukB"/>
-                            <constraint firstItem="1kJ-MZ-MMa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="yKB-hS-eXv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SCx-A0-5Fc" secondAttribute="trailing" constant="70" id="uOz-hn-ukB"/>
+                            <constraint firstItem="1kJ-MZ-MMa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="yKB-hS-eXv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="97L-BR-gyN"/>
                     <connections>
-                        <outlet property="ChooseFormTableLabel" destination="1kJ-MZ-MMa" id="INd-ez-UK0"/>
                         <outlet property="chooseFormLabel" destination="1kJ-MZ-MMa" id="QfC-eO-4xQ"/>
                         <outlet property="formTemplateTableView" destination="SCx-A0-5Fc" id="moP-dS-vrG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Form Fill In View Controller-->
+        <scene sceneID="66U-j4-fEJ">
+            <objects>
+                <viewController storyboardIdentifier="FormFillInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="beB-uw-lF4" customClass="FormFillInViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y6e-Ur-kRF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xYV-nL-ayT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sso-i5-TgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="913" y="27"/>
         </scene>
     </scenes>
 </document>
