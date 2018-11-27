@@ -8,24 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22A219C364D0009DFBE /* AppDelegate.swift */; };
-		4137E22D219C364D0009DFBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22C219C364D0009DFBE /* ViewController.swift */; };
+		4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */; };
 		4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
 		5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
+		BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA57B21AD407500904B6A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; sourceTree = "<group>"; };
 		4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_Vietnam_Surgery_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4137E22A219C364D0009DFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4137E22C219C364D0009DFBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateViewController.swift; sourceTree = "<group>"; };
 		4137E22F219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4137E231219C364D0009DFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
+		BF7AA57B21AD407500904B6A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +64,12 @@
 			isa = PBXGroup;
 			children = (
 				4137E22A219C364D0009DFBE /* AppDelegate.swift */,
-				4137E22C219C364D0009DFBE /* ViewController.swift */,
+				4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */,
 				4137E22E219C364D0009DFBE /* Main.storyboard */,
 				4137E231219C364D0009DFBE /* Assets.xcassets */,
 				4137E233219C364D0009DFBE /* LaunchScreen.storyboard */,
 				4137E236219C364D0009DFBE /* Info.plist */,
+				BF7AA57B21AD407500904B6A /* Localizable.strings */,
 			);
 			path = IOS_Vietnam_Surgery_App;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */,
+				BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */,
 				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
 				4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
 			);
@@ -185,7 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4137E22D219C364D0009DFBE /* ViewController.swift in Sources */,
+				4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

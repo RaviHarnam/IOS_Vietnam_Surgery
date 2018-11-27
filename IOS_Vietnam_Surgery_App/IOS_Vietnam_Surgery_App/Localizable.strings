@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  IOS_Vietnam_Surgery_App
+
+  Created by Vincent on 11/27/18.
+  Copyright © 2018 Matermind. All rights reserved.
+*/
+
+"formTemplateTableViewControllerTitle" = "Choose a form template";
