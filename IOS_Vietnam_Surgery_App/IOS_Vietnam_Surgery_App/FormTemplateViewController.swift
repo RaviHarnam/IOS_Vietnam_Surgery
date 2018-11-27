@@ -17,11 +17,19 @@ class FormTemplateViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: <#T##UIImage?#>, style: <#T##UIBarButtonItem.Style#>, target: <#T##Any?#>, action: <#T##Selector?#>)
+        //Block back navigation
+        navigationItem.hidesBackButton = true
+        //Set sync imageitem to appear
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Sync"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(syncCLicked))
+    }
+    
+    @objc
+    func syncCLicked() {
+        
     }
 
 }
