@@ -13,7 +13,7 @@ class FormTemplateViewController: UIViewController {
     @IBOutlet weak var chooseFormLabel: UILabel!
     @IBOutlet weak var formTemplateTableView: UITableView!
     
-    private var formTemplates : [FormTemplate]?
+    private var formTemplates : [Form]?
     private var spinner : UIActivityIndicatorView?
     
     private var isFetching : Bool = false {
@@ -74,7 +74,7 @@ class FormTemplateViewController: UIViewController {
             guard let responseData = response.data else { return }
             
             let decoder = JSONDecoder()
-            let templates = try? decoder.decode([FormTemplate].self, from: responseData)
+            let templates = try? decoder.decode([Form].self, from: responseData)
             self.formTemplates = templates
             self.formTemplateTableView.reloadData()
         })
@@ -102,7 +102,7 @@ extension FormTemplateViewController : UITableViewDelegate {
         if let template = formTemplates?[indexPath.row] {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "FormFillInViewController") as! FormFillInViewController
-            vc.formTemplate = template
+            vc.formData = template
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

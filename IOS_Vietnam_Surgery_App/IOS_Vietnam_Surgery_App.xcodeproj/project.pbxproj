@@ -13,12 +13,18 @@
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
 		5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
+		BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */; };
+		BF6B4E0C21AFF40E001FC224 /* TableCellWithUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0B21AFF40E001FC224 /* TableCellWithUIControl.swift */; };
+		BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0D21B018BC001FC224 /* FormField.swift */; };
+		BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0F21B01C8A001FC224 /* FormSection.swift */; };
+		BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */; };
+		BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */; };
 		BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA57B21AD407500904B6A /* Localizable.strings */; };
 		BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */; };
 		BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */; };
 		BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */; };
 		BF7AA58821AD530B00904B6A /* SimpleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */; };
-		BF7AA58B21AD55A800904B6A /* FormTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58A21AD55A800904B6A /* FormTemplate.swift */; };
+		BF7AA58B21AD55A800904B6A /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58A21AD55A800904B6A /* Form.swift */; };
 		BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */; };
 		BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */; };
 		BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */; };
@@ -36,12 +42,18 @@
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
+		BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCellWithUITextfield.xib; sourceTree = "<group>"; };
+		BF6B4E0B21AFF40E001FC224 /* TableCellWithUIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellWithUIControl.swift; sourceTree = "<group>"; };
+		BF6B4E0D21B018BC001FC224 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		BF6B4E0F21B01C8A001FC224 /* FormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSection.swift; sourceTree = "<group>"; };
+		BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplate.swift; sourceTree = "<group>"; };
+		BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormChoiceField.swift; sourceTree = "<group>"; };
 		BF7AA57B21AD407500904B6A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateAPIManager.swift; sourceTree = "<group>"; };
 		BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIManager.swift; sourceTree = "<group>"; };
 		BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLabelTableViewCell.swift; sourceTree = "<group>"; };
 		BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleLabelTableViewCell.xib; sourceTree = "<group>"; };
-		BF7AA58A21AD55A800904B6A /* FormTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplate.swift; sourceTree = "<group>"; };
+		BF7AA58A21AD55A800904B6A /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFillInViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +156,8 @@
 			children = (
 				BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */,
 				BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */,
+				BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */,
+				BF6B4E0B21AFF40E001FC224 /* TableCellWithUIControl.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -151,7 +165,11 @@
 		BF7AA58921AD559300904B6A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BF7AA58A21AD55A800904B6A /* FormTemplate.swift */,
+				BF7AA58A21AD55A800904B6A /* Form.swift */,
+				BF6B4E0D21B018BC001FC224 /* FormField.swift */,
+				BF6B4E0F21B01C8A001FC224 /* FormSection.swift */,
+				BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */,
+				BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,6 +258,7 @@
 				BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */,
 				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
 				4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
+				BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,12 +275,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -297,14 +318,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */,
+				BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */,
 				4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
 				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
+				BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */,
 				BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */,
 				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
-				BF7AA58B21AD55A800904B6A /* FormTemplate.swift in Sources */,
+				BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
+				BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */,
 				BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */,
 				BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */,
+				BF6B4E0C21AFF40E001FC224 /* TableCellWithUIControl.swift in Sources */,
 				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
