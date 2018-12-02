@@ -76,7 +76,9 @@ class FormTemplateViewController: UIViewController {
             let decoder = JSONDecoder()
             let templates = try? decoder.decode([Form].self, from: responseData)
             self.formTemplates = templates
-            self.formTemplateTableView.reloadData()
+            DispatchQueue.main.async {
+                self.formTemplateTableView.reloadData()
+            }
         })
     }
 }
@@ -88,10 +90,15 @@ extension FormTemplateViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = tableView.dequeueReusableCell(withIdentifier: "SimpleLabelTableViewCell") as! SimpleLabelTableViewCell
-        tableCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        
+        DispatchQueue.main.async {
+            tableCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        }
         
         if let template = formTemplates?[indexPath.row] {
-            tableCell.simpleLabel.text = template.name
+            DispatchQueue.main.async {
+                 tableCell.simpleLabel.text = template.name
+            }
         }
         return tableCell
     }

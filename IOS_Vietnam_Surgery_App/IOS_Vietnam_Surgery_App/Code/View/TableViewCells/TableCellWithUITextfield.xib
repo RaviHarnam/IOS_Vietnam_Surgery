@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bgM-i4-D2r" customClass="TableCellWithUIControl" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bgM-i4-D2r" customClass="TableCellWithUITextfield" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bgM-i4-D2r" id="mDZ-0e-cuQ">
@@ -49,7 +49,6 @@
             <connections>
                 <outlet property="UIControlField" destination="mVx-Wt-Nwc" id="rAw-vW-uHI"/>
                 <outlet property="UIControlFieldLabel" destination="ewr-qU-CIM" id="MZO-XQ-xUv"/>
-                <outlet property="UIControlLabel" destination="MqV-tB-Rbm" id="Q4R-Yk-cwX"/>
             </connections>
             <point key="canvasLocation" x="136.80000000000001" y="152.92353823088456"/>
         </tableViewCell>

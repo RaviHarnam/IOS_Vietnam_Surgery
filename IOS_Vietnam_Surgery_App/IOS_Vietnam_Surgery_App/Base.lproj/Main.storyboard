@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,13 +76,36 @@
                     <view key="view" contentMode="scaleToFill" id="y6e-Ur-kRF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sLe-em-2O2">
+                                <rect key="frame" x="16" y="40" width="343" height="607"/>
+                                <color key="backgroundColor" name="LightGrayTextColor"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="LightGrayBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sLe-em-2O2" firstAttribute="top" secondItem="xYV-nL-ayT" secondAttribute="top" constant="20" id="8yW-6D-fen"/>
+                            <constraint firstItem="xYV-nL-ayT" firstAttribute="bottom" secondItem="sLe-em-2O2" secondAttribute="bottom" constant="20" id="TRa-ux-83j"/>
+                            <constraint firstItem="xYV-nL-ayT" firstAttribute="trailing" secondItem="sLe-em-2O2" secondAttribute="trailing" constant="16" id="eOd-nY-C2R"/>
+                            <constraint firstItem="sLe-em-2O2" firstAttribute="leading" secondItem="xYV-nL-ayT" secondAttribute="leading" constant="16" id="maE-gI-BNJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xYV-nL-ayT"/>
                     </view>
+                    <connections>
+                        <outlet property="formView" destination="sLe-em-2O2" id="DM0-5f-4MP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sso-i5-TgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="27"/>
+            <point key="canvasLocation" x="1341.5999999999999" y="26.53673163418291"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="LightGrayBackgroundColor">
+            <color red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGrayTextColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

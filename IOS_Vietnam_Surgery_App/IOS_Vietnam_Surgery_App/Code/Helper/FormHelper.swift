@@ -20,28 +20,45 @@ public class FormHelper {
         return formTemplate
     }
     
-    public static func getUIControlsFromSection(section: FormSection) -> [String:BaseRow]? {
-        var controls : [String:BaseRow] = [:]
+    public static func getUIControlsFromSection(section: FormSection) -> [(String,BaseRow)]? {
+        var controls : [(String,BaseRow)] = []
         guard let fields = section.fields else { return nil }
         for field in fields {
             let name = field.name!
             switch field.type!.lowercased() {
                 case "string":
-                    controls[name] = TextRow(tag: name)
+                    controls.append((name,TextRow(tag: name)))
                     break
                 case "int":
-                    controls[name] = IntRow(tag: name)
+                    controls.append((name,IntRow(tag: name)))
                     break
                 case "datetime":
-                    controls[name] = DateTimeRow(tag: name)
+                    controls.append((name,DateTimeRow(tag: name)))
                     break
                 case "choice":
-                    controls[name] = PushRow<String>(tag: name)
+                    controls.append((name,PushRow<String>(tag: name)))
                     break
                 default:
                     break
             }
         }
+        return controls
+    }
+    
+    public static func getUIControlsFromFormSection(section: FormSection) -> [FormChoiceField]? {
+        var controls : [FormChoiceField] = []
+        guard let fields = section.fields else { return nil }
+        for field in fields {
+            //let name = field.name!
+            controls.append(field as! FormChoiceField)
+            //switch field.type!.lowercased() {
+//            case "string":
+//                //controls.append(createTextField(title: name))
+//                break
+//            default:
+//                break
+            }
+    //}
         return controls
     }
     
@@ -55,10 +72,6 @@ public class FormHelper {
                 guard !name.isEmpty else { return false }
                 guard !type.isEmpty else { return false }
                 
-                if type.lowercased() == "choice" {
-                    print((field as! FormChoiceField).options)
-                }
-                
                 guard type.lowercased() != "choice" || type.lowercased() == "choice" && field is FormChoiceField else { return false }
                 
                 if type.lowercased() == "choice" {
@@ -69,5 +82,22 @@ public class FormHelper {
             return true
         }
         return false
+    }
+    
+    public static func setEurekaRowStylingProperties() {
+//        TextRow.defaultCellSetup = { cell, row in
+//            cell.preservesSuperviewLayoutMargins = false
+//            cell.layoutMargins.left = 16
+//            cell.contentView.preservesSuperviewLayoutMargins = false
+//            cell.contentView.layoutMargins.left = 16
+//            //cell.contentView.layoutMargins.right = 16
+//        }
+//        TextRow.defaultCellUpdate = { cell,row in
+//            cell.preservesSuperviewLayoutMargins = false
+//            cell.layoutMargins.left = 16
+//            cell.contentView.preservesSuperviewLayoutMargins = false
+//            cell.contentView.layoutMargins.left = 16
+//
+//        }
     }
 }

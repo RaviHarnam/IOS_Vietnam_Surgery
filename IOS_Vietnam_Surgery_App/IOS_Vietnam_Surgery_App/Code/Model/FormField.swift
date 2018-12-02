@@ -23,3 +23,4 @@ public class FormField : Codable {
         type = try values.decode(String.self, forKey: CodingKeys.type)
     }
 }
+

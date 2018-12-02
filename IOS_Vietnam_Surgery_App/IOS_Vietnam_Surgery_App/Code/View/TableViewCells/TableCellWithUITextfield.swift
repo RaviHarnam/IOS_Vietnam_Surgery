@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-public class TableCellWithUIControl : UITableViewCell {
+public class TableCellWithUITextfield : UIView {
 
     @IBOutlet weak var UIControlField: UIControl!
     
     @IBOutlet weak var UIControlFieldLabel: UILabel!
     
-    override public func awakeFromNib() {
-        
-    }
-    
-    override public func prepareForReuse() {
-        
-    }
+//    override public func awakeFromNib() {
+//
+//    }
+//
+//    override public func prepareForReuse() {
+//        
+//    }
 }
