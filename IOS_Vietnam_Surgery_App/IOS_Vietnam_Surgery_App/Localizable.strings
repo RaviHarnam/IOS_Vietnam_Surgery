@@ -7,3 +7,16 @@
 */
 
 "formTemplateTableViewControllerTitle" = "Choose a form template";
+"formFillInViewControllerNewTitle" = "New form";
+"Name" = "Name";
+"District" = "District";
+"Birthyear" = "Birthyear";
+"SaveAndNext" = "Save and next";
+"Confirm" = "Confirm";
+"Yes" = "Yes";
+"No" = "No";
+"Ok" = "Ok";
+"Cancel" = "Cancel";
+"SaveFormAlertMessage" = "Are you sure you want to save this form?";
+"Error" = "Error";
+"Error_NoCamera" = "This device doesn't have a camera (ready).";

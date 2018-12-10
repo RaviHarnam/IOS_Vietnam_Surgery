@@ -41,15 +41,45 @@ public class FormFillInViewController : Eureka.FormViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         let view = self.view
-        self.tableView.contentInset.left = 16
-        self.tableView.contentInset.right = 16
+        navigationController?.navigationBar.prefersLargeTitles = true
+        updateTitle()
+        DispatchQueue.main.async {
+            self.tableView.contentInset.left = 16
+            self.tableView.contentInset.right = 16
+            self.tableView.layoutMargins.right = 16
+            self.tableView.layoutMargins.left = 16
+            self.tableView.setNeedsLayout()
+        }
         //self.tableView.layoutMargins.right = 16
         setupAppbar()
     }
     
+    func updateTitle() {
+        var newTitle : String = ""
+        
+        newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        
+        if let district = formContent[NSLocalizedString("District", comment: "")] {
+            newTitle += " - " + district
+        }
+        
+        if let name = formContent[NSLocalizedString("Name", comment: "")] {
+            newTitle += " - " + name
+        }
+        
+        if let birthYear = formContent[NSLocalizedString("Birthyear", comment: "")] {
+            newTitle += " - " + birthYear
+        }
+        
+        self.title = newTitle
+    }
+    
     func setupAppbar() {
-        if formFillInStep + 1 <= formSections.count {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: ">", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToNextPage))
+        if formFillInStep + 1 < formSections.count {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Chevron"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToNextPage))
+        }
+        else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Chevron"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToPictures))
         }
     }
     
@@ -59,18 +89,28 @@ public class FormFillInViewController : Eureka.FormViewController {
         vc.formFillInStep = self.formFillInStep + 1
         vc.formContent = self.formContent
         vc.formData = self.formData
+        vc.formSections = self.formSections
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func goToPictures() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FormPicturesViewController") as! FormPicturesViewController
+        vc.formFillInStep = self.formFillInStep + 1
+        vc.formContent = self.formContent
+        vc.formData = self.formData
+        vc.formSections = self.formSections
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func setupForm() {
-            if let template = self.formData?.formTemplate {
+        if let template = self.formData?.formTemplate {
             let template = FormHelper.getFormTemplateFromJson(json: template)
             guard let sections = template?.sections else { return }
             formSections = sections
             guard FormHelper.validateFieldsInSection(section: formSection!) else { return }
             //formUIControls = FormHelper.getUIControlsFromSection(section: formSection!)
-            formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!) as! [FormChoiceField]
+            formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
         }
     }
     
@@ -85,6 +125,12 @@ public class FormFillInViewController : Eureka.FormViewController {
                         $0.onChange {[unowned self] row in
                             if let fieldValue = row.value {
                                 self.formContent[field.name!] = fieldValue
+                                if field.name == NSLocalizedString("Name", comment: "") {
+                                    self.updateTitle()
+                                }
+                                if field.name == NSLocalizedString("District", comment: "") {
+                                    self.updateTitle()
+                                }
                             }
                         }
                     })

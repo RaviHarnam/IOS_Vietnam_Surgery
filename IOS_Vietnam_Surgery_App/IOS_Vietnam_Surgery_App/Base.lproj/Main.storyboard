@@ -97,7 +97,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sso-i5-TgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1341.5999999999999" y="26.53673163418291"/>
+            <point key="canvasLocation" x="902" y="134"/>
+        </scene>
+        <!--Form Pictures View Controller-->
+        <scene sceneID="eCI-lD-p3s">
+            <objects>
+                <viewController storyboardIdentifier="FormPicturesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ith-JP-rT2" customClass="FormPicturesViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LSe-hU-j3m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QXv-nw-9o2">
+                                <rect key="frame" x="16" y="40" width="343" height="607"/>
+                                <color key="backgroundColor" name="LightGrayBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ezu-g3-3Xj">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qMO-Gg-lir">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" name="LightGrayBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QXv-nw-9o2" firstAttribute="leading" secondItem="QYi-9e-CLy" secondAttribute="leading" constant="16" id="7vy-hr-ZxQ"/>
+                            <constraint firstItem="QYi-9e-CLy" firstAttribute="trailing" secondItem="QXv-nw-9o2" secondAttribute="trailing" constant="16" id="JRK-On-QPN"/>
+                            <constraint firstItem="QYi-9e-CLy" firstAttribute="bottom" secondItem="QXv-nw-9o2" secondAttribute="bottom" constant="20" id="ecK-Nk-3FU"/>
+                            <constraint firstItem="QXv-nw-9o2" firstAttribute="top" secondItem="QYi-9e-CLy" secondAttribute="top" constant="20" id="kVr-lA-qcX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QYi-9e-CLy"/>
+                    </view>
+                    <connections>
+                        <outlet property="picturesCollectionView" destination="QXv-nw-9o2" id="pTN-Ty-Znz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1E-d4-vDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1555" y="133"/>
+        </scene>
+        <!--Form Preview View Controller-->
+        <scene sceneID="2rj-vx-aa5">
+            <objects>
+                <viewController storyboardIdentifier="FormPreviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="taz-3i-hAw" customClass="FormPreviewViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AHk-qU-NfT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L7x-gT-tTO">
+                                <rect key="frame" x="16" y="40" width="343" height="607"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" name="LightGrayBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="LightGrayBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="L7x-gT-tTO" firstAttribute="leading" secondItem="GvN-U1-d6q" secondAttribute="leading" constant="16" id="4Fd-us-qUO"/>
+                            <constraint firstItem="GvN-U1-d6q" firstAttribute="trailing" secondItem="L7x-gT-tTO" secondAttribute="trailing" constant="16" id="BmT-ng-DvI"/>
+                            <constraint firstItem="L7x-gT-tTO" firstAttribute="top" secondItem="GvN-U1-d6q" secondAttribute="top" constant="20" id="rzM-Jy-qoO"/>
+                            <constraint firstItem="GvN-U1-d6q" firstAttribute="bottom" secondItem="L7x-gT-tTO" secondAttribute="bottom" constant="20" id="sxt-Ec-531"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GvN-U1-d6q"/>
+                    </view>
+                    <connections>
+                        <outlet property="formDataTableView" destination="L7x-gT-tTO" id="8Nm-Ga-y6l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIw-Tl-584" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="133"/>
         </scene>
     </scenes>
     <resources>

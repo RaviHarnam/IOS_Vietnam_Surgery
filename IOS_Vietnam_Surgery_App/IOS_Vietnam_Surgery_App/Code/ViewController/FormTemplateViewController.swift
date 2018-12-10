@@ -15,6 +15,7 @@ class FormTemplateViewController: UIViewController {
     
     private var formTemplates : [Form]?
     private var spinner : UIActivityIndicatorView?
+    private var refreshControl : UIRefreshControl?
     
     private var isFetching : Bool = false {
         willSet(newIsFetching) {
@@ -35,17 +36,26 @@ class FormTemplateViewController: UIViewController {
         self.chooseFormLabel.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
         self.chooseFormLabel.textColor = ColorHelper.lightGrayTextColor()
         
+        
         setupTableView()
         setupNavigationBar()
         setupSpinner()
-        
+        setupRefreshControl()
         getFormTemplatesAsync()
     }
     
     func setupTableView() {
+        self.formTemplateTableView.estimatedRowHeight = 40
+        self.formTemplateTableView.rowHeight = 40
         self.formTemplateTableView.dataSource = self
         self.formTemplateTableView.delegate = self
         self.formTemplateTableView.register(UINib(nibName: "SimpleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "SimpleLabelTableViewCell")
+    }
+    
+    func setupRefreshControl() {
+        self.refreshControl = UIRefreshControl()
+        self.formTemplateTableView.refreshControl = refreshControl
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
     func setupNavigationBar() {
@@ -63,6 +73,11 @@ class FormTemplateViewController: UIViewController {
         view.addSubview(spinner)
     }
     
+    @objc func refresh(){
+        getFormTemplatesAsync()
+        refreshControl?.endRefreshing()
+    }
+    
     @objc
     func syncCLicked() {
         getFormTemplatesAsync()
@@ -78,8 +93,20 @@ class FormTemplateViewController: UIViewController {
             self.formTemplates = templates
             DispatchQueue.main.async {
                 self.formTemplateTableView.reloadData()
+                self.resizeTableView()
             }
         })
+    }
+    
+    //Resizes the tableview if it currently is bigger than the size of the combined content
+    func resizeTableView() {
+        if self.formTemplateTableView.frame.height > self.formTemplateTableView.contentSize.height {
+            DispatchQueue.main.async {
+                var frame = self.formTemplateTableView.frame
+                frame.size.height = self.formTemplateTableView.contentSize.height //CGFloat(self.formTemplates?.count ?? 0 * 40) //
+                self.formTemplateTableView.frame = frame
+            }
+        }
     }
 }
 
@@ -96,9 +123,9 @@ extension FormTemplateViewController : UITableViewDataSource {
         }
         
         if let template = formTemplates?[indexPath.row] {
-            DispatchQueue.main.async {
+            //DispatchQueue.main.async {
                  tableCell.simpleLabel.text = template.name
-            }
+            //}
         }
         return tableCell
     }
@@ -115,3 +142,4 @@ extension FormTemplateViewController : UITableViewDelegate {
         
     }
 }
+

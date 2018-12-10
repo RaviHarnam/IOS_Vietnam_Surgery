@@ -10,7 +10,11 @@ import Foundation
 import Alamofire
 
 public class BaseAPIManager {
-    public static let apiBaseUrl : String = "https://cloudapicustom.azurewebsites.net/"
+    //#if DEBUG
+    //    public static let apiBaseUrl : String = "https://localhost:52053/"
+    //#else
+        public static let apiBaseUrl : String = "https://vietnamcloudapi.azurewebsites.net/"
+    //#endif
     
     public func isConnectedToInternet() -> Bool {
         return NetworkReachabilityManager()!.isReachable

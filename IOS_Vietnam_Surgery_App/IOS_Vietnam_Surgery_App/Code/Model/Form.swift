@@ -13,7 +13,7 @@ public class Form : Codable {
     public var name : String?
     public var region : String?
     public var formTemplate : String?
-    public var formContent : [String]?
+    public var formContent : [FormContentKeyValuePair]?
     
     enum CodingKeys : String, CodingKey {
         case id = "Id"
