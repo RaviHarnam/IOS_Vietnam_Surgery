@@ -14,6 +14,11 @@
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
 		417044DC219C6288007A936E /* ExampleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417044DB219C6288007A936E /* ExampleClass.swift */; };
+		4195524421BFD2EA004801B8 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4195524321BFD2EA004801B8 /* FormViewController.swift */; };
+		419F5EB121AD551C00B95E50 /* CustomUITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F5EB021AD551C00B95E50 /* CustomUITabBar.swift */; };
+		41D25FAA21BFE81F0082B750 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D25FA921BFE81F0082B750 /* FormManagementViewController.swift */; };
+		41E7E48921B3206900F75C35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7E48821B3206900F75C35 /* TabBarController.swift */; };
+		41E7E48B21B32D4500F75C35 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E7E48A21B32D4500F75C35 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		417044DB219C6288007A936E /* ExampleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleClass.swift; sourceTree = "<group>"; };
+		4195524321BFD2EA004801B8 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		419F5EB021AD551C00B95E50 /* CustomUITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBar.swift; sourceTree = "<group>"; };
+		41D25FA921BFE81F0082B750 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
+		41E7E48821B3206900F75C35 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		41E7E48A21B32D4500F75C35 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AFD5BD1A964A26B142AB3C15 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B773D7F08E90CD4BE59F6DF5 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; sourceTree = "<group>"; };
 		FB95815995E4EFDD49612C45 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				4137E22C219C364D0009DFBE /* ViewController.swift */,
+				41E7E48821B3206900F75C35 /* TabBarController.swift */,
+				41E7E48A21B32D4500F75C35 /* HomeViewController.swift */,
+				4195524321BFD2EA004801B8 /* FormViewController.swift */,
+				41D25FA921BFE81F0082B750 /* FormManagementViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -100,6 +114,7 @@
 		417044D9219C61C4007A936E /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				419F5EB021AD551C00B95E50 /* CustomUITabBar.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -234,7 +249,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -243,7 +257,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -257,9 +270,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419F5EB121AD551C00B95E50 /* CustomUITabBar.swift in Sources */,
+				41D25FAA21BFE81F0082B750 /* FormManagementViewController.swift in Sources */,
 				4137E22D219C364D0009DFBE /* ViewController.swift in Sources */,
+				4195524421BFD2EA004801B8 /* FormViewController.swift in Sources */,
 				417044DC219C6288007A936E /* ExampleClass.swift in Sources */,
+				41E7E48921B3206900F75C35 /* TabBarController.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
+				41E7E48B21B32D4500F75C35 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
