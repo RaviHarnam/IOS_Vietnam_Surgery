@@ -18,22 +18,41 @@ class TabBarController : UITabBarController{
     }
     
     func setupTabbar() {
-        let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        homeViewController.tabBarItem.image = UIImage(named: "icon")
-        homeViewController.tabBarItem.selectedImage = UIImage(named: "AppIcon-1")
-        homeViewController.tabBarItem.title = "Home"
+        let homeViewController = createNavigationController(VController: HomeViewController(), selectedImage:"AppIcon-1"  , unselectedImage: "icon", title: "Home")
+
         
-        let formViewController = UINavigationController(rootViewController: FormViewController())
-        formViewController.tabBarItem.image = UIImage(named: "form")
-        formViewController.tabBarItem.image = UIImage(named: "medical-history")
-        formViewController.tabBarItem.title = "Choose Form"
+        let formViewController = createNavigationController(VController: FormViewController(), selectedImage:"medical-history", unselectedImage: "form", title: "Choose Form")
+
         
-        let formManagementViewController = UINavigationController(rootViewController: FormManagementViewController())
-        formManagementViewController.tabBarItem.image = UIImage(named: "consent")
-        formManagementViewController.tabBarItem.image = UIImage(named: "clinic-history")
-        formManagementViewController.tabBarItem.title = "Form Management"
+        let formManagementViewController = createNavigationController(VController: FormManagementViewController(), selectedImage:"clinic-history" , unselectedImage: "consent", title: "Form Management")
         
         viewControllers	= [homeViewController, formViewController, formManagementViewController]
+        setupTabBarItems()
+    }
+    
+    func setupTabBarItems() {
+        
+        guard let tabbaritems = tabBar.items else { return }
+        
+        for item in tabbaritems {
+            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+        }
+    }
+
+}
+
+extension UITabBarController
+{
+    func createNavigationController(VController: UIViewController, selectedImage: String, unselectedImage: String, title: String) -> UINavigationController
+    {
+        let viewController = VController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.image = UIImage(named: unselectedImage)
+        navigationController.tabBarItem.selectedImage = UIImage(named: selectedImage)
+        navigationController.tabBarItem.title = title
+        
+        return navigationController
+        
     }
     
 }
