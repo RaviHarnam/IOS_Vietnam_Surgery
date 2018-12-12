@@ -25,6 +25,53 @@
             </objects>
             <point key="canvasLocation" x="-935" y="-543"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="toz-CJ-OCf">
+            <objects>
+                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cPw-KF-45Q" customClass="LoginViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="esS-dX-kEg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4C6-Ha-by3">
+                                <rect key="frame" x="16" y="124" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcg-rd-1Yn">
+                                <rect key="frame" x="16" y="188" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-DM-4r7">
+                                <rect key="frame" x="168" y="248" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="trailing" secondItem="tTq-DM-4r7" secondAttribute="trailing" constant="169" id="6Nl-M9-Tu7"/>
+                            <constraint firstItem="tTq-DM-4r7" firstAttribute="top" secondItem="Vcg-rd-1Yn" secondAttribute="bottom" constant="30" id="ADF-LI-hia"/>
+                            <constraint firstItem="tTq-DM-4r7" firstAttribute="leading" secondItem="AjH-da-qRl" secondAttribute="leading" constant="168" id="G28-7r-q5G"/>
+                            <constraint firstItem="tTq-DM-4r7" firstAttribute="top" secondItem="Vcg-rd-1Yn" secondAttribute="bottom" constant="30" id="VrF-uQ-ZuU"/>
+                            <constraint firstItem="4C6-Ha-by3" firstAttribute="leading" secondItem="AjH-da-qRl" secondAttribute="leading" constant="16" id="YIB-LZ-9dZ"/>
+                            <constraint firstItem="Vcg-rd-1Yn" firstAttribute="top" secondItem="4C6-Ha-by3" secondAttribute="bottom" constant="34" id="b38-F8-9l6"/>
+                            <constraint firstItem="Vcg-rd-1Yn" firstAttribute="leading" secondItem="AjH-da-qRl" secondAttribute="leading" constant="16" id="f97-Yb-RtS"/>
+                            <constraint firstItem="4C6-Ha-by3" firstAttribute="top" secondItem="AjH-da-qRl" secondAttribute="top" constant="104" id="fJ9-hP-yFC"/>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="trailing" secondItem="4C6-Ha-by3" secondAttribute="trailing" constant="16" id="izK-66-M3N"/>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="trailing" secondItem="Vcg-rd-1Yn" secondAttribute="trailing" constant="16" id="nIE-lL-yw0"/>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="bottom" secondItem="tTq-DM-4r7" secondAttribute="bottom" constant="389" id="pxD-GQ-sqF"/>
+                            <constraint firstItem="Vcg-rd-1Yn" firstAttribute="top" secondItem="4C6-Ha-by3" secondAttribute="bottom" constant="34" id="xYN-wN-sIn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AjH-da-qRl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jkf-nb-Wl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="-673.31334332833592"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="zge-kd-Ast">
             <objects>

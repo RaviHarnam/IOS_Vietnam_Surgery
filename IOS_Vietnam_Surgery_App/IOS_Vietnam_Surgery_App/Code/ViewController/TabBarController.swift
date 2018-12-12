@@ -26,10 +26,13 @@ class TabBarController : UITabBarController{
         
         let formManagementViewController = createNavigationController(VController: FormManagementViewController(), selectedImage:"clinic-history" , unselectedImage: "consent", title: "Form Management")
         
-        viewControllers    = [homeViewController, formViewController, formManagementViewController]
+        let loginViewController = createNavigationController(VController: LoginViewController(), selectedImage: "login", unselectedImage: "login", title: "Login")
+        
+        viewControllers    = [homeViewController, formViewController, formManagementViewController, loginViewController]
         
         setupTabBarItems()
     }
+    
     
     func setupTabBarItems() {
         

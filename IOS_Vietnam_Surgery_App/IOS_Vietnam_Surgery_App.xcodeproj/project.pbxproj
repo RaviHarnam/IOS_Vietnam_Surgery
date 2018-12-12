@@ -13,6 +13,11 @@
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
 		4193549021C13B3900B8FE56 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193548F21C13B3900B8FE56 /* FormManagementViewController.swift */; };
+		41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */; };
+		41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2F21C19A6700CD9FB4 /* Login.swift */; };
+		41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3221C19AFF00CD9FB4 /* Register.swift */; };
+		41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */; };
+		41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */; };
 		41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA234E21C1079C00D50B78 /* TabBarController.swift */; };
 		41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235021C1083E00D50B78 /* HomeViewController.swift */; };
 		41AA235321C1095800D50B78 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235221C1095800D50B78 /* FormViewController.swift */; };
@@ -57,6 +62,11 @@
 		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4193548F21C13B3900B8FE56 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
+		41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
+		41A8FA2F21C19A6700CD9FB4 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		41A8FA3221C19AFF00CD9FB4 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		41AA234E21C1079C00D50B78 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		41AA235021C1083E00D50B78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41AA235221C1095800D50B78 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +147,14 @@
 			path = IOS_Vietnam_Surgery_App;
 			sourceTree = "<group>";
 		};
+		41A8FA3121C19AC600CD9FB4 /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */,
+			);
+			path = UserManager;
+			sourceTree = "<group>";
+		};
 		8FFC101EF8FCC9B4A5BCC3C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +175,7 @@
 		BF7AA58121AD519600904B6A /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				41A8FA3121C19AC600CD9FB4 /* UserManager */,
 				BF7AA59521AD86E500904B6A /* Helper */,
 				BF7AA58C21AD5CE700904B6A /* ViewController */,
 				BF7AA58921AD559300904B6A /* Model */,
@@ -211,6 +230,9 @@
 				BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */,
 				BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */,
 				BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */,
+				41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */,
+				41A8FA2F21C19A6700CD9FB4 /* Login.swift */,
+				41A8FA3221C19AFF00CD9FB4 /* Register.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +248,7 @@
 				41AA235021C1083E00D50B78 /* HomeViewController.swift */,
 				41AA235221C1095800D50B78 /* FormViewController.swift */,
 				4193548F21C13B3900B8FE56 /* FormManagementViewController.swift */,
+				41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -384,15 +407,20 @@
 				4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
 				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
 				41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */,
+				41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */,
 				BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */,
+				41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */,
+				41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */,
 				4193549021C13B3900B8FE56 /* FormManagementViewController.swift in Sources */,
 				BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */,
 				BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */,
+				41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */,
 				BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */,
 				BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */,
 				41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */,
 				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
+				41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
 				BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
 				BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */,
 				BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */,
