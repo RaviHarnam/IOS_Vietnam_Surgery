@@ -18,7 +18,7 @@ class TabBarController : UITabBarController{
     }
     
     func setupTabbar() {
-        let homeViewController = createNavigationController(VController: HomeViewController(), selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
+        let homeViewController = createNavigationController(VController: FormFillInViewController(), selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
         
         
         let formViewController = createNavigationController(VController: FormViewController(), selectedImage:"medical-history", unselectedImage: "form", title: "Choose Form")
