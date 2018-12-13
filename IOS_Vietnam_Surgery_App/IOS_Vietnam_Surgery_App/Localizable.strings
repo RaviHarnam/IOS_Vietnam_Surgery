@@ -7,6 +7,7 @@
 */
 
 "formTemplateTableViewControllerTitle" = "Choose a form template";
+"formTemplateTabBarItemTitle" = "Choose Form";
 "formFillInViewControllerNewTitle" = "New form";
 "Name" = "Name";
 "District" = "District";
@@ -24,3 +25,4 @@
 "FormTemplates" = "Form templates";
 "FormTemplateEditViewControllerTitle" = "Edit form template";
 "FormTemplatCreateViewControllerTitle" = "Create form template";
+"LoginViewController" = "Login";

@@ -20,7 +20,7 @@ class TabBarController : UITabBarController {
     func setupTabbar() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let homeViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController, selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
+        let formTemplateViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController, selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
         
         
         let formViewController = createNavigationController(VController: FormViewController(), selectedImage:"medical-history", unselectedImage: "form", title: "Choose Form")
@@ -30,7 +30,7 @@ class TabBarController : UITabBarController {
         
         let loginViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "login", unselectedImage: "login", title: "Login")
         
-        viewControllers = [homeViewController, formViewController, formManagementViewController, loginViewController]
+        viewControllers = [formTemplateViewController, formViewController, formManagementViewController, loginViewController]
         
         
         setupTabBarItems()

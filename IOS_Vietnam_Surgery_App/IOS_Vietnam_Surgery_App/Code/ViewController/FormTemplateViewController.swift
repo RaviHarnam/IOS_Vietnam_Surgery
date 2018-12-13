@@ -32,10 +32,10 @@ class FormTemplateViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         self.view.backgroundColor = ColorHelper.lightGrayBackgroundColor()
-        self.title = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
+        self.title = NSLocalizedString("formTemplateTabBarItemTitle", comment: "")
         self.chooseFormLabel.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
         self.chooseFormLabel.textColor = ColorHelper.lightGrayTextColor()
-        
+        self.navigationItem.title = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
         
         setupTableView()
         setupNavigationBar()
