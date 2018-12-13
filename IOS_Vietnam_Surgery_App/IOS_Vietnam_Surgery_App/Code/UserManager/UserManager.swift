@@ -20,6 +20,7 @@ class UserManager {
     
     // initialize certain viewcontroller based on rights(Authorization)
     
+    // Implemented register
     
     func Register(register: Register)
     {
@@ -46,6 +47,7 @@ class UserManager {
         })
     }
     
+    // implemented lpgin
     static func UserLogIn(login: Login)
     {
         let loginUser = login
