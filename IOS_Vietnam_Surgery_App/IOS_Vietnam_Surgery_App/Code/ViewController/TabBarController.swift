@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TabBarController : UITabBarController{
+class TabBarController : UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,9 @@ class TabBarController : UITabBarController{
     }
     
     func setupTabbar() {
-        let homeViewController = createNavigationController(VController: FormFillInViewController(), selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController, selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
         
         
         let formViewController = createNavigationController(VController: FormViewController(), selectedImage:"medical-history", unselectedImage: "form", title: "Choose Form")

@@ -14,7 +14,6 @@ class FormManagementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.green
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "FormManagement"
     }
