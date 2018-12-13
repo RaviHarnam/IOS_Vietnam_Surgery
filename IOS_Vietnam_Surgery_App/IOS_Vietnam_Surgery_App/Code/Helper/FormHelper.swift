@@ -84,6 +84,14 @@ public class FormHelper {
         return false
     }
     
+    public static func validateSectionsInForm(sections: [FormSection]) -> Bool {
+        var isValid = true
+        for section in sections {
+            isValid = (!validateFieldsInSection(section: section) ? false : isValid)
+        }
+        return isValid
+    }
+    
     public static func setEurekaRowStylingProperties() {
 //        TextRow.defaultCellSetup = { cell, row in
 //            cell.preservesSuperviewLayoutMargins = false
