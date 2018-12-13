@@ -28,7 +28,7 @@
         <!--Login View Controller-->
         <scene sceneID="toz-CJ-OCf">
             <objects>
-                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cPw-KF-45Q" customClass="LoginViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cPw-KF-45Q" customClass="LoginViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="esS-dX-kEg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,6 +48,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-DM-4r7">
                                 <rect key="frame" x="168" y="248" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="LoginButton:" destination="cPw-KF-45Q" eventType="touchUpInside" id="VrI-08-jdI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,10 +70,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AjH-da-qRl"/>
                     </view>
+                    <connections>
+                        <outlet property="PasswordField" destination="Vcg-rd-1Yn" id="HxU-sh-kMe"/>
+                        <outlet property="UsernameField" destination="4C6-Ha-by3" id="1rM-XH-QAi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jkf-nb-Wl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92" y="-673.31334332833592"/>
+            <point key="canvasLocation" x="-718" y="-1577"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zge-kd-Ast">

@@ -9,11 +9,18 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var UsernameField: UITextField!
+    
+    @IBOutlet weak var PasswordField: UITextField!
+    
+    @IBAction func LoginButton(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.storyboard?.instantiateViewController(withIdentifier: "Login")
+        self.storyboard?.instantiateViewController(withIdentifier: "LoginID")
+        view.backgroundColor = UIColor.green
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Login"
        

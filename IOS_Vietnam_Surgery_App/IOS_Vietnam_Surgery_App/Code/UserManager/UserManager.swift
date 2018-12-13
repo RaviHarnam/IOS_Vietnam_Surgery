@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserManager{
+class UserManager {
     
     // Voor Ravi TODO
     
