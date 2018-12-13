@@ -8,4 +8,6 @@ target 'IOS_Vietnam_Surgery_App' do
   # Pods for IOS_Vietnam_Surgery_App
   pod 'Alamofire'
   pod 'Eureka'
+  pod 'SwiftKeychainWrapper'
+  
 end
