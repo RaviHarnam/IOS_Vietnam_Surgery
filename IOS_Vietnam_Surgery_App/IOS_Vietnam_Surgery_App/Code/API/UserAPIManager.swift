@@ -10,10 +10,38 @@ import Foundation
 import Alamofire
 
 public class UserAPIManager : BaseAPIManager {
-    public static let formPrefix : String = "api/Account"
     
-    public static func GetFormTemplates() -> DataRequest {
-        let url = super.apiBaseUrl + self.formPrefix
-        return Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
+    public static let registerPrefix = "api/Account"
+    public static let loginPrefix = "/token"
+    
+    public static func Register(register: Register) -> DataRequest {
+        let url = super.apiBaseUrl + self.registerPrefix
+        
+        let encoder = JSONEncoder()
+        
+        let jsondata = try? encoder.encode(register)
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsondata
+        
+        return Alamofire.request(request)
+    }
+    
+    public static func Login(login: Login) -> DataRequest {
+        
+        let url = super.apiBaseUrl + self.loginPrefix
+        
+        let encoder = JSONEncoder()
+        
+        let jsondata = try? encoder.encode(login)
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsondata
+        
+        return Alamofire.request(request)
     }
 }

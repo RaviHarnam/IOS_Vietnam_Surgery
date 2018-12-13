@@ -12,6 +12,7 @@
 		4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
+		418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */; };
 		4193549021C13B3900B8FE56 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193548F21C13B3900B8FE56 /* FormManagementViewController.swift */; };
 		41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */; };
 		41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2F21C19A6700CD9FB4 /* Login.swift */; };
@@ -62,6 +63,7 @@
 		4137E231219C364D0009DFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customHTTPResponse.swift; sourceTree = "<group>"; };
 		4193548F21C13B3900B8FE56 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
 		41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
 		41A8FA2F21C19A6700CD9FB4 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */,
 				41A8FA2F21C19A6700CD9FB4 /* Login.swift */,
 				41A8FA3221C19AFF00CD9FB4 /* Register.swift */,
+				418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				4193549021C13B3900B8FE56 /* FormManagementViewController.swift in Sources */,
 				BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */,
 				BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */,
+				418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */,
 				41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */,
 				BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */,
 				BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */,
