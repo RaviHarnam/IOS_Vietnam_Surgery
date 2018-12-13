@@ -7,6 +7,7 @@
 */
 
 "formTemplateTableViewControllerTitle" = "Choose a form template";
+"formTemplateTabBarItemTitle" = "Choose Form";
 "formFillInViewControllerNewTitle" = "New form";
 "Name" = "Name";
 "District" = "District";
@@ -20,3 +21,5 @@
 "SaveFormAlertMessage" = "Are you sure you want to save this form?";
 "Error" = "Error";
 "Error_NoCamera" = "This device doesn't have a camera (ready).";
+"LoginViewController" = "Login";
+
