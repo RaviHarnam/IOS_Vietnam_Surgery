@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FormManagementViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:IOS_Vietnam_Surgery_App.xcodeproj">
    </FileRef>
    <FileRef

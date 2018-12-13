@@ -245,6 +245,49 @@
             </objects>
             <point key="canvasLocation" x="2242" y="133"/>
         </scene>
+        <!--Form Management View Controller-->
+        <scene sceneID="zgG-9g-Yfy">
+            <objects>
+                <viewController storyboardIdentifier="FormManagementViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ekd-sA-KHN" customClass="FormManagementViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gMd-ti-Qax">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QEB-9u-5GI">
+                                <rect key="frame" x="70" y="120" width="235" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="SFj-Vk-ZMr"/>
+                                </constraints>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-bF-6yb">
+                                <rect key="frame" x="70" y="90" width="245" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QEB-9u-5GI" firstAttribute="top" secondItem="zKJ-bF-6yb" secondAttribute="bottom" constant="2" id="6ul-NS-PFe"/>
+                            <constraint firstItem="zKJ-bF-6yb" firstAttribute="top" secondItem="xWG-7x-Qnh" secondAttribute="top" constant="70" id="HSK-bY-jF6"/>
+                            <constraint firstItem="xWG-7x-Qnh" firstAttribute="trailing" secondItem="QEB-9u-5GI" secondAttribute="trailing" constant="70" id="LjY-N9-3U3"/>
+                            <constraint firstItem="QEB-9u-5GI" firstAttribute="top" secondItem="xWG-7x-Qnh" secondAttribute="top" constant="100" id="hwK-p0-Zpu"/>
+                            <constraint firstItem="QEB-9u-5GI" firstAttribute="leading" secondItem="xWG-7x-Qnh" secondAttribute="leading" constant="70" id="kG9-B5-3pB"/>
+                            <constraint firstItem="zKJ-bF-6yb" firstAttribute="leading" secondItem="xWG-7x-Qnh" secondAttribute="leading" constant="70" id="qxC-vd-uZJ"/>
+                            <constraint firstItem="xWG-7x-Qnh" firstAttribute="trailing" secondItem="zKJ-bF-6yb" secondAttribute="trailing" constant="60" id="wdY-hD-g3o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xWG-7x-Qnh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="45y-bp-O1W"/>
+                    <connections>
+                        <outlet property="chooseFormLabel" destination="zKJ-bF-6yb" id="IgA-jP-N3t"/>
+                        <outlet property="formTemplateTableView" destination="QEB-9u-5GI" id="yiU-9Y-Hpq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RSU-lw-qUB" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="LightGrayBackgroundColor">

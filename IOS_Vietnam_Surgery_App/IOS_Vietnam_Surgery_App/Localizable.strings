@@ -20,3 +20,7 @@
 "SaveFormAlertMessage" = "Are you sure you want to save this form?";
 "Error" = "Error";
 "Error_NoCamera" = "This device doesn't have a camera (ready).";
+"FormManagementViewControllerTitle" = "Form templates management";
+"FormTemplates" = "Form templates";
+"FormTemplateEditViewControllerTitle" = "Edit form template";
+"FormTemplatCreateViewControllerTitle" = "Create form template";
