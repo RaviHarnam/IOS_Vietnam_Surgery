@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/UserManager/UserManager.swift"
-            timestampString = "566434809.6889549"
+            timestampString = "566601116.204252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "UserLogIn(login:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/UserManager/UserManager.swift"
-            timestampString = "566434809.689278"
+            timestampString = "566601116.204365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "UserLogIn(login:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -41,13 +41,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IOS_Vietnam_Surgery_App/Code/UserManager/UserManager.swift"
-            timestampString = "566434809.689495"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/LoginViewController.swift"
+            timestampString = "566600627.849637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "UserLogIn(login:)"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "UserLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/API/UserAPIManager.swift"
+            timestampString = "566601116.204499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "Login(login:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

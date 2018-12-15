@@ -12,7 +12,7 @@ import Alamofire
 public class UserAPIManager : BaseAPIManager {
     
     public static let registerPrefix = "api/Account"
-    public static let loginPrefix = "/token"
+    public static let loginPrefix = "token"
     
     public static func Register(register: Register) -> DataRequest {
         let url = super.apiBaseUrl + self.registerPrefix
@@ -33,15 +33,26 @@ public class UserAPIManager : BaseAPIManager {
         
         let url = super.apiBaseUrl + self.loginPrefix
         
+        print(url)
+        
         let encoder = JSONEncoder()
         
         let jsondata = try? encoder.encode(login)
+
+        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        let parameters: [String: String] = [
+
+            "username" : login.username!,
+            "password" : login.password!,
+            "grant_type" : "password"
+        ]
+//        var request = URLRequest(url: URL(string: url)!)
+//        request.httpMethod = HTTPMethod.post.rawValue
+//        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//        print(jsondata)
+//        request.httpBody = jsondata
+//        print("body: ", request.httpBody)
         
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsondata
-        
-        return Alamofire.request(request)
+        return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers)
     }
 }

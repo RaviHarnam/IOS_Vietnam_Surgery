@@ -22,6 +22,12 @@ class UserManager {
     
     // Implemented register
     
+    
+    func checkIfUserIsAdmin()
+    {
+        
+    }
+    
     func Register(register: Register)
     {
         let registerUser = register
@@ -52,19 +58,30 @@ class UserManager {
     {
         let loginUser = login
         
-        UserAPIManager.Login(login: loginUser).responseData(completionHandler: {
+        UserAPIManager.Login(login: loginUser).responseJSON(completionHandler: {
             (response) in
             
+            print("response data : ",response)
             if let data = response.data{
+                print("Data: ", data)
                 let decoder = JSONDecoder()
-                let authtenticationResponse = try? decoder.decode(AuthenticationToken.self, from: data)
-                print("AuthResponse: ", authtenticationResponse)
-                if let authenticationresponse = authtenticationResponse{
+                let authenticationresponse = try? decoder.decode(AuthenticationToken.self, from: data)
+                print("AuthResponse: ", authenticationresponse)
+                
+                if let authenticationresponse = authenticationresponse{
                     print(authenticationresponse.authenticationtoken)
-                    
+
                     AppDelegate.authenticationToken = authenticationresponse.authenticationtoken
-                    KeychainWrapper.standard.set(authenticationresponse.authenticationtoken, forKey: LoginViewController.tokenkey)
-                    
+                    if let authtoken = authenticationresponse.authenticationtoken
+                    {
+                        print("AuthTokenValue: ", authtoken)
+                        KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
+                    }
+                    else{
+                        print("AuthTokenValue: ", authenticationresponse.authenticationtoken)
+                        print("Authtoken failed to put in keychain")
+                    }
+
                     print("Succesfully logged in")
                 }
                 else {

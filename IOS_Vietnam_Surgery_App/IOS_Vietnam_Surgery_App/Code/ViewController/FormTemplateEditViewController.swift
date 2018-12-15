@@ -40,7 +40,7 @@ public class FormTemplateEditViewController : UIViewController {
             self.formSections = sections
 //            guard FormHelper.validateFieldsInSection(section: formSections) else { return }
             //formUIControls = FormHelper.getUIControlsFromSection(section: formSection!)
-//            formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
+//           formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
         }
     }
 }

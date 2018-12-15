@@ -12,11 +12,13 @@ public class Login : Codable {
     
     var username : String?
     var password : String?
+    var grant_type: String?
     
-    init(username: String?, password: String?) {
+    init(username: String?, password: String?, grant_type: String?) {
         
         self.username = username
         self.password = password
+        self.grant_type = grant_type
         
     }
     
@@ -24,5 +26,6 @@ public class Login : Codable {
     {
         case username = "Username"
         case password = "Password"
+        case grant_type = "grant_type"
     }
 }

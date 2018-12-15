@@ -30,7 +30,7 @@ class FormTemplateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         self.view.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         self.title = NSLocalizedString("formTemplateTabBarItemTitle", comment: "")
         self.chooseFormLabel.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
