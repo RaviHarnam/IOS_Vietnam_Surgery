@@ -25,6 +25,60 @@
             </objects>
             <point key="canvasLocation" x="-935" y="-543"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="toz-CJ-OCf">
+            <objects>
+                <viewController storyboardIdentifier="LoginID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cPw-KF-45Q" customClass="LoginViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="esS-dX-kEg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4C6-Ha-by3">
+                                <rect key="frame" x="16" y="124" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcg-rd-1Yn">
+                                <rect key="frame" x="16" y="188" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-DM-4r7">
+                                <rect key="frame" x="168" y="248" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="LoginButton:" destination="cPw-KF-45Q" eventType="touchUpInside" id="VrI-08-jdI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="trailing" secondItem="tTq-DM-4r7" secondAttribute="trailing" constant="169" id="6Nl-M9-Tu7"/>
+                            <constraint firstItem="tTq-DM-4r7" firstAttribute="top" secondItem="Vcg-rd-1Yn" secondAttribute="bottom" constant="30" id="ADF-LI-hia"/>
+                            <constraint firstItem="tTq-DM-4r7" firstAttribute="leading" secondItem="AjH-da-qRl" secondAttribute="leading" constant="168" id="G28-7r-q5G"/>
+                            <constraint firstItem="tTq-DM-4r7" firstAttribute="top" secondItem="Vcg-rd-1Yn" secondAttribute="bottom" constant="30" id="VrF-uQ-ZuU"/>
+                            <constraint firstItem="4C6-Ha-by3" firstAttribute="leading" secondItem="AjH-da-qRl" secondAttribute="leading" constant="16" id="YIB-LZ-9dZ"/>
+                            <constraint firstItem="Vcg-rd-1Yn" firstAttribute="top" secondItem="4C6-Ha-by3" secondAttribute="bottom" constant="34" id="b38-F8-9l6"/>
+                            <constraint firstItem="Vcg-rd-1Yn" firstAttribute="leading" secondItem="AjH-da-qRl" secondAttribute="leading" constant="16" id="f97-Yb-RtS"/>
+                            <constraint firstItem="4C6-Ha-by3" firstAttribute="top" secondItem="AjH-da-qRl" secondAttribute="top" constant="104" id="fJ9-hP-yFC"/>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="trailing" secondItem="4C6-Ha-by3" secondAttribute="trailing" constant="16" id="izK-66-M3N"/>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="trailing" secondItem="Vcg-rd-1Yn" secondAttribute="trailing" constant="16" id="nIE-lL-yw0"/>
+                            <constraint firstItem="AjH-da-qRl" firstAttribute="bottom" secondItem="tTq-DM-4r7" secondAttribute="bottom" constant="389" id="pxD-GQ-sqF"/>
+                            <constraint firstItem="Vcg-rd-1Yn" firstAttribute="top" secondItem="4C6-Ha-by3" secondAttribute="bottom" constant="34" id="xYN-wN-sIn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AjH-da-qRl"/>
+                    </view>
+                    <connections>
+                        <outlet property="PasswordField" destination="Vcg-rd-1Yn" id="HxU-sh-kMe"/>
+                        <outlet property="UsernameField" destination="4C6-Ha-by3" id="1rM-XH-QAi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jkf-nb-Wl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-718" y="-1577"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="zge-kd-Ast">
             <objects>
@@ -44,45 +98,36 @@
         <!--Form Template View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FormTemplateViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FormTemplateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="FormTemplateViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SCx-A0-5Fc">
-                                <rect key="frame" x="70" y="164" width="235" height="300"/>
+                                <rect key="frame" x="60" y="104" width="255" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="lfY-jB-wke"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="S8S-0p-dx6"/>
                                 </constraints>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kJ-MZ-MMa">
-                                <rect key="frame" x="70" y="134" width="245" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="LightGrayBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1kJ-MZ-MMa" secondAttribute="trailing" constant="60" id="JXl-NX-wPD"/>
-                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="top" secondItem="1kJ-MZ-MMa" secondAttribute="bottom" constant="2" id="Pfo-uu-sn4"/>
-                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="Yg9-me-8qU"/>
-                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Yym-BC-B6T"/>
-                            <constraint firstItem="1kJ-MZ-MMa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="kkP-NW-Obn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SCx-A0-5Fc" secondAttribute="trailing" constant="70" id="uOz-hn-ukB"/>
-                            <constraint firstItem="1kJ-MZ-MMa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="yKB-hS-eXv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SCx-A0-5Fc" secondAttribute="bottom" constant="40" id="Ftv-qa-E4V"/>
+                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="Yg9-me-8qU"/>
+                            <constraint firstItem="SCx-A0-5Fc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Yym-BC-B6T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SCx-A0-5Fc" secondAttribute="trailing" constant="60" id="uOz-hn-ukB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="97L-BR-gyN"/>
                     <connections>
-                        <outlet property="chooseFormLabel" destination="1kJ-MZ-MMa" id="QfC-eO-4xQ"/>
                         <outlet property="formTemplateTableView" destination="SCx-A0-5Fc" id="moP-dS-vrG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-63.200000000000003" y="133.5832083958021"/>
         </scene>
         <!--Form Fill In View Controller-->
         <scene sceneID="66U-j4-fEJ">
@@ -190,6 +235,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIw-Tl-584" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2242" y="133"/>
+        </scene>
+        <!--Form Management View Controller-->
+        <scene sceneID="zgG-9g-Yfy">
+            <objects>
+                <viewController storyboardIdentifier="FormManagementViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ekd-sA-KHN" customClass="FormManagementViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gMd-ti-Qax">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QEB-9u-5GI">
+                                <rect key="frame" x="60" y="60" width="255" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="LightGrayBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xWG-7x-Qnh" firstAttribute="trailing" secondItem="QEB-9u-5GI" secondAttribute="trailing" constant="60" id="LjY-N9-3U3"/>
+                            <constraint firstItem="QEB-9u-5GI" firstAttribute="top" secondItem="xWG-7x-Qnh" secondAttribute="top" constant="40" id="hwK-p0-Zpu"/>
+                            <constraint firstItem="QEB-9u-5GI" firstAttribute="leading" secondItem="xWG-7x-Qnh" secondAttribute="leading" constant="60" id="kG9-B5-3pB"/>
+                            <constraint firstItem="xWG-7x-Qnh" firstAttribute="bottom" secondItem="QEB-9u-5GI" secondAttribute="bottom" constant="40" id="s76-Fd-Lus"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xWG-7x-Qnh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="45y-bp-O1W"/>
+                    <connections>
+                        <outlet property="formTemplateTableView" destination="QEB-9u-5GI" id="yiU-9Y-Hpq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RSU-lw-qUB" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-63" y="821"/>
         </scene>
     </scenes>
     <resources>

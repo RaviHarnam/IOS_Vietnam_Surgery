@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TabBarController : UITabBarController{
+class TabBarController : UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,18 +18,24 @@ class TabBarController : UITabBarController{
     }
     
     func setupTabbar() {
-        let homeViewController = createNavigationController(VController: HomeViewController(), selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let formTemplateViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController, selectedImage:"icon" , unselectedImage: "AppIcon-1", title: "Home")
         
         
         let formViewController = createNavigationController(VController: FormViewController(), selectedImage:"medical-history", unselectedImage: "form", title: "Choose Form")
         
         
-        let formManagementViewController = createNavigationController(VController: FormManagementViewController(), selectedImage:"clinic-history" , unselectedImage: "consent", title: "Form Management")
+        let formManagementViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormManagementViewController"), selectedImage:"clinic-history" , unselectedImage: "consent", title: "Form Management")
         
-        viewControllers    = [homeViewController, formViewController, formManagementViewController]
+        let loginViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "login", unselectedImage: "login", title: "Login")
+        
+        viewControllers = [formTemplateViewController, formViewController, formManagementViewController, loginViewController]
+        
         
         setupTabBarItems()
     }
+    
     
     func setupTabBarItems() {
         

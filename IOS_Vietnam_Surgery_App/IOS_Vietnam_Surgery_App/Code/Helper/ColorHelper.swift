@@ -17,4 +17,8 @@ public class ColorHelper {
     public static func lightGrayTextColor() -> UIColor {
         return UIColor(named: "LightGrayTextColor")!
     }
+    
+    public static func lightGrayBorderColor() -> UIColor {
+        return UIColor(named: "LightGrayBorderColor")!
+    }
 }

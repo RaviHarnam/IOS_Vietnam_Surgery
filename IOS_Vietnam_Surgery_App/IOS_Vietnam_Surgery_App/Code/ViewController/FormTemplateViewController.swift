@@ -32,10 +32,10 @@ class FormTemplateViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         self.view.backgroundColor = ColorHelper.lightGrayBackgroundColor()
-        self.title = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
-        self.chooseFormLabel.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
-        self.chooseFormLabel.textColor = ColorHelper.lightGrayTextColor()
-        
+        self.title = NSLocalizedString("formTemplateTabBarItemTitle", comment: "")
+        //self.chooseFormLabel.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
+        //self.chooseFormLabel.textColor = ColorHelper.lightGrayTextColor()
+        self.navigationItem.title = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
         
         setupTableView()
         setupNavigationBar()
@@ -93,26 +93,35 @@ class FormTemplateViewController: UIViewController {
             self.formTemplates = templates
             DispatchQueue.main.async {
                 self.formTemplateTableView.reloadData()
-                self.resizeTableView()
             }
         })
     }
     
     //Resizes the tableview if it currently is bigger than the size of the combined content
-    func resizeTableView() {
-        if self.formTemplateTableView.frame.height > self.formTemplateTableView.contentSize.height {
-            DispatchQueue.main.async {
-                var frame = self.formTemplateTableView.frame
-                frame.size.height = self.formTemplateTableView.contentSize.height //CGFloat(self.formTemplates?.count ?? 0 * 40) //
-                self.formTemplateTableView.frame = frame
-            }
-        }
-    }
+//    func resizeTableView() {
+//        if self.formTemplateTableView.frame.height > self.formTemplateTableView.contentSize.height {
+//            DispatchQueue.main.async {
+//                var frame = self.formTemplateTableView.frame
+//                frame.size.height = self.formTemplateTableView.contentSize.height //CGFloat(self.formTemplates?.count ?? 0 * 40) //
+//                self.formTemplateTableView.frame = frame
+//            }
+//        }
+//    }
 }
 
 extension FormTemplateViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.formTemplates?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
+        let label = UILabel()
+        
+        label.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
+        label.textColor = ColorHelper.lightGrayTextColor()
+        label.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        
+        return label
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
