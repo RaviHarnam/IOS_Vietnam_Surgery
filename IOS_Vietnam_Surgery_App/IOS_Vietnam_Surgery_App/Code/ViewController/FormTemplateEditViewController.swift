@@ -38,9 +38,9 @@ public class FormTemplateEditViewController : UIViewController {
             let template = FormHelper.getFormTemplateFromJson(json: template)
             guard let sections = template?.sections else { return }
             self.formSections = sections
-            guard FormHelper.validateFieldsInSection(section: formSections) else { return }
+            guard FormHelper.validateSectionsInForm(sections: sections) else { return }
             //formUIControls = FormHelper.getUIControlsFromSection(section: formSection!)
-            formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
+            //formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
         }
     }
 }

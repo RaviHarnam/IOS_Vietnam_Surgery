@@ -26,7 +26,7 @@ class TabBarController : UITabBarController {
         let formViewController = createNavigationController(VController: FormViewController(), selectedImage:"medical-history", unselectedImage: "form", title: "Choose Form")
         
         
-        let formManagementViewController = createNavigationController(VController: FormManagementViewController(), selectedImage:"clinic-history" , unselectedImage: "consent", title: "Form Management")
+        let formManagementViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormManagementViewController"), selectedImage:"clinic-history" , unselectedImage: "consent", title: "Form Management")
         
         let loginViewController = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "login", unselectedImage: "login", title: "Login")
         
