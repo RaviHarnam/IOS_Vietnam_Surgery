@@ -10,19 +10,28 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    public static let tokenkey = "AuthenticationToken"
+    
     @IBOutlet weak var UsernameField: UITextField!
     
     @IBOutlet weak var PasswordField: UITextField!
     
     @IBAction func LoginButton(_ sender: Any) {
+        UserLogin()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.storyboard?.instantiateViewController(withIdentifier: "LoginID")
+        //self.storyboard?.instantiateViewController(withIdentifier: "LoginID")
         view.backgroundColor = UIColor.green
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Login"
        
+    }
+    
+    func UserLogin()
+    {
+        let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text)
+        UserManager.UserLogIn(login: filledInLogin)
     }
 }
