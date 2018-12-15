@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class Form : Codable {
     public var id : Int?
@@ -14,6 +15,8 @@ public class Form : Codable {
     public var region : String?
     public var formTemplate : String?
     public var formContent : [FormContentKeyValuePair]?
+    
+    public var formPictures : [UIImage] = []
     
     enum CodingKeys : String, CodingKey {
         case id = "Id"

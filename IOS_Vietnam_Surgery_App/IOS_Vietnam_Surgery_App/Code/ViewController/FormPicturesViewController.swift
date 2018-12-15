@@ -13,7 +13,7 @@ public class FormPicturesViewController : UIViewController  {
     
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
-    private var formPictures : [UIImage] = []
+    //private var formPictures : [UIImage] = []
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private let itemsPerRow : CGFloat = 4
     
@@ -89,7 +89,8 @@ public class FormPicturesViewController : UIViewController  {
 
 extension FormPicturesViewController : UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 + formPictures.count
+        //return 1 + formPictures.count
+        return 1 + (self.formData?.formPictures.count ?? 0)
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,7 +105,8 @@ extension FormPicturesViewController : UICollectionViewDataSource {
             cell.imageView.image = UIImage(named: "Camera")!
         }
         else {
-            let image = formPictures[indexPath.row - 1]
+            //let image = formPictures[indexPath.row - 1]
+            let image = self.formData?.formPictures[indexPath.row - 1]
             cell.imageView.image = image
             
         }
@@ -138,7 +140,8 @@ extension FormPicturesViewController : UICollectionViewDelegate {
                 #if DEBUG
                     alert.addAction(UIAlertAction(title: "Ok (use Placeholder)", style: .default, handler: {
                         (alert: UIAlertAction) in
-                        self.formPictures.append(UIImage(named: "Placeholder")!)
+                        //self.formPictures.append(UIImage(named: "Placeholder")!)
+                        self.formData?.formPictures.append(UIImage(named: "Placeholder")!)
                         DispatchQueue.main.async {
                             self.picturesCollectionView.reloadData()
                         }
@@ -168,7 +171,8 @@ extension FormPicturesViewController : UIImagePickerControllerDelegate, UINaviga
             return
         }
         
-        self.formPictures.append(image)
+        //self.formPictures.append(image)
+        self.formData?.formPictures.append(image)
         DispatchQueue.main.async {
             self.picturesCollectionView.reloadData()
         }
