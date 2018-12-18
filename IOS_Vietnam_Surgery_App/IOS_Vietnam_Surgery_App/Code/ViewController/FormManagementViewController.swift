@@ -83,7 +83,7 @@ extension FormManagementViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditViewController") as! FormTemplateEditViewController
-        
+        vc.form = formTemplates[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

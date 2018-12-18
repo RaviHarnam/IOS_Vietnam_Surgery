@@ -267,6 +267,60 @@
             </objects>
             <point key="canvasLocation" x="-63" y="821"/>
         </scene>
+        <!--Form Template Edit View Controller-->
+        <scene sceneID="hbc-Rc-6ul">
+            <objects>
+                <viewController storyboardIdentifier="FormTemplateEditViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EW1-Xg-ZtA" customClass="FormTemplateEditViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="60P-Nz-Xnz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-lJ-geU">
+                                <rect key="frame" x="16" y="100" width="343" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" name="LightGrayBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCC-OY-ZXQ">
+                                <rect key="frame" x="16" y="26" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mre-IY-vwn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x87-0T-8Jp">
+                                <rect key="frame" x="16" y="62" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" name="LightGrayBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uCC-OY-ZXQ" firstAttribute="leading" secondItem="jIs-Op-Wdj" secondAttribute="leading" constant="16" id="7KP-bP-rrj"/>
+                            <constraint firstItem="jIs-Op-Wdj" firstAttribute="trailing" secondItem="uCC-OY-ZXQ" secondAttribute="trailing" constant="16" id="FCj-1G-fOI"/>
+                            <constraint firstItem="uCC-OY-ZXQ" firstAttribute="top" secondItem="jIs-Op-Wdj" secondAttribute="top" constant="6" id="Obi-J8-Agr"/>
+                            <constraint firstItem="jIs-Op-Wdj" firstAttribute="trailing" secondItem="x87-0T-8Jp" secondAttribute="trailing" constant="16" id="R4R-QY-Frt"/>
+                            <constraint firstItem="x87-0T-8Jp" firstAttribute="leading" secondItem="jIs-Op-Wdj" secondAttribute="leading" constant="16" id="TaS-SL-hzQ"/>
+                            <constraint firstItem="v5k-lJ-geU" firstAttribute="leading" secondItem="jIs-Op-Wdj" secondAttribute="leading" constant="16" id="bgv-hC-zRz"/>
+                            <constraint firstItem="jIs-Op-Wdj" firstAttribute="trailing" secondItem="v5k-lJ-geU" secondAttribute="trailing" constant="16" id="hEu-Hk-bYx"/>
+                            <constraint firstItem="x87-0T-8Jp" firstAttribute="top" secondItem="jIs-Op-Wdj" secondAttribute="top" constant="42" id="q8B-nS-bbg"/>
+                            <constraint firstItem="jIs-Op-Wdj" firstAttribute="bottom" secondItem="v5k-lJ-geU" secondAttribute="bottom" constant="20" id="ywH-ex-n2g"/>
+                            <constraint firstItem="v5k-lJ-geU" firstAttribute="top" secondItem="jIs-Op-Wdj" secondAttribute="top" constant="80" id="yzq-jA-ZbB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jIs-Op-Wdj"/>
+                    </view>
+                    <connections>
+                        <outlet property="formExplanationText" destination="uCC-OY-ZXQ" id="zXl-lU-IkO"/>
+                        <outlet property="formNameTextField" destination="x87-0T-8Jp" id="Z7T-qr-tEh"/>
+                        <outlet property="formTableView" destination="v5k-lJ-geU" id="Ewp-53-AUN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEs-21-3MV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901.60000000000002" y="820.83958020989508"/>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="LightGrayBackgroundColor">
