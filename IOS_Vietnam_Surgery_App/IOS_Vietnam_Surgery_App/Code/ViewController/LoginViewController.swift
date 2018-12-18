@@ -25,8 +25,9 @@ class LoginViewController: UIViewController {
         {
             LoginSpinner.isHidden = false
             LoginSpinner.startAnimating()
+            UserLogin()
         }
-        UserLogin()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,35 @@ class LoginViewController: UIViewController {
     
     func UserLogin()
     {
+        
         let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text, grant_type: "password")
-        UserManager.UserLogIn(login: filledInLogin)
+        UserManager.UserLogIn(login: filledInLogin, callBack: {
+            (result) in
+            
+            if(result)
+            {
+                self.navigateToAdminInterface()
+            }
+            else
+            {
+                
+            }
+        })
+        
+       
+        if (UserManager.userLogInSuccesfull)
+        {
+            
+            
+        }
+    }
+    
+    private func navigateToAdminInterface () {
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        guard let adminNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "AdminNavigationController") as? AdminNavigationController else { return }
+        
+        present(adminNavigationVC, animated: true, completion: nil)
     }
 }

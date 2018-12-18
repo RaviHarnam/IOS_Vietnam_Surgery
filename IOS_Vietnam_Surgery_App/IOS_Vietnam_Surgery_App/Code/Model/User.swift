@@ -8,16 +8,20 @@
 
 import Foundation
 
-public class User {
+public class User : Codable {
     
+    var email : String?
+    var userrole : [Role]?
+    var userid : String?
     var username : String?
-    var userrole : String?
     
     
     enum CodingKeys : String, CodingKey
     {
-        case username = "Username"
-        case userrole = "UserRole"
+        case email = "Email"
+        case userrole = "Roles"
+        case userid = "Id"
+        case username = "UserName"
     }
     
 }

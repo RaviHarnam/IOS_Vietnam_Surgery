@@ -12,7 +12,9 @@
 		4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
+		41698B4721C66DD900C261D5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41698B4621C66DD900C261D5 /* Role.swift */; };
 		418A9C6A21C396240022599A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A9C6921C396240022599A /* User.swift */; };
+		418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */; };
 		418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */; };
 		41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */; };
 		41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2F21C19A6700CD9FB4 /* Login.swift */; };
@@ -65,7 +67,9 @@
 		4137E231219C364D0009DFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41698B4621C66DD900C261D5 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		418A9C6921C396240022599A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationController.swift; sourceTree = "<group>"; };
 		418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customHTTPResponse.swift; sourceTree = "<group>"; };
 		41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
 		41A8FA2F21C19A6700CD9FB4 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 				41A8FA3221C19AFF00CD9FB4 /* Register.swift */,
 				418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */,
 				418A9C6921C396240022599A /* User.swift */,
+				41698B4621C66DD900C261D5 /* Role.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */,
 				BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */,
 				BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */,
+				418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */,
 				41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */,
 				4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
+				418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */,
 				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
 				41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */,
 				41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */,
@@ -438,6 +445,7 @@
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
 				41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
 				BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
+				41698B4721C66DD900C261D5 /* Role.swift in Sources */,
 				BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */,
 				BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */,
 				BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */,

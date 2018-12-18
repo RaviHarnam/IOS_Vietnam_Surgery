@@ -22,6 +22,7 @@ class UserManager {
     
     // Implemented register
     
+    static var userLogInSuccesfull = false
     
     func checkIfUserIsAdmin()
     {
@@ -54,8 +55,9 @@ class UserManager {
     }
     
     // implemented lpgin
-    static func UserLogIn(login: Login)
+    static func UserLogIn(login: Login, callBack: @escaping (Bool) -> ())
     {
+        let queue = DispatchQueue(label: "label")
         let loginUser = login
         
         UserAPIManager.Login(login: loginUser).responseJSON(completionHandler: {
@@ -74,20 +76,60 @@ class UserManager {
                     AppDelegate.authenticationToken = authenticationresponse.authenticationtoken
                     if let authtoken = authenticationresponse.authenticationtoken
                     {
+                        userLogInSuccesfull = true
                         print("AuthTokenValue: ", authtoken)
                         KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
+                        
+                        callBack(true)
+                        
+                        getAllUsers()
                     }
                     else{
                         print("AuthTokenValue: ", authenticationresponse.authenticationtoken)
                         print("Authtoken failed to put in keychain")
+                        userLogInSuccesfull = false
+                        callBack(false)
                     }
-
+                   
                     print("Succesfully logged in")
+                    
+                    
+                    
                 }
                 else {
                     print("login failed")
+                   
                 }
             }
+        })
+      
+    }
+    
+    public static func checkIfLogginIsSuccessfull(success: Bool)
+    {
+        userLogInSuccesfull = success
+    }
+    
+    static func getAllUsers()
+    {
+        print("Appdelegate.authentifcationToken: ", AppDelegate.authenticationToken)
+        UserAPIManager.GetAllUsers(token: AppDelegate.authenticationToken).responseJSON(completionHandler: {
+            
+            (response) in
+            guard let jsonData = response.data else { return }
+            print("Get all accounts: ", response)
+            
+            let decoder = JSONDecoder()
+            var decodedUserObject = try? decoder.decode([User].self, from: jsonData)
+            
+            if let usersArray = decodedUserObject
+            {
+                for user in usersArray
+                {
+                    print(user.username)
+                }
+            }
+           
         })
     }
 

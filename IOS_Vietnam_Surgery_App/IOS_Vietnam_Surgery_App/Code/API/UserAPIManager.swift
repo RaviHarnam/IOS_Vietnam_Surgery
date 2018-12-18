@@ -11,11 +11,12 @@ import Alamofire
 
 public class UserAPIManager : BaseAPIManager {
     
-    public static let registerPrefix = "api/Account"
+    public static let accountPrefix = "api/Account"
     public static let loginPrefix = "token"
+    public static var userobject : User?
     
     public static func Register(register: Register) -> DataRequest {
-        let url = super.apiBaseUrl + self.registerPrefix
+        let url = super.apiBaseUrl + self.accountPrefix
         
         let encoder = JSONEncoder()
         
@@ -54,5 +55,36 @@ public class UserAPIManager : BaseAPIManager {
 //        print("body: ", request.httpBody)
         
         return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers)
+    }
+    
+    public static func GetAllUsers(token: String?) -> DataRequest {
+        
+        let url = super.apiBaseUrl + self.accountPrefix
+        var parameters : [String:String] = [
+        
+            "token_type" : "bearer"
+        ]
+        var header: [String:String] = [:]
+        if let authenticationtoken = token {
+            
+            header = ["Authorization": "Bearer " + authenticationtoken] 
+        }
+        
+         return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard let jsonData = response.data else {return}})
+//        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard let jsonData = response.data else {return}})
+        
+//        Alamofire.request(url).responseJSON(completionHandler: {
+//            (response) in guard let jsonData = response.data else {return}
+//        print(url)
+//
+//        let decoder = JSONDecoder()
+//        let userObject = try? decoder.decode(User.self, from: jsonData)
+//
+//            if let userobject = userObject {
+//
+//                self.userobject = userobject            }
+//        })
+//        
+//        return self.userobject
     }
 }
