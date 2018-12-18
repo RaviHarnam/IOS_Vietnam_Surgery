@@ -21,13 +21,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var PasswordField: UITextField!
     
     @IBAction func LoginButton(_ sender: Any) {
-        if(LoginSpinner.isHidden == true)
-        {
+        if(LoginSpinner.isHidden == true) {
             LoginSpinner.isHidden = false
             LoginSpinner.startAnimating()
             UserLogin()
         }
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,29 +50,19 @@ class LoginViewController: UIViewController {
         LoginButton.setTitle("Login", for: .normal)
     }
     
-    func UserLogin()
-    {
+    func UserLogin() {
         
         let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text, grant_type: "password")
         UserManager.UserLogIn(login: filledInLogin, callBack: {
             (result) in
             
-            if(result)
-            {
+            if(result) {
                 self.navigateToAdminInterface()
             }
-            else
-            {
+            else {
                 
             }
         })
-        
-       
-        if (UserManager.userLogInSuccesfull)
-        {
-            
-            
-        }
     }
     
     private func navigateToAdminInterface () {

@@ -16,12 +16,10 @@ public class User : Codable {
     var username : String?
     
     
-    enum CodingKeys : String, CodingKey
-    {
+    enum CodingKeys : String, CodingKey {
         case email = "Email"
         case userrole = "Roles"
         case userid = "Id"
         case username = "UserName"
-    }
-    
+    }  
 }

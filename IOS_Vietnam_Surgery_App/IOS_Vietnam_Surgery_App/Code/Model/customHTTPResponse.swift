@@ -8,17 +8,12 @@
 
 import Foundation
 
-import Foundation
-
-public class customHTTPResponse : Codable
-{
+public class customHTTPResponse : Codable {
     var succes: Bool
     var message : String
     
-    enum CodingKeys : String, CodingKey
-    {
+    enum CodingKeys : String, CodingKey {
         case succes = "Success"
         case message = "Message"
-        
     }
 }

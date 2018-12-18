@@ -22,31 +22,25 @@ class UserManager {
     
     // Implemented register
     
-    static var userLogInSuccesfull = false
     
-    func checkIfUserIsAdmin()
-    {
+    func checkIfUserIsAdmin() {
         
     }
     
-    func Register(register: Register)
-    {
+    func Register(register: Register) {
         let registerUser = register
         
-        UserAPIManager.Register(register: registerUser).responseData(completionHandler:{
+        UserAPIManager.Register(register: registerUser).responseData(completionHandler: {
             (response) in
             
             if let data = response.data{
                 let decoder = JSONDecoder()
                 let customResponse = try? decoder.decode(customHTTPResponse.self, from: data)
                 
-                if(customResponse?.succes == true)
-                {
+                if(customResponse?.succes == true) {
                     print("succesfully registred")
-                
                 }
-                else
-                {
+                else {
                     print("not registered")
                   
                 }
@@ -55,8 +49,7 @@ class UserManager {
     }
     
     // implemented lpgin
-    static func UserLogIn(login: Login, callBack: @escaping (Bool) -> ())
-    {
+    static func UserLogIn(login: Login, callBack: @escaping (Bool) -> ()) {
         let queue = DispatchQueue(label: "label")
         let loginUser = login
         
@@ -64,37 +57,30 @@ class UserManager {
             (response) in
             
             print("response data : ",response)
-            if let data = response.data{
+            if let data = response.data {
                 print("Data: ", data)
                 let decoder = JSONDecoder()
                 let authenticationresponse = try? decoder.decode(AuthenticationToken.self, from: data)
                 print("AuthResponse: ", authenticationresponse)
                 
-                if let authenticationresponse = authenticationresponse{
+                if let authenticationresponse = authenticationresponse {
                     print(authenticationresponse.authenticationtoken)
 
                     AppDelegate.authenticationToken = authenticationresponse.authenticationtoken
-                    if let authtoken = authenticationresponse.authenticationtoken
-                    {
-                        userLogInSuccesfull = true
+                    if let authtoken = authenticationresponse.authenticationtoken {
                         print("AuthTokenValue: ", authtoken)
                         KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
-                        
                         callBack(true)
                         
                         getAllUsers()
                     }
-                    else{
+                    else {
                         print("AuthTokenValue: ", authenticationresponse.authenticationtoken)
                         print("Authtoken failed to put in keychain")
-                        userLogInSuccesfull = false
                         callBack(false)
                     }
-                   
+                
                     print("Succesfully logged in")
-                    
-                    
-                    
                 }
                 else {
                     print("login failed")
@@ -102,16 +88,10 @@ class UserManager {
                 }
             }
         })
-      
     }
     
-    public static func checkIfLogginIsSuccessfull(success: Bool)
-    {
-        userLogInSuccesfull = success
-    }
     
-    static func getAllUsers()
-    {
+    static func getAllUsers() {
         print("Appdelegate.authentifcationToken: ", AppDelegate.authenticationToken)
         UserAPIManager.GetAllUsers(token: AppDelegate.authenticationToken).responseJSON(completionHandler: {
             
@@ -122,15 +102,11 @@ class UserManager {
             let decoder = JSONDecoder()
             var decodedUserObject = try? decoder.decode([User].self, from: jsonData)
             
-            if let usersArray = decodedUserObject
-            {
-                for user in usersArray
-                {
+            if let usersArray = decodedUserObject {
+                for user in usersArray {
                     print(user.username)
                 }
             }
-           
         })
     }
-
 }

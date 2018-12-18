@@ -19,11 +19,9 @@ public class Login : Codable {
         self.username = username
         self.password = password
         self.grant_type = grant_type
-        
     }
     
-    enum CodingKeys : String, CodingKey
-    {
+    enum CodingKeys : String, CodingKey {
         case username = "Username"
         case password = "Password"
         case grant_type = "grant_type"
