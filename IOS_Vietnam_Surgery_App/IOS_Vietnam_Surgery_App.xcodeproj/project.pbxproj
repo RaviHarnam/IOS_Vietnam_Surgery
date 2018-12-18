@@ -1,654 +1,666 @@
 // !$*UTF8*$!
 {
-    archiveVersion = 1;
-    classes = {
-    };
-    objectVersion = 50;
-    objects = {
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
 
 /* Begin PBXBuildFile section */
-        4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22A219C364D0009DFBE /* AppDelegate.swift */; };
-        4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */; };
-        4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
-        4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
-        4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
-        418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */; };
-        4193549021C13B3900B8FE56 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193548F21C13B3900B8FE56 /* FormManagementViewController.swift */; };
-        41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */; };
-        41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2F21C19A6700CD9FB4 /* Login.swift */; };
-        41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3221C19AFF00CD9FB4 /* Register.swift */; };
-        41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */; };
-        41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */; };
-        41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA234E21C1079C00D50B78 /* TabBarController.swift */; };
-        41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235021C1083E00D50B78 /* HomeViewController.swift */; };
-        41AA235321C1095800D50B78 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235221C1095800D50B78 /* FormViewController.swift */; };
-        41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BA948921C2916E00969EA4 /* UserAPIManager.swift */; };
-        5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
-        BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */; };
-        BF34419021B69A0A00F23674 /* DoubleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */; };
-        BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */; };
-        BF34419421BBEB5300F23674 /* FormContentKeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */; };
-        BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */; };
-        BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */; };
-        BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */; };
-        BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */; };
-        BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */; };
-        BF6B4E0C21AFF40E001FC224 /* TableCellWithUITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */; };
-        BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0D21B018BC001FC224 /* FormField.swift */; };
-        BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0F21B01C8A001FC224 /* FormSection.swift */; };
-        BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */; };
-        BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */; };
-        BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA57B21AD407500904B6A /* Localizable.strings */; };
-        BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */; };
-        BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */; };
-        BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */; };
-        BF7AA58821AD530B00904B6A /* SimpleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */; };
-        BF7AA58B21AD55A800904B6A /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58A21AD55A800904B6A /* Form.swift */; };
-        BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */; };
-        BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */; };
-        BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */; };
-        BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA59321AD86DF00904B6A /* FormHelper.swift */; };
-        BFEDD44D21B403CD00E62918 /* CellWithUITextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEDD44C21B403CD00E62918 /* CellWithUITextfield.xib */; };
-        BFEDD44F21B4048A00E62918 /* CellWithUITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD44E21B4048A00E62918 /* CellWithUITextfield.swift */; };
-        BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD45021B535A800E62918 /* FormPicturesViewController.swift */; };
-        BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD45221B538AC00E62918 /* ImageFrameView.swift */; };
-        BFEDD45621B53D3400E62918 /* CollectionViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEDD45521B53D3400E62918 /* CollectionViewImageCell.xib */; };
-        BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */; };
+		4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22A219C364D0009DFBE /* AppDelegate.swift */; };
+		4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */; };
+		4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
+		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
+		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
+		41698B4721C66DD900C261D5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41698B4621C66DD900C261D5 /* Role.swift */; };
+		418A9C6A21C396240022599A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A9C6921C396240022599A /* User.swift */; };
+		418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */; };
+		418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */; };
+		41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */; };
+		41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2F21C19A6700CD9FB4 /* Login.swift */; };
+		41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3221C19AFF00CD9FB4 /* Register.swift */; };
+		41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */; };
+		41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */; };
+		41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA234E21C1079C00D50B78 /* TabBarController.swift */; };
+		41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235021C1083E00D50B78 /* HomeViewController.swift */; };
+		41AA235321C1095800D50B78 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235221C1095800D50B78 /* FormViewController.swift */; };
+		41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BA948921C2916E00969EA4 /* UserAPIManager.swift */; };
+		5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
+		BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */; };
+		BF34419021B69A0A00F23674 /* DoubleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */; };
+		BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */; };
+		BF34419421BBEB5300F23674 /* FormContentKeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */; };
+		BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */; };
+		BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */; };
+		BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */; };
+		BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */; };
+		BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */; };
+		BF6B4E0C21AFF40E001FC224 /* TableCellWithUITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */; };
+		BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0D21B018BC001FC224 /* FormField.swift */; };
+		BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E0F21B01C8A001FC224 /* FormSection.swift */; };
+		BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */; };
+		BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */; };
+		BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA57B21AD407500904B6A /* Localizable.strings */; };
+		BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */; };
+		BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */; };
+		BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */; };
+		BF7AA58821AD530B00904B6A /* SimpleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */; };
+		BF7AA58B21AD55A800904B6A /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58A21AD55A800904B6A /* Form.swift */; };
+		BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */; };
+		BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */; };
+		BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */; };
+		BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AA59321AD86DF00904B6A /* FormHelper.swift */; };
+		BFEDD44D21B403CD00E62918 /* CellWithUITextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEDD44C21B403CD00E62918 /* CellWithUITextfield.xib */; };
+		BFEDD44F21B4048A00E62918 /* CellWithUITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD44E21B4048A00E62918 /* CellWithUITextfield.swift */; };
+		BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD45021B535A800E62918 /* FormPicturesViewController.swift */; };
+		BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD45221B538AC00E62918 /* ImageFrameView.swift */; };
+		BFEDD45621B53D3400E62918 /* CollectionViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEDD45521B53D3400E62918 /* CollectionViewImageCell.xib */; };
+		BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-        0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; sourceTree = "<group>"; };
-        4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_Vietnam_Surgery_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
-        4137E22A219C364D0009DFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-        4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateViewController.swift; sourceTree = "<group>"; };
-        4137E22F219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-        4137E231219C364D0009DFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-        4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-        4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-        418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customHTTPResponse.swift; sourceTree = "<group>"; };
-        4193548F21C13B3900B8FE56 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
-        41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
-        41A8FA2F21C19A6700CD9FB4 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-        41A8FA3221C19AFF00CD9FB4 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-        41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-        41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-        41AA234E21C1079C00D50B78 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-        41AA235021C1083E00D50B78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-        41AA235221C1095800D50B78 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
-        41BA948921C2916E00969EA4 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
-        A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-        ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
-        BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLabelTableViewCell.swift; sourceTree = "<group>"; };
-        BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleLabelTableViewCell.xib; sourceTree = "<group>"; };
-        BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewViewController.swift; sourceTree = "<group>"; };
-        BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentKeyValuePair.swift; sourceTree = "<group>"; };
-        BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewHeaderView.swift; sourceTree = "<group>"; };
-        BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormPreviewHeaderView.xib; sourceTree = "<group>"; };
-        BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
-        BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditViewController.swift; sourceTree = "<group>"; };
-        BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCellWithUITextfield.xib; sourceTree = "<group>"; };
-        BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellWithUITextfield.swift; sourceTree = "<group>"; };
-        BF6B4E0D21B018BC001FC224 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
-        BF6B4E0F21B01C8A001FC224 /* FormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSection.swift; sourceTree = "<group>"; };
-        BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplate.swift; sourceTree = "<group>"; };
-        BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormChoiceField.swift; sourceTree = "<group>"; };
-        BF7AA57B21AD407500904B6A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-        BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateAPIManager.swift; sourceTree = "<group>"; };
-        BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIManager.swift; sourceTree = "<group>"; };
-        BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLabelTableViewCell.swift; sourceTree = "<group>"; };
-        BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleLabelTableViewCell.xib; sourceTree = "<group>"; };
-        BF7AA58A21AD55A800904B6A /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
-        BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-        BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-        BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFillInViewController.swift; sourceTree = "<group>"; };
-        BF7AA59321AD86DF00904B6A /* FormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHelper.swift; sourceTree = "<group>"; };
-        BFEDD44C21B403CD00E62918 /* CellWithUITextfield.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithUITextfield.xib; sourceTree = "<group>"; };
-        BFEDD44E21B4048A00E62918 /* CellWithUITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithUITextfield.swift; sourceTree = "<group>"; };
-        BFEDD45021B535A800E62918 /* FormPicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPicturesViewController.swift; sourceTree = "<group>"; };
-        BFEDD45221B538AC00E62918 /* ImageFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFrameView.swift; sourceTree = "<group>"; };
-        BFEDD45521B53D3400E62918 /* CollectionViewImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewImageCell.xib; sourceTree = "<group>"; };
-        BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewImageCell.swift; sourceTree = "<group>"; };
+		0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; sourceTree = "<group>"; };
+		4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_Vietnam_Surgery_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4137E22A219C364D0009DFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateViewController.swift; sourceTree = "<group>"; };
+		4137E22F219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4137E231219C364D0009DFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41698B4621C66DD900C261D5 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		418A9C6921C396240022599A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationController.swift; sourceTree = "<group>"; };
+		418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customHTTPResponse.swift; sourceTree = "<group>"; };
+		41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
+		41A8FA2F21C19A6700CD9FB4 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		41A8FA3221C19AFF00CD9FB4 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		41AA234E21C1079C00D50B78 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		41AA235021C1083E00D50B78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		41AA235221C1095800D50B78 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		41BA948921C2916E00969EA4 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
+		A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
+		BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLabelTableViewCell.swift; sourceTree = "<group>"; };
+		BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleLabelTableViewCell.xib; sourceTree = "<group>"; };
+		BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewViewController.swift; sourceTree = "<group>"; };
+		BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentKeyValuePair.swift; sourceTree = "<group>"; };
+		BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewHeaderView.swift; sourceTree = "<group>"; };
+		BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormPreviewHeaderView.xib; sourceTree = "<group>"; };
+		BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
+		BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditViewController.swift; sourceTree = "<group>"; };
+		BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCellWithUITextfield.xib; sourceTree = "<group>"; };
+		BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellWithUITextfield.swift; sourceTree = "<group>"; };
+		BF6B4E0D21B018BC001FC224 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		BF6B4E0F21B01C8A001FC224 /* FormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSection.swift; sourceTree = "<group>"; };
+		BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplate.swift; sourceTree = "<group>"; };
+		BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormChoiceField.swift; sourceTree = "<group>"; };
+		BF7AA57B21AD407500904B6A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateAPIManager.swift; sourceTree = "<group>"; };
+		BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIManager.swift; sourceTree = "<group>"; };
+		BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLabelTableViewCell.swift; sourceTree = "<group>"; };
+		BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleLabelTableViewCell.xib; sourceTree = "<group>"; };
+		BF7AA58A21AD55A800904B6A /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
+		BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFillInViewController.swift; sourceTree = "<group>"; };
+		BF7AA59321AD86DF00904B6A /* FormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHelper.swift; sourceTree = "<group>"; };
+		BFEDD44C21B403CD00E62918 /* CellWithUITextfield.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithUITextfield.xib; sourceTree = "<group>"; };
+		BFEDD44E21B4048A00E62918 /* CellWithUITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithUITextfield.swift; sourceTree = "<group>"; };
+		BFEDD45021B535A800E62918 /* FormPicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPicturesViewController.swift; sourceTree = "<group>"; };
+		BFEDD45221B538AC00E62918 /* ImageFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFrameView.swift; sourceTree = "<group>"; };
+		BFEDD45521B53D3400E62918 /* CollectionViewImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewImageCell.xib; sourceTree = "<group>"; };
+		BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-        4137E224219C364D0009DFBE /* Frameworks */ = {
-            isa = PBXFrameworksBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		4137E224219C364D0009DFBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-        4137E21E219C364D0009DFBE = {
-            isa = PBXGroup;
-            children = (
-                4137E229219C364D0009DFBE /* IOS_Vietnam_Surgery_App */,
-                4137E228219C364D0009DFBE /* Products */,
-                A1986386F6BB621F33D16339 /* Pods */,
-                8FFC101EF8FCC9B4A5BCC3C0 /* Frameworks */,
-            );
-            sourceTree = "<group>";
-        };
-        4137E228219C364D0009DFBE /* Products */ = {
-            isa = PBXGroup;
-            children = (
-                4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */,
-            );
-            name = Products;
-            sourceTree = "<group>";
-        };
-        4137E229219C364D0009DFBE /* IOS_Vietnam_Surgery_App */ = {
-            isa = PBXGroup;
-            children = (
-                BF7AA58121AD519600904B6A /* Code */,
-                4137E22A219C364D0009DFBE /* AppDelegate.swift */,
-                4137E22E219C364D0009DFBE /* Main.storyboard */,
-                4137E231219C364D0009DFBE /* Assets.xcassets */,
-                4137E233219C364D0009DFBE /* LaunchScreen.storyboard */,
-                4137E236219C364D0009DFBE /* Info.plist */,
-                BF7AA57B21AD407500904B6A /* Localizable.strings */,
-                BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */,
-            );
-            path = IOS_Vietnam_Surgery_App;
-            sourceTree = "<group>";
-        };
-        41A8FA3121C19AC600CD9FB4 /* UserManager */ = {
-            isa = PBXGroup;
-            children = (
-                41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */,
-            );
-            path = UserManager;
-            sourceTree = "<group>";
-        };
-        8FFC101EF8FCC9B4A5BCC3C0 /* Frameworks */ = {
-            isa = PBXGroup;
-            children = (
-                A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */,
-            );
-            name = Frameworks;
-            sourceTree = "<group>";
-        };
-        A1986386F6BB621F33D16339 /* Pods */ = {
-            isa = PBXGroup;
-            children = (
-                0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */,
-                ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */,
-            );
-            name = Pods;
-            sourceTree = "<group>";
-        };
-        BF7AA58121AD519600904B6A /* Code */ = {
-            isa = PBXGroup;
-            children = (
-                41A8FA3121C19AC600CD9FB4 /* UserManager */,
-                BF7AA59521AD86E500904B6A /* Helper */,
-                BF7AA58C21AD5CE700904B6A /* ViewController */,
-                BF7AA58921AD559300904B6A /* Model */,
-                BF7AA58321AD51D000904B6A /* View */,
-                BF7AA58221AD51A200904B6A /* API */,
-            );
-            path = Code;
-            sourceTree = "<group>";
-        };
-        BF7AA58221AD51A200904B6A /* API */ = {
-            isa = PBXGroup;
-            children = (
-                BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */,
-                BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */,
-                41BA948921C2916E00969EA4 /* UserAPIManager.swift */,
-            );
-            path = API;
-            sourceTree = "<group>";
-        };
-        BF7AA58321AD51D000904B6A /* View */ = {
-            isa = PBXGroup;
-            children = (
-                BFEDD45421B53D0A00E62918 /* CollectionViewCells */,
-                BF7AA58621AD52EA00904B6A /* TableViewCells */,
-                BFEDD44C21B403CD00E62918 /* CellWithUITextfield.xib */,
-                BFEDD44E21B4048A00E62918 /* CellWithUITextfield.swift */,
-                BFEDD45221B538AC00E62918 /* ImageFrameView.swift */,
-                BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */,
-                BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */,
-            );
-            path = View;
-            sourceTree = "<group>";
-        };
-        BF7AA58621AD52EA00904B6A /* TableViewCells */ = {
-            isa = PBXGroup;
-            children = (
-                BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */,
-                BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */,
-                BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */,
-                BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */,
-                BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */,
-                BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */,
-            );
-            path = TableViewCells;
-            sourceTree = "<group>";
-        };
-        BF7AA58921AD559300904B6A /* Model */ = {
-            isa = PBXGroup;
-            children = (
-                BF7AA58A21AD55A800904B6A /* Form.swift */,
-                BF6B4E0D21B018BC001FC224 /* FormField.swift */,
-                BF6B4E0F21B01C8A001FC224 /* FormSection.swift */,
-                BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */,
-                BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */,
-                BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */,
-                41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */,
-                41A8FA2F21C19A6700CD9FB4 /* Login.swift */,
-                41A8FA3221C19AFF00CD9FB4 /* Register.swift */,
-                418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */,
-            );
-            path = Model;
-            sourceTree = "<group>";
-        };
-        BF7AA58C21AD5CE700904B6A /* ViewController */ = {
-            isa = PBXGroup;
-            children = (
-                4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */,
-                BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */,
-                BFEDD45021B535A800E62918 /* FormPicturesViewController.swift */,
-                BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */,
-                41AA234E21C1079C00D50B78 /* TabBarController.swift */,
-                41AA235021C1083E00D50B78 /* HomeViewController.swift */,
-                41AA235221C1095800D50B78 /* FormViewController.swift */,
-                41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */,
-                BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */,
-                BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */,
-            );
-            path = ViewController;
-            sourceTree = "<group>";
-        };
-        BF7AA59521AD86E500904B6A /* Helper */ = {
-            isa = PBXGroup;
-            children = (
-                BF7AA59321AD86DF00904B6A /* FormHelper.swift */,
-                BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */,
-            );
-            path = Helper;
-            sourceTree = "<group>";
-        };
-        BFEDD45421B53D0A00E62918 /* CollectionViewCells */ = {
-            isa = PBXGroup;
-            children = (
-                BFEDD45521B53D3400E62918 /* CollectionViewImageCell.xib */,
-                BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */,
-            );
-            path = CollectionViewCells;
-            sourceTree = "<group>";
-        };
+		4137E21E219C364D0009DFBE = {
+			isa = PBXGroup;
+			children = (
+				4137E229219C364D0009DFBE /* IOS_Vietnam_Surgery_App */,
+				4137E228219C364D0009DFBE /* Products */,
+				A1986386F6BB621F33D16339 /* Pods */,
+				8FFC101EF8FCC9B4A5BCC3C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4137E228219C364D0009DFBE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4137E229219C364D0009DFBE /* IOS_Vietnam_Surgery_App */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA58121AD519600904B6A /* Code */,
+				4137E22A219C364D0009DFBE /* AppDelegate.swift */,
+				4137E22E219C364D0009DFBE /* Main.storyboard */,
+				4137E231219C364D0009DFBE /* Assets.xcassets */,
+				4137E233219C364D0009DFBE /* LaunchScreen.storyboard */,
+				4137E236219C364D0009DFBE /* Info.plist */,
+				BF7AA57B21AD407500904B6A /* Localizable.strings */,
+				BF7AA58F21AD6D8D00904B6A /* Colors.xcassets */,
+			);
+			path = IOS_Vietnam_Surgery_App;
+			sourceTree = "<group>";
+		};
+		41A8FA3121C19AC600CD9FB4 /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */,
+			);
+			path = UserManager;
+			sourceTree = "<group>";
+		};
+		8FFC101EF8FCC9B4A5BCC3C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1986386F6BB621F33D16339 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */,
+				ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF7AA58121AD519600904B6A /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				41A8FA3121C19AC600CD9FB4 /* UserManager */,
+				BF7AA59521AD86E500904B6A /* Helper */,
+				BF7AA58C21AD5CE700904B6A /* ViewController */,
+				BF7AA58921AD559300904B6A /* Model */,
+				BF7AA58321AD51D000904B6A /* View */,
+				BF7AA58221AD51A200904B6A /* API */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		BF7AA58221AD51A200904B6A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA57D21AD4C2F00904B6A /* FormTemplateAPIManager.swift */,
+				BF7AA57F21AD4CA700904B6A /* BaseAPIManager.swift */,
+				41BA948921C2916E00969EA4 /* UserAPIManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BF7AA58321AD51D000904B6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFEDD45421B53D0A00E62918 /* CollectionViewCells */,
+				BF7AA58621AD52EA00904B6A /* TableViewCells */,
+				BFEDD44C21B403CD00E62918 /* CellWithUITextfield.xib */,
+				BFEDD44E21B4048A00E62918 /* CellWithUITextfield.swift */,
+				BFEDD45221B538AC00E62918 /* ImageFrameView.swift */,
+				BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */,
+				BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF7AA58621AD52EA00904B6A /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA58421AD51F800904B6A /* SimpleLabelTableViewCell.swift */,
+				BF7AA58721AD530B00904B6A /* SimpleLabelTableViewCell.xib */,
+				BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */,
+				BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */,
+				BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */,
+				BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		BF7AA58921AD559300904B6A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA58A21AD55A800904B6A /* Form.swift */,
+				BF6B4E0D21B018BC001FC224 /* FormField.swift */,
+				BF6B4E0F21B01C8A001FC224 /* FormSection.swift */,
+				BF6B4E1121B01D9A001FC224 /* FormTemplate.swift */,
+				BF6B4E1321B0292E001FC224 /* FormChoiceField.swift */,
+				BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */,
+				41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */,
+				41A8FA2F21C19A6700CD9FB4 /* Login.swift */,
+				41A8FA3221C19AFF00CD9FB4 /* Register.swift */,
+				418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */,
+				418A9C6921C396240022599A /* User.swift */,
+				41698B4621C66DD900C261D5 /* Role.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF7AA58C21AD5CE700904B6A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */,
+				BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */,
+				BFEDD45021B535A800E62918 /* FormPicturesViewController.swift */,
+				BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */,
+				41AA234E21C1079C00D50B78 /* TabBarController.swift */,
+				41AA235021C1083E00D50B78 /* HomeViewController.swift */,
+				41AA235221C1095800D50B78 /* FormViewController.swift */,
+				41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */,
+				BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */,
+				BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */,
+				418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BF7AA59521AD86E500904B6A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BF7AA59321AD86DF00904B6A /* FormHelper.swift */,
+				BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		BFEDD45421B53D0A00E62918 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				BFEDD45521B53D3400E62918 /* CollectionViewImageCell.xib */,
+				BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-        4137E226219C364D0009DFBE /* IOS_Vietnam_Surgery_App */ = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = 4137E239219C364D0009DFBE /* Build configuration list for PBXNativeTarget "IOS_Vietnam_Surgery_App" */;
-            buildPhases = (
-                D451D48F63ED8600BD0EC7E9 /* [CP] Check Pods Manifest.lock */,
-                4137E223219C364D0009DFBE /* Sources */,
-                4137E224219C364D0009DFBE /* Frameworks */,
-                4137E225219C364D0009DFBE /* Resources */,
-                30A8ABB28498AB28EE4DFB43 /* [CP] Embed Pods Frameworks */,
-            );
-            buildRules = (
-            );
-            dependencies = (
-            );
-            name = IOS_Vietnam_Surgery_App;
-            productName = IOS_Vietnam_Surgery_App;
-            productReference = 4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */;
-            productType = "com.apple.product-type.application";
-        };
+		4137E226219C364D0009DFBE /* IOS_Vietnam_Surgery_App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4137E239219C364D0009DFBE /* Build configuration list for PBXNativeTarget "IOS_Vietnam_Surgery_App" */;
+			buildPhases = (
+				D451D48F63ED8600BD0EC7E9 /* [CP] Check Pods Manifest.lock */,
+				4137E223219C364D0009DFBE /* Sources */,
+				4137E224219C364D0009DFBE /* Frameworks */,
+				4137E225219C364D0009DFBE /* Resources */,
+				30A8ABB28498AB28EE4DFB43 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IOS_Vietnam_Surgery_App;
+			productName = IOS_Vietnam_Surgery_App;
+			productReference = 4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-        4137E21F219C364D0009DFBE /* Project object */ = {
-            isa = PBXProject;
-            attributes = {
-                LastSwiftUpdateCheck = 1000;
-                LastUpgradeCheck = 1000;
-                ORGANIZATIONNAME = Matermind;
-                TargetAttributes = {
-                    4137E226219C364D0009DFBE = {
-                        CreatedOnToolsVersion = 10.0;
-                    };
-                };
-            };
-            buildConfigurationList = 4137E222219C364D0009DFBE /* Build configuration list for PBXProject "IOS_Vietnam_Surgery_App" */;
-            compatibilityVersion = "Xcode 9.3";
-            developmentRegion = en;
-            hasScannedForEncodings = 0;
-            knownRegions = (
-                en,
-                Base,
-            );
-            mainGroup = 4137E21E219C364D0009DFBE;
-            productRefGroup = 4137E228219C364D0009DFBE /* Products */;
-            projectDirPath = "";
-            projectRoot = "";
-            targets = (
-                4137E226219C364D0009DFBE /* IOS_Vietnam_Surgery_App */,
-            );
-        };
+		4137E21F219C364D0009DFBE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = Matermind;
+				TargetAttributes = {
+					4137E226219C364D0009DFBE = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 4137E222219C364D0009DFBE /* Build configuration list for PBXProject "IOS_Vietnam_Surgery_App" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4137E21E219C364D0009DFBE;
+			productRefGroup = 4137E228219C364D0009DFBE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4137E226219C364D0009DFBE /* IOS_Vietnam_Surgery_App */,
+			);
+		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-        4137E225219C364D0009DFBE /* Resources */ = {
-            isa = PBXResourcesBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */,
-                BF7AA58821AD530B00904B6A /* SimpleLabelTableViewCell.xib in Resources */,
-                BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */,
-                BF34419021B69A0A00F23674 /* DoubleLabelTableViewCell.xib in Resources */,
-                BFEDD45621B53D3400E62918 /* CollectionViewImageCell.xib in Resources */,
-                BFEDD44D21B403CD00E62918 /* CellWithUITextfield.xib in Resources */,
-                BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */,
-                BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */,
-                4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
-                4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
-                BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		4137E225219C364D0009DFBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */,
+				BF7AA58821AD530B00904B6A /* SimpleLabelTableViewCell.xib in Resources */,
+				BF7AA57C21AD407500904B6A /* Localizable.strings in Resources */,
+				BF34419021B69A0A00F23674 /* DoubleLabelTableViewCell.xib in Resources */,
+				BFEDD45621B53D3400E62918 /* CollectionViewImageCell.xib in Resources */,
+				BFEDD44D21B403CD00E62918 /* CellWithUITextfield.xib in Resources */,
+				BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */,
+				BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */,
+				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
+				4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
+				BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-        30A8ABB28498AB28EE4DFB43 /* [CP] Embed Pods Frameworks */ = {
-            isa = PBXShellScriptBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-            );
-            inputFileListPaths = (
-            );
-            inputPaths = (
-                "${SRCROOT}/Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App-frameworks.sh",
-                "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-                "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-                "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
-            );
-            name = "[CP] Embed Pods Frameworks";
-            outputFileListPaths = (
-            );
-            outputPaths = (
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-            shellPath = /bin/sh;
-            shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App-frameworks.sh\"\n";
-            showEnvVarsInLog = 0;
-        };
-        D451D48F63ED8600BD0EC7E9 /* [CP] Check Pods Manifest.lock */ = {
-            isa = PBXShellScriptBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-            );
-            inputFileListPaths = (
-            );
-            inputPaths = (
-                "${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-                "${PODS_ROOT}/Manifest.lock",
-            );
-            name = "[CP] Check Pods Manifest.lock";
-            outputFileListPaths = (
-            );
-            outputPaths = (
-                "$(DERIVED_FILE_DIR)/Pods-IOS_Vietnam_Surgery_App-checkManifestLockResult.txt",
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-            shellPath = /bin/sh;
-            shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-            showEnvVarsInLog = 0;
-        };
+		30A8ABB28498AB28EE4DFB43 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D451D48F63ED8600BD0EC7E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IOS_Vietnam_Surgery_App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-        4137E223219C364D0009DFBE /* Sources */ = {
-            isa = PBXSourcesBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */,
-                BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */,
-                BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */,
-                41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */,
-                4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
-                BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
-                41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */,
-                41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */,
-                BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */,
-                41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */,
-                41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */,
-                BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */,
-                BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */,
-                418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */,
-                41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */,
-                BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */,
-                BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */,
-                41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */,
-                BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
-                4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
-                41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
-                BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
-                BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */,
-                BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */,
-                BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */,
-                BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */,
-                BF34419421BBEB5300F23674 /* FormContentKeyValuePair.swift in Sources */,
-                BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */,
-                BFEDD44F21B4048A00E62918 /* CellWithUITextfield.swift in Sources */,
-                BF6B4E0C21AFF40E001FC224 /* TableCellWithUITextfield.swift in Sources */,
-                BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
-                41AA235321C1095800D50B78 /* FormViewController.swift in Sources */,
-                BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */,
-                BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		4137E223219C364D0009DFBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */,
+				BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */,
+				BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */,
+				41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */,
+				4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
+				418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */,
+				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
+				41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */,
+				41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */,
+				BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */,
+				41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */,
+				41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */,
+				BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */,
+				BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */,
+				418A9C6A21C396240022599A /* User.swift in Sources */,
+				418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */,
+				41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */,
+				BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */,
+				BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */,
+				41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */,
+				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
+				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
+				41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
+				BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
+				41698B4721C66DD900C261D5 /* Role.swift in Sources */,
+				BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */,
+				BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */,
+				BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */,
+				BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */,
+				BF34419421BBEB5300F23674 /* FormContentKeyValuePair.swift in Sources */,
+				BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */,
+				BFEDD44F21B4048A00E62918 /* CellWithUITextfield.swift in Sources */,
+				BF6B4E0C21AFF40E001FC224 /* TableCellWithUITextfield.swift in Sources */,
+				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
+				41AA235321C1095800D50B78 /* FormViewController.swift in Sources */,
+				BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */,
+				BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-        4137E22E219C364D0009DFBE /* Main.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                4137E22F219C364D0009DFBE /* Base */,
-            );
-            name = Main.storyboard;
-            sourceTree = "<group>";
-        };
-        4137E233219C364D0009DFBE /* LaunchScreen.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                4137E234219C364D0009DFBE /* Base */,
-            );
-            name = LaunchScreen.storyboard;
-            sourceTree = "<group>";
-        };
+		4137E22E219C364D0009DFBE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4137E22F219C364D0009DFBE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4137E233219C364D0009DFBE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4137E234219C364D0009DFBE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-        4137E237219C364D0009DFBE /* Debug */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ALWAYS_SEARCH_USER_PATHS = NO;
-                CLANG_ANALYZER_NONNULL = YES;
-                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-                CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-                CLANG_CXX_LIBRARY = "libc++";
-                CLANG_ENABLE_MODULES = YES;
-                CLANG_ENABLE_OBJC_ARC = YES;
-                CLANG_ENABLE_OBJC_WEAK = YES;
-                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-                CLANG_WARN_BOOL_CONVERSION = YES;
-                CLANG_WARN_COMMA = YES;
-                CLANG_WARN_CONSTANT_CONVERSION = YES;
-                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-                CLANG_WARN_EMPTY_BODY = YES;
-                CLANG_WARN_ENUM_CONVERSION = YES;
-                CLANG_WARN_INFINITE_RECURSION = YES;
-                CLANG_WARN_INT_CONVERSION = YES;
-                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-                CLANG_WARN_STRICT_PROTOTYPES = YES;
-                CLANG_WARN_SUSPICIOUS_MOVE = YES;
-                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-                CLANG_WARN_UNREACHABLE_CODE = YES;
-                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-                CODE_SIGN_IDENTITY = "iPhone Developer";
-                COPY_PHASE_STRIP = NO;
-                DEBUG_INFORMATION_FORMAT = dwarf;
-                ENABLE_STRICT_OBJC_MSGSEND = YES;
-                ENABLE_TESTABILITY = YES;
-                GCC_C_LANGUAGE_STANDARD = gnu11;
-                GCC_DYNAMIC_NO_PIC = NO;
-                GCC_NO_COMMON_BLOCKS = YES;
-                GCC_OPTIMIZATION_LEVEL = 0;
-                GCC_PREPROCESSOR_DEFINITIONS = (
-                    "DEBUG=1",
-                    "$(inherited)",
-                );
-                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-                GCC_WARN_UNDECLARED_SELECTOR = YES;
-                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-                GCC_WARN_UNUSED_FUNCTION = YES;
-                GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-                MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-                MTL_FAST_MATH = YES;
-                ONLY_ACTIVE_ARCH = YES;
-                SDKROOT = iphoneos;
-                SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-                SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-            };
-            name = Debug;
-        };
-        4137E238219C364D0009DFBE /* Release */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ALWAYS_SEARCH_USER_PATHS = NO;
-                CLANG_ANALYZER_NONNULL = YES;
-                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-                CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-                CLANG_CXX_LIBRARY = "libc++";
-                CLANG_ENABLE_MODULES = YES;
-                CLANG_ENABLE_OBJC_ARC = YES;
-                CLANG_ENABLE_OBJC_WEAK = YES;
-                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-                CLANG_WARN_BOOL_CONVERSION = YES;
-                CLANG_WARN_COMMA = YES;
-                CLANG_WARN_CONSTANT_CONVERSION = YES;
-                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-                CLANG_WARN_EMPTY_BODY = YES;
-                CLANG_WARN_ENUM_CONVERSION = YES;
-                CLANG_WARN_INFINITE_RECURSION = YES;
-                CLANG_WARN_INT_CONVERSION = YES;
-                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-                CLANG_WARN_STRICT_PROTOTYPES = YES;
-                CLANG_WARN_SUSPICIOUS_MOVE = YES;
-                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-                CLANG_WARN_UNREACHABLE_CODE = YES;
-                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-                CODE_SIGN_IDENTITY = "iPhone Developer";
-                COPY_PHASE_STRIP = NO;
-                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-                ENABLE_NS_ASSERTIONS = NO;
-                ENABLE_STRICT_OBJC_MSGSEND = YES;
-                GCC_C_LANGUAGE_STANDARD = gnu11;
-                GCC_NO_COMMON_BLOCKS = YES;
-                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-                GCC_WARN_UNDECLARED_SELECTOR = YES;
-                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-                GCC_WARN_UNUSED_FUNCTION = YES;
-                GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-                MTL_ENABLE_DEBUG_INFO = NO;
-                MTL_FAST_MATH = YES;
-                SDKROOT = iphoneos;
-                SWIFT_COMPILATION_MODE = wholemodule;
-                SWIFT_OPTIMIZATION_LEVEL = "-O";
-                VALIDATE_PRODUCT = YES;
-            };
-            name = Release;
-        };
-        4137E23A219C364D0009DFBE /* Debug */ = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = 0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_STYLE = Automatic;
-                DEVELOPMENT_TEAM = RMNB734KHA;
-                INFOPLIST_FILE = IOS_Vietnam_Surgery_App/Info.plist;
-                LD_RUNPATH_SEARCH_PATHS = (
-                    "$(inherited)",
-                    "@executable_path/Frameworks",
-                );
-                PRODUCT_BUNDLE_IDENTIFIER = "com.mastermind.IOS-Vietnam-Surgery-App";
-                PRODUCT_NAME = "$(TARGET_NAME)";
-                SWIFT_VERSION = 4.2;
-                TARGETED_DEVICE_FAMILY = "1,2";
-            };
-            name = Debug;
-        };
-        4137E23B219C364D0009DFBE /* Release */ = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_STYLE = Automatic;
-                DEVELOPMENT_TEAM = RMNB734KHA;
-                INFOPLIST_FILE = IOS_Vietnam_Surgery_App/Info.plist;
-                LD_RUNPATH_SEARCH_PATHS = (
-                    "$(inherited)",
-                    "@executable_path/Frameworks",
-                );
-                PRODUCT_BUNDLE_IDENTIFIER = "com.mastermind.IOS-Vietnam-Surgery-App";
-                PRODUCT_NAME = "$(TARGET_NAME)";
-                SWIFT_VERSION = 4.2;
-                TARGETED_DEVICE_FAMILY = "1,2";
-            };
-            name = Release;
-        };
+		4137E237219C364D0009DFBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4137E238219C364D0009DFBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4137E23A219C364D0009DFBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RMNB734KHA;
+				INFOPLIST_FILE = IOS_Vietnam_Surgery_App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mastermind.IOS-Vietnam-Surgery-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4137E23B219C364D0009DFBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RMNB734KHA;
+				INFOPLIST_FILE = IOS_Vietnam_Surgery_App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mastermind.IOS-Vietnam-Surgery-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-        4137E222219C364D0009DFBE /* Build configuration list for PBXProject "IOS_Vietnam_Surgery_App" */ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (
-                4137E237219C364D0009DFBE /* Debug */,
-                4137E238219C364D0009DFBE /* Release */,
-            );
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Release;
-        };
-        4137E239219C364D0009DFBE /* Build configuration list for PBXNativeTarget "IOS_Vietnam_Surgery_App" */ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (
-                4137E23A219C364D0009DFBE /* Debug */,
-                4137E23B219C364D0009DFBE /* Release */,
-            );
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Release;
-        };
+		4137E222219C364D0009DFBE /* Build configuration list for PBXProject "IOS_Vietnam_Surgery_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4137E237219C364D0009DFBE /* Debug */,
+				4137E238219C364D0009DFBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4137E239219C364D0009DFBE /* Build configuration list for PBXNativeTarget "IOS_Vietnam_Surgery_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4137E23A219C364D0009DFBE /* Debug */,
+				4137E23B219C364D0009DFBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
-    };
-    rootObject = 4137E21F219C364D0009DFBE /* Project object */;
+	};
+	rootObject = 4137E21F219C364D0009DFBE /* Project object */;
 }

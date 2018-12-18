@@ -67,6 +67,7 @@ public class FormTemplateEditViewController : UIViewController {
     }
 }
 
+
 extension FormTemplateEditViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return formSections[section].fields?.count ?? 0
@@ -84,6 +85,10 @@ extension FormTemplateEditViewController : UITableViewDataSource {
         if let fields = section.fields {
             cell.leftLabel.text = fields[indexPath.row].name
             cell.rightLabel.text = NSLocalizedString(fields[indexPath.row].type!, comment: "")
+
+//            guard FormHelper.validateFieldsInSection(section: formSections) else { return }
+            //formUIControls = FormHelper.getUIControlsFromSection(section: formSection!)
+//           formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
         }
         
         return cell

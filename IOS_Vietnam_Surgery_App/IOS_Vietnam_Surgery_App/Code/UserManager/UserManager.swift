@@ -22,6 +22,13 @@ class UserManager {
     
     // Implemented register
     
+    static var userLogInSuccesfull = false
+    
+    func checkIfUserIsAdmin()
+    {
+        
+    }
+    
     func Register(register: Register)
     {
         let registerUser = register
@@ -48,29 +55,81 @@ class UserManager {
     }
     
     // implemented lpgin
-    static func UserLogIn(login: Login)
+    static func UserLogIn(login: Login, callBack: @escaping (Bool) -> ())
     {
+        let queue = DispatchQueue(label: "label")
         let loginUser = login
         
-        UserAPIManager.Login(login: loginUser).responseData(completionHandler: {
+        UserAPIManager.Login(login: loginUser).responseJSON(completionHandler: {
             (response) in
             
+            print("response data : ",response)
             if let data = response.data{
+                print("Data: ", data)
                 let decoder = JSONDecoder()
-                let authtenticationResponse = try? decoder.decode(AuthenticationToken.self, from: data)
-                print("AuthResponse: ", authtenticationResponse)
-                if let authenticationresponse = authtenticationResponse{
+                let authenticationresponse = try? decoder.decode(AuthenticationToken.self, from: data)
+                print("AuthResponse: ", authenticationresponse)
+                
+                if let authenticationresponse = authenticationresponse{
                     print(authenticationresponse.authenticationtoken)
-                    
+
                     AppDelegate.authenticationToken = authenticationresponse.authenticationtoken
-                    KeychainWrapper.standard.set(authenticationresponse.authenticationtoken, forKey: LoginViewController.tokenkey)
-                    
+                    if let authtoken = authenticationresponse.authenticationtoken
+                    {
+                        userLogInSuccesfull = true
+                        print("AuthTokenValue: ", authtoken)
+                        KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
+                        
+                        callBack(true)
+                        
+                        getAllUsers()
+                    }
+                    else{
+                        print("AuthTokenValue: ", authenticationresponse.authenticationtoken)
+                        print("Authtoken failed to put in keychain")
+                        userLogInSuccesfull = false
+                        callBack(false)
+                    }
+                   
                     print("Succesfully logged in")
+                    
+                    
+                    
                 }
                 else {
                     print("login failed")
+                   
                 }
             }
+        })
+      
+    }
+    
+    public static func checkIfLogginIsSuccessfull(success: Bool)
+    {
+        userLogInSuccesfull = success
+    }
+    
+    static func getAllUsers()
+    {
+        print("Appdelegate.authentifcationToken: ", AppDelegate.authenticationToken)
+        UserAPIManager.GetAllUsers(token: AppDelegate.authenticationToken).responseJSON(completionHandler: {
+            
+            (response) in
+            guard let jsonData = response.data else { return }
+            print("Get all accounts: ", response)
+            
+            let decoder = JSONDecoder()
+            var decodedUserObject = try? decoder.decode([User].self, from: jsonData)
+            
+            if let usersArray = decodedUserObject
+            {
+                for user in usersArray
+                {
+                    print(user.username)
+                }
+            }
+           
         })
     }
 
