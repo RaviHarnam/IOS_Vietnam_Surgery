@@ -27,7 +27,7 @@ class UserManager {
         
     }
     
-    func Register(register: Register) {
+   static func Register(register: Register) {
         let registerUser = register
         
         UserAPIManager.Register(register: registerUser).responseData(completionHandler: {
@@ -72,7 +72,7 @@ class UserManager {
                         KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
                         callBack(true)
                         
-                        getAllUsers()
+                        //getAllUsers()
                     }
                     else {
                         print("AuthTokenValue: ", authenticationresponse.authenticationtoken)
@@ -91,21 +91,30 @@ class UserManager {
     }
     
     
-    static func getAllUsers() {
+    static func getAllUsers(callBack: @escaping ([User]?) -> ()) {
+        
+        var users : [User] = []
         print("Appdelegate.authentifcationToken: ", AppDelegate.authenticationToken)
         UserAPIManager.GetAllUsers(token: AppDelegate.authenticationToken).responseJSON(completionHandler: {
             
             (response) in
             guard let jsonData = response.data else { return }
-            print("Get all accounts: ", response)
+            //print("Get all accounts: ", response)
             
             let decoder = JSONDecoder()
             var decodedUserObject = try? decoder.decode([User].self, from: jsonData)
             
             if let usersArray = decodedUserObject {
+               
                 for user in usersArray {
-                    print(user.username)
+                    users.append(user)
+                   // print(user.username)
                 }
+                callBack(users)
+               
+            }
+            else{
+                callBack(nil)
             }
         })
     }

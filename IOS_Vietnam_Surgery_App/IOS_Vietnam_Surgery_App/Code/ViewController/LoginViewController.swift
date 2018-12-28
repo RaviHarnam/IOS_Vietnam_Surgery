@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
        setupLoginPlaceHolders()
     }
     
+    //TODO add function to get the user role when logging in.
+    // Based on this go to AdminVC or UserVC
     
     func setupLoginPlaceHolders() {
         
@@ -60,7 +62,7 @@ class LoginViewController: UIViewController {
                 self.navigateToAdminInterface()
             }
             else {
-                
+                self.UserLogin()
             }
         })
     }
