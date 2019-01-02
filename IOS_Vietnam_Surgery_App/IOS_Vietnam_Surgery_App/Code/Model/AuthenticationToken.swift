@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class AuthenticationToken : Codable{
+public class AuthenticationToken : Codable {
     
     var authenticationtoken : String?
     var tokentype : String?
@@ -18,8 +18,7 @@ public class AuthenticationToken : Codable{
     var expires: String?
     
     
-    enum CodingKeys : String, CodingKey
-    {
+    enum CodingKeys : String, CodingKey {
         case authenticationtoken = "access_token"
         case tokentype = "token_type"
         case expiresin = "expires_in"

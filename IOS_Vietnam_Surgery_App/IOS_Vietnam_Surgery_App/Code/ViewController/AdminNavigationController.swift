@@ -14,4 +14,8 @@ class AdminNavigationController : UINavigationController{
     override func viewDidLoad () {
         super.viewDidLoad()
     }
+    
+    func loadAllUsers() {
+        
+    }
 }

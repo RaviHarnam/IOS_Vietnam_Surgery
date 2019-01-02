@@ -13,8 +13,7 @@ public class Role : Codable {
     var userid : String?
     var roleid : String?
     
-    enum CodingKeys : String, CodingKey
-    {
+    enum CodingKeys : String, CodingKey {
         case userid = "UserId"
         case roleid = "RoleId"
     }

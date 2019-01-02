@@ -16,8 +16,7 @@ public class Register : Codable {
     var userrole : String?
     var email: String?
     
-    init(username: String?, password: String?, confirmpassword: String?, userrole: String?, email: String?)
-    {
+    init(username: String?, password: String?, confirmpassword: String?, userrole: String?, email: String?) {
         self.username = username
         self.password = password
         self.confirmpassword = confirmpassword
@@ -25,8 +24,7 @@ public class Register : Codable {
         self.email = email
     }
     
-    enum CodingKeys : String, CodingKey
-    {
+    enum CodingKeys : String, CodingKey {
         case username = "Username"
         case password = "Password"
         case confirmpassword = "ConfirmPassword"

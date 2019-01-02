@@ -71,20 +71,5 @@ public class UserAPIManager : BaseAPIManager {
         }
         
          return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard let jsonData = response.data else {return}})
-//        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard let jsonData = response.data else {return}})
-        
-//        Alamofire.request(url).responseJSON(completionHandler: {
-//            (response) in guard let jsonData = response.data else {return}
-//        print(url)
-//
-//        let decoder = JSONDecoder()
-//        let userObject = try? decoder.decode(User.self, from: jsonData)
-//
-//            if let userobject = userObject {
-//
-//                self.userobject = userobject            }
-//        })
-//        
-//        return self.userobject
     }
 }
