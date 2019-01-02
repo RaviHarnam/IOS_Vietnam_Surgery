@@ -88,7 +88,6 @@
             </objects>
             <point key="canvasLocation" x="106" y="-957"/>
         </scene>
-<<<<<<< HEAD
         <!--Form Picture View Controller-->
         <scene sceneID="RIM-sw-r14">
             <objects>
@@ -162,10 +161,7 @@
             </objects>
             <point key="canvasLocation" x="2921" y="133"/>
         </scene>
-        <!--Table View Controller-->
-=======
         <!--User Table View Controller-->
->>>>>>> 6c3c713318e540e99535ee3d071681a4cd61c4bd
         <scene sceneID="K4L-SZ-Aig">
             <objects>
                 <tableViewController storyboardIdentifier="UserTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BA6-Ss-XUs" customClass="UserTableViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">

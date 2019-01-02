@@ -8,14 +8,10 @@
 
 import Foundation
 
-<<<<<<< HEAD
 public class customHTTPResponse : Codable
 {
-=======
-public class customHTTPResponse : Codable {
->>>>>>> 6c3c713318e540e99535ee3d071681a4cd61c4bd
-    var succes: Bool
-    var message : String
+    public var succes: Bool
+    public var message : String
     
     enum CodingKeys : String, CodingKey {
         case succes = "Success"
