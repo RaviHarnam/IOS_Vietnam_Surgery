@@ -21,7 +21,9 @@ public class FormPreviewViewController : UIViewController {
     
     public var formFillInStep = 0
     
-    public var headerID = "FormPreviewHeaderView"
+    private var headerID = "FormPreviewHeaderView"
+    
+    private var editSectionId : Int?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,7 @@ public class FormPreviewViewController : UIViewController {
     func updateTitle() {
         var newTitle : String = ""
         
-        newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        newTitle += NSLocalizedString("formPreviewViewControllerNewTitle", comment: "")
         
         if let district = formContent[NSLocalizedString("District", comment: "")] {
             newTitle += " - " + district
@@ -75,6 +77,7 @@ public class FormPreviewViewController : UIViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
             (action: UIAlertAction) in
             self.saveForm()
+            self.navigateToTemplateView()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
         self.present(alert, animated: true)
@@ -97,6 +100,12 @@ public class FormPreviewViewController : UIViewController {
         catch {
             print(error)
         }
+    }
+    
+    func navigateToTemplateView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -139,25 +148,46 @@ extension FormPreviewViewController : UITableViewDataSource {
 //        view.addSubview(imageView)
 //
 //        return view
-        let headerview = formDataTableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID) as! FormPreviewHeaderView
-        if headerview.content == nil {
-            let v = UINib(nibName: "FormPreviewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FormPreviewContent
-            headerview.contentView.addSubview(v)
-            v.translatesAutoresizingMaskIntoConstraints = false
-            v.topAnchor.constraint(equalTo: headerview.contentView.topAnchor).isActive = true
-            v.bottomAnchor.constraint(equalTo: headerview.contentView.bottomAnchor).isActive = true
-            v.leadingAnchor.constraint(equalTo: headerview.contentView.leadingAnchor).isActive = true
-            v.trailingAnchor.constraint(equalTo: headerview.contentView.trailingAnchor).isActive = true
-            headerview.content = v
-        }
-        
-        headerview.content.label.text = formSections[section].name
-        headerview.content.label.font = headerview.content.label.font.withSize(34)
-        headerview.content.image.image = UIImage(named: "Edit")
+        let headerview = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID) as! FormPreviewHeaderView
+//        if headerview.content == nil {
+//            let v = UINib(nibName: "FormPreviewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FormPreviewContent
+//            headerview.contentView.addSubview(v)
+//            v.translatesAutoresizingMaskIntoConstraints = false
+//            v.topAnchor.constraint(equalTo: headerview.contentView.topAnchor).isActive = true
+//            v.bottomAnchor.constraint(equalTo: headerview.contentView.bottomAnchor).isActive = true
+//            v.leadingAnchor.constraint(equalTo: headerview.contentView.leadingAnchor).isActive = true
+//            v.trailingAnchor.constraint(equalTo: headerview.contentView.trailingAnchor).isActive = true
+//            headerview.content = v
+//        }
+//
+//        headerview.content.label.text = formSections[section].name
+//        headerview.content.label.font = headerview.content.label.font.withSize(34)
+//        headerview.content.image.image = UIImage(named: "Edit")
+//        headerview.content.image.isUserInteractionEnabled = true
+//        headerview.content.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editSectionClicked)))
+//        headerview.content.image.tag = section
+        headerview.label.text = formSections[section].name
+        headerview.label.font = headerview.label.font.withSize(34)
+        headerview.image.image = UIImage(named: "Edit")
+        headerview.image.isUserInteractionEnabled = true
+        headerview.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editSectionClicked(sender:))))
+        headerview.image.tag = section
         headerview.sectionNumber = section
         headerview.layoutMargins.top = 42
         headerview.layoutMargins.bottom = 42
+        headerview.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         return headerview
+    }
+    
+    @objc func editSectionClicked(sender: UIGestureRecognizer) {
+        if let section = sender.view {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "FormFillInViewController") as! FormFillInViewController
+            vc.formContent = self.formContent
+            vc.formData = self.formData
+            vc.formFillInStep = section.tag
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -176,12 +206,10 @@ extension FormPreviewViewController : UITableViewDataSource {
         }
         return cell
     }
-    
-    
 }
 
 extension FormPreviewViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+      
     }
 }

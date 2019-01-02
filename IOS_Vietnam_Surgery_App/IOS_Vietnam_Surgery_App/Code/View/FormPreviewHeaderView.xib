@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="FormPreviewContent" id="s4x-zx-xEE" customClass="FormPreviewContent" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="FormPreviewContent" id="s4x-zx-xEE" customClass="FormPreviewHeaderView" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="430" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>

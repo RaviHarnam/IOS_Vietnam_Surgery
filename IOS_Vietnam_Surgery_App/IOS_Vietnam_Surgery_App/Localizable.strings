@@ -30,3 +30,10 @@
 "Choice" = "Choice";
 "Tel" = "Number";
 "FormTemplateEditExplanationText" = "In each form we have some fields that are necessary to fill in. So these subjects and fields are already set. To add more fields in a subject, you can click on the pencil. To add more subject (like Personal info), you can press on the plus button on the bottom-right of this screen.";
+"FormTemplateName" = "Form template name";
+"formPreviewViewController" = "Preview new form";
+"Pictures" = "Pictures";
+"StepXOutOfY" = "Step %lu of %lu";
+"AddField" = "Add field";
+"Answer" = "Answer";
+"FieldName" = "Question name";

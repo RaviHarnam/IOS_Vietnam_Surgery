@@ -26,12 +26,21 @@
 		41AA235321C1095800D50B78 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235221C1095800D50B78 /* FormViewController.swift */; };
 		41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BA948921C2916E00969EA4 /* UserAPIManager.swift */; };
 		5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
+		BF29DC4421D11228006F7173 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29DC4321D11228006F7173 /* ViewHelper.swift */; };
 		BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */; };
 		BF34419021B69A0A00F23674 /* DoubleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */; };
 		BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */; };
 		BF34419421BBEB5300F23674 /* FormContentKeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */; };
 		BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */; };
 		BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */; };
+		BF3F005521CA9630004EAC09 /* FormPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F005421CA9630004EAC09 /* FormPictureViewController.swift */; };
+		BF41A86B21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41A86A21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift */; };
+		BF42725221D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42725121D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift */; };
+		BF42725421D8D7D900E31F0B /* SimpleTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF42725321D8D7D900E31F0B /* SimpleTextFieldTableViewCell.xib */; };
+		BF42725621D8D81A00E31F0B /* SimpleTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42725521D8D81A00E31F0B /* SimpleTextFieldTableViewCell.swift */; };
+		BF59671521DCD72400511F3C /* CallbackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59671421DCD72400511F3C /* CallbackProtocol.swift */; };
+		BF5D1FAF21D785BE00B7518B /* FormAddFieldFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5D1FAE21D785BE00B7518B /* FormAddFieldFooterView.xib */; };
+		BF5D1FB121D7870400B7518B /* FormAddFieldFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1FB021D7870400B7518B /* FormAddFieldFooterView.swift */; };
 		BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */; };
 		BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */; };
 		BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */; };
@@ -82,12 +91,21 @@
 		41BA948921C2916E00969EA4 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
 		A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
+		BF29DC4321D11228006F7173 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLabelTableViewCell.swift; sourceTree = "<group>"; };
 		BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleLabelTableViewCell.xib; sourceTree = "<group>"; };
 		BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewViewController.swift; sourceTree = "<group>"; };
 		BF34419321BBEB5300F23674 /* FormContentKeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentKeyValuePair.swift; sourceTree = "<group>"; };
 		BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewHeaderView.swift; sourceTree = "<group>"; };
 		BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormPreviewHeaderView.xib; sourceTree = "<group>"; };
+		BF3F005421CA9630004EAC09 /* FormPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPictureViewController.swift; sourceTree = "<group>"; };
+		BF41A86A21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditSectionViewController.swift; sourceTree = "<group>"; };
+		BF42725121D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditFieldViewController.swift; sourceTree = "<group>"; };
+		BF42725321D8D7D900E31F0B /* SimpleTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		BF42725521D8D81A00E31F0B /* SimpleTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		BF59671421DCD72400511F3C /* CallbackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackProtocol.swift; sourceTree = "<group>"; };
+		BF5D1FAE21D785BE00B7518B /* FormAddFieldFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormAddFieldFooterView.xib; sourceTree = "<group>"; };
+		BF5D1FB021D7870400B7518B /* FormAddFieldFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAddFieldFooterView.swift; sourceTree = "<group>"; };
 		BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
 		BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditViewController.swift; sourceTree = "<group>"; };
 		BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCellWithUITextfield.xib; sourceTree = "<group>"; };
@@ -217,6 +235,8 @@
 				BFEDD45221B538AC00E62918 /* ImageFrameView.swift */,
 				BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */,
 				BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */,
+				BF5D1FAE21D785BE00B7518B /* FormAddFieldFooterView.xib */,
+				BF5D1FB021D7870400B7518B /* FormAddFieldFooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +250,8 @@
 				BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */,
 				BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */,
 				BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */,
+				BF42725321D8D7D900E31F0B /* SimpleTextFieldTableViewCell.xib */,
+				BF42725521D8D81A00E31F0B /* SimpleTextFieldTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -267,6 +289,9 @@
 				BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */,
 				BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */,
 				418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */,
+				BF3F005421CA9630004EAC09 /* FormPictureViewController.swift */,
+				BF41A86A21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift */,
+				BF42725121D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -275,7 +300,9 @@
 			isa = PBXGroup;
 			children = (
 				BF7AA59321AD86DF00904B6A /* FormHelper.swift */,
+				BF29DC4321D11228006F7173 /* ViewHelper.swift */,
 				BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */,
+				BF59671421DCD72400511F3C /* CallbackProtocol.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -355,8 +382,10 @@
 				BF34419021B69A0A00F23674 /* DoubleLabelTableViewCell.xib in Resources */,
 				BFEDD45621B53D3400E62918 /* CollectionViewImageCell.xib in Resources */,
 				BFEDD44D21B403CD00E62918 /* CellWithUITextfield.xib in Resources */,
+				BF5D1FAF21D785BE00B7518B /* FormAddFieldFooterView.xib in Resources */,
 				BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */,
 				BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */,
+				BF42725421D8D7D900E31F0B /* SimpleTextFieldTableViewCell.xib in Resources */,
 				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
 				4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
 				BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */,
@@ -429,6 +458,7 @@
 				418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */,
 				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
 				41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */,
+				BF59671521DCD72400511F3C /* CallbackProtocol.swift in Sources */,
 				41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */,
 				BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */,
 				41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */,
@@ -436,10 +466,13 @@
 				BF6B4E0E21B018BC001FC224 /* FormField.swift in Sources */,
 				BF7AA59221AD85CB00904B6A /* FormFillInViewController.swift in Sources */,
 				418A9C6A21C396240022599A /* User.swift in Sources */,
+				BF5D1FB121D7870400B7518B /* FormAddFieldFooterView.swift in Sources */,
 				418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */,
 				41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */,
 				BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */,
 				BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */,
+				BF29DC4421D11228006F7173 /* ViewHelper.swift in Sources */,
+				BF3F005521CA9630004EAC09 /* FormPictureViewController.swift in Sources */,
 				41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */,
 				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
@@ -451,9 +484,12 @@
 				BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */,
 				BF7AA58521AD51F800904B6A /* SimpleLabelTableViewCell.swift in Sources */,
 				BF34419421BBEB5300F23674 /* FormContentKeyValuePair.swift in Sources */,
+				BF42725221D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift in Sources */,
+				BF41A86B21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift in Sources */,
 				BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */,
 				BFEDD44F21B4048A00E62918 /* CellWithUITextfield.swift in Sources */,
 				BF6B4E0C21AFF40E001FC224 /* TableCellWithUITextfield.swift in Sources */,
+				BF42725621D8D81A00E31F0B /* SimpleTextFieldTableViewCell.swift in Sources */,
 				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
 				41AA235321C1095800D50B78 /* FormViewController.swift in Sources */,
 				BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */,

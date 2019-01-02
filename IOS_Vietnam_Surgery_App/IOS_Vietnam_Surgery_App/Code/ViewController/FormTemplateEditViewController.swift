@@ -25,12 +25,14 @@ public class FormTemplateEditViewController : UIViewController {
     
     @IBOutlet weak var formNameTextField: UITextField!
     
+    private var headerID = "FormPreviewHeaderView"
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         navigationController?.navigationBar.prefersLargeTitles = true
-        formExplanationText.text = NSLocalizedString("", comment: "")
+        formExplanationText.text = NSLocalizedString("FormTemplateEditExplanationText", comment: "")
+        formNameTextField.placeholder = NSLocalizedString("", comment: "")
     }
     
     public override func viewWillLayoutSubviews() {
@@ -48,8 +50,9 @@ public class FormTemplateEditViewController : UIViewController {
         else {
             title = NSLocalizedString("FormTemplateEditViewControllerTitle", comment: "")
         }
-        
+        _ = self.view
         if let template = self.form?.formTemplate {
+            self.formNameTextField.text = self.form?.name
             let template = FormHelper.getFormTemplateFromJson(json: template)
             guard let sections = template?.sections else { return }
             guard FormHelper.validateSectionsInForm(sections: sections) else { return }
@@ -64,6 +67,7 @@ public class FormTemplateEditViewController : UIViewController {
         self.formTableView.dataSource = self
         self.formTableView.delegate = self
         self.formTableView.register(UINib(nibName: "DoubleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "DoubleLabelTableViewCell")
+        self.formTableView.register(UINib(nibName: headerID, bundle: nil), forHeaderFooterViewReuseIdentifier: headerID)
     }
 }
 
@@ -94,17 +98,60 @@ extension FormTemplateEditViewController : UITableViewDataSource {
         return cell
     }
     
-    
+    @objc func editSectionClicked(sender: UIGestureRecognizer) {
+        if let section = sender.view {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditSectionViewController") as! FormTemplateEditSectionViewController
+            //vc.formContent = self.formContent
+            //vc.formData = self.formData
+            //vc.formFillInStep = section.tag
+            vc.section = self.formSections[section.tag]
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension FormTemplateEditViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = formSections[section].name
-        label.textColor = UIColor.black
-        label.backgroundColor = ColorHelper.lightGrayBackgroundColor()
-        label.font = label.font.withSize(34)
+//        let label = UILabel()
+//        label.text = formSections[section].name
+//        label.textColor = UIColor.black
+//        label.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+//        label.font = label.font.withSize(34)
+//
+//
+//        return label
+        let headerview = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID) as! FormPreviewHeaderView
+        //let headerview = headView as! FormPreviewHeaderView
+//        if headerview.content == nil {
+//            let v = UINib(nibName: "FormPreviewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FormPreviewContent
+//            headerview.contentView.addSubview(v)
+//            v.translatesAutoresizingMaskIntoConstraints = false
+//            v.topAnchor.constraint(equalTo: headerview.contentView.topAnchor).isActive = true
+//            v.bottomAnchor.constraint(equalTo: headerview.contentView.bottomAnchor).isActive = true
+//            v.leadingAnchor.constraint(equalTo: headerview.contentView.leadingAnchor).isActive = true
+//            v.trailingAnchor.constraint(equalTo: headerview.contentView.trailingAnchor).isActive = true
+//            headerview.content = v
+//        }
         
-        return label
+//        headerview.content.label.text = formSections[section].name
+//        headerview.content.label.font = headerview.content.label.font.withSize(34)
+//        headerview.content.image.image = UIImage(named: "Edit")
+//        headerview.content.image.isUserInteractionEnabled = true
+//        headerview.content.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editSectionClicked)))
+//        headerview.content.image.tag = section
+        headerview.label.text = formSections[section].name
+        headerview.label.font = headerview.label.font.withSize(34)
+        headerview.image.image = UIImage(named: "Edit")
+        headerview.image.isUserInteractionEnabled = true
+        headerview.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editSectionClicked(sender:))))
+        headerview.image.tag = section
+        headerview.sectionNumber = section
+        headerview.layoutMargins.top = 42
+        headerview.layoutMargins.bottom = 42
+        let bgView = UIView()
+        bgView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        headerview.backgroundView = bgView
+        return headerview
     }
 }

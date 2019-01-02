@@ -10,7 +10,7 @@ import Foundation
 
 public class FormSection : Codable {
     public var name : String?
-    public var fields : [FormField]?
+    public var fields : [FormChoiceField]?
     
     enum CodingKeys : String,CodingKey {
         case name = "Name"

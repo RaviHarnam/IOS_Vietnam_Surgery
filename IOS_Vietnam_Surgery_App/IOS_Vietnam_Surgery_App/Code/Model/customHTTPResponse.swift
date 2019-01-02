@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 public class customHTTPResponse : Codable
 {
     var succes: Bool
