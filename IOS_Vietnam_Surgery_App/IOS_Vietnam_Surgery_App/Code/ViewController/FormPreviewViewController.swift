@@ -23,6 +23,8 @@ public class FormPreviewViewController : UIViewController {
     
     public var headerID = "FormPreviewHeaderView"
     
+    public var isPreexisting: Bool = false
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +45,13 @@ public class FormPreviewViewController : UIViewController {
     func updateTitle() {
         var newTitle : String = ""
         
-        newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        if isPreexisting {
+            newTitle += NSLocalizedString("formFillInViewControllerEditTitle", comment: "")
+        }
+        else {
+            newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        }
+        
         
         if let district = formContent[NSLocalizedString("District", comment: "")] {
             newTitle += " - " + district
@@ -67,7 +75,13 @@ public class FormPreviewViewController : UIViewController {
     }
     
     func setupAppBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("SaveAndNext", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(askSaveForm))
+        if (isPreexisting)
+        {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(askSaveForm))
+        }
+        else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("SaveAndNext", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(askSaveForm))
+        }
     }
     
     @objc func askSaveForm() {

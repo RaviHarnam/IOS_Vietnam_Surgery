@@ -14,12 +14,17 @@
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
 		41698B4721C66DD900C261D5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41698B4621C66DD900C261D5 /* Role.swift */; };
 		418A9C6A21C396240022599A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A9C6921C396240022599A /* User.swift */; };
+		418AD79A21DE8B7300E7C2F8 /* FormOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */; };
 		418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */; };
 		418BDD5D21C928C100EE0842 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418BDD5C21C928C100EE0842 /* UserTableViewController.swift */; };
 		418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */; };
 		418E575E21D285FA00F90E00 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E575D21D285FA00F90E00 /* UserDetailViewController.swift */; };
 		418E576021D2B8C200F90E00 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E575F21D2B8C200F90E00 /* AddUserViewController.swift */; };
 		418E576221D2BFF900F90E00 /* AdminTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */; };
+		41929CCC21DE164100DF469E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41929CCB21DE164100DF469E /* CustomTabBarController.swift */; };
+		41929CCE21DE386600DF469E /* LoggedInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41929CCD21DE386600DF469E /* LoggedInDelegate.swift */; };
+		419F98F521DF5DAB0086A566 /* FormOverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419F98F421DF5DAB0086A566 /* FormOverviewTableViewCell.xib */; };
+		419F98F721DF5F790086A566 /* FormOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F98F621DF5F790086A566 /* FormOverviewTableViewCell.swift */; };
 		41A8FA2E21C19A0600CD9FB4 /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */; };
 		41A8FA3021C19A6700CD9FB4 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA2F21C19A6700CD9FB4 /* Login.swift */; };
 		41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3221C19AFF00CD9FB4 /* Register.swift */; };
@@ -29,6 +34,7 @@
 		41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235021C1083E00D50B78 /* HomeViewController.swift */; };
 		41AA235321C1095800D50B78 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235221C1095800D50B78 /* FormViewController.swift */; };
 		41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BA948921C2916E00969EA4 /* UserAPIManager.swift */; };
+		41C08A5321D642200077EA4B /* TabBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C08A5221D642200077EA4B /* TabBarHelper.swift */; };
 		5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
 		BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */; };
 		BF34419021B69A0A00F23674 /* DoubleLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */; };
@@ -73,12 +79,17 @@
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41698B4621C66DD900C261D5 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		418A9C6921C396240022599A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOverviewViewController.swift; sourceTree = "<group>"; };
 		418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationController.swift; sourceTree = "<group>"; };
 		418BDD5C21C928C100EE0842 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customHTTPResponse.swift; sourceTree = "<group>"; };
 		418E575D21D285FA00F90E00 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		418E575F21D2B8C200F90E00 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarControllerViewController.swift; sourceTree = "<group>"; };
+		41929CCB21DE164100DF469E /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		41929CCD21DE386600DF469E /* LoggedInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInDelegate.swift; sourceTree = "<group>"; };
+		419F98F421DF5DAB0086A566 /* FormOverviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormOverviewTableViewCell.xib; sourceTree = "<group>"; };
+		419F98F621DF5F790086A566 /* FormOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		41A8FA2D21C19A0600CD9FB4 /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
 		41A8FA2F21C19A6700CD9FB4 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		41A8FA3221C19AFF00CD9FB4 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
@@ -88,6 +99,7 @@
 		41AA235021C1083E00D50B78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41AA235221C1095800D50B78 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		41BA948921C2916E00969EA4 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
+		41C08A5221D642200077EA4B /* TabBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelper.swift; sourceTree = "<group>"; };
 		A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
 		BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -201,6 +213,7 @@
 				BF7AA58921AD559300904B6A /* Model */,
 				BF7AA58321AD51D000904B6A /* View */,
 				BF7AA58221AD51A200904B6A /* API */,
+				41929CCB21DE164100DF469E /* CustomTabBarController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -238,6 +251,8 @@
 				BF6B4E0B21AFF40E001FC224 /* TableCellWithUITextfield.swift */,
 				BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */,
 				BF34418F21B69A0A00F23674 /* DoubleLabelTableViewCell.xib */,
+				419F98F421DF5DAB0086A566 /* FormOverviewTableViewCell.xib */,
+				419F98F621DF5F790086A566 /* FormOverviewTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -279,6 +294,7 @@
 				418E575D21D285FA00F90E00 /* UserDetailViewController.swift */,
 				418E575F21D2B8C200F90E00 /* AddUserViewController.swift */,
 				418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */,
+				418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -288,6 +304,8 @@
 			children = (
 				BF7AA59321AD86DF00904B6A /* FormHelper.swift */,
 				BF7AA58D21AD6CCA00904B6A /* ColorHelper.swift */,
+				41C08A5221D642200077EA4B /* TabBarHelper.swift */,
+				41929CCD21DE386600DF469E /* LoggedInDelegate.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -369,6 +387,7 @@
 				BFEDD44D21B403CD00E62918 /* CellWithUITextfield.xib in Resources */,
 				BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */,
 				BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */,
+				419F98F521DF5DAB0086A566 /* FormOverviewTableViewCell.xib in Resources */,
 				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
 				4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
 				BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */,
@@ -434,8 +453,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */,
+				41929CCE21DE386600DF469E /* LoggedInDelegate.swift in Sources */,
 				BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */,
 				418E575E21D285FA00F90E00 /* UserDetailViewController.swift in Sources */,
+				41C08A5321D642200077EA4B /* TabBarHelper.swift in Sources */,
 				BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */,
 				41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */,
 				418E576021D2B8C200F90E00 /* AddUserViewController.swift in Sources */,
@@ -455,10 +476,12 @@
 				41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */,
 				BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */,
 				BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */,
+				419F98F721DF5F790086A566 /* FormOverviewTableViewCell.swift in Sources */,
 				41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */,
 				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
 				41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
+				418AD79A21DE8B7300E7C2F8 /* FormOverviewViewController.swift in Sources */,
 				BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
 				41698B4721C66DD900C261D5 /* Role.swift in Sources */,
 				BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */,
@@ -472,6 +495,7 @@
 				BF6B4E0C21AFF40E001FC224 /* TableCellWithUITextfield.swift in Sources */,
 				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
 				41AA235321C1095800D50B78 /* FormViewController.swift in Sources */,
+				41929CCC21DE164100DF469E /* CustomTabBarController.swift in Sources */,
 				BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */,
 				BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */,
 			);
