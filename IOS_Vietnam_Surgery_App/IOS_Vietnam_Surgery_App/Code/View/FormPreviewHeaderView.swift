@@ -11,16 +11,18 @@ import UIKit
 
 public class FormPreviewHeaderView : UITableViewHeaderFooterView {
     
-    weak var content : FormPreviewContent!
+    //weak var content : FormPreviewContent!
     
     var sectionNumber : Int!
     
-    
-}
-
-public class FormPreviewContent : UIView {
+    @IBOutlet weak var image: UIImageView!
     
     @IBOutlet weak var label: UILabel!
-    
-    @IBOutlet weak var image: UIImageView!
 }
+
+//public class FormPreviewContent : UIView {
+    
+    //@IBOutlet weak var label: UILabel!
+    
+    //@IBOutlet weak var image: UIImageView!
+//}

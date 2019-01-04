@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public static var userRole : String? {
         didSet {
             if userRole != nil {
-            let isAdmin = userRole?.lowercased() == "admin"
-            LoggedInDelegateNotifier.notifyLoggedIn(isAdmin)
-            }a
+                let isAdmin = userRole?.lowercased() == "admin"
+                LoggedInDelegateNotifier.notifyLoggedIn(isAdmin)
+            }
         }
     }
     public static var userTab : UITabBarController?

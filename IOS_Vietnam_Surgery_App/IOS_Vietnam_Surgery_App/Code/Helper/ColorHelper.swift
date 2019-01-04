@@ -21,4 +21,8 @@ public class ColorHelper {
     public static func lightGrayBorderColor() -> UIColor {
         return UIColor(named: "LightGrayBorderColor")!
     }
+    
+    public static func lightBlueLinkColor() -> UIColor {
+        return UIColor(named: "LightBlueLinkColor")!
+    }
 }

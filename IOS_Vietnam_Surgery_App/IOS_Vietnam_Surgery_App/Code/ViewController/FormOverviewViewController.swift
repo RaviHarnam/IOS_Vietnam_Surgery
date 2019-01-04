@@ -45,7 +45,7 @@ class FormOverviewViewController: UIViewController {
                 let string = try String(contentsOf: directoryContent, encoding: .utf8)
                 let data = string.data(using: .utf8)
                 
-                var decodedUserObject = try? decoder.decode(Form.self, from: data!)
+                let decodedUserObject = try? decoder.decode(Form.self, from: data!)
                 forms.append(decodedUserObject!)
             }
             self.tableViewFormoverview.reloadData()
@@ -69,7 +69,7 @@ extension FormOverviewViewController : UITableViewDataSource {
         
         let formsarray = self.forms
             
-        var form = formsarray[indexPath.row]
+        let form = formsarray[indexPath.row]
         setHeaderText(cell: formoverviewcell)
         setContentText(cell: formoverviewcell, form: form)
         
@@ -114,7 +114,6 @@ extension FormOverviewViewController : UITableViewDataSource {
 
 extension FormOverviewViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let form = self.forms[indexPath.row]
         
         navigateToFormPreview(form: form)
@@ -131,9 +130,7 @@ extension FormOverviewViewController : UITableViewDelegate {
         formPreviewVC.formData = form
         formPreviewVC.formContent = FormHelper.getFormContentDicFromArr(content: form.formContent!)
         let template = FormHelper.getFormTemplateFromJson(json: form.formTemplate!)
-        formPreviewVC.formSections = (template?.sections)!
-        
-        
+        formPreviewVC.formSections = template!.sections!
        
         print("navigating to formpreview with: " + self.navigationController.debugDescription)
         navigationController!.pushViewController(formPreviewVC, animated: true)

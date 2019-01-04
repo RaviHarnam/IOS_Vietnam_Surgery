@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SimpleTextFieldTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="H9Q-W9-Tj3" customClass="SimpleTextFieldTableViewCell" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H9Q-W9-Tj3" id="Qd0-el-c7i">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WVk-IE-nRY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WVk-IE-nRY" firstAttribute="leading" secondItem="Qd0-el-c7i" secondAttribute="leading" id="a44-km-KMm"/>
+                    <constraint firstAttribute="trailing" secondItem="WVk-IE-nRY" secondAttribute="trailing" id="aoM-VU-Ft6"/>
+                    <constraint firstAttribute="bottom" secondItem="WVk-IE-nRY" secondAttribute="bottom" id="d3f-7v-dC3"/>
+                    <constraint firstItem="WVk-IE-nRY" firstAttribute="top" secondItem="Qd0-el-c7i" secondAttribute="top" id="hxK-k4-nLd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="textField" destination="WVk-IE-nRY" id="FgX-Cb-nVO"/>
+            </connections>
+            <point key="canvasLocation" x="126" y="140"/>
+        </tableViewCell>
+    </objects>
+</document>

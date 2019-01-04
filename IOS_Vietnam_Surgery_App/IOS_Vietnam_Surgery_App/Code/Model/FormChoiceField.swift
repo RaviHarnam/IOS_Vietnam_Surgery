@@ -21,4 +21,8 @@ public class FormChoiceField : FormField {
         try super.init(from: decoder)
         //let superdecoder = try container.superDecoder()        
     }
+    
+    override init() {
+        super.init()
+    }
 }

@@ -12,7 +12,10 @@ import Eureka
 
 public class FormFillInViewController : Eureka.FormViewController {
     
-    @IBOutlet weak var formView: UIStackView!
+    @IBOutlet weak var formSectionHeader: UILabel!
+    
+    @IBOutlet weak var formStep: UILabel!
+    
     
     public var formData: Form? {
         didSet {
@@ -40,18 +43,32 @@ public class FormFillInViewController : Eureka.FormViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        let view = self.view
+        _ = self.view
         navigationController?.navigationBar.prefersLargeTitles = true
         updateTitle()
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
         DispatchQueue.main.async {
-            self.tableView.contentInset.left = 16
-            self.tableView.contentInset.right = 16
-            self.tableView.layoutMargins.right = 16
-            self.tableView.layoutMargins.left = 16
-            self.tableView.setNeedsLayout()
+            //self.tableView.contentInset.left = 16
+            //self.tableView.contentInset.right = 16
+            //self.tableView.layoutMargins.right = 16
+//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 16))
+//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 32))
+//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 32))
+//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 16))
+            //self.tableView.layoutMargins.left = 16
+            //self.tableView.layoutMargins.right = 16
+            //self.tableView.layoutMarginsDidChange()
+            self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
+            self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
+            self.tableView.topAnchor.constraint(equalTo: self.formSectionHeader.bottomAnchor, constant: 16).isActive = true
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 16).isActive = true
+            
+            //self.tableView.setNeedsLayout()
+            //self.tableView.layoutIfNeeded()
         }
-        //self.tableView.layoutMargins.right = 16
         setupAppbar()
+        self.formSectionHeader.text = formSection?.name
+        self.formStep.text = NSString.localizedStringWithFormat(NSLocalizedString("StepXOutOfY", comment: "") as NSString, formFillInStep + 1, formSections.count + 2) as String
     }
     
     func updateTitle() {
@@ -83,7 +100,22 @@ public class FormFillInViewController : Eureka.FormViewController {
         }
     }
     
+    func validateForm() -> Bool {
+        let errors = self.form.validate()
+        let valid = errors.isEmpty
+        if !valid {
+            for error in errors {
+                self.form.rowBy(tag: error.msg)?.baseCell.textLabel?.textColor = UIColor.red
+            }
+        }
+        return valid
+    }
+    
+    
     @objc func goToNextPage() {
+        guard validateForm() else {
+            return
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormFillInViewController") as! FormFillInViewController
         vc.formFillInStep = self.formFillInStep + 1
@@ -94,6 +126,9 @@ public class FormFillInViewController : Eureka.FormViewController {
     }
     
     @objc func goToPictures() {
+        guard validateForm() else {
+            return
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormPicturesViewController") as! FormPicturesViewController
         vc.formFillInStep = self.formFillInStep + 1
@@ -109,7 +144,7 @@ public class FormFillInViewController : Eureka.FormViewController {
             guard let sections = template?.sections else { return }
             formSections = sections
             guard FormHelper.validateFieldsInSection(section: formSection!) else { return }
-            //formUIControls = FormHelper.getUIControlsFromSection(section: formSection!)
+            
             formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
         }
     }
@@ -122,6 +157,7 @@ public class FormFillInViewController : Eureka.FormViewController {
             case "string":
                     section.append(TextRow() {
                         $0.title = field.name
+                        $0.tag = field.name
                         $0.onChange {[unowned self] row in
                             if let fieldValue = row.value {
                                 self.formContent[field.name!] = fieldValue
@@ -133,19 +169,39 @@ public class FormFillInViewController : Eureka.FormViewController {
                                 }
                             }
                         }
+                        $0.validationOptions = .validatesOnDemand
+                        if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
+                        $0.value = formContent[field.name!] ?? ""
                     })
                 break
             case "choice":
                 section.append(PushRow<String>() {
                     $0.title = field.name
+                    $0.tag = field.name
                     $0.options = field.options!
                     $0.onChange {[unowned self] row in
                         if let fieldValue = row.value {
                             self.formContent[field.name!] = fieldValue
                         }
                     }
+                    $0.validationOptions = .validatesOnDemand
+                    if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
+                    $0.value = formContent[field.name!] ?? field.required?.lowercased() == "true" ? $0.options?.first : ""
                 })
                 break
+            case "number":
+                section.append(IntRow() {
+                    $0.title = field.name
+                    $0.tag = field.name
+                    $0.onChange {[unowned self] row in
+                        if let fieldValue = row.value {
+                                self.formContent[field.name!] = String(fieldValue)
+                        }
+                    }
+                    $0.validationOptions = .validatesOnDemand
+                    if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
+                    $0.value = formContent[field.name!] != nil ? Int(formContent[field.name!]!) : nil
+                })
             default:
                 break
             }

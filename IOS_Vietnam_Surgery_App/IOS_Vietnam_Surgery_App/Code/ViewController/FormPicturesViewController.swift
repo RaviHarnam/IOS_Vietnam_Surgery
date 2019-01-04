@@ -13,7 +13,10 @@ public class FormPicturesViewController : UIViewController  {
     
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
-    //private var formPictures : [UIImage] = []
+    @IBOutlet weak var picturesHeaderLabel: UILabel!
+    
+    @IBOutlet weak var picturesStepLabel: UILabel!
+    
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private let itemsPerRow : CGFloat = 4
     
@@ -37,8 +40,10 @@ public class FormPicturesViewController : UIViewController  {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        //imagePicker.delegate = self
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.picturesHeaderLabel.text = NSLocalizedString("Pictures", comment: "")
+        self.picturesStepLabel.text = NSString.localizedStringWithFormat(NSLocalizedString("StepXOutOfY", comment: "") as NSString, formFillInStep + 1, formSections.count + 2) as String
         updateTitle()
         setupCollectionView()
         setupAppBar()
@@ -89,7 +94,6 @@ public class FormPicturesViewController : UIViewController  {
 
 extension FormPicturesViewController : UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return 1 + formPictures.count
         return 1 + (self.formData?.formPictures.count ?? 0)
     }
     
@@ -105,7 +109,6 @@ extension FormPicturesViewController : UICollectionViewDataSource {
             cell.imageView.image = UIImage(named: "Camera")!
         }
         else {
-            //let image = formPictures[indexPath.row - 1]
             let image = self.formData?.formPictures[indexPath.row - 1]
             cell.imageView.image = image
             
@@ -135,19 +138,19 @@ extension FormPicturesViewController : UICollectionViewDelegateFlowLayout {
 extension FormPicturesViewController : UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            if !UIImagePickerController.isSourceTypeAvailable(.camera){
+            if !UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error_NoCamera", comment: ""), preferredStyle: .alert)
                 #if DEBUG
                     alert.addAction(UIAlertAction(title: "Ok (use Placeholder)", style: .default, handler: {
                         (alert: UIAlertAction) in
-                        //self.formPictures.append(UIImage(named: "Placeholder")!)
+                       
                         self.formData?.formPictures.append(UIImage(named: "Placeholder")!)
                         DispatchQueue.main.async {
                             self.picturesCollectionView.reloadData()
                         }
                     }))
                 #else
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
                 #endif
                 self.present(alert, animated: true, completion: nil)
                 return
@@ -158,28 +161,31 @@ extension FormPicturesViewController : UICollectionViewDelegate {
             self.imagePicker.delegate = self
             present(imagePicker, animated: true)
         }
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "FormPictureViewController") as! FormPictureViewController
+            vc.imageName = self.formContent[NSLocalizedString("Name", comment: "")]!
+            vc.imageNumber = indexPath.row - 1
+            vc.images = (self.formData?.formPictures)!
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
 extension FormPicturesViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("Photo taken. Processing....")
         picker.dismiss(animated: true)
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            print("No image found")
             return
         }
         
-        //self.formPictures.append(image)
         self.formData?.formPictures.append(image)
         DispatchQueue.main.async {
             self.picturesCollectionView.reloadData()
         }
-        
     }
 
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("Photo taken. Cancelled...")
     }
 }
