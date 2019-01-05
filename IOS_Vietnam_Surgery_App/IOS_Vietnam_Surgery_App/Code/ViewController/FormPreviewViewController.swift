@@ -25,6 +25,8 @@ public class FormPreviewViewController : UIViewController {
     
     private var editSectionId : Int?
     
+    public var isPreexisting: Bool = false
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +47,12 @@ public class FormPreviewViewController : UIViewController {
     func updateTitle() {
         var newTitle : String = ""
         
-        newTitle += NSLocalizedString("formPreviewViewControllerNewTitle", comment: "")
+        if isPreexisting {
+            newTitle += NSLocalizedString("formFillInViewControllerEditTitle", comment: "")
+        }
+        else {
+            newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        }
         
         if let district = formContent[NSLocalizedString("District", comment: "")] {
             newTitle += " - " + district
@@ -66,10 +73,17 @@ public class FormPreviewViewController : UIViewController {
         formDataTableView.dataSource = self
         formDataTableView.delegate = self
         formDataTableView.register(UINib(nibName: "DoubleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "DoubleLabelTableViewCell")
+        formDataTableView.register(UINib(nibName: headerID, bundle: nil), forHeaderFooterViewReuseIdentifier: headerID)
     }
     
     func setupAppBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("SaveAndNext", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(askSaveForm))
+        if (isPreexisting)
+        {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(askSaveForm))
+        }
+        else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("SaveAndNext", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(askSaveForm))
+        }
     }
     
     @objc func askSaveForm() {
@@ -166,6 +180,9 @@ extension FormPreviewViewController : UITableViewDataSource {
 //        headerview.content.image.isUserInteractionEnabled = true
 //        headerview.content.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editSectionClicked)))
 //        headerview.content.image.tag = section
+        let bgView = UIView()
+        bgView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        headerview.backgroundView = bgView
         headerview.label.text = formSections[section].name
         headerview.label.font = headerview.label.font.withSize(34)
         headerview.image.image = UIImage(named: "Edit")

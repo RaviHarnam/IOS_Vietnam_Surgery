@@ -24,15 +24,17 @@ class AddUserViewController: UIViewController {
     
     
     @IBAction func adminButtonClick(_ sender: Any) {
-        adminButton.setTitleColor(UIColor.white, for: .selected)
-        adminButton.backgroundColor = UIColor.blue
-        fieldScreenerButton.backgroundColor = UIColor.white
+        
+        adminButton.isSelected = true
+        fieldScreenerButton.isSelected = false
+        
     }
     
     @IBAction func fieldScreenerButtonClick(_ sender: Any) {
-        fieldScreenerButton.setTitleColor(UIColor.white, for: .selected)
-        fieldScreenerButton.backgroundColor = UIColor.blue
-        adminButton.backgroundColor = UIColor.white
+//        fieldScreenerButton.setTitleColor(UIColor.white, for: .normal)
+        fieldScreenerButton.isSelected = true
+        adminButton.isSelected = false
+//        adminButton.backgroundColor = UIColor.white
     }
     private var isClicked : Bool = false
     

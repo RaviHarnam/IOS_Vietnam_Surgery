@@ -50,7 +50,7 @@ class UserManager {
     
     // implemented lpgin
     static func UserLogIn(login: Login, callBack: @escaping (Bool) -> ()) {
-        let queue = DispatchQueue(label: "label")
+       
         let loginUser = login
         
         UserAPIManager.Login(login: loginUser).responseJSON(completionHandler: {
@@ -60,33 +60,36 @@ class UserManager {
             if let data = response.data {
                 print("Data: ", data)
                 let decoder = JSONDecoder()
-                let authenticationresponse = try? decoder.decode(AuthenticationToken.self, from: data)
-                print("AuthResponse: ", authenticationresponse)
+                //let authenticationresponse = try? decoder.decode(AuthenticationToken.self, from: data)
+               // print("AuthResponse: ", authenticationresponse)
                 
-                if let authenticationresponse = authenticationresponse {
-                    print(authenticationresponse.authenticationtoken)
+//                if let authenticationresponse = authenticationresponse {
+                   // print(authenticationresponse.authenticationtoken)
 
-                    AppDelegate.authenticationToken = authenticationresponse.authenticationtoken
-                    if let authtoken = authenticationresponse.authenticationtoken {
-                        print("AuthTokenValue: ", authtoken)
-                        KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
+                if let authresponse = try? decoder.decode(AuthenticationToken.self, from: data) {
+                    guard let authtoken = authresponse.authenticationtoken else {
+                        callBack(false)
+                        return
+                    }
+                    //if let authtresponse = authenticationresponse {
+                    AppDelegate.authenticationToken = authtoken
+                    AppDelegate.userRole = authresponse.role
+                    print("UserRole = ", AppDelegate.userRole)
+                    KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
                         callBack(true)
-                        
                         //getAllUsers()
                     }
                     else {
-                        print("AuthTokenValue: ", authenticationresponse.authenticationtoken)
-                        print("Authtoken failed to put in keychain")
+                        //print("Authtoken failed to put in keychain")
                         callBack(false)
                     }
                 
-                    print("Succesfully logged in")
+                   /// print("Succesfully logged in")
                 }
                 else {
                     print("login failed")
-                   
+                
                 }
-            }
         })
     }
     

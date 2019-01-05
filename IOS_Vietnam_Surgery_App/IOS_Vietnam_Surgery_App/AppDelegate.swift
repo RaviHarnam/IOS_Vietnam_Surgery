@@ -12,14 +12,41 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    public static var authenticationToken : String?
-
+    public static var authenticationToken : String? {
+        didSet {
+            if authenticationToken == nil {
+                userRole = nil
+                LoggedInDelegateNotifier.notifyLoggedOut()
+            }
+        }
+    }
+    public static var userRole : String? {
+        didSet {
+            if userRole != nil {
+                let isAdmin = userRole?.lowercased() == "admin"
+                LoggedInDelegateNotifier.notifyLoggedIn(isAdmin)
+            }
+        }
+    }
+    public static var userTab : UITabBarController?
+    public static var adminTab : UITabBarController?
+   
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FormHelper.setEurekaRowStylingProperties()
-        let mainVC = TabBarController()
-        window?.rootViewController = mainVC
+//        let mainVC = TabBarController()
+//        window?.rootViewController = mainVC
+//        AppDelegate.userTab = UITabBarController()
+//        var userVCArr = TabBarHelper.createUserTabBar()
+//        
+//        AppDelegate.userTab!.viewControllers = userVCArr.map{ UINavigationController.init(rootViewController: $0)}
+//        
+//        AppDelegate.adminTab = UITabBarController()
+//        
+//        var admintabbar = TabBarHelper.createAdminTabBar()
+//        AppDelegate.adminTab?.viewControllers = admintabbar.map {UINavigationController.init(rootViewController:$0)}
+        //
         return true
     }
 

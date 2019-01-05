@@ -16,7 +16,7 @@ public class AuthenticationToken : Codable {
     var username : String?
     var issued : String?
     var expires: String?
-    
+    var role : String?
     
     enum CodingKeys : String, CodingKey {
         case authenticationtoken = "access_token"
@@ -25,6 +25,7 @@ public class AuthenticationToken : Codable {
         case username = "userName"
         case issued = ".issued"
         case expires = ".expires"
+        case role = "role"
     }
     
 }

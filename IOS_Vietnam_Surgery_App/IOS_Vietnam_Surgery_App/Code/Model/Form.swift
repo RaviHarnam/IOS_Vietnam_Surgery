@@ -17,6 +17,7 @@ public class Form : Codable {
     public var formContent : [FormContentKeyValuePair]?
     
     public var formPictures : [UIImage] = []
+    public var createdOn : String?
     
     enum CodingKeys : String, CodingKey {
         case id = "Id"

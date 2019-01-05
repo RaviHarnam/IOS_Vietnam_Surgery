@@ -12,7 +12,7 @@ class FormTemplateViewController: UIViewController {
 
     @IBOutlet weak var chooseFormLabel: UILabel!
     @IBOutlet weak var formTemplateTableView: UITableView!
-    
+    let tabBarCnt = UITabBarController()
     private var formTemplates : [Form]?
     private var spinner : UIActivityIndicatorView?
     private var refreshControl : UIRefreshControl?
@@ -30,18 +30,57 @@ class FormTemplateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+//        let ctrl = TabBarHelper.createAdminTabBar()
+//        ctrl.view.frame = CGRect(x: 0, y: 896 , width: 414, height: 100)
+
+//       if let viewctr  = ctrl.view {
+//        viewctr.frame = CGRect(x: 0, y: 896 , width: 414, height: 100)
+//
+//        self.view.addSubview(viewctr)
+//        }
+//        ctrl.tabBar.tintColor = UIColor.blue
+        
+      //  print("\(view?.frame.width)" + "H:" +  "\(view?.frame.height)")
+        
         navigationController?.navigationBar.prefersLargeTitles = false
         self.view.backgroundColor = ColorHelper.lightGrayBackgroundColor()
-        self.title = NSLocalizedString("formTemplateTabBarItemTitle", comment: "")
+        //self.title = NSLocalizedString("formTemplateTabBarItemTitle", comment: "")
         //self.chooseFormLabel.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
         //self.chooseFormLabel.textColor = ColorHelper.lightGrayTextColor()
-        self.navigationItem.title = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
+      
         
         setupTableView()
         setupNavigationBar()
         setupSpinner()
         setupRefreshControl()
         getFormTemplatesAsync()
+//        createTabBarController()
+//        self.view.addSubview(ctrl.view)
+    }
+    
+    func createTabBarController() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginID")
+//        
+        
+        tabBarCnt.tabBar.tintColor = UIColor.black
+//
+//        let firstVc = UIViewController()
+//        firstVc.title = "First"
+//        firstVc.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(named: "icon"), tag: 0)
+//        let secondVc = loginVC
+//        secondVc.title = "Second"
+//        secondVc.tabBarItem = UITabBarItem.init(title: "Login", image: UIImage(named: "login"), tag: 0)
+//
+        //let controllerArray = TabBarHelper.createUserTabBar()
+        //tabBarCnt.viewControllers = controllerArray.map{ UINavigationController.init(rootViewController: $0)}
+        
+        //if AppDelegate.adminTab.view
+        //let usertab = AppDelegate.userTab
+        
+        //self.view.addSubview(usertab!.view)
     }
     
     func setupTableView() {

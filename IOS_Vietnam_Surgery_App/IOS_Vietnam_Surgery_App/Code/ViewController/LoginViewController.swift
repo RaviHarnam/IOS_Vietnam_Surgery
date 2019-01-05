@@ -12,31 +12,53 @@ class LoginViewController: UIViewController {
     
     public static let tokenkey = "AuthenticationToken"
     
-    @IBOutlet weak var LoginSpinner: UIActivityIndicatorView!
+    //@IBOutlet weak var LoginSpinner: UIActivityIndicatorView!
     
     @IBOutlet weak var LoginButton: UIButton!
     
     @IBOutlet weak var UsernameField: UITextField!
     
     @IBOutlet weak var PasswordField: UITextField!
-    
+     private var spinner : UIActivityIndicatorView?
     @IBAction func LoginButton(_ sender: Any) {
-        if(LoginSpinner.isHidden == true) {
-            LoginSpinner.isHidden = false
-            LoginSpinner.startAnimating()
+ 
+//            spinner?.startAnimating()
+            isFetching = true
+        print("isFechting: ", isFetching)
             UserLogin()
+        
+    }
+    
+    private var isFetching : Bool = false {
+        didSet {
+            if isFetching {
+                spinner?.isHidden = false
+                spinner?.startAnimating()
+            }
+            else {
+                spinner?.stopAnimating()
+            }
         }
+    }
+    func setupSpinner() {
+        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        spinner.center = view.center
+        spinner.hidesWhenStopped = true
+        self.spinner = spinner
+        view.addSubview(spinner)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //self.storyboard?.instantiateViewController(withIdentifier: "LoginID")
-        LoginSpinner.isHidden = true
+//        LoginSpinner.isHidden = true
+        self.UsernameField.addTarget(self, action: #selector(usernameValueChanged), for: .editingChanged)
+        self.PasswordField.addTarget(self, action: #selector(passwordValueChanged), for: .editingChanged)
         view.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Login"
-        
-       setupLoginPlaceHolders()
+        setupSpinner()
+        setupLoginPlaceHolders()
     }
     
     //TODO add function to get the user role when logging in.
@@ -52,6 +74,19 @@ class LoginViewController: UIViewController {
         LoginButton.setTitle("Login", for: .normal)
     }
     
+    
+    @objc func usernameValueChanged ()
+    {
+        self.UsernameField.layer.borderWidth = 0
+        self.UsernameField.layer.borderColor = nil
+    }
+    
+    @objc func passwordValueChanged ()
+    {
+        self.PasswordField.layer.borderWidth = 0
+    }
+    
+    
     func UserLogin() {
         
         let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text, grant_type: "password")
@@ -62,17 +97,21 @@ class LoginViewController: UIViewController {
                 self.navigateToAdminInterface()
             }
             else {
-                self.UserLogin()
+                print("Waarde result: ", result)
+                self.UsernameField.layer.borderWidth = 1
+                self.UsernameField.layer.borderColor = UIColor.red.cgColor
+                self.PasswordField.layer.borderColor = UIColor.red.cgColor
             }
         })
+        isFetching = false
     }
     
     private func navigateToAdminInterface () {
         
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        guard let adminNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "AdminNavigationController") as? AdminNavigationController else { return }
-        
-        present(adminNavigationVC, animated: true, completion: nil)
+        let adminNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "UserTableViewController") as! UserTableViewController
+        print("navigating to usertable with: " + self.navigationController.debugDescription)
+        navigationController!.pushViewController(adminNavigationVC, animated: true)
     }
 }

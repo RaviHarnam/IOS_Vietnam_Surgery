@@ -108,4 +108,12 @@ public class FormHelper {
 //
 //        }
     }
+    
+    public static func getFormContentDicFromArr(content: [FormContentKeyValuePair]) -> [String:String] {
+        var dic : [String:String] = [:]
+        for kvp in content {
+            dic[kvp.name!] = kvp.value
+        }
+        return dic
+    }
 }

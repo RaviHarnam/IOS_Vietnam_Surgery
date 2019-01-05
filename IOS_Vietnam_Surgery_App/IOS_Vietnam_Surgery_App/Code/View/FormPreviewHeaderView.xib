@@ -41,8 +41,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="IJ7-oh-MwT"/>
             <connections>
-                <outlet property="image" destination="xhc-Cj-x9q" id="jM4-yA-VsO"/>
-                <outlet property="label" destination="weA-fl-bay" id="guA-Ym-ccM"/>
+                <outlet property="image" destination="xhc-Cj-x9q" id="tUv-Gp-Jyw"/>
+                <outlet property="label" destination="weA-fl-bay" id="9JG-eM-m24"/>
             </connections>
             <point key="canvasLocation" x="-112" y="-494.75262368815595"/>
         </view>

@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import SwiftKeychainWrapper
 
-public class UserTableViewController : UITableViewController {
+public class UserTableViewController : UIViewController {
     
 
     var users: [User]?
@@ -17,18 +18,18 @@ public class UserTableViewController : UITableViewController {
     @IBOutlet weak var UserTableView: UITableView!
     
         override public func viewDidLoad () {
-      
-        super.viewDidLoad()
-            
-        setupTableView()
-        
+            super.viewDidLoad()
+            //let ctrl = TabBarHelper.createAdminTabBar()
+            //self.view.addSubview(ctrl.view)
+            setupTableView()
+            print("Usertableview aangeroepen")
         
     }
     
     func setupTableView()
     {
         UserTableView.dataSource = self
-        UserTableView.delegate = self
+        //UserTableView.delegate = self
         setupNavigationBarItems()
         getAllUsers()
     }
@@ -39,7 +40,7 @@ public class UserTableViewController : UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LogOut))
 
 //        let addUserButton = UIButton(type: .system)
 //        addUserButton.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
@@ -55,23 +56,46 @@ public class UserTableViewController : UITableViewController {
          self.navigationController?.pushViewController(addUserVC, animated: true)
     }
     
-    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            print(self.users?.count ?? 0)
-            return self.users?.count ?? 0
-        
-//        if let userarray = self.users
-//        {
-//            print("Komt in tableView Func")
-//            var userstoreturn = userarray
-//            count = userstoreturn.count
-//
-//        }
-//        print("UserCount: ", count)
-//        return count
-//
+    public func getAllUsers()
+    {
+        UserManager.getAllUsers(callBack: {
+            (usersArray)  in
+            
+            if let users = usersArray  {
+                
+                self.users = users
+                
+                if let userarray = self.users {
+                    DispatchQueue.main.async {
+                        self.UserTableView.reloadData()
+                    }
+                    
+                    for user in userarray {
+                        
+                        print("UITABLE: ", user.userid)
+                    }
+                }
+            }
+        })
     }
+        
     
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    @objc func LogOut()
+    {
+        print("AuthToken heeft waarde: " , AppDelegate.authenticationToken)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+//        let removeSuccessful: Bool = KeychainWrapper.standard.removeObject(forKey: RegisterViewController.tokenkey)
+
+        AppDelegate.authenticationToken = nil
+        
+        self.navigationController?.pushViewController(homeVC, animated: true)
+    }
+}
+    
+extension UserTableViewController : UITableViewDataSource {
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
@@ -85,27 +109,20 @@ public class UserTableViewController : UITableViewController {
         return cell
     }
     
-    public func getAllUsers()
-    {
-        UserManager.getAllUsers(callBack: {
-          (usersArray)  in
+     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            print(self.users?.count ?? 0)
+            return self.users?.count ?? 0
             
-            if let users = usersArray  {
-                
-                self.users = users
-                
-                if let userarray = self.users {
-                    DispatchQueue.main.async {
-                        self.UserTableView.reloadData()
-                    }
-                   
-                    for user in userarray {
-                      
-                        print("UITABLE: ", user.userid)
-                    }
-            }
-        }
-        })
-        
+            //        if let userarray = self.users
+            //        {
+            //            print("Komt in tableView Func")
+            //            var userstoreturn = userarray
+            //            count = userstoreturn.count
+            //
+            //        }
+            //        print("UserCount: ", count)
+            //        return count
+            //
     }
 }
+
