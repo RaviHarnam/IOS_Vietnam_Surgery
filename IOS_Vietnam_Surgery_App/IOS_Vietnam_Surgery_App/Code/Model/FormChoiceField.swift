@@ -11,7 +11,7 @@ import Foundation
 public class FormChoiceField : FormField {
     public var options : [String]?
     
-    private enum CodingKeys : String, CodingKey {
+    enum CodingKeys : String, CodingKey {
         case options = "Options"
     }
     
@@ -20,6 +20,12 @@ public class FormChoiceField : FormField {
         options = try container.decodeIfPresent([String].self, forKey: .options)
         try super.init(from: decoder)
         //let superdecoder = try container.superDecoder()        
+    }
+    
+    override public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(options, forKey: .options)
+        try super.encode(to: encoder)
     }
     
     override init() {

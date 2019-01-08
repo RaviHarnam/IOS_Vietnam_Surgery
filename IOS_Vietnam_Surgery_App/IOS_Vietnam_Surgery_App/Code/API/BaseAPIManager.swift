@@ -11,9 +11,9 @@ import Alamofire
 
 public class BaseAPIManager {
     //#if DEBUG
-    //    public static let apiBaseUrl : String = "https://localhost:52053/"
+    //   public static let apiBaseUrl : String = "https:/192.168.178.2:44302/"
     //#else
-        public static let apiBaseUrl : String = "https://vietnamcloudapi.azurewebsites.net/"
+       public static let apiBaseUrl : String = "https://vietnamcloudapi.azurewebsites.net/"
     //#endif
     
     public func isConnectedToInternet() -> Bool {

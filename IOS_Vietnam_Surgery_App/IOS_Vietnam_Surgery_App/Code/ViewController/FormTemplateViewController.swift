@@ -123,7 +123,7 @@ class FormTemplateViewController: UIViewController {
     }
     
     func getFormTemplatesAsync() {
-        FormTemplateAPIManager.GetFormTemplates().responseData(completionHandler: {
+        FormTemplateAPIManager.getFormTemplates().responseData(completionHandler: {
             (response) in
             guard let responseData = response.data else { return }
             

@@ -11,14 +11,12 @@ import UIKit
 
 public class CustomTabBarController : UITabBarController {
     
-    //public let loggedInNotifier = LoggedInDelegateNotifier()
     private var vcontrollers : [UIViewController] = []
     
     public override func viewDidLoad() {
         LoggedInDelegateNotifier.delegate = self
         
         showUserActions()
-        //setTitles()
     }
     
 //    public var isLoggedIn : Bool = false {
@@ -56,7 +54,6 @@ public class CustomTabBarController : UITabBarController {
         if let items = self.tabBar.items {
             var i = 0
             for item in items {
-                //let vc = viewControllers[i]
                 item.title = NSLocalizedString(String(describing: type(of: self.vcontrollers[i])) + "TabTitle", comment: "")
                 i = i + 1
             }
@@ -64,16 +61,6 @@ public class CustomTabBarController : UITabBarController {
     }
     
     public  func showUserActions() {
-//        if let items = self.tabBar.items {
-//            var i = 0
-//            for item in items {
-//                if item.title == "User Management" {
-//                    self.viewControllers?.remove(at: i)
-//                    //self.tabBar.items = items
-//                }
-//                i = i + 1
-//            }
-//        }
         self.viewControllers?.removeAll()
         self.vcontrollers.removeAll()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -109,16 +96,22 @@ public class CustomTabBarController : UITabBarController {
         let templateVC = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController")
         let userVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController")
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        let formManagementVC = storyboard.instantiateViewController(withIdentifier: "FormManagementViewController")
+        
         self.vcontrollers.append(userVC)
         self.vcontrollers.append(templateVC)
         self.vcontrollers.append(loginVC)
+        self.vcontrollers.append(formManagementVC)
         
         let userNav = UINavigationController(rootViewController: userVC)
         let loginNav = UINavigationController(rootViewController: loginVC)
         let templateNav = UINavigationController(rootViewController: templateVC)
+        let formManagementNav = UINavigationController(rootViewController: formManagementVC)
+        
         self.viewControllers?.append(userNav)
         self.viewControllers?.append(templateNav)
         self.viewControllers?.append(loginNav)
+        self.viewControllers?.append(formManagementNav)
         
         setTitles()
     }

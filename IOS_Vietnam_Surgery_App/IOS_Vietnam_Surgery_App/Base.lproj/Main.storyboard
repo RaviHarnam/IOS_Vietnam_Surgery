@@ -33,20 +33,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4C6-Ha-by3">
-                                <rect key="frame" x="16" y="124" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4C6-Ha-by3">
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcg-rd-1Yn">
-                                <rect key="frame" x="16" y="188" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vcg-rd-1Yn">
+                                <rect key="frame" x="16" y="140" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-DM-4r7">
-                                <rect key="frame" x="168" y="248" width="38" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-DM-4r7">
+                                <rect key="frame" x="168.5" y="200" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="LoginButton:" destination="cPw-KF-45Q" eventType="touchUpInside" id="VrI-08-jdI"/>
@@ -197,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="2921" y="133"/>
         </scene>
-        <!--User Table View Controller-->
+        <!--UserTableViewController-->
         <scene sceneID="K4L-SZ-Aig">
             <objects>
                 <tableViewController storyboardIdentifier="UserTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BA6-Ss-XUs" userLabel="UserTableViewController" customClass="UserTableViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -694,20 +694,30 @@
                                 <rect key="frame" x="16" y="122.5" width="343" height="528.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yvd-lH-wKG">
+                                <rect key="frame" x="16" y="76.5" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" name="LightGrayBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="lAe-Pg-dTd" firstAttribute="trailing" secondItem="Yvd-lH-wKG" secondAttribute="trailing" constant="16" id="0A1-t2-coq"/>
                             <constraint firstItem="lAe-Pg-dTd" firstAttribute="bottom" secondItem="sDJ-aV-ASa" secondAttribute="bottom" constant="16" id="1Mn-Ro-7tf"/>
                             <constraint firstItem="7VX-f2-2f6" firstAttribute="top" secondItem="lAe-Pg-dTd" secondAttribute="top" constant="16" id="1Z0-n6-P71"/>
                             <constraint firstItem="sDJ-aV-ASa" firstAttribute="leading" secondItem="lAe-Pg-dTd" secondAttribute="leading" constant="16" id="4cO-la-kM4"/>
                             <constraint firstItem="sDJ-aV-ASa" firstAttribute="top" secondItem="7VX-f2-2f6" secondAttribute="bottom" constant="60" id="ApL-Vl-Wkz"/>
                             <constraint firstItem="lAe-Pg-dTd" firstAttribute="trailing" secondItem="sDJ-aV-ASa" secondAttribute="trailing" constant="16" id="dzV-Gb-UpR"/>
                             <constraint firstItem="7VX-f2-2f6" firstAttribute="leading" secondItem="lAe-Pg-dTd" secondAttribute="leading" constant="16" id="go2-E9-feW"/>
+                            <constraint firstItem="sDJ-aV-ASa" firstAttribute="top" secondItem="Yvd-lH-wKG" secondAttribute="bottom" constant="16" id="lbb-zc-UMi"/>
+                            <constraint firstItem="Yvd-lH-wKG" firstAttribute="leading" secondItem="lAe-Pg-dTd" secondAttribute="leading" constant="16" id="p8H-2L-xxZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lAe-Pg-dTd"/>
                     </view>
                     <connections>
                         <outlet property="sectionFieldsTableView" destination="sDJ-aV-ASa" id="gnR-mV-K6D"/>
+                        <outlet property="sectionNameTextField" destination="Yvd-lH-wKG" id="D2V-VP-VYZ"/>
                         <outlet property="sectionTopLabel" destination="7VX-f2-2f6" id="Pd3-cj-3d7"/>
                     </connections>
                 </viewController>
@@ -794,6 +804,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nju-qt-9mr"/>
+        <segue reference="gWC-vr-9Wa"/>
         <segue reference="aNC-Ud-5gy"/>
     </inferredMetricsTieBreakers>
 </document>
