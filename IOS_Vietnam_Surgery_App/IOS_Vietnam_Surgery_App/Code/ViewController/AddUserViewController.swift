@@ -46,30 +46,29 @@ class AddUserViewController: UIViewController {
 //        }
         guard let email = UserNameTextView.text, !email.isEmpty else {
             ValidationMessageToggle(toggleValue: false)
-            ValidationMessageLabel.text = "Voer aub uw e-mailadress in"
+            ValidationMessageLabel.text = NSLocalizedString("EnterUserName", comment: "")
             return
         }
 
         guard let password = PasswordTextView.text, !password.isEmpty else {
             ValidationMessageToggle(toggleValue: false)
-            ValidationMessageLabel.text = "Voer aub uw wachtwoord in"
+            ValidationMessageLabel.text = NSLocalizedString("EnterPassword", comment: "")
             return
         }
         
         guard let confirmpassword = ConfirmPasswordTextField.text, !confirmpassword.isEmpty else {
             ValidationMessageToggle(toggleValue: false)
-            ValidationMessageLabel.text = "Voer aub uw bevestigwachtwoord in"
+            ValidationMessageLabel.text = NSLocalizedString("EnterConfirmPassword", comment: "")
             return
         }
         
-     
+            
+            alertMessage(email: email)
+            var registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
+            
+            UserManager.Register(register: registerModel)
         
-        var registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
-        
-        
-        
-        
-        UserManager.Register(register: registerModel)
+       
     }
 //    @IBAction func adminButtonClick(_ sender: Any) {
 //
@@ -77,6 +76,17 @@ class AddUserViewController: UIViewController {
 //        fieldScreenerButton.isSelected = false
 //
 //    }
+    
+    private func alertMessage(email: String) {
+        
+        var usermessage = "User" + email + "added successfully"
+        let alert = UIAlertController(title: "Success", message: usermessage, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        
+        self.present(alert, animated: true)
+    }
     
     private func ValidationMessageToggle(toggleValue: Bool)
     {

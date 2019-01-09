@@ -47,7 +47,7 @@ public class UserTableViewController : UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(LogOut))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(alertForLogout))
 
 //        let addUserButton = UIButton(type: .system)
 //        addUserButton.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
@@ -85,9 +85,22 @@ public class UserTableViewController : UIViewController {
             }
         })
     }
-        
     
-    @objc func LogOut()
+    @objc func alertForLogout() {
+    var alert = UIAlertController(title: "Logout", message: "Are you sure you want to log out?", preferredStyle: .alert)
+    
+    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+    
+    self.LogOut()
+   
+    }))
+    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+    
+    self.present(alert, animated: true)
+    
+    }
+    
+     public func LogOut()
     {
         print("AuthToken heeft waarde: " , AppDelegate.authenticationToken)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -96,6 +109,7 @@ public class UserTableViewController : UIViewController {
 
         AppDelegate.authenticationToken = nil
         AppDelegate.userRole = nil
+        print("AuthToken heeft waarde: " , AppDelegate.authenticationToken)
        // self.navigationController?.pushViewController(homeVC, animated: true)
     }
 }
@@ -112,8 +126,21 @@ extension UserTableViewController : UITableViewDataSource {
             var user = userarray[indexPath.row]
            
             cell.UserNameLabel.text = user.username
+            cell.editUserImage.image = UIImage(named: "Edit-User")
+            cell.deleteUserImage.image = UIImage(named: "Delete")
+            
+            let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected(sender:)))
+            cell.deleteUserImage.isUserInteractionEnabled = true
+            cell.deleteUserImage.addGestureRecognizer(singleTap)
         }
         return cell
+    }
+    
+    //Action
+    @objc func tapDetected(sender: Int) {
+        
+        print("Delete Clicked on: ", sender)
+      
     }
     
      public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

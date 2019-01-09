@@ -24,17 +24,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AjN-OV-ES7">
-                        <rect key="frame" x="329" y="7" width="30" height="30"/>
+                        <rect key="frame" x="339" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="EVP-0W-57k"/>
-                            <constraint firstAttribute="height" constant="30" id="r3f-kx-4CJ"/>
+                            <constraint firstAttribute="width" constant="20" id="EVP-0W-57k"/>
+                            <constraint firstAttribute="height" constant="20" id="r3f-kx-4CJ"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZwU-L3-8T4">
-                        <rect key="frame" x="284" y="7" width="30" height="30"/>
+                        <rect key="frame" x="304" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="MNO-1O-6BE"/>
-                            <constraint firstAttribute="width" constant="30" id="OSg-Jz-pAH"/>
+                            <constraint firstAttribute="height" constant="20" id="MNO-1O-6BE"/>
+                            <constraint firstAttribute="width" constant="20" id="OSg-Jz-pAH"/>
                         </constraints>
                     </imageView>
                 </subviews>

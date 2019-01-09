@@ -50,3 +50,6 @@
 "AdminOption" = "Admin";
 "UserOption" = "User";
 "UserAddButton" = "Add User";
+"EnterUserName" = "Enter e-mailadress please";
+"EnterPassword" = "Enter password please";
+"EnterConfirmPassword" = "Enter confirm password please";

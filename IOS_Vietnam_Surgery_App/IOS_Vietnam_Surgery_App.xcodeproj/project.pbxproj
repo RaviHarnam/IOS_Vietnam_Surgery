@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4108311C21E698A40084C547 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108311B21E698A40084C547 /* UserDetailViewController.swift */; };
 		4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22A219C364D0009DFBE /* AppDelegate.swift */; };
 		4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */; };
 		4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
@@ -18,7 +19,6 @@
 		418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */; };
 		418BDD5D21C928C100EE0842 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418BDD5C21C928C100EE0842 /* UserTableViewController.swift */; };
 		418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */; };
-		418E575E21D285FA00F90E00 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E575D21D285FA00F90E00 /* UserDetailViewController.swift */; };
 		418E576021D2B8C200F90E00 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E575F21D2B8C200F90E00 /* AddUserViewController.swift */; };
 		418E576221D2BFF900F90E00 /* AdminTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */; };
 		41929CCC21DE164100DF469E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41929CCB21DE164100DF469E /* CustomTabBarController.swift */; };
@@ -84,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; sourceTree = "<group>"; };
+		4108311B21E698A40084C547 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_Vietnam_Surgery_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4137E22A219C364D0009DFBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4137E22C219C364D0009DFBE /* FormTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationController.swift; sourceTree = "<group>"; };
 		418BDD5C21C928C100EE0842 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customHTTPResponse.swift; sourceTree = "<group>"; };
-		418E575D21D285FA00F90E00 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		418E575F21D2B8C200F90E00 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarControllerViewController.swift; sourceTree = "<group>"; };
 		41929CCB21DE164100DF469E /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -331,10 +331,10 @@
 				BF41A86A21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift */,
 				BF42725121D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift */,
 				418BDD5C21C928C100EE0842 /* UserTableViewController.swift */,
-				418E575D21D285FA00F90E00 /* UserDetailViewController.swift */,
 				418E575F21D2B8C200F90E00 /* AddUserViewController.swift */,
 				418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */,
 				418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */,
+				4108311B21E698A40084C547 /* UserDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -500,7 +500,6 @@
 				BF6B4E1221B01D9A001FC224 /* FormTemplate.swift in Sources */,
 				41929CCE21DE386600DF469E /* LoggedInDelegate.swift in Sources */,
 				BF6B4E1021B01C8A001FC224 /* FormSection.swift in Sources */,
-				418E575E21D285FA00F90E00 /* UserDetailViewController.swift in Sources */,
 				41C08A5321D642200077EA4B /* TabBarHelper.swift in Sources */,
 				BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */,
 				41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */,
@@ -533,6 +532,7 @@
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
 				41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
 				418AD79A21DE8B7300E7C2F8 /* FormOverviewViewController.swift in Sources */,
+				4108311C21E698A40084C547 /* UserDetailViewController.swift in Sources */,
 				BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
 				41698B4721C66DD900C261D5 /* Role.swift in Sources */,
 				BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */,
