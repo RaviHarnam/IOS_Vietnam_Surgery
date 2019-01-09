@@ -33,6 +33,7 @@ class UserManager {
         UserAPIManager.Register(register: registerUser).responseData(completionHandler: {
             (response) in
             
+            print (response)
             if let data = response.data{
                 let decoder = JSONDecoder()
                 let customResponse = try? decoder.decode(customHTTPResponse.self, from: data)

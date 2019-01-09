@@ -14,6 +14,7 @@ public class UserAPIManager : BaseAPIManager {
     public static let accountPrefix = "api/Account"
     public static let loginPrefix = "token"
     public static var userobject : User?
+
     
     public static func Register(register: Register) -> DataRequest {
         let url = super.apiBaseUrl + self.accountPrefix
@@ -21,12 +22,11 @@ public class UserAPIManager : BaseAPIManager {
         let encoder = JSONEncoder()
         
         let jsondata = try? encoder.encode(register)
-        
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsondata
-        
+             
         return Alamofire.request(request)
     }
     

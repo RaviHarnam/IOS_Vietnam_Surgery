@@ -10,13 +10,16 @@ import UIKit
 
 class FormOverviewViewController: UIViewController {
     
-     public var formData: Form?
-     private var forms : [Form] = []
+    public var formData: Form?
+    private var forms : [Form] = []
+    public var searchBar: UISearchBar?
 
     @IBOutlet weak var tableViewFormoverview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupNavigationBar()
         getFormData()
     }
     
@@ -31,10 +34,24 @@ class FormOverviewViewController: UIViewController {
         self.tableViewFormoverview.register(UINib(nibName: "FormOverviewTableViewCell", bundle: nil), forCellReuseIdentifier: "FormOverviewTableViewCell")
     }
     
+    func setupNavigationBar() {
+        //Block back navigation
+        navigationItem.hidesBackButton = true
+        //Set sync imageitem to appear
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Sync"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.syncFormData))
+           navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Sync"), style: UIBarButtonItem.Style.plain, target: self, action: nil)
+        self.searchBar = UISearchBar()
+        searchBar?.placeholder = "Search on name only"
+        searchBar?.sizeToFit()
+//        if let searchbar = searchBar {
+//            searchbar.delegate = self as! UISearchBarDelegate
+//        }
+//
+        navigationItem.titleView = searchBar
+    }
+    
     func getFormData() {
-//        guard let formData = self.formData else { return }
-//
-//
+
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         let decoder = JSONDecoder()
 
@@ -54,7 +71,59 @@ class FormOverviewViewController: UIViewController {
             print(error.localizedDescription)
         }
    }
+    
+    @objc func syncFormData() {
+       var formstosync : [FormContent] = []
+//        guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+//        let decoder = JSONDecoder()
+//        do {
+//
+//            let directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
+//            for directoryContent in directoryContents {
+//                let string = try String(contentsOf: directoryContent, encoding: .utf8)
+//                let data = string.data(using: .utf8)
+//
+//                let decodedUserObject = try? decoder.decode(Form.self, from: data!)
+//                formstosync.append(decodedUserObject!)
+//            }
+        if(AppDelegate.authenticationToken != nil) {
+            for form in self.forms {
+            
+                for form in self.forms {
+                    formstosync.append(FormContent(formid: form.id, formContent: form.formContent!, images: form.formImagesBytes!))
+                }
+            for formtosync in formstosync {
+                FormContentAPIManager.syncFormContent(forms: formtosync).responseJSON(completionHandler: {
+                    (response) in
+                    
+                    
+                    print("Formcontent error: " , response)
+                    //        }
+                    //        catch {
+                    //            print(error.localizedDescription)
+                    //        }
+                    
+                })
+            }
+            }}
+
+        else
+        {
+            print("Authenticatie voor sync is: " , AppDelegate.authenticationToken)
+        }
+    }
+//    @objc func askSaveForm() {
+//        let alert = UIAlertController.init(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("SaveFormAlertMessage", comment: ""), preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
+//            (action: UIAlertAction) in
+//            self.saveForm()
+//            self.navigateToTemplateView()
+//        }))
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+//        self.present(alert, animated: true)
+//    }
 }
+
 
 extension FormOverviewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,8 +157,6 @@ extension FormOverviewViewController : UITableViewDataSource {
         DispatchQueue.main.async {
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         }
-        
-      
     }
     
     func setContentText (cell: FormOverviewTableViewCell, form: Form)

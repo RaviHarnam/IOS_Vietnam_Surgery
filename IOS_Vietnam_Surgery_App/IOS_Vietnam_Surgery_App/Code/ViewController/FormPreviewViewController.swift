@@ -99,8 +99,15 @@ public class FormPreviewViewController : UIViewController {
     
     func saveForm() {
         guard let formData = self.formData else { return }
+        formData.formContent = []
+        
         for field in formContent {
-            formData.formContent?.append(FormContentKeyValuePair(name: field.key, value: field.value))
+            formData.formContent!.append(FormContentKeyValuePair(name: field.key, value: field.value))
+        }
+        
+        for image in formData.formPictures {
+            formData.formImagesBytes = []
+            formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 1.0)!))
         }
         
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -108,7 +115,7 @@ public class FormPreviewViewController : UIViewController {
         let fileUrl = docDirectoryUrl.appendingPathComponent(fileName)
         
         do {
-            let data = try JSONEncoder().encode(self.formData)
+            let data = try JSONEncoder().encode(formData)
             try data.write(to: fileUrl, options: [])
         }
         catch {

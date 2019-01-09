@@ -46,50 +46,50 @@ public class TabBarHelper : UITabBarController {
 //
 //        return tabbar
 //    }
-    
-    public static func createAdminTabBar() -> [UIViewController] {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //
-//        let firstVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"FormFillInViewController") as! FormFillInViewController, selectedImage: "form", title: "Form")
-        let firstVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "UserTableViewController"), selectedImage: "usermanagement", title: "UserManagement")
-        
-        let secondVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormManagementViewController"), selectedImage: "consent", title: "FormManagement")
-        
-//        let secondVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "login", title: "Login")
-        
-        let thirdVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "logout", title: "Log out")
-        
-      
-        
-
-        
-        let VCArray = [firstVc, secondVc, thirdVc]
-        
-        return VCArray
-    }
+//    public static func createAdminTabBar() -> [UIViewController] {
 //
-    public static func createUserTabBar() -> [UIViewController] {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-       // let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginID")
-        
-        let firstVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"FormTemplateViewController") as! FormTemplateViewController, selectedImage: "form", title: "Form")
-        
-//        firstVc.title = "First"
-//        firstVc.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(named: "icon"), tag: 0)
-        
-         let secondVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "login", title: "Login")
-        
-        let thirdVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "medical-history", title: "Login")
-        
-//        let secondVc = loginVC
-//        secondVc.title = "Second"
-//        secondVc.tabBarItem = UITabBarItem.init(title: "Login", image: UIImage(named: "login"), tag: 0)
-        
-        let VCArray = [firstVc, secondVc, thirdVc]
-        
-        return VCArray
-    }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+////
+////        let firstVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"FormFillInViewController") as! FormFillInViewController, selectedImage: "form", title: "Form")
+//        let firstVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "UserTableViewController"), selectedImage: "usermanagement", title: "UserManagement")
+//
+//        let secondVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier: "FormManagementViewController"), selectedImage: "consent", title: "FormManagement")
+//
+////        let secondVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "login", title: "Login")
+//
+//        let thirdVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "logout", title: "Log out")
+//
+//
+//
+//
+//
+//        let VCArray = [firstVc, secondVc, thirdVc]
+//
+//        return VCArray
+//    }
+//
+//    public static func createUserTabBar() -> [UIViewController] {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//       // let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginID")
+//        
+//        let firstVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"FormTemplateViewController") as! FormTemplateViewController, selectedImage: "form", title: "Form")
+//        
+////        firstVc.title = "First"
+////        firstVc.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(named: "icon"), tag: 0)
+//        
+//         let secondVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "login", title: "Login")
+//        
+//        let thirdVc = createNavigationController(VController: storyboard.instantiateViewController(withIdentifier:"LoginID") as! LoginViewController, selectedImage: "medical-history", title: "Login")
+//        
+////        let secondVc = loginVC
+////        secondVc.title = "Second"
+////        secondVc.tabBarItem = UITabBarItem.init(title: "Login", image: UIImage(named: "login"), tag: 0)
+//        
+//        let VCArray = [firstVc, secondVc, thirdVc]
+//        
+//        return VCArray
+//    }
     
    private static func setupTabBarItems(tabbar: UITabBarController) -> [UITabBarItem]? {
     
@@ -116,13 +116,13 @@ public class TabBarHelper : UITabBarController {
 //    }
 //}
 
-extension UITabBarController {
-   static func createNavigationController(VController: UIViewController, selectedImage: String,title: String) -> UIViewController
-    {
-        let viewController = VController
-        viewController.tabBarItem.image = UIImage(named: selectedImage)
-        viewController.tabBarItem.title = title
-        
-        return viewController
-    }
-}
+//extension UITabBarController {
+//   static func createNavigationController(VController: UIViewController, selectedImage: String,title: String) -> UIViewController
+//    {
+//        let viewController = VController
+//        viewController.tabBarItem.image = UIImage(named: selectedImage)
+//        viewController.tabBarItem.title = title
+//        
+//        return viewController
+//    }
+//}

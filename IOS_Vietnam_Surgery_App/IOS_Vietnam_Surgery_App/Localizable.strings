@@ -47,3 +47,6 @@
 "AddField" = "Add field";
 "Answer" = "Answer";
 "FieldName" = "Question name";
+"AdminOption" = "Admin";
+"UserOption" = "User";
+"UserAddButton" = "Add User";
