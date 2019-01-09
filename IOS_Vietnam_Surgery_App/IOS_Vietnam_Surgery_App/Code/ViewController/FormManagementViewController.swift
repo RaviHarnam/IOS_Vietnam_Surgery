@@ -15,6 +15,8 @@ public class FormManagementViewController : UIViewController {
     
     private var formTemplates : [Form] = []
     
+    private var dataChanged = false
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -22,6 +24,16 @@ public class FormManagementViewController : UIViewController {
         
         setupTabelview()
         getFormTemplatesAsync()
+        setupAppBar()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        if dataChanged {
+            DispatchQueue.main.async {
+                self.formTemplateTableView.reloadData()
+            }
+            dataChanged = false
+        }
     }
     
     func setupTabelview() {
@@ -30,8 +42,26 @@ public class FormManagementViewController : UIViewController {
         formTemplateTableView.register(UINib(nibName: "SimpleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "SimpleLabelTableViewCell")
     }
     
+    func setupAppBar() {
+        var barButtonItems : [UIBarButtonItem] = []
+        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Add"), style: .plain, target: self, action: #selector(addClicked)))
+        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Sync"), style: .plain, target: self, action: #selector(syncClikced)))
+        navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
+    @objc func addClicked() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditViewController") as! FormTemplateEditViewController
+        vc.form = Form()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func syncClikced() {
+        getFormTemplatesAsync()
+    }
+    
     func getFormTemplatesAsync() {
-        FormTemplateAPIManager.GetFormTemplates().responseData(completionHandler: {
+        FormTemplateAPIManager.getFormTemplates().responseData(completionHandler: {
             (response) in
             guard let responseData = response.data else { return }
             
@@ -84,6 +114,23 @@ extension FormManagementViewController : UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditViewController") as! FormTemplateEditViewController
         vc.form = formTemplates[indexPath.row]
+        vc.sectionNumber = indexPath.row
+        vc.updateFormManagement = self
         navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension FormManagementViewController : CallbackProtocol {
+    public func setValue(data: Any) {
+        let dic = data as! Dictionary<Int,FormPostPutModel>
+        if let kvp = dic.first {
+            let form = kvp.value
+            self.formTemplates[kvp.key].name = form.name
+            self.formTemplates[kvp.key].region = form.region
+            self.formTemplates[kvp.key].formTemplate = form.formTemplate
+            self.dataChanged = true
+        }
+    }
+    
+    
 }

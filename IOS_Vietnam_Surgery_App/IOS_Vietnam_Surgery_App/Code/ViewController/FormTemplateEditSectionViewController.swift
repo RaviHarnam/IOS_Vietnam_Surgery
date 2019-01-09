@@ -14,26 +14,62 @@ public class FormTemplateEditSectionViewController : UIViewController {
     @IBOutlet weak var sectionFieldsTableView: UITableView!
     @IBOutlet weak var sectionTopLabel: UILabel!
     
+    @IBOutlet weak var sectionNameTextField: UITextField!
     public var section : FormSection?
+    public var sectionNumber : Int?
     
-    private let fieldTypes = ["TextField", "NumberField", "ChoiceField"]
+    //private let fieldTypes = ["TextField", "NumberField", "ChoiceField"]
+    private var fieldTypesDic : [String:String] = [:]
     private var currentEditingField : Int?
-    private var currentFieldTypeSelected : Int = 0
+    private var currentFieldTypeSelected : String? = NSLocalizedString("String", comment: "")
+    public var dataChanged : Bool = false
+    public var sectionSaveDelegate : CallbackProtocol?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.sectionTopLabel.text = section?.name
+        self.fieldTypesDic["String"] = NSLocalizedString("String", comment: "")
+        self.fieldTypesDic["Number"] = NSLocalizedString("Number", comment: "")
+        self.fieldTypesDic["Choice"] = NSLocalizedString("Choice", comment: "")
         
         setupTableView()
+        setupAppBar()
     }
     
-    public override func viewWillLayoutSubviews() {
+    public override func viewWillAppear(_ animated: Bool) {
+        if dataChanged {
+            DispatchQueue.main.async {
+                self.sectionFieldsTableView.reloadData()
+                self.resizeTableView()
+            }
+            dataChanged = false
+        }
+    }
+    
+    func resizeTableView() {
         DispatchQueue.main.async {
             var frame = self.sectionFieldsTableView.frame
             frame.size.height = self.sectionFieldsTableView.contentSize.height
             self.sectionFieldsTableView.frame = frame
         }
+    }
+    
+    public override func viewWillLayoutSubviews() {
+        if !dataChanged {
+            DispatchQueue.main.async {
+                var frame = self.sectionFieldsTableView.frame
+                frame.size.height = self.sectionFieldsTableView.contentSize.height
+                self.sectionFieldsTableView.frame = frame
+            }
+        }
+    }
+    
+    @objc func saveClicked() {
+        var dic : [Int:FormSection] = [:]
+        dic[sectionNumber!] = self.section
+        sectionSaveDelegate?.setValue(data: dic)
+        navigationController?.popViewController(animated: true)
     }
     
     func setupTableView() {
@@ -43,16 +79,25 @@ public class FormTemplateEditSectionViewController : UIViewController {
         self.sectionFieldsTableView.delegate = self
     }
     
+    func setupAppBar() {
+        var barButtonItems : [UIBarButtonItem] = []
+        barButtonItems.append(UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked)))
+        navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
     @objc func addFieldClicked(_ sender: UITapGestureRecognizer) {
         //Add field screen
         //self.currentEditingField = sender.view!.tag
         //let field = self.section?.fields?[currentEditingField!]
+        self.currentEditingField = nil
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditFieldViewController") as! FormTemplateEditFieldViewController
         //vc.fieldType = field?.type
         let field = FormChoiceField()
-        field.type = fieldTypes[currentFieldTypeSelected]
+        let kvp = fieldTypesDic.first(where: { $0.value == currentFieldTypeSelected })
+        field.type = kvp!.key
         vc.delegateCallback = self
+        vc.field = field
         //vc.field = FormChoiceField()
         
         //if field?.type?.lowercased() == "choicefield" {
@@ -62,13 +107,18 @@ public class FormTemplateEditSectionViewController : UIViewController {
     }
     
     @objc func fieldTypeValueChanged(segment: UISegmentedControl) {
-        self.currentFieldTypeSelected = segment.selectedSegmentIndex
+        self.currentFieldTypeSelected = segment.titleForSegment(at: segment.selectedSegmentIndex)
     }
 }
 
 extension FormTemplateEditSectionViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.section?.fields?.count ?? 0
+    }
+    
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,9 +159,9 @@ extension FormTemplateEditSectionViewController : UITableViewDelegate {
         footerView.addFieldLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addFieldClicked(_: ))))
         
         footerView.fieldTypeSegControl.removeAllSegments()
-        footerView.fieldTypeSegControl.insertSegment(withTitle: fieldTypes[0], at: 0, animated: true)
-        footerView.fieldTypeSegControl.insertSegment(withTitle: fieldTypes[1], at: 1, animated: true)
-        footerView.fieldTypeSegControl.insertSegment(withTitle: fieldTypes[2], at: 2, animated: true)
+        footerView.fieldTypeSegControl.insertSegment(withTitle: fieldTypesDic["String"], at: 0, animated: true)
+        footerView.fieldTypeSegControl.insertSegment(withTitle: fieldTypesDic["Number"], at: 1, animated: true)
+        footerView.fieldTypeSegControl.insertSegment(withTitle: fieldTypesDic["Choice"], at: 2, animated: true)
         footerView.fieldTypeSegControl.selectedSegmentIndex = 0
         footerView.fieldTypeSegControl.addTarget(self, action: #selector(fieldTypeValueChanged), for: .valueChanged)
         
@@ -127,10 +177,13 @@ extension FormTemplateEditSectionViewController : CallbackProtocol {
     public func setValue(data: Any) {
         if let fieldId = currentEditingField {
             let newField = data as! FormChoiceField
-            self.section?.fields![fieldId] = newField
-            DispatchQueue.main.async {
-                self.sectionFieldsTableView.reloadData()
-            }
+            self.section!.fields![fieldId] = newField
+            self.dataChanged = true
+        }
+        else {
+            let newField = data as! FormChoiceField
+            self.section!.fields?.append(newField)
+            self.dataChanged = true
         }
     }
 }

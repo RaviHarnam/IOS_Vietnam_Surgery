@@ -26,6 +26,10 @@ public class FormTemplateEditViewController : UIViewController {
     @IBOutlet weak var formNameTextField: UITextField!
     
     private var headerID = "FormPreviewHeaderView"
+    public var sectionNumber : Int?
+    
+    public var dataChanged = false
+    public var updateFormManagement : CallbackProtocol?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,16 @@ public class FormTemplateEditViewController : UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         formExplanationText.text = NSLocalizedString("FormTemplateEditExplanationText", comment: "")
         formNameTextField.placeholder = NSLocalizedString("", comment: "")
+        setupAppBar()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        if dataChanged {
+            DispatchQueue.main.async {
+                self.formTableView.reloadData()
+            }
+            dataChanged = false
+        }
     }
     
     public override func viewWillLayoutSubviews() {
@@ -69,6 +83,44 @@ public class FormTemplateEditViewController : UIViewController {
         self.formTableView.register(UINib(nibName: "DoubleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "DoubleLabelTableViewCell")
         self.formTableView.register(UINib(nibName: headerID, bundle: nil), forHeaderFooterViewReuseIdentifier: headerID)
     }
+    
+    func setupAppBar() {
+        var barButtonItems : [UIBarButtonItem] = []
+        barButtonItems.append(UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked)))
+        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Add"), style: .plain, target: self, action: #selector(addSectionClicked)))
+        navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
+    @objc func addSectionClicked() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditSectionViewController") as! FormTemplateEditSectionViewController
+        vc.sectionNumber = formSections.count + 1
+        vc.section = FormSection()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func saveClicked() {
+        let form = FormPostPutModel()
+        let template = FormTemplate()
+        template.sections = self.formSections
+        
+        form.formTemplate = FormHelper.getJsonFromFormTemplate(template: template)
+        form.name = self.form?.name
+        form.region = self.form?.region
+        FormTemplateAPIManager.editFormTemplate((self.form?.id)!, form: form).response(completionHandler: {
+            (response) in
+            print("Edited form template with statuscode: " + String(response.response!.statusCode))
+            if response.response?.statusCode == 200 {
+                var dic : [Int:FormPostPutModel] = [:]
+                dic[self.sectionNumber!] = form
+                self.updateFormManagement?.setValue(data: dic)
+                self.navigationController?.popViewController(animated: true)
+            }
+            else {
+                //TO:DO Add error alert or something. Check 400 to say nothing changed.
+            }
+        })
+    }
 }
 
 
@@ -103,9 +155,11 @@ extension FormTemplateEditViewController : UITableViewDataSource {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditSectionViewController") as! FormTemplateEditSectionViewController
             //vc.formContent = self.formContent
-            //vc.formData = self.formData
+            //vc.formData = self.formData∫
             //vc.formFillInStep = section.tag
             vc.section = self.formSections[section.tag]
+            vc.sectionNumber = section.tag
+            vc.sectionSaveDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -153,5 +207,20 @@ extension FormTemplateEditViewController : UITableViewDelegate {
         bgView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         headerview.backgroundView = bgView
         return headerview
+    }
+}
+
+extension FormTemplateEditViewController : CallbackProtocol {
+    public func setValue(data: Any) {
+        let sections = data as! Dictionary<Int,FormSection>
+        if let section = sections.first {
+            if section.key >= formSections.count {
+                self.formSections.append(section.value)
+            }
+            else {
+                self.formSections[section.key] = section.value
+            }
+            self.dataChanged = true
+        }
     }
 }

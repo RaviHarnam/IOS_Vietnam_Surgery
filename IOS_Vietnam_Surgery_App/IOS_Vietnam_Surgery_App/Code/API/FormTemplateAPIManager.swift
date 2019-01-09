@@ -12,9 +12,25 @@ import Alamofire
 public class FormTemplateAPIManager : BaseAPIManager {
     public static let formPrefix : String = "api/formulieren"
     
-    public static func GetFormTemplates() -> DataRequest {
+    public static func getFormTemplates() -> DataRequest {
         let url = super.apiBaseUrl + self.formPrefix
         return Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
+    }
+    
+    public static func editFormTemplate(_ id: Int , form: FormPostPutModel) -> DataRequest {
+        let url = super.apiBaseUrl + self.formPrefix + "/" + String(id)
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = HTTPMethod.put.rawValue
+        if let authenticationtoken = AppDelegate.authenticationToken {
+            request.addValue("Bearer " + authenticationtoken, forHTTPHeaderField: "Authorization")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(form)
+        request.httpBody = data
+        
+        return Alamofire.request(request)
     }
     
     

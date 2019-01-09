@@ -20,6 +20,12 @@ public class FormHelper {
         return formTemplate
     }
     
+    public static func getJsonFromFormTemplate(template: FormTemplate) -> String? {
+        let encoder = JSONEncoder()
+        let json = try! encoder.encode(template)
+        return String(data: json, encoding: .utf8)
+    }
+    
     public static func getUIControlsFromSection(section: FormSection) -> [(String,BaseRow)]? {
         var controls : [(String,BaseRow)] = []
         guard let fields = section.fields else { return nil }
@@ -72,10 +78,10 @@ public class FormHelper {
                 guard !name.isEmpty else { return false }
                 guard !type.isEmpty else { return false }
                 
-                guard type.lowercased() != "choice" || type.lowercased() == "choice" && field is FormChoiceField else { return false }
+                //guard type.lowercased() != "choice" || type.lowercased() == "choice" && field is FormChoiceField else { return false }
                 
                 if type.lowercased() == "choice" {
-                    guard let options = (field as! FormChoiceField).options else { return false }
+                    guard let options = field.options else { return false }
                     guard options.count > 0 else { return false }
                 }
             }

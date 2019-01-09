@@ -59,6 +59,10 @@ class LoginViewController: UIViewController {
         navigationItem.title = "Login"
         setupSpinner()
         setupLoginPlaceHolders()
+        #if DEBUG
+            UsernameField.text = "test@test.nl"
+            PasswordField.text = "Test01!"
+        #endif
     }
     
     //TODO add function to get the user role when logging in.

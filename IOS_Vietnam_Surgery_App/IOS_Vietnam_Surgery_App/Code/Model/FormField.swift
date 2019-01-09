@@ -26,6 +26,14 @@ public class FormField : Codable {
         required = try values.decode(String.self, forKey: CodingKeys.required)
     }
     
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(type, forKey: .type)
+        try container.encode(required, forKey: .required)
+    }
+    
+    
     init() {
         
     }
