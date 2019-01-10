@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    public static var userName : String?
     public static var userTab : UITabBarController?
     public static var adminTab : UITabBarController?
    

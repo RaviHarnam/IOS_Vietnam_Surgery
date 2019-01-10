@@ -20,7 +20,7 @@ public class FormManagementViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = NSLocalizedString("FormManagementViewControllerTitle", comment: "")
+        title = NSLocalizedString("FormManagementViewControllerTabTitle", comment: "")
         
         setupTabelview()
         getFormTemplatesAsync()

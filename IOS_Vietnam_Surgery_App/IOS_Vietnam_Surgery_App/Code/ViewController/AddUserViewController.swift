@@ -79,8 +79,8 @@ class AddUserViewController: UIViewController {
     
     private func alertMessage(email: String) {
         
-        var usermessage = "User" + email + "added successfully"
-        let alert = UIAlertController(title: "Success", message: usermessage, preferredStyle: .alert)
+        var usermessage = "User " + email + " added successfully"
+        let alert = UIAlertController(title: "Success ", message: usermessage, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
@@ -122,6 +122,7 @@ class AddUserViewController: UIViewController {
         view.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Add User"
+        
         setupLabels()
     }
     
@@ -136,6 +137,10 @@ class AddUserViewController: UIViewController {
         OptionUISegmentedControl.insertSegment(withTitle: NSLocalizedString("AdminOption", comment: ""), at: 0, animated: true)
         OptionUISegmentedControl.selectedSegmentIndex = 0
         OptionUISegmentedControl.insertSegment(withTitle: NSLocalizedString("UserOption", comment: ""), at: 1, animated: true)
+        PasswordTextView.autocorrectionType = .no
+        PasswordTextView.isSecureTextEntry = true
+        ConfirmPasswordTextField.autocorrectionType = .no
+        ConfirmPasswordTextField.isSecureTextEntry = true
         setupButtonsText()
     }
     

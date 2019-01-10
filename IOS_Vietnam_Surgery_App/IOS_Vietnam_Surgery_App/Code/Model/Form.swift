@@ -29,6 +29,7 @@ public class Form : Codable {
         case formTemplate = "FormTemplate"
         case formContent = "FormContent"
         case formImagesBytes = "Images"
+        case createdOn = "CreatedOn"
     }
     
     enum EncodingKeys : String, CodingKey {
@@ -38,15 +39,32 @@ public class Form : Codable {
         case formTemplate = "FormTemplate"
         case formContent = "FormContent"
         case formImagesBytes = "Images"
+        case createdOn = "CreatedOn"
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        region = try container.decode(String.self, forKey: .region)
+        formTemplate = try container.decode(String.self, forKey: .formTemplate)
+        formContent = try container.decodeIfPresent([FormContentKeyValuePair].self, forKey: .formContent)
+        formImagesBytes = try container.decodeIfPresent([[UInt8]].self, forKey: .formImagesBytes)
+        createdOn = try container.decodeIfPresent(String.self, forKey: .createdOn)
+    }
+    
+    init() {
+        
     }
     
     func encode(encoder: Encoder) throws {
-       var container = encoder.container(keyedBy: EncodingKeys.self)
-       try container.encode(id, forKey: .id)
+        var container = encoder.container(keyedBy: EncodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(region, forKey: .region)
         try container.encode(formTemplate, forKey: .formTemplate)
         try container.encode(formContent, forKey: .formContent)
         try container.encode(formImagesBytes, forKey: .formImagesBytes)
+        try container.encode(createdOn, forKey: .createdOn)
     }
 }

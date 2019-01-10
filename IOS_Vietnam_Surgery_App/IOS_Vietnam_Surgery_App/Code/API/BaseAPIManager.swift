@@ -16,7 +16,7 @@ public class BaseAPIManager {
        public static let apiBaseUrl : String = "https://vietnamcloudapi.azurewebsites.net/"
     //#endif
     
-    public func isConnectedToInternet() -> Bool {
+    public static func isConnectedToInternet() -> Bool {
         return NetworkReachabilityManager()!.isReachable
     }
 }

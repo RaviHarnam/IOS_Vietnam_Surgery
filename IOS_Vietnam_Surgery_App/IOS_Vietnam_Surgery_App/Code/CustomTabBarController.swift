@@ -110,31 +110,41 @@ public class CustomTabBarController : UITabBarController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //let userVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController")
-        let templateVC = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController")
+      //  let templateVC = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController")
         let userVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController")
-
+        let formOverViewVC = storyboard.instantiateViewController(withIdentifier: "FormOverviewViewController") as! FormOverviewViewController
 
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        let logoutVC = storyboard.instantiateViewController(withIdentifier: "LogoutViewController") as! LogoutViewController
+        logoutVC.loggingOut = true
         let formManagementVC = storyboard.instantiateViewController(withIdentifier: "FormManagementViewController")
         
 
         self.vcontrollers.append(userVC)
-        self.vcontrollers.append(templateVC)
-        self.vcontrollers.append(loginVC)
+       // self.vcontrollers.append(templateVC)
         self.vcontrollers.append(formManagementVC)
+        self.vcontrollers.append(formOverViewVC)
+        self.vcontrollers.append(logoutVC)
         
         let userNav = UINavigationController(rootViewController: userVC)
-        let loginNav = UINavigationController(rootViewController: loginVC)
-        let templateNav = UINavigationController(rootViewController: templateVC)
-
+       // let loginNav = UINavigationController(rootViewController: loginVC)
+       // let templateNav = UINavigationController(rootViewController: templateVC)
+        let formoverviewNav = UINavigationController(rootViewController: formOverViewVC)
+        let logOutNav = UINavigationController(rootViewController: logoutVC)
+        
+        
         userNav.tabBarItem.image = UIImage(named:"usermanagement")
-
+        formOverViewVC.tabBarItem.image = UIImage(named: "medical-history")
+        formManagementVC.tabBarItem.image = UIImage(named: "formmanagement")
+        logoutVC.tabBarItem.image = UIImage(named:"logout")
         let formManagementNav = UINavigationController(rootViewController: formManagementVC)
         
         self.viewControllers?.append(userNav)
-        self.viewControllers?.append(templateNav)
-        self.viewControllers?.append(loginNav)
+        //self.viewControllers?.append(templateNav)
+        //self.viewControllers?.append(loginNav)
         self.viewControllers?.append(formManagementNav)
+        self.viewControllers?.append(formoverviewNav)
+        self.viewControllers?.append(logoutVC)
         
         setTitles()
     }

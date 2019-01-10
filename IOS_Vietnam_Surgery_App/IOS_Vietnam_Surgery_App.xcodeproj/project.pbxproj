@@ -39,6 +39,10 @@
 		41B965CB21E54400004CBCC0 /* FormContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B965CA21E54400004CBCC0 /* FormContent.swift */; };
 		41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BA948921C2916E00969EA4 /* UserAPIManager.swift */; };
 		41C08A5321D642200077EA4B /* TabBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C08A5221D642200077EA4B /* TabBarHelper.swift */; };
+		41DC462B21E76BAB0095A311 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC462A21E76BAB0095A311 /* LogoutViewController.swift */; };
+		41DC462D21E7AFD30095A311 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */; };
+		41DC462F21E7D3010095A311 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC462E21E7D3010095A311 /* AlertHelper.swift */; };
+		41DC463121E7DEAF0095A311 /* UserPutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC463021E7DEAF0095A311 /* UserPutModel.swift */; };
 		5D50AC1E89F761F24F45A07F /* Pods_IOS_Vietnam_Surgery_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */; };
 		BF29DC4421D11228006F7173 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29DC4321D11228006F7173 /* ViewHelper.swift */; };
 		BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34418D21B6990E00F23674 /* DoubleLabelTableViewCell.swift */; };
@@ -118,6 +122,10 @@
 		41B965CA21E54400004CBCC0 /* FormContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContent.swift; sourceTree = "<group>"; };
 		41BA948921C2916E00969EA4 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
 		41C08A5221D642200077EA4B /* TabBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelper.swift; sourceTree = "<group>"; };
+		41DC462A21E76BAB0095A311 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
+		41DC462E21E7D3010095A311 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		41DC463021E7DEAF0095A311 /* UserPutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPutModel.swift; sourceTree = "<group>"; };
 		A03162FCF59257F0357707C4 /* Pods_IOS_Vietnam_Surgery_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_Vietnam_Surgery_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBF974EACA360FA34F00E83 /* Pods-IOS_Vietnam_Surgery_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.release.xcconfig"; sourceTree = "<group>"; };
 		BF29DC4321D11228006F7173 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 				41698B4621C66DD900C261D5 /* Role.swift */,
 				41B965CA21E54400004CBCC0 /* FormContent.swift */,
 				BF41922121E3A49C009222B0 /* FormPostPutModel.swift */,
+				41DC463021E7DEAF0095A311 /* UserPutModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,6 +344,7 @@
 				418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */,
 				418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */,
 				4108311B21E698A40084C547 /* UserDetailViewController.swift */,
+				41DC462A21E76BAB0095A311 /* LogoutViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -348,6 +358,8 @@
 				41C08A5221D642200077EA4B /* TabBarHelper.swift */,
 				41929CCD21DE386600DF469E /* LoggedInDelegate.swift */,
 				BF59671421DCD72400511F3C /* CallbackProtocol.swift */,
+				41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */,
+				41DC462E21E7D3010095A311 /* AlertHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -508,6 +520,7 @@
 				418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */,
 				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
 				419732EE21E620B800525ADA /* UserOverviewTableViewCell.swift in Sources */,
+				41DC462D21E7AFD30095A311 /* DateTimeHelper.swift in Sources */,
 				41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */,
 				BF59671521DCD72400511F3C /* CallbackProtocol.swift in Sources */,
 				41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */,
@@ -543,9 +556,11 @@
 				BF34419421BBEB5300F23674 /* FormContentKeyValuePair.swift in Sources */,
 				BF42725221D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift in Sources */,
 				BF41A86B21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift in Sources */,
+				41DC462B21E76BAB0095A311 /* LogoutViewController.swift in Sources */,
 				BF7AA58E21AD6CCA00904B6A /* ColorHelper.swift in Sources */,
 				BFEDD44F21B4048A00E62918 /* CellWithUITextfield.swift in Sources */,
 				418E576221D2BFF900F90E00 /* AdminTabBarControllerViewController.swift in Sources */,
+				41DC462F21E7D3010095A311 /* AlertHelper.swift in Sources */,
 				BF6B4E0C21AFF40E001FC224 /* TableCellWithUITextfield.swift in Sources */,
 				BF42725621D8D81A00E31F0B /* SimpleTextFieldTableViewCell.swift in Sources */,
 				41B965CB21E54400004CBCC0 /* FormContent.swift in Sources */,
@@ -554,6 +569,7 @@
 				41929CCC21DE164100DF469E /* CustomTabBarController.swift in Sources */,
 				BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */,
 				BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */,
+				41DC463121E7DEAF0095A311 /* UserPutModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

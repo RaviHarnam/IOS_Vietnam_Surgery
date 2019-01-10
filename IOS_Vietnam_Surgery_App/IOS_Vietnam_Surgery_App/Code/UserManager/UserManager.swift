@@ -75,6 +75,7 @@ class UserManager {
                     //if let authtresponse = authenticationresponse {
                     AppDelegate.authenticationToken = authtoken
                     AppDelegate.userRole = authresponse.role
+                    AppDelegate.userName = authresponse.username
                     print("UserRole = ", AppDelegate.userRole)
                     KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
                         callBack(true)

@@ -17,4 +17,12 @@ public class Role : Codable {
         case userid = "UserId"
         case roleid = "RoleId"
     }
+    
+    init() {
+        
+    }
+    
+    init(roleid : String) {
+        self.roleid = roleid
+    }
 }
