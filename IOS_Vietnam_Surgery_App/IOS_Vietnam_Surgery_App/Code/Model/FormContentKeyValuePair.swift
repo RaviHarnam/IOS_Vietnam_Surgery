@@ -17,6 +17,12 @@ public class FormContentKeyValuePair : Codable {
         self.value = value
     }
     
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode((String?).self, forKey: .name)
+        value = try container.decode((String?).self, forKey: .value)
+    }
+    
     enum CodingKeys : String, CodingKey {
         case name = "Name"
         case value = "Value"

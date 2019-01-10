@@ -93,29 +93,38 @@ class LoginViewController: UIViewController {
     
     func UserLogin() {
         
-        let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text, grant_type: "password")
-        UserManager.UserLogIn(login: filledInLogin, callBack: {
-            (result) in
-            
-            if(result) {
-                self.navigateToAdminInterface()
-            }
-            else {
-                print("Waarde result: ", result)
-                self.UsernameField.layer.borderWidth = 1
-                self.UsernameField.layer.borderColor = UIColor.red.cgColor
-                self.PasswordField.layer.borderColor = UIColor.red.cgColor
-            }
-        })
-        isFetching = false
+        
+        if (BaseAPIManager.isConnectedToInternet()) {
+            let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text, grant_type: "password")
+            UserManager.UserLogIn(login: filledInLogin, callBack: {
+                (result) in
+                
+                if(result) {
+                    print("Wat zit er in result: ", result)
+                    //self.navigateToAdminInterface()∫
+                }
+                else {
+                    print("Waarde result: ", result)
+                    self.UsernameField.layer.borderWidth = 1
+                    self.UsernameField.layer.borderColor = UIColor.red.cgColor
+                    self.PasswordField.layer.borderColor = UIColor.red.cgColor
+                }
+            })
+            isFetching = false
+        }
+        else {
+            var alert = AlertHelper.NoInternetAlert()
+            self.present(alert, animated: true)
+        }
+
     }
     
-    private func navigateToAdminInterface () {
-        
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let adminNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "UserTableViewController") as! UserTableViewController
-        print("navigating to usertable with: " + self.navigationController.debugDescription)
-        navigationController!.pushViewController(adminNavigationVC, animated: true)
-    }
+//    private func navigateToAdminInterface () {
+//
+//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        let adminNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "UserTableViewController") as! UserTableViewController
+//        print("navigating to usertable with: " + self.navigationController.debugDescription)
+//        navigationController!.pushViewController(adminNavigationVC, animated: true)
+//    }
 }

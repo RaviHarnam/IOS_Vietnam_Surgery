@@ -65,7 +65,11 @@ public class CustomTabBarController : UITabBarController {
         self.vcontrollers.removeAll()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //let userVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController")
-        let templateVC = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController
+        
+        
+        let templateVC = UITabBarController.createViewController(VController: storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController, selectedImage:"form")
+            
+            //storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController
         //let userVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController")
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         
@@ -78,8 +82,11 @@ public class CustomTabBarController : UITabBarController {
 
         //let userNav = UINavigationController(rootViewController: userVC)
         let loginNav = UINavigationController(rootViewController: loginVC)
+        loginNav.tabBarItem.image = UIImage(named: "login")
+
         let templateNav = UINavigationController(rootViewController: templateVC)
         let formoverviewNav = UINavigationController(rootViewController: formOverviewVC)
+        formoverviewNav.tabBarItem.image = UIImage(named:"medical-history")
         self.viewControllers?.append(templateNav)
         self.viewControllers?.append(loginNav)
         self.viewControllers?.append(formoverviewNav)
@@ -87,31 +94,57 @@ public class CustomTabBarController : UITabBarController {
         setTitles()
     }
     
+    
+    public func AddViewControllers(viewController: UIViewController) {
+        
+        self.vcontrollers.append(viewController)
+    
+    }
+    
+    public func AddNavcontrollers(navController: UINavigationController) {
+        self.viewControllers?.append(navController)
+    }
     public  func showAdminActions() {
         self.viewControllers?.removeAll()
         self.vcontrollers.removeAll()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //let userVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController")
-        let templateVC = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController")
+      //  let templateVC = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController")
         let userVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController")
+        let formOverViewVC = storyboard.instantiateViewController(withIdentifier: "FormOverviewViewController") as! FormOverviewViewController
+
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        let logoutVC = storyboard.instantiateViewController(withIdentifier: "LogoutViewController") as! LogoutViewController
+        logoutVC.loggingOut = true
         let formManagementVC = storyboard.instantiateViewController(withIdentifier: "FormManagementViewController")
         
+
         self.vcontrollers.append(userVC)
-        self.vcontrollers.append(templateVC)
-        self.vcontrollers.append(loginVC)
+       // self.vcontrollers.append(templateVC)
         self.vcontrollers.append(formManagementVC)
+        self.vcontrollers.append(formOverViewVC)
+        self.vcontrollers.append(logoutVC)
         
         let userNav = UINavigationController(rootViewController: userVC)
-        let loginNav = UINavigationController(rootViewController: loginVC)
-        let templateNav = UINavigationController(rootViewController: templateVC)
+       // let loginNav = UINavigationController(rootViewController: loginVC)
+       // let templateNav = UINavigationController(rootViewController: templateVC)
+        let formoverviewNav = UINavigationController(rootViewController: formOverViewVC)
+        let logOutNav = UINavigationController(rootViewController: logoutVC)
+        
+        
+        userNav.tabBarItem.image = UIImage(named:"usermanagement")
+        formOverViewVC.tabBarItem.image = UIImage(named: "medical-history")
+        formManagementVC.tabBarItem.image = UIImage(named: "formmanagement")
+        logoutVC.tabBarItem.image = UIImage(named:"logout")
         let formManagementNav = UINavigationController(rootViewController: formManagementVC)
         
         self.viewControllers?.append(userNav)
-        self.viewControllers?.append(templateNav)
-        self.viewControllers?.append(loginNav)
+        //self.viewControllers?.append(templateNav)
+        //self.viewControllers?.append(loginNav)
         self.viewControllers?.append(formManagementNav)
+        self.viewControllers?.append(formoverviewNav)
+        self.viewControllers?.append(logoutVC)
         
         setTitles()
     }
@@ -131,4 +164,23 @@ extension CustomTabBarController : LoggedInDelegate {
     public func loggedOut() {
         self.showUserActions()
     }
+}
+
+extension UITabBarController {
+    static func createViewController(VController: UIViewController, selectedImage: String) -> UIViewController
+    {
+        let viewController = VController
+        viewController.tabBarItem.image = UIImage(named: selectedImage)
+        
+        return viewController
+    }
+    
+    static func createNavigationController(rootViewController: UIViewController) -> UINavigationController {
+        	let VController = rootViewController
+            let navigationController = UINavigationController(rootViewController: VController)
+        
+            //image moet hier eigenlijk toegevoegd worden
+        return navigationController
+    }
+    
 }

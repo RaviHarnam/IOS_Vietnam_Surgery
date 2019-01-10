@@ -14,6 +14,7 @@ public class UserAPIManager : BaseAPIManager {
     public static let accountPrefix = "api/Account"
     public static let loginPrefix = "token"
     public static var userobject : User?
+
     
     public static func Register(register: Register) -> DataRequest {
         let url = super.apiBaseUrl + self.accountPrefix
@@ -21,12 +22,11 @@ public class UserAPIManager : BaseAPIManager {
         let encoder = JSONEncoder()
         
         let jsondata = try? encoder.encode(register)
-        
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsondata
-        
+             
         return Alamofire.request(request)
     }
     
@@ -71,5 +71,30 @@ public class UserAPIManager : BaseAPIManager {
         }
         
          return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard let jsonData = response.data else {return}})
+    }
+    
+    public static func DeleteUser(token: String, userid: String) -> DataRequest {
+        let url = super.apiBaseUrl + self.accountPrefix + "/" + userid
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+        
+        return Alamofire.request(request)
+    }
+    
+    public static func EditUser(token: String, user : UserPutModel, userId: String) -> DataRequest {
+        let url = super.apiBaseUrl + self.accountPrefix + "/" + userId
+     
+        let encoder = JSONEncoder()
+        let userData = try? encoder.encode(user)
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpBody = userData
+        request.setValue("Bearer " + token , forHTTPHeaderField: "Authorization")
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        
+        return Alamofire.request(request)
     }
 }

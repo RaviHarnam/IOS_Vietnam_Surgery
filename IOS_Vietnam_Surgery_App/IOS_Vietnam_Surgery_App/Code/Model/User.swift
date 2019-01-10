@@ -14,11 +14,12 @@ public class User : Codable {
     var userrole : [Role]?
     var userid : String?
     var username : String?
-    
+    //var role : String?
     
     enum CodingKeys : String, CodingKey {
         case email = "Email"
         case userrole = "Roles"
+        //case role = "Role"
         case userid = "Id"
         case username = "UserName"
     }  

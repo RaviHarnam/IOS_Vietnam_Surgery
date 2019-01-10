@@ -33,6 +33,7 @@ class UserManager {
         UserAPIManager.Register(register: registerUser).responseData(completionHandler: {
             (response) in
             
+            print (response)
             if let data = response.data{
                 let decoder = JSONDecoder()
                 let customResponse = try? decoder.decode(customHTTPResponse.self, from: data)
@@ -74,6 +75,7 @@ class UserManager {
                     //if let authtresponse = authenticationresponse {
                     AppDelegate.authenticationToken = authtoken
                     AppDelegate.userRole = authresponse.role
+                    AppDelegate.userName = authresponse.username
                     print("UserRole = ", AppDelegate.userRole)
                     KeychainWrapper.standard.set(authtoken, forKey: LoginViewController.tokenkey)
                         callBack(true)

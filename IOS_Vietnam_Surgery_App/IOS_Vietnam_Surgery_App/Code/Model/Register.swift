@@ -10,14 +10,12 @@ import Foundation
 
 public class Register : Codable {
     
-    var username : String?
     var password : String?
     var confirmpassword : String?
     var userrole : String?
     var email: String?
     
-    init(username: String?, password: String?, confirmpassword: String?, userrole: String?, email: String?) {
-        self.username = username
+    init(password: String?, confirmpassword: String?, userrole: String?, email: String?) {
         self.password = password
         self.confirmpassword = confirmpassword
         self.userrole = userrole
@@ -25,7 +23,6 @@ public class Register : Codable {
     }
     
     enum CodingKeys : String, CodingKey {
-        case username = "Username"
         case password = "Password"
         case confirmpassword = "ConfirmPassword"
         case userrole = "UserRole"
