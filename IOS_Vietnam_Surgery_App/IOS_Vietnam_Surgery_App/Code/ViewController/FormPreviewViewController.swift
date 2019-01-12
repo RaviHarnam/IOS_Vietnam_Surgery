@@ -54,6 +54,10 @@ public class FormPreviewViewController : UIViewController {
             newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
         }
         
+        if let formname = formData?.name {
+            newTitle += " - " + formname
+        }
+        
         if let district = formContent[NSLocalizedString("District", comment: "")] {
             newTitle += " - " + district
         }
@@ -100,8 +104,6 @@ public class FormPreviewViewController : UIViewController {
     func saveForm() {
         guard let formData = self.formData else { return }
         formData.formContent = []
-        let formatter = DateFormatter()
-        let date = Date()
         
         formData.createdOn = DateTimeHelper.getCurrentDateTimeString()
         for field in formContent {
@@ -110,7 +112,7 @@ public class FormPreviewViewController : UIViewController {
         
         for image in formData.formPictures {
             formData.formImagesBytes = []
-            formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 1.0)!))
+            formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 0.2)!))
         }
         
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -120,6 +122,8 @@ public class FormPreviewViewController : UIViewController {
         do {
             let data = try JSONEncoder().encode(formData)
             try data.write(to: fileUrl, options: [])
+            navigationController?.popToRootViewController(animated: true)
+            //navigateToTemplateView()
         }
         catch {
             print(error)
@@ -144,52 +148,9 @@ extension FormPreviewViewController : UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        view.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
-//        view.layoutMargins.left = 26
-//        view.layoutMargins.top = 42
-//        view.layoutMargins.bottom = 42
-//        //view.frame = CGRect(x: UIScreen.main.bounds.width , y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-//
-//        let label = UILabel(frame: CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: 80, height: 40))
-//        label.textColor = UIColor.black
-//        label.text = formSections[section].name
-//        label.font = label.font.withSize(34)
-//        label.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
-//        label.sizeToFit()
-//
-//        let image = UIImage(named: "Edit")
-//        let imageView = UIImageView(image: image)
-//        //imageView.frame = CGRect(x: view.frame.maxX, y: view.center.y, width: 50, height: 50)
-//        print(view.frame.maxX)
-//        imageView.layoutMargins.right = 42
-//        imageView.layoutMargins.left = 200
-//
-//        //label.layoutMargins.left = 26
-//        //label.layoutMargins.top = 42
-//        //label.layoutMargins.bottom = 42
-//        view.addSubview(label)
-//        view.addSubview(imageView)
-//
-//        return view
+
         let headerview = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID) as! FormPreviewHeaderView
-//        if headerview.content == nil {
-//            let v = UINib(nibName: "FormPreviewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FormPreviewContent
-//            headerview.contentView.addSubview(v)
-//            v.translatesAutoresizingMaskIntoConstraints = false
-//            v.topAnchor.constraint(equalTo: headerview.contentView.topAnchor).isActive = true
-//            v.bottomAnchor.constraint(equalTo: headerview.contentView.bottomAnchor).isActive = true
-//            v.leadingAnchor.constraint(equalTo: headerview.contentView.leadingAnchor).isActive = true
-//            v.trailingAnchor.constraint(equalTo: headerview.contentView.trailingAnchor).isActive = true
-//            headerview.content = v
-//        }
-//
-//        headerview.content.label.text = formSections[section].name
-//        headerview.content.label.font = headerview.content.label.font.withSize(34)
-//        headerview.content.image.image = UIImage(named: "Edit")
-//        headerview.content.image.isUserInteractionEnabled = true
-//        headerview.content.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editSectionClicked)))
-//        headerview.content.image.tag = section
+
         let bgView = UIView()
         bgView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         headerview.backgroundView = bgView

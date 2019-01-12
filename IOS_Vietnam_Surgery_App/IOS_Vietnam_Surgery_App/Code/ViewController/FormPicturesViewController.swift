@@ -75,6 +75,10 @@ public class FormPicturesViewController : UIViewController  {
         
         newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
         
+        if let formname = formData?.name {
+            newTitle += " - " + formname
+        }
+        
         if let district = formContent[NSLocalizedString("District", comment: "")] {
             newTitle += " - " + district
         }
@@ -167,6 +171,10 @@ extension FormPicturesViewController : UICollectionViewDelegate {
             vc.imageName = self.formContent[NSLocalizedString("Name", comment: "")]!
             vc.imageNumber = indexPath.row - 1
             vc.images = (self.formData?.formPictures)!
+            vc.formFillInStep = self.formFillInStep
+            vc.callback = self
+            vc.formData = formData
+            vc.formContent = formContent
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -188,4 +196,16 @@ extension FormPicturesViewController : UIImagePickerControllerDelegate, UINaviga
 
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     }
+}
+
+extension FormPicturesViewController : CallbackProtocol {
+    public func setValue(data: Any) {
+        let images = data as! [UIImage]
+        self.formData?.formPictures = images
+        DispatchQueue.main.async {
+            self.picturesCollectionView.reloadData()
+        }
+    }
+    
+    
 }

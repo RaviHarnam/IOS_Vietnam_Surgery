@@ -65,11 +65,7 @@ class LoginViewController: UIViewController {
         #endif
     }
     
-    //TODO add function to get the user role when logging in.
-    // Based on this go to AdminVC or UserVC
-    
     func setupLoginPlaceHolders() {
-        
         UsernameField.placeholder = "Fill in username"
         UsernameField.autocorrectionType = .no
         PasswordField.autocorrectionType = .no
@@ -77,7 +73,6 @@ class LoginViewController: UIViewController {
         PasswordField.placeholder = "Fill in password"
         LoginButton.setTitle("Login", for: .normal)
     }
-    
     
     @objc func usernameValueChanged ()
     {
@@ -88,18 +83,17 @@ class LoginViewController: UIViewController {
     @objc func passwordValueChanged ()
     {
         self.PasswordField.layer.borderWidth = 0
+        self.PasswordField.layer.borderColor = nil
     }
     
     
     func UserLogin() {
-        
-        
         if (BaseAPIManager.isConnectedToInternet()) {
             let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text, grant_type: "password")
             UserManager.UserLogIn(login: filledInLogin, callBack: {
                 (result) in
                 
-                if(result) {
+                if(result) { //Succesfully logged in, appbar will do nav for us
                     print("Wat zit er in result: ", result)
                     //self.navigateToAdminInterface()∫
                 }
@@ -107,16 +101,16 @@ class LoginViewController: UIViewController {
                     print("Waarde result: ", result)
                     self.UsernameField.layer.borderWidth = 1
                     self.UsernameField.layer.borderColor = UIColor.red.cgColor
+                    self.PasswordField.layer.borderWidth = 1
                     self.PasswordField.layer.borderColor = UIColor.red.cgColor
                 }
             })
             isFetching = false
         }
         else {
-            var alert = AlertHelper.NoInternetAlert()
+            let alert = AlertHelper.NoInternetAlert()
             self.present(alert, animated: true)
         }
-
     }
     
 //    private func navigateToAdminInterface () {

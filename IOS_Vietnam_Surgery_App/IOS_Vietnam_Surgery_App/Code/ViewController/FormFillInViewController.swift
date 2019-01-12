@@ -76,6 +76,10 @@ public class FormFillInViewController : Eureka.FormViewController {
         
         newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
         
+        if let formname = formData?.name {
+            newTitle += " - " + formname
+        }
+        
         if let district = formContent[NSLocalizedString("District", comment: "")] {
             newTitle += " - " + district
         }

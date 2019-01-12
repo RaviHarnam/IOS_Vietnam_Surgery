@@ -19,6 +19,10 @@ public class FormPictureViewController : UIViewController {
     
     public var formFillInStep : Int = 0
     
+    public var formContent : [String:String] = [:]
+    
+    public var formData : Form?
+    
     @IBOutlet weak var leftTopLabel: UILabel!
     
     @IBOutlet weak var rightTopLabel: UILabel!
@@ -31,16 +35,53 @@ public class FormPictureViewController : UIViewController {
     
     @IBOutlet weak var nextBarButtonItem: UIBarButtonItem!
     
+    public var callback : CallbackProtocol?
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+        
         setupData()
+        setupSwipeGestures()
         
         deleteBarButtonItem.action = #selector(deleteClicked)
-        nextBarButtonItem.action = #selector(nextClicked)
+        if self.images.count >= 2 {
+            nextBarButtonItem.isEnabled = true
+            nextBarButtonItem.action = #selector(nextClicked)
+        }
+        else {
+            nextBarButtonItem.isEnabled = false
+            nextBarButtonItem.title = ""
+            //nextBarButtonItem.image =
+        }
+    }
+    
+    func updateTitle() {
+        var newTitle : String = ""
+        
+        newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        
+        if let formname = formData?.name {
+            newTitle += " - " + formname
+        }
+        
+        if let district = formContent[NSLocalizedString("District", comment: "")] {
+            newTitle += " - " + district
+        }
+        
+        if let name = formContent[NSLocalizedString("Name", comment: "")] {
+            newTitle += " - " + name
+        }
+        
+        if let birthYear = formContent[NSLocalizedString("Birthyear", comment: "")] {
+            newTitle += " - " + birthYear
+        }
+        
+        self.title = newTitle
     }
     
     func setupData() {
+        updateTitle()
         leftTopLabel.text = NSLocalizedString("Pictures", comment: "")
         rightTopLabel.text = NSString.localizedStringWithFormat(NSLocalizedString("StepXOutOfY", comment: "") as NSString, formFillInStep + 1, formFillInStep + 2) as String
         imageTopLabel.text = imageName + "_" + "\(self.imageNumber)" + ".jpg"
@@ -51,11 +92,46 @@ public class FormPictureViewController : UIViewController {
         }
     }
     
+    func setupSwipeGestures() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipedRight))
+        swipeRight.direction = .right
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+        swipeLeft.direction = .left
+        
+        self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func swipedRight() {
+        goToNext()
+    }
+    
+    @objc func swipedLeft() {
+        goToPrevious()
+    }
+    
     @objc func deleteClicked() {
         self.images.remove(at: imageNumber)
+        self.callback?.setValue(data: self.images)
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     @objc func nextClicked() {
+        goToNext()
+    }
+    
+    func goToPrevious() {
+        if self.imageNumber == 0 {
+            self.imageNumber = self.images.count - 1
+        }
+        else {
+            self.imageNumber = self.imageNumber - 1
+        }
+        setupData()
+    }
+    
+    func goToNext() {
         if self.imageNumber + 1 >= self.images.count {
             self.imageNumber = 0
         }

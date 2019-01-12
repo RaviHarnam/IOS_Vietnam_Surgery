@@ -105,17 +105,35 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JJr-zb-Xj7">
+                                <rect key="frame" x="32" y="641" width="311" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWE-xX-N8Y">
+                                <rect key="frame" x="166.5" y="631.5" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g16-gT-7M6" firstAttribute="trailing" secondItem="e3u-gE-87P" secondAttribute="trailing" id="63S-mI-4Wn"/>
+                            <constraint firstItem="JJr-zb-Xj7" firstAttribute="leading" secondItem="R72-Cx-V9r" secondAttribute="leadingMargin" constant="16" id="67T-ei-1Sg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JJr-zb-Xj7" secondAttribute="trailing" constant="16" id="8C0-9O-Kvg"/>
+                            <constraint firstItem="g16-gT-7M6" firstAttribute="bottom" secondItem="JJr-zb-Xj7" secondAttribute="bottom" constant="24" id="Azg-Ij-kRB"/>
+                            <constraint firstItem="OWE-xX-N8Y" firstAttribute="centerY" secondItem="JJr-zb-Xj7" secondAttribute="centerY" id="ETW-bK-Q1c"/>
                             <constraint firstItem="e3u-gE-87P" firstAttribute="top" secondItem="g16-gT-7M6" secondAttribute="top" id="PkX-dB-J0D"/>
                             <constraint firstItem="g16-gT-7M6" firstAttribute="bottom" secondItem="e3u-gE-87P" secondAttribute="bottom" id="YnC-Jk-7t2"/>
                             <constraint firstItem="e3u-gE-87P" firstAttribute="leading" secondItem="g16-gT-7M6" secondAttribute="leading" id="nj9-Wd-p3I"/>
+                            <constraint firstItem="OWE-xX-N8Y" firstAttribute="centerX" secondItem="JJr-zb-Xj7" secondAttribute="centerX" id="vbt-uH-k5w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g16-gT-7M6"/>
                     </view>
                     <connections>
+                        <outlet property="progressView" destination="JJr-zb-Xj7" id="nX8-A5-3bY"/>
+                        <outlet property="progressViewLabel" destination="OWE-xX-N8Y" id="Pgf-O5-9CK"/>
                         <outlet property="tableViewFormoverview" destination="e3u-gE-87P" id="K3k-PT-tOx"/>
                     </connections>
                 </viewController>
@@ -147,7 +165,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g8g-0F-xlU">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g8g-0F-xlU">
                                 <rect key="frame" x="32" y="80" width="311" height="478"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTg-4z-Ny3">

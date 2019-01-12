@@ -29,7 +29,7 @@
 "LoginViewController" = "Login";
 "UserTableViewControllerTabTitle" = "UserManagement";
 "LoginViewControllerTabTitle" = "Login";
-"FormTemplateViewControllerTabTitle" = "Form Template";
+"FormTemplateViewControllerTabTitle" = "Form Templates";
 "FormOverviewViewControllerTabTitle" = "Form Overview";
 "FormManagementViewControllerTabTitle" = "Form Management";
 "LogoutViewControllerTabTitle" = "Log out";
