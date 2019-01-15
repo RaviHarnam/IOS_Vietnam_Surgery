@@ -38,6 +38,9 @@ public class FormPicturesViewController : UIViewController  {
     
     private let imagePicker = UIImagePickerController()
     
+    public var formPreviewCallback : CallbackProtocol?
+    public var isPreexisting : Bool?
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -50,7 +53,21 @@ public class FormPicturesViewController : UIViewController  {
     }
     
     func setupAppBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Chevron"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToNextPage))
+        if isPreexisting == true {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Chevron"), style: .plain, target: self, action: #selector(goToPreview))
+        }
+        else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Chevron"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToNextPage))
+        }
+    }
+    
+    @objc func goToPreview() {
+        guard let formPictures = self.formData?.formPictures else {
+            return
+        }
+        self.formPreviewCallback?.setValue(data: formPictures)
+        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func goToNextPage() {

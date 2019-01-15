@@ -24,8 +24,6 @@
 "Error_NoCamera" = "This device doesn't have a camera (ready).";
 "FormManagementViewControllerTitle" = "Form Management";
 "FormTemplates" = "Form templates";
-"FormTemplateEditViewControllerTitle" = "Edit form template";
-"FormTemplatCreateViewControllerTitle" = "Create form template";
 "LoginViewController" = "Login";
 "UserTableViewControllerTabTitle" = "UserManagement";
 "LoginViewControllerTabTitle" = "Login";
@@ -41,7 +39,7 @@
 "String" = "Text";
 "Choice" = "Choice";
 "Tel" = "Number";
-"FormTemplateEditExplanationText" = "In each form we have some fields that are necessary to fill in. So these subjects and fields are already set. To add more fields in a subject, you can click on the pencil. To add more subject (like Personal info), you can press on the plus button on the bottom-right of this screen.";
+"FormTemplateEditExplanationText" = "In each form we have some fields that are necessary to fill in. So these subjects and fields are already set. To add more fields in a subject, you can click on the pencil. To add more subject (like Personal info), you can press on the plus button on the top-right of this screen. Note: the fields: name, birthyear and district are required.";
 "FormTemplateName" = "Form template name";
 "formPreviewViewController" = "Preview new form";
 "Pictures" = "Pictures";
@@ -67,3 +65,13 @@
 "DeleteUserMsg" = "Are you sure you want to delete: ";
 "NoInternet" = "No internet";
 "NoInternetMessage" = "There is no internet";
+"SectionNamePlaceholder" = "Section name";
+"FormX" = "%@ Form template: %@";
+"FormXSectionY" = "%@ Form template: %@ Section: %@";
+"FormXSectionYFieldZ" = "%@ Form template: %@ Section: %@ Question: %@";
+"Create" = "Create";
+"Edit" = "Edit";
+"NoFieldsInSectionMessage" = "There are no questions in this section yet. You can add one by clicking on 'add field'";
+"BaseTemplate" = "{\"Sections\":[{\"Fields\":[{\"Required\":\"true\",\"Name\":\"Name\",\"Type\":\"String\"},{\"Required\":\"true\",\"Name\":\"Birthyear\",\"Type\":\"Number\"}],\"Name\":\"Personal Info\"},{\"Fields\":[{\"Required\":\"true\",\"Name\":\"District\",\"Type\":\"String\"}],\"Name\":\"Contact Info\"}]}";
+"InvalidFormTemplate" = "The form template is invalid. Check if the required fields are present. (Name, Birthyear, district)";
+"FormTemplateNothingChanged" = "The formtemplate didn't change and could not be saved.";

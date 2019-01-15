@@ -52,6 +52,8 @@
 		BF36C14B21BE7B3C00E62F0D /* FormPreviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */; };
 		BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */; };
 		BF3F005521CA9630004EAC09 /* FormPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F005421CA9630004EAC09 /* FormPictureViewController.swift */; };
+		BF41397821EE1DFE00C67C19 /* FormPreviewHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41397721EE1DFE00C67C19 /* FormPreviewHeaderCollectionView.swift */; };
+		BF41397A21EE1E6000C67C19 /* FormPreviewHeaderCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF41397921EE1E6000C67C19 /* FormPreviewHeaderCollectionView.xib */; };
 		BF41922221E3A49C009222B0 /* FormPostPutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41922121E3A49C009222B0 /* FormPostPutModel.swift */; };
 		BF41A86B21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41A86A21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift */; };
 		BF42725221D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42725121D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift */; };
@@ -136,6 +138,8 @@
 		BF36C14A21BE7B3C00E62F0D /* FormPreviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewHeaderView.swift; sourceTree = "<group>"; };
 		BF36C14C21BE7BA400E62F0D /* FormPreviewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormPreviewHeaderView.xib; sourceTree = "<group>"; };
 		BF3F005421CA9630004EAC09 /* FormPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPictureViewController.swift; sourceTree = "<group>"; };
+		BF41397721EE1DFE00C67C19 /* FormPreviewHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPreviewHeaderCollectionView.swift; sourceTree = "<group>"; };
+		BF41397921EE1E6000C67C19 /* FormPreviewHeaderCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormPreviewHeaderCollectionView.xib; sourceTree = "<group>"; };
 		BF41922121E3A49C009222B0 /* FormPostPutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPostPutModel.swift; sourceTree = "<group>"; };
 		BF41A86A21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditSectionViewController.swift; sourceTree = "<group>"; };
 		BF42725121D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditFieldViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 			children = (
 				BFEDD45521B53D3400E62918 /* CollectionViewImageCell.xib */,
 				BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */,
+				BF41397721EE1DFE00C67C19 /* FormPreviewHeaderCollectionView.swift */,
+				BF41397921EE1E6000C67C19 /* FormPreviewHeaderCollectionView.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 				BF7AA59021AD6D8D00904B6A /* Colors.xcassets in Resources */,
 				BF36C14D21BE7BA400E62F0D /* FormPreviewHeaderView.xib in Resources */,
 				419732EC21E6201B00525ADA /* UserOverviewTableViewCell.xib in Resources */,
+				BF41397A21EE1E6000C67C19 /* FormPreviewHeaderCollectionView.xib in Resources */,
 				419F98F521DF5DAB0086A566 /* FormOverviewTableViewCell.xib in Resources */,
 				BF42725421D8D7D900E31F0B /* SimpleTextFieldTableViewCell.xib in Resources */,
 				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
@@ -535,6 +542,7 @@
 				418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */,
 				418BDD5D21C928C100EE0842 /* UserTableViewController.swift in Sources */,
 				41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */,
+				BF41397821EE1DFE00C67C19 /* FormPreviewHeaderCollectionView.swift in Sources */,
 				BF34419221B69C4D00F23674 /* FormPreviewViewController.swift in Sources */,
 				BF34418E21B6990E00F23674 /* DoubleLabelTableViewCell.swift in Sources */,
 				419F98F721DF5F790086A566 /* FormOverviewTableViewCell.swift in Sources */,

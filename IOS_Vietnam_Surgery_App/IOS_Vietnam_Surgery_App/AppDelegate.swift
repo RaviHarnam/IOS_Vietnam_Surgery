@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FormHelper.setEurekaRowStylingProperties()
+      
 //        let mainVC = TabBarController()
 //        window?.rootViewController = mainVC
 //        AppDelegate.userTab = UITabBarController()

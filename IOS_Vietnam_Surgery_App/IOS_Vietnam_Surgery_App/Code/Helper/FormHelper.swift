@@ -74,11 +74,11 @@ public class FormHelper {
             for field in fields {
                 guard let name = field.name else { return false }
                 guard let type = field.type else { return false }
+                guard let required = field.required else { return false }
                 
                 guard !name.isEmpty else { return false }
                 guard !type.isEmpty else { return false }
-                
-                //guard type.lowercased() != "choice" || type.lowercased() == "choice" && field is FormChoiceField else { return false }
+                guard !required.isEmpty else { return false }
                 
                 if type.lowercased() == "choice" {
                     guard let options = field.options else { return false }
@@ -90,29 +90,38 @@ public class FormHelper {
         return false
     }
     
+    public static func validateContainsFieldsInForm(sections: [FormSection]) -> Bool {
+        let checkDictionary : NSMutableDictionary = [:]
+        checkDictionary[NSLocalizedString("Name", comment: "")] = false
+        checkDictionary[NSLocalizedString("District", comment: "")] = false
+        checkDictionary[NSLocalizedString("Birthyear", comment: "")] = false
+        
+        for section in sections {
+            if let fields = section.fields {
+                for field in fields {
+                    for checkField in checkDictionary {
+                        if field.name == checkField.key as? String && field.required?.lowercased() == "true" {
+                            checkDictionary[checkField.key] = true //print(checkDictionary.updateValue(true, forKey: checkField))
+                        }
+                    }
+                }
+            }
+        }
+        
+        return checkDictionary.allSatisfy({
+            $0.value as! Bool // == true
+        })
+    }
+    
     public static func validateSectionsInForm(sections: [FormSection]) -> Bool {
         var isValid = true
         for section in sections {
             isValid = (!validateFieldsInSection(section: section) ? false : isValid)
         }
+        if isValid {
+            isValid = validateContainsFieldsInForm(sections: sections)
+        }
         return isValid
-    }
-    
-    public static func setEurekaRowStylingProperties() {
-//        TextRow.defaultCellSetup = { cell, row in
-//            cell.preservesSuperviewLayoutMargins = false
-//            cell.layoutMargins.left = 16
-//            cell.contentView.preservesSuperviewLayoutMargins = false
-//            cell.contentView.layoutMargins.left = 16
-//            //cell.contentView.layoutMargins.right = 16
-//        }
-//        TextRow.defaultCellUpdate = { cell,row in
-//            cell.preservesSuperviewLayoutMargins = false
-//            cell.layoutMargins.left = 16
-//            cell.contentView.preservesSuperviewLayoutMargins = false
-//            cell.contentView.layoutMargins.left = 16
-//
-//        }
     }
     
     public static func getFormContentDicFromArr(content: [FormContentKeyValuePair]) -> [String:String] {
@@ -121,5 +130,14 @@ public class FormHelper {
             dic[kvp.name!] = kvp.value
         }
         return dic
+    }
+    
+    public static func decodeImageToUIImage(images: [[UInt8]]) -> [UIImage] {
+        var imageArr : [UIImage] = []
+        for img in images {
+            let data = Data(img)
+            imageArr.append(UIImage.init(data: data)!)
+        }
+        return imageArr
     }
 }

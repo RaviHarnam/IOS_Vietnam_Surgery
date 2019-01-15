@@ -184,6 +184,7 @@ extension FormTemplateViewController : UITableViewDelegate {
         if let template = formTemplates?[indexPath.row] {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "FormFillInViewController") as! FormFillInViewController
+            vc.formFillInStep = 0
             vc.formData = template
             self.navigationController?.pushViewController(vc, animated: true)
         }
