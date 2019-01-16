@@ -30,6 +30,7 @@ public class FormTemplateEditViewController : UIViewController {
     
     public var dataChanged = false
     public var updateFormManagement : CallbackProtocol?
+    public var isEditingForm : Bool?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,13 @@ public class FormTemplateEditViewController : UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         formExplanationText.text = NSLocalizedString("FormTemplateEditExplanationText", comment: "")
         formNameTextField.placeholder = NSLocalizedString("", comment: "")
+        formNameTextField.addTarget(self, action: #selector(formNameChanged), for: .editingChanged)
         setupAppBar()
+        updateTitle()
+        let footerView = UIView()
+        footerView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        self.formTableView.tableFooterView = footerView
+        self.formTableView.backgroundView = footerView
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -49,21 +56,15 @@ public class FormTemplateEditViewController : UIViewController {
         }
     }
     
-    public override func viewWillLayoutSubviews() {
-        DispatchQueue.main.async {
-            var frame = self.formTableView.frame
-            frame.size.height = self.formTableView.contentSize.height
-            self.formTableView.frame = frame
-        }
-    }
+//    public override func viewDidAppear(_ animated: Bool) {
+//        DispatchQueue.main.async {
+//            var frame = self.formTableView.frame
+//            frame.size.height = self.formTableView.contentSize.height
+//            self.formTableView.frame = frame
+//        }
+//    }
     
     func setupForm() {
-        if form == nil {
-            title = NSLocalizedString("FormTemplatCreateViewControllerTitle", comment: "")
-        }
-        else {
-            title = NSLocalizedString("FormTemplateEditViewControllerTitle", comment: "")
-        }
         _ = self.view
         if let template = self.form?.formTemplate {
             self.formNameTextField.text = self.form?.name
@@ -74,6 +75,15 @@ public class FormTemplateEditViewController : UIViewController {
             DispatchQueue.main.async {
                 self.formTableView.reloadData()
             }
+        }
+    }
+    
+    func updateTitle() {
+        if isEditingForm == false {
+            title = NSString.localizedStringWithFormat(NSLocalizedString("FormX", comment: "") as NSString, NSLocalizedString("Create", comment: ""), form?.name ?? "") as String
+        }
+        else {
+            title = NSString.localizedStringWithFormat(NSLocalizedString("FormX", comment: "") as NSString, NSLocalizedString("Edit", comment: ""), form?.name ?? "") as String
         }
     }
     
@@ -91,35 +101,78 @@ public class FormTemplateEditViewController : UIViewController {
         navigationItem.rightBarButtonItems = barButtonItems
     }
     
+    @objc func formNameChanged(formNameTextField: UITextField) {
+        self.form?.name = formNameTextField.text
+        updateTitle()
+    }
+    
     @objc func addSectionClicked() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditSectionViewController") as! FormTemplateEditSectionViewController
         vc.sectionNumber = formSections.count + 1
         vc.section = FormSection()
+        vc.isEditingForm = isEditingForm
+        vc.form = self.form
+        vc.sectionSaveDelegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func saveClicked() {
+        guard validateFormTemplate() else {
+            showInvalidFormTemplateAlert()
+            return
+        }
+        
         let form = FormPostPutModel()
         let template = FormTemplate()
         template.sections = self.formSections
         
         form.formTemplate = FormHelper.getJsonFromFormTemplate(template: template)
         form.name = self.form?.name
-        form.region = self.form?.region
-        FormTemplateAPIManager.editFormTemplate((self.form?.id)!, form: form).response(completionHandler: {
-            (response) in
-            print("Edited form template with statuscode: " + String(response.response!.statusCode))
-            if response.response?.statusCode == 200 {
-                var dic : [Int:FormPostPutModel] = [:]
-                dic[self.sectionNumber!] = form
-                self.updateFormManagement?.setValue(data: dic)
-                self.navigationController?.popViewController(animated: true)
-            }
-            else {
-                //TO:DO Add error alert or something. Check 400 to say nothing changed.
-            }
-        })
+        form.region = self.form?.region ?? form.name
+        if self.isEditingForm == false {
+            FormTemplateAPIManager.createFormTemplate(form: form).response(completionHandler: {
+                (response) in
+                if response.response?.statusCode == 200 {
+                    var dic : [Int?:FormPostPutModel] = [:]
+                    dic[nil] = form
+                    self.updateFormManagement?.setValue(data: dic)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
+        }
+        else {
+            FormTemplateAPIManager.editFormTemplate((self.form?.id)!, form: form).response(completionHandler: {
+                (response) in
+                print("Edited form template with statuscode: " + String(response.response!.statusCode))
+                if response.response?.statusCode == 200 {
+                    var dic : [Int:FormPostPutModel] = [:]
+                    dic[self.sectionNumber!] = form
+                    self.updateFormManagement?.setValue(data: dic)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                else {
+                    //TO:DO Add error alert or something. Check 400 to say nothing changed.
+                    let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("FormTemplateNothingChanged", comment: ""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            })
+        }
+    }
+    
+    func validateFormTemplate() -> Bool {
+        guard self.formSections.count > 0 else { return false }
+        guard FormHelper.validateSectionsInForm(sections: self.formSections) else { return false }
+        
+        return true
+    }
+    
+    func showInvalidFormTemplateAlert() {
+        //TO:DO Add error alert
+        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("InvalidFormTemplate", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
 }
 
@@ -141,10 +194,6 @@ extension FormTemplateEditViewController : UITableViewDataSource {
         if let fields = section.fields {
             cell.leftLabel.text = fields[indexPath.row].name
             cell.rightLabel.text = NSLocalizedString(fields[indexPath.row].type!, comment: "")
-
-//            guard FormHelper.validateFieldsInSection(section: formSections) else { return }
-            //formUIControls = FormHelper.getUIControlsFromSection(section: formSection!)
-//           formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
         }
         
         return cell
@@ -160,6 +209,8 @@ extension FormTemplateEditViewController : UITableViewDataSource {
             vc.section = self.formSections[section.tag]
             vc.sectionNumber = section.tag
             vc.sectionSaveDelegate = self
+            vc.form = self.form
+            vc.isEditingForm = isEditingForm
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -167,33 +218,7 @@ extension FormTemplateEditViewController : UITableViewDataSource {
 
 extension FormTemplateEditViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let label = UILabel()
-//        label.text = formSections[section].name
-//        label.textColor = UIColor.black
-//        label.backgroundColor = ColorHelper.lightGrayBackgroundColor()
-//        label.font = label.font.withSize(34)
-//
-//
-//        return label
         let headerview = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID) as! FormPreviewHeaderView
-        //let headerview = headView as! FormPreviewHeaderView
-//        if headerview.content == nil {
-//            let v = UINib(nibName: "FormPreviewHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FormPreviewContent
-//            headerview.contentView.addSubview(v)
-//            v.translatesAutoresizingMaskIntoConstraints = false
-//            v.topAnchor.constraint(equalTo: headerview.contentView.topAnchor).isActive = true
-//            v.bottomAnchor.constraint(equalTo: headerview.contentView.bottomAnchor).isActive = true
-//            v.leadingAnchor.constraint(equalTo: headerview.contentView.leadingAnchor).isActive = true
-//            v.trailingAnchor.constraint(equalTo: headerview.contentView.trailingAnchor).isActive = true
-//            headerview.content = v
-//        }
-        
-//        headerview.content.label.text = formSections[section].name
-//        headerview.content.label.font = headerview.content.label.font.withSize(34)
-//        headerview.content.image.image = UIImage(named: "Edit")
-//        headerview.content.image.isUserInteractionEnabled = true
-//        headerview.content.image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editSectionClicked)))
-//        headerview.content.image.tag = section
         headerview.label.text = formSections[section].name
         headerview.label.font = headerview.label.font.withSize(34)
         headerview.image.image = UIImage(named: "Edit")
@@ -212,13 +237,18 @@ extension FormTemplateEditViewController : UITableViewDelegate {
 
 extension FormTemplateEditViewController : CallbackProtocol {
     public func setValue(data: Any) {
-        let sections = data as! Dictionary<Int,FormSection>
+        let sections = data as! Dictionary<Int,FormSection?>
         if let section = sections.first {
-            if section.key >= formSections.count {
-                self.formSections.append(section.value)
+            if section.value == nil {
+                self.formSections.remove(at: section.key)
             }
             else {
-                self.formSections[section.key] = section.value
+                if section.key >= formSections.count {
+                    self.formSections.append(section.value!)
+                }
+                else {
+                    self.formSections[section.key] = section.value!
+                }
             }
             self.dataChanged = true
         }

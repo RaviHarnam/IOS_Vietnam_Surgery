@@ -20,7 +20,7 @@ public class FormManagementViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = NSLocalizedString("FormManagementViewControllerTabTitle", comment: "")
+        self.title = NSLocalizedString("FormManagementViewControllerTabTitle", comment: "")
         
         setupTabelview()
         getFormTemplatesAsync()
@@ -44,15 +44,19 @@ public class FormManagementViewController : UIViewController {
     
     func setupAppBar() {
         var barButtonItems : [UIBarButtonItem] = []
-        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Add"), style: .plain, target: self, action: #selector(addClicked)))
         barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Sync"), style: .plain, target: self, action: #selector(syncClikced)))
+        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Add"), style: .plain, target: self, action: #selector(addClicked)))
         navigationItem.rightBarButtonItems = barButtonItems
     }
     
     @objc func addClicked() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditViewController") as! FormTemplateEditViewController
-        vc.form = Form()
+        let form = Form()
+        vc.isEditingForm = false
+        form.formTemplate = NSLocalizedString("BaseTemplate", comment: "")
+        vc.form = form
+        vc.updateFormManagement = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -116,21 +120,29 @@ extension FormManagementViewController : UITableViewDelegate {
         vc.form = formTemplates[indexPath.row]
         vc.sectionNumber = indexPath.row
         vc.updateFormManagement = self
+        vc.isEditingForm = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension FormManagementViewController : CallbackProtocol {
     public func setValue(data: Any) {
-        let dic = data as! Dictionary<Int,FormPostPutModel>
+        let dic = data as! Dictionary<Int?,FormPostPutModel>
         if let kvp = dic.first {
             let form = kvp.value
-            self.formTemplates[kvp.key].name = form.name
-            self.formTemplates[kvp.key].region = form.region
-            self.formTemplates[kvp.key].formTemplate = form.formTemplate
+            if let index = kvp.key {
+                self.formTemplates[index].name = form.name
+                self.formTemplates[index].region = form.region
+                self.formTemplates[index].formTemplate = form.formTemplate
+            }
+            else {
+                let formModel = Form()
+                formModel.name = form.name
+                formModel.region = form.region
+                formModel.formTemplate = form.formTemplate
+                self.formTemplates.append(formModel)
+            }
             self.dataChanged = true
         }
     }
-    
-    
 }

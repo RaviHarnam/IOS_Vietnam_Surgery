@@ -340,7 +340,6 @@ extension FormOverviewViewController : UITableViewDataSource {
 }
     
     func setHeaderText (cell: FormOverviewTableViewCell) {
-        
         cell.FormNameLabelHeader.text = NSLocalizedString("FormNameLabelHeader", comment: "")
         cell.DistrictLabelHeader.text = NSLocalizedString("DistrictLabelHeader", comment: "")
         cell.PhotoLabelHeader.text = NSLocalizedString("PhotoLabelHeader", comment: "")
@@ -387,7 +386,9 @@ extension FormOverviewViewController : UITableViewDelegate {
         
         let formPreviewVC = mainStoryboard.instantiateViewController(withIdentifier: "FormPreviewViewController") as! FormPreviewViewController
         formPreviewVC.isPreexisting = true
-        formPreviewVC.formData = form
+        let previewForm = form
+        previewForm.formPictures = FormHelper.decodeImageToUIImage(images: previewForm.formImagesBytes!)
+        formPreviewVC.formData = previewForm
         formPreviewVC.formContent = FormHelper.getFormContentDicFromArr(content: form.formContent!)
         let template = FormHelper.getFormTemplateFromJson(json: form.formTemplate!)
         formPreviewVC.formSections = template!.sections!

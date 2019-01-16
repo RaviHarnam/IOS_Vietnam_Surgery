@@ -31,7 +31,7 @@ public class FormFillInViewController : Eureka.FormViewController {
     
     public var formSection : FormSection? {
         get {
-            return formSections[formFillInStep]
+            return formSections[formFillInStep!]
         }
     }
     
@@ -39,7 +39,11 @@ public class FormFillInViewController : Eureka.FormViewController {
     
     public var formContent : [String:String] = [:]
     
-    public var formFillInStep = 0
+    public var formFillInStep : Int?
+    
+    public var isPreexisting = false
+    
+    public var formPreviewCallback : CallbackProtocol?
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +52,6 @@ public class FormFillInViewController : Eureka.FormViewController {
         updateTitle()
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         DispatchQueue.main.async {
-            //self.tableView.contentInset.left = 16
-            //self.tableView.contentInset.right = 16
-            //self.tableView.layoutMargins.right = 16
-//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 16))
-//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 32))
-//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 32))
-//            self.view.addConstraint(NSLayoutConstraint(item: self.tableView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 16))
-            //self.tableView.layoutMargins.left = 16
-            //self.tableView.layoutMargins.right = 16
-            //self.tableView.layoutMarginsDidChange()
             self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
             self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
             self.tableView.topAnchor.constraint(equalTo: self.formSectionHeader.bottomAnchor, constant: 16).isActive = true
@@ -68,13 +62,18 @@ public class FormFillInViewController : Eureka.FormViewController {
         }
         setupAppbar()
         self.formSectionHeader.text = formSection?.name
-        self.formStep.text = NSString.localizedStringWithFormat(NSLocalizedString("StepXOutOfY", comment: "") as NSString, formFillInStep + 1, formSections.count + 2) as String
+        self.formStep.text = NSString.localizedStringWithFormat(NSLocalizedString("StepXOutOfY", comment: "") as NSString, formFillInStep! + 1, formSections.count + 2) as String
     }
     
     func updateTitle() {
         var newTitle : String = ""
         
-        newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        if isPreexisting {
+            newTitle += NSLocalizedString("formFillInViewControllerEditTitle", comment: "")
+        }
+        else {
+            newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        }
         
         if let formname = formData?.name {
             newTitle += " - " + formname
@@ -96,7 +95,10 @@ public class FormFillInViewController : Eureka.FormViewController {
     }
     
     func setupAppbar() {
-        if formFillInStep + 1 < formSections.count {
+        if isPreexisting {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Chevron"), style: .plain, target: self, action: #selector(goToPreview))
+        }
+        else if formFillInStep! + 1 < formSections.count {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Chevron"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToNextPage))
         }
         else {
@@ -115,6 +117,13 @@ public class FormFillInViewController : Eureka.FormViewController {
         return valid
     }
     
+    @objc func goToPreview() {
+        guard validateForm() else {
+            return
+        }
+        self.formPreviewCallback?.setValue(data: self.formContent)
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @objc func goToNextPage() {
         guard validateForm() else {
@@ -122,7 +131,7 @@ public class FormFillInViewController : Eureka.FormViewController {
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormFillInViewController") as! FormFillInViewController
-        vc.formFillInStep = self.formFillInStep + 1
+        vc.formFillInStep = self.formFillInStep! + 1
         vc.formContent = self.formContent
         vc.formData = self.formData
         vc.formSections = self.formSections
@@ -135,7 +144,7 @@ public class FormFillInViewController : Eureka.FormViewController {
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormPicturesViewController") as! FormPicturesViewController
-        vc.formFillInStep = self.formFillInStep + 1
+        vc.formFillInStep = self.formFillInStep! + 1
         vc.formContent = self.formContent
         vc.formData = self.formData
         vc.formSections = self.formSections

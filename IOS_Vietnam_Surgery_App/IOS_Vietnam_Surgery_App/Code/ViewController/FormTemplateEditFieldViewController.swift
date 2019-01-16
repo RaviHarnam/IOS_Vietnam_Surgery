@@ -33,6 +33,9 @@ public class FormTemplateEditFieldViewController : UIViewController {
     public var delegateCallback : CallbackProtocol?
     
     public var field : FormChoiceField?
+    public var section : FormSection?
+    public var form : Form?
+    public var isEditingForm : Bool?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,31 +44,48 @@ public class FormTemplateEditFieldViewController : UIViewController {
             choiceFieldAnswers.append("")
         }
         
+        updateTitle()
+        
         setupForm()
         setupAppBar()
         setupTableview()
     }
     
+    func updateTitle() {
+        if isEditingForm == true {
+            self.title = NSString.localizedStringWithFormat(NSLocalizedString("FormXSectionYFieldZ", comment: "") as NSString, NSLocalizedString("Edit", comment: ""), form?.name ?? "", section?.name ?? "", field?.name ?? "") as String
+        }
+        else {
+            self.title = NSString.localizedStringWithFormat(NSLocalizedString("FormXSectionYFieldZ", comment: "") as NSString, NSLocalizedString("Create", comment: ""), form?.name ?? "", section?.name ?? "", field?.name ?? "") as String
+        }
+    }
+    
     func setupForm() {
         fieldNameTextField.text = field?.name
         fieldNameTextField.placeholder = NSLocalizedString("FieldName", comment: "")
+        fieldNameTextField.addTarget(self, action: #selector(fieldNameChanged), for: .editingChanged)
         
         fieldRequiredSegControl.removeAllSegments()
         fieldRequiredSegControl.insertSegment(withTitle: NSLocalizedString("Yes", comment: ""), at: 0, animated: true)
         fieldRequiredSegControl.insertSegment(withTitle: NSLocalizedString("No", comment: ""), at: 1, animated: true)
-        fieldRequiredSegControl.selectedSegmentIndex = 1
+        fieldRequiredSegControl.selectedSegmentIndex = field?.required?.lowercased() == "true" ? 0 : 1
         
     }
     
     func setupAppBar() {
         var barButtonItems : [UIBarButtonItem] = []
         barButtonItems.append(UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked)))
+        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Delete"), style: .plain, target: self, action: #selector(deleteClicked)))
         navigationItem.rightBarButtonItems = barButtonItems
     }
     
     func setupTableview() {
         self.fieldAnswersTableView.dataSource = self
         self.fieldAnswersTableView.register(UINib(nibName: "SimpleTextFieldTableViewCell", bundle: nil), forCellReuseIdentifier: "SimpleTextFieldTableViewCell")
+    }
+    
+    @objc func fieldNameChanged(fieldNameTextField: UITextField) {
+        updateTitle()
     }
     
     @objc func saveClicked() {
@@ -76,6 +96,11 @@ public class FormTemplateEditFieldViewController : UIViewController {
         delegateCallback?.setValue(data: field!)
         navigationController?.popViewController(animated: true)
         //navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func deleteClicked() {
+        delegateCallback?.setValue(data: NSObject())
+        navigationController?.popViewController(animated: true)
     }
     
     public override func viewWillLayoutSubviews() {
@@ -105,7 +130,7 @@ extension FormTemplateEditFieldViewController : UITableViewDataSource {
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return fieldType.lowercased() == "choicefield" ? choiceFieldAnswers.count : 0
+        return isChoiceField ? choiceFieldAnswers.count : 0
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

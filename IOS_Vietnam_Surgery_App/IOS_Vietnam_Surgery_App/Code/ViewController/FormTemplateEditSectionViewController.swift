@@ -17,6 +17,7 @@ public class FormTemplateEditSectionViewController : UIViewController {
     @IBOutlet weak var sectionNameTextField: UITextField!
     public var section : FormSection?
     public var sectionNumber : Int?
+    public var form : Form?
     
     //private let fieldTypes = ["TextField", "NumberField", "ChoiceField"]
     private var fieldTypesDic : [String:String] = [:]
@@ -24,11 +25,17 @@ public class FormTemplateEditSectionViewController : UIViewController {
     private var currentFieldTypeSelected : String? = NSLocalizedString("String", comment: "")
     public var dataChanged : Bool = false
     public var sectionSaveDelegate : CallbackProtocol?
+    public var isEditingForm : Bool?
+    
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        updateTitle()
         
         self.sectionTopLabel.text = section?.name
+        self.sectionNameTextField.text = section?.name?.isEmpty ?? true ? "" : section?.name
+        self.sectionNameTextField.placeholder = section?.name?.isEmpty ?? true ? NSLocalizedString("SectionNamePlaceholder", comment: "") : section?.name
+        self.sectionNameTextField.addTarget(self, action: #selector(sectionNameChanged), for: .editingChanged)
         self.fieldTypesDic["String"] = NSLocalizedString("String", comment: "")
         self.fieldTypesDic["Number"] = NSLocalizedString("Number", comment: "")
         self.fieldTypesDic["Choice"] = NSLocalizedString("Choice", comment: "")
@@ -44,6 +51,15 @@ public class FormTemplateEditSectionViewController : UIViewController {
                 self.resizeTableView()
             }
             dataChanged = false
+        }
+    }
+    
+    func updateTitle() {
+        if isEditingForm == false {
+            title = NSString.localizedStringWithFormat(NSLocalizedString("FormXSectionY", comment: "") as NSString, NSLocalizedString("Create", comment: ""), form?.name ?? "", section?.name ?? "") as String
+        }
+        else {
+            title = NSString.localizedStringWithFormat(NSLocalizedString("FormXSectionY", comment: "") as NSString, NSLocalizedString("Edit", comment: ""), form?.name ?? "", section?.name ?? "") as String
         }
     }
     
@@ -65,30 +81,58 @@ public class FormTemplateEditSectionViewController : UIViewController {
         }
     }
     
+    func setupTableView() {
+        self.sectionFieldsTableView.register(UINib(nibName: "DoubleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "DoubleLabelTableViewCell")
+        self.sectionFieldsTableView.register(UINib(nibName: "FormAddFieldFooterView", bundle: nil), forHeaderFooterViewReuseIdentifier: "FormAddFieldFooterView")
+        self.sectionFieldsTableView.dataSource = self
+        self.sectionFieldsTableView.delegate = self
+        DispatchQueue.main.async {
+            self.sectionFieldsTableView.reloadData()
+        }
+    }
+    
+    func setupAppBar() {
+        var barButtonItems : [UIBarButtonItem] = []
+        barButtonItems.append(UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked)))
+        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Delete"), style: .plain, target: self, action: #selector(deleteClicked)))
+        navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
+    func validateSection() -> Bool {
+        guard let sectionName = self.sectionNameTextField.text else { return false }
+        guard !sectionName.isEmpty else { return false }
+        
+        return true
+    }
+    
+    @objc func sectionNameChanged(sectionNameTextField: UITextField) {
+        sectionNameTextField.layer.borderColor = nil
+        sectionNameTextField.layer.borderWidth = 0
+        self.section?.name = sectionNameTextField.text
+        self.sectionTopLabel.text = sectionNameTextField.text
+        updateTitle()
+    }
+    
     @objc func saveClicked() {
+        if !validateSection() {
+            sectionNameTextField.layer.borderColor = UIColor.red.cgColor
+            sectionNameTextField.layer.borderWidth = 1
+            return
+        }
         var dic : [Int:FormSection] = [:]
         dic[sectionNumber!] = self.section
         sectionSaveDelegate?.setValue(data: dic)
         navigationController?.popViewController(animated: true)
     }
     
-    func setupTableView() {
-        self.sectionFieldsTableView.register(UINib(nibName: "DoubleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "DoubleLabelTableViewCell")
-        self.sectionFieldsTableView.register(UINib(nibName: "FormAddFieldFooterView", bundle: nil), forHeaderFooterViewReuseIdentifier: "FormAddFieldFooterView")
-        self.sectionFieldsTableView.dataSource = self
-        self.sectionFieldsTableView.delegate = self
-    }
-    
-    func setupAppBar() {
-        var barButtonItems : [UIBarButtonItem] = []
-        barButtonItems.append(UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked)))
-        navigationItem.rightBarButtonItems = barButtonItems
+    @objc func deleteClicked() {
+        var dictionary : [Int:FormSection?] = [:]
+        dictionary[sectionNumber!] = nil as FormSection?
+        sectionSaveDelegate?.setValue(data: dictionary)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func addFieldClicked(_ sender: UITapGestureRecognizer) {
-        //Add field screen
-        //self.currentEditingField = sender.view!.tag
-        //let field = self.section?.fields?[currentEditingField!]
         self.currentEditingField = nil
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditFieldViewController") as! FormTemplateEditFieldViewController
@@ -98,11 +142,9 @@ public class FormTemplateEditSectionViewController : UIViewController {
         field.type = kvp!.key
         vc.delegateCallback = self
         vc.field = field
-        //vc.field = FormChoiceField()
-        
-        //if field?.type?.lowercased() == "choicefield" {
-        //    vc.choiceFieldAnswers = field?.options ?? []
-        //}
+        vc.section = section
+        vc.isEditingForm = isEditingForm
+       
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -113,7 +155,7 @@ public class FormTemplateEditSectionViewController : UIViewController {
 
 extension FormTemplateEditSectionViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.section?.fields?.count ?? 0
+        return self.section?.fields?.count == 0 ? 1 : self.section?.fields?.count ?? 0
     }
     
     
@@ -123,11 +165,21 @@ extension FormTemplateEditSectionViewController : UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoubleLabelTableViewCell") as! DoubleLabelTableViewCell
+        
         if let fields = self.section!.fields {
-            cell.leftLabel.text = fields[indexPath.row].name
+            if fields.count == 0 {
+                cell.leftLabel.text = NSLocalizedString("NoFieldsInSectionMessage", comment: "")
+                cell.rightLabel.text = ""
+            }
+            else {
+                cell.leftLabel.text = fields[indexPath.row].name
             
-            cell.rightLabel.textColor = ColorHelper.lightGrayTextColor()
-            cell.rightLabel.text = fields[indexPath.row].type
+                cell.rightLabel.textColor = ColorHelper.lightGrayTextColor()
+                cell.rightLabel.text = fields[indexPath.row].type
+            }
+        }
+        else {
+            cell.leftLabel.text = NSLocalizedString("NoFieldsInSectionMessage", comment: "")
         }
         return cell
     }
@@ -135,19 +187,6 @@ extension FormTemplateEditSectionViewController : UITableViewDataSource {
 
 extension FormTemplateEditSectionViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footerView = UIView()
-//
-//        let segControl = UISegmentedControl(items: self.fieldTypes)
-//        segControl.selectedSegmentIndex = 0
-//
-//        let label = UILabel()
-//        label.text = NSLocalizedString("AddField", comment: "")
-//        label.textColor = ColorHelper.lightBlueLinkColor()
-//        label.layoutMargins.left = 40
-//
-//        footerView.addSubview(segControl)
-//        footerView.addSubview(label)
-//        return footerView
         let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FormAddFieldFooterView") as! FormAddFieldFooterView
         let bgView = UIView()
         bgView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
@@ -171,19 +210,33 @@ extension FormTemplateEditSectionViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 40
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.currentEditingField = indexPath.row
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditFieldViewController") as! FormTemplateEditFieldViewController
+        vc.field = self.section?.fields![indexPath.row]
+        vc.section = self.section
+        vc.form = self.form
+        vc.delegateCallback = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension FormTemplateEditSectionViewController : CallbackProtocol {
     public func setValue(data: Any) {
         if let fieldId = currentEditingField {
-            let newField = data as! FormChoiceField
-            self.section!.fields![fieldId] = newField
-            self.dataChanged = true
+            if let newField = data as? FormChoiceField {
+                self.section!.fields![fieldId] = newField
+            }
+            else {
+                self.section!.fields?.remove(at: fieldId)
+            }           
         }
         else {
             let newField = data as! FormChoiceField
             self.section!.fields?.append(newField)
-            self.dataChanged = true
         }
+        self.dataChanged = true
     }
 }

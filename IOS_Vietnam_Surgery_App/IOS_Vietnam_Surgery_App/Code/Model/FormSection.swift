@@ -23,7 +23,7 @@ public class FormSection : Codable {
         fields = try container.decode([FormChoiceField].self, forKey: .fields)
     }
     
-    public required init(to encoder: Encoder) throws {
+    public func encode (to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(fields, forKey: .fields)
