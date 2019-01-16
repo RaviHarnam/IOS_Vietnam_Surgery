@@ -35,6 +35,7 @@
 		41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA234E21C1079C00D50B78 /* TabBarController.swift */; };
 		41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235021C1083E00D50B78 /* HomeViewController.swift */; };
 		41AA235321C1095800D50B78 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235221C1095800D50B78 /* FormViewController.swift */; };
+		41B45F5221EA1C6B00FA1EC8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B45F5121EA1C6B00FA1EC8 /* Image.swift */; };
 		41B965C921E52F28004CBCC0 /* FormContentAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B965C821E52F28004CBCC0 /* FormContentAPIManager.swift */; };
 		41B965CB21E54400004CBCC0 /* FormContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B965CA21E54400004CBCC0 /* FormContent.swift */; };
 		41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BA948921C2916E00969EA4 /* UserAPIManager.swift */; };
@@ -118,6 +119,7 @@
 		41AA234E21C1079C00D50B78 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		41AA235021C1083E00D50B78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41AA235221C1095800D50B78 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		41B45F5121EA1C6B00FA1EC8 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		41B965C821E52F28004CBCC0 /* FormContentAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentAPIManager.swift; sourceTree = "<group>"; };
 		41B965CA21E54400004CBCC0 /* FormContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContent.swift; sourceTree = "<group>"; };
 		41BA948921C2916E00969EA4 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				41B965CA21E54400004CBCC0 /* FormContent.swift */,
 				BF41922121E3A49C009222B0 /* FormPostPutModel.swift */,
 				41DC463021E7DEAF0095A311 /* UserPutModel.swift */,
+				41B45F5121EA1C6B00FA1EC8 /* Image.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				BF3F005521CA9630004EAC09 /* FormPictureViewController.swift in Sources */,
 				41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */,
 				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
+				41B45F5221EA1C6B00FA1EC8 /* Image.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
 				41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
 				418AD79A21DE8B7300E7C2F8 /* FormOverviewViewController.swift in Sources */,

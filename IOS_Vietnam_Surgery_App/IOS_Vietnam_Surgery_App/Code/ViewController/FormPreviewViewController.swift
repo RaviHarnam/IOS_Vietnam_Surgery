@@ -104,15 +104,17 @@ public class FormPreviewViewController : UIViewController {
     func saveForm() {
         guard let formData = self.formData else { return }
         formData.formContent = []
+        formData.formImagesBytes = []
         
         formData.createdOn = DateTimeHelper.getCurrentDateTimeString()
         for field in formContent {
             formData.formContent!.append(FormContentKeyValuePair(name: field.key, value: field.value))
         }
         
+        
         for image in formData.formPictures {
-            formData.formImagesBytes = []
-            formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 0.2)!))
+            
+            formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 0)!))
         }
         
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }

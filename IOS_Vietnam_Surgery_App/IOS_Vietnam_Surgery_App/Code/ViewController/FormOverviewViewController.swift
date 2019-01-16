@@ -113,6 +113,7 @@ class FormOverviewViewController: UIViewController {
 //
 //        navigationItem.titleView = searchBarΩ
         //setupSearchBar()
+        self.title = NSLocalizedString("FormOverviewViewControllerTabTitle", comment: "")
     }
     
 
@@ -121,6 +122,8 @@ class FormOverviewViewController: UIViewController {
         let decoder = JSONDecoder()
 
         do {
+            
+            // isfetchting = true voor activity indicator
 
             let directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
             let actualDirContents = directoryContents.filter { !$0.absoluteString.contains(".Trash") }
@@ -144,7 +147,10 @@ class FormOverviewViewController: UIViewController {
             }
             self.tableViewFormoverview.reloadData()
         }
+            // isfetching = false voor activity indicator
         catch {
+            // isfetching = false voor activity indicator
+            // allert
             print(error.localizedDescription)
         }
    }
