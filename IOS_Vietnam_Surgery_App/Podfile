@@ -9,6 +9,5 @@ target 'IOS_Vietnam_Surgery_App' do
   pod 'Alamofire'
   pod 'Eureka'
   pod 'SwiftKeychainWrapper'
-  pod 'AppCenter'
   
 end

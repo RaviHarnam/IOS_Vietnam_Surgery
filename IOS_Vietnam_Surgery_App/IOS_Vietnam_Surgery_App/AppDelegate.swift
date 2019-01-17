@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import AppCenter
-import AppCenterAnalytics
-import AppCenterCrashes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -52,8 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        var admintabbar = TabBarHelper.createAdminTabBar()
 //        AppDelegate.adminTab?.viewControllers = admintabbar.map {UINavigationController.init(rootViewController:$0)}
         //
-        
-        MSAppCenter.start("523552e6-bfae-40e1-ac52-8c1b109b7204", withServices:[ MSAnalytics.self, MSCrashes.self ])
         return true
     }
 

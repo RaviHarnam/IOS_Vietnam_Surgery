@@ -48,6 +48,7 @@ public class UserTableViewController : UIViewController {
         //UserTableView.delegate = self
         setupNavigationBarItems()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        UserTableView.rowHeight = 62
         getAllUsers()
     }
     
