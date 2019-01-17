@@ -23,37 +23,17 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AjN-OV-ES7">
-                        <rect key="frame" x="339" y="12" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="20" id="EVP-0W-57k"/>
-                            <constraint firstAttribute="height" constant="20" id="r3f-kx-4CJ"/>
-                        </constraints>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZwU-L3-8T4">
-                        <rect key="frame" x="304" y="12" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="MNO-1O-6BE"/>
-                            <constraint firstAttribute="width" constant="20" id="OSg-Jz-pAH"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ZwU-L3-8T4" firstAttribute="centerY" secondItem="p90-sy-AUX" secondAttribute="centerY" id="2WM-Cn-t4y"/>
                     <constraint firstItem="Vzw-lF-RJ0" firstAttribute="leading" secondItem="p90-sy-AUX" secondAttribute="leadingMargin" id="5re-Fc-vfM"/>
-                    <constraint firstItem="AjN-OV-ES7" firstAttribute="leading" secondItem="ZwU-L3-8T4" secondAttribute="trailing" constant="15" id="Dry-J0-eHE"/>
-                    <constraint firstItem="AjN-OV-ES7" firstAttribute="centerY" secondItem="p90-sy-AUX" secondAttribute="centerY" id="G57-Rd-od6"/>
                     <constraint firstItem="Vzw-lF-RJ0" firstAttribute="bottom" secondItem="p90-sy-AUX" secondAttribute="bottomMargin" id="LaY-oi-Djy"/>
                     <constraint firstItem="Vzw-lF-RJ0" firstAttribute="top" secondItem="p90-sy-AUX" secondAttribute="topMargin" constant="1" id="TZg-0a-bUz"/>
-                    <constraint firstItem="AjN-OV-ES7" firstAttribute="trailing" secondItem="p90-sy-AUX" secondAttribute="trailingMargin" id="fop-a9-aVM"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="UserNameLabel" destination="Vzw-lF-RJ0" id="v8B-0r-6BL"/>
-                <outlet property="deleteUserImage" destination="AjN-OV-ES7" id="P7O-6e-rTM"/>
-                <outlet property="editUserImage" destination="ZwU-L3-8T4" id="vu1-2b-QQC"/>
             </connections>
-            <point key="canvasLocation" x="-18.399999999999999" y="60.26986506746627"/>
+            <point key="canvasLocation" x="-12" y="60"/>
         </tableViewCell>
     </objects>
 </document>

@@ -34,7 +34,7 @@ class AddUserViewController: UIViewController {
     
     @IBOutlet weak var OptionUISegmentedControl: UISegmentedControl!
     
-    
+    public var callback : CallbackProtocol?
     
     @IBAction func AddUserButton(_ sender: Any) {
         ValidationMessageLabel.isHidden = true
@@ -64,12 +64,20 @@ class AddUserViewController: UIViewController {
         
             
             alertMessage(email: email)
-            var registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
+            let registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
             
             UserManager.Register(register: registerModel)
-        
-       
+      
     }
+    
+    func validateForm() -> Bool {
+        guard let email = UserNameTextView.text else {
+            return false
+        }
+        
+        return true
+    }
+    
 //    @IBAction func adminButtonClick(_ sender: Any) {
 //
 //        adminButton.isSelected = true
@@ -119,10 +127,14 @@ class AddUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AddUserButton.isHidden = true
+        
         view.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Add User"
         
+        setupNavigationBar()
         setupLabels()
     }
     
@@ -142,6 +154,40 @@ class AddUserViewController: UIViewController {
         ConfirmPasswordTextField.autocorrectionType = .no
         ConfirmPasswordTextField.isSecureTextEntry = true
         setupButtonsText()
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked))
+    }
+    
+    @objc func saveClicked() {
+        ValidationMessageLabel.isHidden = true
+      
+        guard let email = UserNameTextView.text, !email.isEmpty else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("EnterUserName", comment: "")
+            return
+        }
+        
+        guard let password = PasswordTextView.text, !password.isEmpty else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("EnterPassword", comment: "")
+            return
+        }
+        
+        guard let confirmpassword = ConfirmPasswordTextField.text, !confirmpassword.isEmpty else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("EnterConfirmPassword", comment: "")
+            return
+        }
+        
+        
+        alertMessage(email: email)
+        let registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
+        
+        UserManager.Register(register: registerModel)
+        callback?.setValue(data: registerModel)
+        navigationController?.popViewController(animated: true)
     }
     
     func setupButtonsText() {

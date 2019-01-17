@@ -90,7 +90,12 @@ public class FormPicturesViewController : UIViewController  {
     func updateTitle() {
         var newTitle : String = ""
         
-        newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        if isPreexisting == true {
+            newTitle += NSLocalizedString("formFillInViewControllerEditTitle", comment: "")
+        }
+        else {
+            newTitle += NSLocalizedString("formFillInViewControllerNewTitle", comment: "")
+        }
         
         if let formname = formData?.name {
             newTitle += " - " + formname

@@ -1,24 +1,35 @@
 PODS:
   - Alamofire (4.7.3)
+  - AppCenter (1.11.0):
+    - AppCenter/Analytics (= 1.11.0)
+    - AppCenter/Crashes (= 1.11.0)
+  - AppCenter/Analytics (1.11.0):
+    - AppCenter/Core
+  - AppCenter/Core (1.11.0)
+  - AppCenter/Crashes (1.11.0):
+    - AppCenter/Core
   - Eureka (4.3.0)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - AppCenter
   - Eureka
   - SwiftKeychainWrapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AppCenter
     - Eureka
     - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AppCenter: 3bccf8d733e337d0db574dd4cb0e33ab9637b7f2
   Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 9816fc7a6fe0e96a07a3dddca7b3db508d873fe7
+PODFILE CHECKSUM: e414d5a1434844d1c9cb46e901080ed8c653c972
 
 COCOAPODS: 1.5.3

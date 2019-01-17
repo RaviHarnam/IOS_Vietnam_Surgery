@@ -119,7 +119,6 @@
                     <constraint firstItem="Dvk-rP-TYq" firstAttribute="bottom" secondItem="pzO-aw-Uww" secondAttribute="bottom" constant="4" id="Ang-qr-UKo"/>
                     <constraint firstItem="aEv-vz-1nF" firstAttribute="top" secondItem="Vw0-Bg-MM6" secondAttribute="bottom" constant="16" id="DiP-dg-ZXG"/>
                     <constraint firstItem="jyR-hY-iLQ" firstAttribute="top" secondItem="qse-9Q-NGa" secondAttribute="bottom" constant="16" id="DmO-ED-cqk"/>
-                    <constraint firstItem="X4O-pp-LdM" firstAttribute="leading" secondItem="pzO-aw-Uww" secondAttribute="trailing" constant="334.5" id="F2u-b3-eKo"/>
                     <constraint firstItem="pzO-aw-Uww" firstAttribute="leading" secondItem="51a-du-34D" secondAttribute="leading" constant="16" id="Fui-U1-Hx3"/>
                     <constraint firstItem="fxt-qi-H8e" firstAttribute="bottom" secondItem="jyR-hY-iLQ" secondAttribute="bottom" id="MNR-QO-uDN"/>
                     <constraint firstItem="qse-9Q-NGa" firstAttribute="bottom" secondItem="Vw0-Bg-MM6" secondAttribute="bottom" id="MeD-QQ-0z8"/>
@@ -135,6 +134,7 @@
                     <constraint firstItem="aEv-vz-1nF" firstAttribute="centerX" secondItem="51a-du-34D" secondAttribute="centerX" constant="-40" id="itT-Bh-3gi"/>
                     <constraint firstItem="jyR-hY-iLQ" firstAttribute="bottom" secondItem="aEv-vz-1nF" secondAttribute="bottom" id="l35-xI-92m"/>
                     <constraint firstAttribute="trailing" secondItem="nTL-E7-9CB" secondAttribute="trailing" constant="75" id="lTc-P9-IK4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="X4O-pp-LdM" secondAttribute="trailing" constant="4" id="mn0-el-Si0"/>
                     <constraint firstItem="jyR-hY-iLQ" firstAttribute="centerX" secondItem="51a-du-34D" secondAttribute="centerX" constant="60" id="nLz-hC-6eE"/>
                     <constraint firstItem="Vw0-Bg-MM6" firstAttribute="centerX" secondItem="51a-du-34D" secondAttribute="centerX" constant="-40" id="rbV-2g-6OR"/>
                     <constraint firstItem="fxt-qi-H8e" firstAttribute="top" secondItem="nTL-E7-9CB" secondAttribute="bottom" constant="16" id="rjB-f1-8jw"/>
@@ -153,6 +153,7 @@
                 <outlet property="NameLabel" destination="pzO-aw-Uww" id="snv-Vg-kyb"/>
                 <outlet property="PhotoLabel" destination="nTL-E7-9CB" id="yEE-O0-q90"/>
                 <outlet property="PhotoLabelHeader" destination="qse-9Q-NGa" id="22S-6S-nSz"/>
+                <outlet property="trashIconImage" destination="X4O-pp-LdM" id="MT6-hX-0Za"/>
             </connections>
             <point key="canvasLocation" x="188.80000000000001" y="89.505247376311857"/>
         </tableViewCell>

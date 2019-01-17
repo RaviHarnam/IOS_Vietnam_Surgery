@@ -144,6 +144,7 @@ public class FormFillInViewController : Eureka.FormViewController {
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormPicturesViewController") as! FormPicturesViewController
+        self.formData?.formPictures = []
         vc.formFillInStep = self.formFillInStep! + 1
         vc.formContent = self.formContent
         vc.formData = self.formData

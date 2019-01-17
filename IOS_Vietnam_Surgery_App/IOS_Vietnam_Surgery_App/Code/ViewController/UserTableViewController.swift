@@ -18,6 +18,8 @@ public class UserTableViewController : UIViewController {
     
     private var dataChanged = false
     
+    
+    
     @IBOutlet weak var UserTableView: UITableView!
     
         override public func viewDidLoad () {
@@ -69,8 +71,8 @@ public class UserTableViewController : UIViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = false
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(alertForLogout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+       // navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(alertForLogout))
 
 //        let addUserButton = UIButton(type: .system)
 //        addUserButton.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
@@ -83,6 +85,7 @@ public class UserTableViewController : UIViewController {
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let addUserVC = storyboard.instantiateViewController(withIdentifier: "AddUserViewController") as! AddUserViewController
+        addUserVC.callback = self
          self.navigationController?.pushViewController(addUserVC, animated: true)
     }
     
@@ -105,9 +108,7 @@ public class UserTableViewController : UIViewController {
     {
         UserManager.getAllUsers(callBack: {
             (usersArray)  in
-            
             if let users = usersArray  {
-                
                 self.users = users
                 DispatchQueue.main.async {
                     self.UserTableView.reloadData()
@@ -116,17 +117,33 @@ public class UserTableViewController : UIViewController {
         })
     }
     
+    func deleteUser(_ row: Int) {
+        guard let token = AppDelegate.authenticationToken else { return }
+        UserAPIManager.DeleteUser(token: token, userid: self.users![row].userid!).response(completionHandler: {
+            (response) in
+            if response.response?.statusCode == 200 {
+                self.users?.remove(at: row)
+                self.UserTableView.reloadData()
+            }
+            else {
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error_deleting_user", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+        })
+    }
+    
     @objc func alertForLogout() {
-    var alert = UIAlertController(title: "Logout", message: "Are you sure you want to log out?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to log out?", preferredStyle: .alert)
     
-    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
     
-    self.LogOut()
+            self.LogOut()
    
-    }))
-    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
     
-    self.present(alert, animated: true)
+        self.present(alert, animated: true)
     
     }
     
@@ -154,13 +171,13 @@ extension UserTableViewController : UITableViewDataSource {
             let user = userarray[indexPath.row]
            
             cell.UserNameLabel.text = user.email
-            cell.editUserImage.image = UIImage(named: "Edit-User")
-            cell.deleteUserImage.image = UIImage(named: "Delete")
+            //cell.editUserImage.image = UIImage(named: "Edit-User")
+            //cell.deleteUserImage.image = UIImage(named: "Delete")
             
             let singleTap = UITapGestureRecognizer(target: self, action: #selector(alertForDeleteUser(sender: )))
-            cell.deleteUserImage.isUserInteractionEnabled = true
-            cell.deleteUserImage.tag = indexPath.row
-            cell.deleteUserImage.addGestureRecognizer(singleTap)
+            //cell.deleteUserImage.isUserInteractionEnabled = true
+            //cell.deleteUserImage.tag = indexPath.row
+            //cell.deleteUserImage.addGestureRecognizer(singleTap)
         }
         return cell
     }
@@ -184,9 +201,9 @@ extension UserTableViewController : UITableViewDataSource {
             }
           
         }
-        
-      
     }
+    
+    
     
     @objc public func alertForDeleteUser(sender: UITapGestureRecognizer) {
         if let row = sender.view?.tag {
@@ -195,9 +212,7 @@ extension UserTableViewController : UITableViewDataSource {
                 let alert = UIAlertController(title: NSLocalizedString("DeleteUser", comment: ""), message: NSLocalizedString("DeleteUserMsg" , comment: "") +  name + "?", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-                    
                     self.tapDetected(sender: sender)
-                    
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
                 
@@ -210,17 +225,6 @@ extension UserTableViewController : UITableViewDataSource {
      public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             print(self.users?.count ?? 0)
             return self.users?.count ?? 0
-            
-            //        if let userarray = self.users
-            //        {
-            //            print("Komt in tableView Func")
-            //            var userstoreturn = userarray
-            //            count = userstoreturn.count
-            //
-            //        }
-            //        print("UserCount: ", count)
-            //        return count
-            //
     }
 }
 
@@ -234,14 +238,33 @@ extension UserTableViewController : UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Confirm_delete_user", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (action: UIAlertAction) in self.deleteUser(indexPath.row) }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
 }
 
 extension UserTableViewController : CallbackProtocol {
     public func setValue(data: Any) {
-        let user = data as! User
-        if let idx = self.users!.firstIndex(where: { $0.email == user.email }) {
-            self.users![idx] = user
+        if let user = data as? User {
+            if let idx = self.users!.firstIndex(where: { $0.email == user.email }) {
+                self.users![idx] = user
+                self.dataChanged = true
+            }
+        }
+        else {
+            getAllUsers()
             self.dataChanged = true
+            //self.users?.append(data as! Register)
         }
     }
 }

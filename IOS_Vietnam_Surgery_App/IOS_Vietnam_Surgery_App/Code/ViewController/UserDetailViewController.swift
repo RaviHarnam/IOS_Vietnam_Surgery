@@ -39,14 +39,13 @@ class UserDetailViewController: UIViewController {
     
 
     public func setupLabels () {
-        
-        userEmailLabel.text = "Email"
-        userRightsLabel.text = "Rights"
+        userEmailLabel.text = NSLocalizedString("Email", comment: "") 
+        userRightsLabel.text = NSLocalizedString("Rights", comment: "")
         userEmailTextField.text = user?.email
         rightsSegmentedControl.removeAllSegments()
         rightsSegmentedControl.insertSegment(withTitle: NSLocalizedString("AdminOption", comment: ""), at: 0, animated: true)
-        rightsSegmentedControl.selectedSegmentIndex = 0
         rightsSegmentedControl.insertSegment(withTitle: NSLocalizedString("UserOption", comment: ""), at: 1, animated: true)
+        rightsSegmentedControl.selectedSegmentIndex = user?.userrole == nil ? 0 : user?.userrole!.first?.roleid == "1" ? 0 : 1
     }
     
     @objc func saveClicked() {
