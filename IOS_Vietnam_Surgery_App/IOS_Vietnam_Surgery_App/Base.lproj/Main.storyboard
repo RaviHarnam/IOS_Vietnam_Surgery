@@ -60,18 +60,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-DM-4r7">
-                                <rect key="frame" x="168.5" y="200" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="LoginButton:" destination="cPw-KF-45Q" eventType="touchUpInside" id="VrI-08-jdI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tTq-DM-4r7" firstAttribute="centerX" secondItem="AjH-da-qRl" secondAttribute="centerX" id="3aL-fX-T9R"/>
-                            <constraint firstItem="tTq-DM-4r7" firstAttribute="top" secondItem="Vcg-rd-1Yn" secondAttribute="bottom" constant="30" id="ADF-LI-hia"/>
                             <constraint firstItem="Vcg-rd-1Yn" firstAttribute="top" secondItem="4C6-Ha-by3" secondAttribute="bottom" constant="30" id="VC5-xG-WQM"/>
                             <constraint firstItem="4C6-Ha-by3" firstAttribute="leading" secondItem="AjH-da-qRl" secondAttribute="leading" constant="16" id="YIB-LZ-9dZ"/>
                             <constraint firstItem="4C6-Ha-by3" firstAttribute="top" secondItem="AjH-da-qRl" secondAttribute="top" constant="60" id="azX-OU-9Te"/>
@@ -84,7 +75,6 @@
                     <tabBarItem key="tabBarItem" title="Item" id="D9o-4A-rsf"/>
                     <navigationItem key="navigationItem" id="Srl-U3-XYi"/>
                     <connections>
-                        <outlet property="LoginButton" destination="tTq-DM-4r7" id="hsi-hl-XCf"/>
                         <outlet property="PasswordField" destination="Vcg-rd-1Yn" id="HxU-sh-kMe"/>
                         <outlet property="UsernameField" destination="4C6-Ha-by3" id="1rM-XH-QAi"/>
                     </connections>
@@ -925,8 +915,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chevron" width="30.399999618530273" height="30.399999618530273"/>
-        <image name="Delete" width="40" height="40"/>
+        <image name="Chevron" width="19" height="19"/>
+        <image name="Delete" width="25" height="25"/>
         <namedColor name="LightGrayBackgroundColor">
             <color red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

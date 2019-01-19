@@ -14,21 +14,10 @@ class LoginViewController: UIViewController {
     
     //@IBOutlet weak var LoginSpinner: UIActivityIndicatorView!
     
-    @IBOutlet weak var LoginButton: UIButton!
-    
     @IBOutlet weak var UsernameField: UITextField!
     
     @IBOutlet weak var PasswordField: UITextField!
     private var spinner : UIActivityIndicatorView?
-    
-    @IBAction func LoginButton(_ sender: Any) {
- 
-//            spinner?.startAnimating()
-            isFetching = true
-        print("isFechting: ", isFetching)
-            UserLogin()
-        
-    }
     
     private var isFetching : Bool = false {
         didSet {
@@ -61,6 +50,7 @@ class LoginViewController: UIViewController {
         navigationItem.title = "Login"
         //setupSpinner()
         setupLoginPlaceHolders()
+        setupNavigationBar()
         #if DEBUG
             UsernameField.text = "test@test.nl"
             PasswordField.text = "Test01!"
@@ -73,7 +63,10 @@ class LoginViewController: UIViewController {
         PasswordField.autocorrectionType = .no
         PasswordField.isSecureTextEntry = true
         PasswordField.placeholder = "Fill in password"
-        LoginButton.setTitle("Login", for: .normal)
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Login", comment: ""), style: .plain, target: self, action: #selector(loginClicked))
     }
     
     @objc func usernameValueChanged ()
@@ -86,6 +79,11 @@ class LoginViewController: UIViewController {
     {
         self.PasswordField.layer.borderWidth = 0
         self.PasswordField.layer.borderColor = nil
+    }
+    
+    @objc func loginClicked() {
+        isFetching = true
+        UserLogin()
     }
     
     func UserLogin() {

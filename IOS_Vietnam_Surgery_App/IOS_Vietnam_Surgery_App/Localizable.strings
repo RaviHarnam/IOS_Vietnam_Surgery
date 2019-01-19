@@ -86,4 +86,4 @@
 "UserRoleAdmin" = "Admin";
 "UserRoleUser" = "User";
 "Error_delete_formtemplate" = "Error deleting this formtemplate. Check your internet connection and try again.";
-
+"Login" = "Login";
