@@ -15,13 +15,15 @@ public class FormManagementViewController : UIViewController {
     
     private var formTemplates : [Form] = []
     
+    
     private var dataChanged = false
+    private var spinner : UIActivityIndicatorView?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = NSLocalizedString("FormManagementViewControllerTabTitle", comment: "")
-        
+        spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         setupTabelview()
         getFormTemplatesAsync()
         setupAppBar()
@@ -65,8 +67,10 @@ public class FormManagementViewController : UIViewController {
     }
     
     func getFormTemplatesAsync() {
+        spinner?.show()
         FormTemplateAPIManager.getFormTemplates().responseData(completionHandler: {
             (response) in
+            self.spinner?.hide()
             guard let responseData = response.data else { return }
             
             let decoder = JSONDecoder()
@@ -78,6 +82,37 @@ public class FormManagementViewController : UIViewController {
         })
     }
     
+    func showDeleteAlert(_ row: Int) {
+        let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Confirm_delete_formtemplate", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (action: UIAlertAction) in self.deleteFormTemplate(row) }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error_delete_formtemplate", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func deleteFormTemplate(_ row: Int) {
+        spinner?.show()
+        let form = self.formTemplates[row]
+        FormTemplateAPIManager.deleteFormTemplate(form.id!).response(completionHandler: {
+            (response) in
+            self.spinner?.hide()
+            if response.response?.statusCode == 200 {
+                self.formTemplates.remove(at: row)
+                DispatchQueue.main.async {
+                    self.formTemplateTableView.reloadData()
+                }
+                print("Deleted form template with statuscode 200")
+            }
+            else {
+                self.showErrorAlert()
+            }
+        })
+    }
 //    func resizeTableView() {
 //        if self.formTemplateTableView.frame.height > self.formTemplateTableView.contentSize.height {
 //            DispatchQueue.main.async {
@@ -122,6 +157,16 @@ extension FormManagementViewController : UITableViewDelegate {
         vc.updateFormManagement = self
         vc.isEditingForm = true
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle ==  .delete {
+            showDeleteAlert(indexPath.row)
+        }
     }
 }
 

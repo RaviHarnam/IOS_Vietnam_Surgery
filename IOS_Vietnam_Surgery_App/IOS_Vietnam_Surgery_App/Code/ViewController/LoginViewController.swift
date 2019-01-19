@@ -19,7 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var UsernameField: UITextField!
     
     @IBOutlet weak var PasswordField: UITextField!
-     private var spinner : UIActivityIndicatorView?
+    private var spinner : UIActivityIndicatorView?
+    
     @IBAction func LoginButton(_ sender: Any) {
  
 //            spinner?.startAnimating()
@@ -32,14 +33,14 @@ class LoginViewController: UIViewController {
     private var isFetching : Bool = false {
         didSet {
             if isFetching {
-                spinner?.isHidden = false
-                spinner?.startAnimating()
+                spinner?.show()
             }
             else {
-                spinner?.stopAnimating()
+                spinner?.hide()
             }
         }
     }
+    
     func setupSpinner() {
         let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         spinner.center = view.center
@@ -52,12 +53,13 @@ class LoginViewController: UIViewController {
 
         //self.storyboard?.instantiateViewController(withIdentifier: "LoginID")
 //        LoginSpinner.isHidden = true
+        spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         self.UsernameField.addTarget(self, action: #selector(usernameValueChanged), for: .editingChanged)
         self.PasswordField.addTarget(self, action: #selector(passwordValueChanged), for: .editingChanged)
         view.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Login"
-        setupSpinner()
+        //setupSpinner()
         setupLoginPlaceHolders()
         #if DEBUG
             UsernameField.text = "test@test.nl"
@@ -86,13 +88,13 @@ class LoginViewController: UIViewController {
         self.PasswordField.layer.borderColor = nil
     }
     
-    
     func UserLogin() {
         if (BaseAPIManager.isConnectedToInternet()) {
+            isFetching = true
             let filledInLogin = Login(username: UsernameField.text, password: PasswordField.text, grant_type: "password")
             UserManager.UserLogIn(login: filledInLogin, callBack: {
                 (result) in
-                
+                self.isFetching = false
                 if(result) { //Succesfully logged in, appbar will do nav for us
                     print("Wat zit er in result: ", result)
                     //self.navigateToAdminInterface()∫
@@ -105,7 +107,6 @@ class LoginViewController: UIViewController {
                     self.PasswordField.layer.borderColor = UIColor.red.cgColor
                 }
             })
-            isFetching = false
         }
         else {
             let alert = AlertHelper.NoInternetAlert()

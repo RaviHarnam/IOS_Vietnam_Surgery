@@ -28,9 +28,12 @@ public class FormTemplateEditViewController : UIViewController {
     private var headerID = "FormPreviewHeaderView"
     public var sectionNumber : Int?
     
+    private var spinner : UIActivityIndicatorView?
+    
     public var dataChanged = false
     public var updateFormManagement : CallbackProtocol?
     public var isEditingForm : Bool?
+    
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,7 @@ public class FormTemplateEditViewController : UIViewController {
         formExplanationText.text = NSLocalizedString("FormTemplateEditExplanationText", comment: "")
         formNameTextField.placeholder = NSLocalizedString("", comment: "")
         formNameTextField.addTarget(self, action: #selector(formNameChanged), for: .editingChanged)
+        spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         setupAppBar()
         updateTitle()
         let footerView = UIView()
@@ -130,9 +134,11 @@ public class FormTemplateEditViewController : UIViewController {
         form.formTemplate = FormHelper.getJsonFromFormTemplate(template: template)
         form.name = self.form?.name
         form.region = self.form?.region ?? form.name
+        spinner?.show()
         if self.isEditingForm == false {
             FormTemplateAPIManager.createFormTemplate(form: form).response(completionHandler: {
                 (response) in
+                self.spinner?.hide()
                 if response.response?.statusCode == 200 {
                     var dic : [Int?:FormPostPutModel] = [:]
                     dic[nil] = form
@@ -144,7 +150,7 @@ public class FormTemplateEditViewController : UIViewController {
         else {
             FormTemplateAPIManager.editFormTemplate((self.form?.id)!, form: form).response(completionHandler: {
                 (response) in
-                print("Edited form template with statuscode: " + String(response.response!.statusCode))
+                self.spinner?.hide()
                 if response.response?.statusCode == 200 {
                     var dic : [Int:FormPostPutModel] = [:]
                     dic[self.sectionNumber!] = form

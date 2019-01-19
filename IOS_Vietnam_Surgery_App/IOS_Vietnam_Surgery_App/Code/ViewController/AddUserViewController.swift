@@ -19,7 +19,6 @@ class AddUserViewController: UIViewController {
     @IBOutlet weak var RightsLabel: UILabel!
     
     @IBOutlet weak var ValidationMessageLabel: UILabel!
-    @IBOutlet weak var AddUserButton: UIButton!
     
     @IBOutlet weak var ConfirmPasswordTextField: UITextField!
     
@@ -36,58 +35,11 @@ class AddUserViewController: UIViewController {
     
     public var callback : CallbackProtocol?
     
-    @IBAction func AddUserButton(_ sender: Any) {
-        ValidationMessageLabel.isHidden = true
-//        
-//        guard let naam = NameTextView.text, !naam.isEmpty else {
-//            ValidationMessageToggle(toggleValue: false)
-//            ValidationMessageLabel.text = "Voer aub uw naam in"
-//            return
-//        }
-        guard let email = UserNameTextView.text, !email.isEmpty else {
-            ValidationMessageToggle(toggleValue: false)
-            ValidationMessageLabel.text = NSLocalizedString("EnterUserName", comment: "")
-            return
-        }
-
-        guard let password = PasswordTextView.text, !password.isEmpty else {
-            ValidationMessageToggle(toggleValue: false)
-            ValidationMessageLabel.text = NSLocalizedString("EnterPassword", comment: "")
-            return
-        }
-        
-        guard let confirmpassword = ConfirmPasswordTextField.text, !confirmpassword.isEmpty else {
-            ValidationMessageToggle(toggleValue: false)
-            ValidationMessageLabel.text = NSLocalizedString("EnterConfirmPassword", comment: "")
-            return
-        }
-        
-            
-            alertMessage(email: email)
-            let registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
-            
-            UserManager.Register(register: registerModel)
-      
-    }
-    
-    func validateForm() -> Bool {
-        guard let email = UserNameTextView.text else {
-            return false
-        }
-        
-        return true
-    }
-    
-//    @IBAction func adminButtonClick(_ sender: Any) {
-//
-//        adminButton.isSelected = true
-//        fieldScreenerButton.isSelected = false
-//
-//    }
+    private var spinner : UIActivityIndicatorView?
     
     private func alertMessage(email: String) {
         
-        var usermessage = "User " + email + " added successfully"
+        let usermessage = "User " + email + " added successfully"
         let alert = UIAlertController(title: "Success ", message: usermessage, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -128,12 +80,12 @@ class AddUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AddUserButton.isHidden = true
         
         view.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Add User"
         
+        spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         setupNavigationBar()
         setupLabels()
     }
@@ -153,7 +105,6 @@ class AddUserViewController: UIViewController {
         PasswordTextView.isSecureTextEntry = true
         ConfirmPasswordTextField.autocorrectionType = .no
         ConfirmPasswordTextField.isSecureTextEntry = true
-        setupButtonsText()
     }
     
     func setupNavigationBar() {
@@ -182,23 +133,35 @@ class AddUserViewController: UIViewController {
         }
         
         
-        alertMessage(email: email)
-        let registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
-        
-        UserManager.Register(register: registerModel)
-        callback?.setValue(data: registerModel)
-        navigationController?.popViewController(animated: true)
+        if (password.elementsEqual(confirmpassword)) {
+            alertMessage(email: email)
+            let registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
+            spinner?.show()
+            UserManager.Register(register: registerModel, callbackUser: {
+                (user) in
+                self.spinner?.hide()
+                if let registereduser = user {
+                    self.callback?.setValue(data: registereduser)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                else {
+                    self.alerMessageUserAddFailed()
+                }
+            })
+            //navigationController?.popViewController(animated: true)
+        }
+        else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("PasswordNotEqual", comment: "")
+            return
+        }
     }
     
-    func setupButtonsText() {
-//        adminButton.setTitle("Admin", for: .normal)
-//        fieldScreenerButton.setTitle("User", for: .normal)
-        AddUserButton.setTitle(NSLocalizedString("UserAddButton", comment: ""), for: .normal)
-    }
-    
-    func checkButtonClick()
-    {
-        
+    private func alerMessageUserAddFailed () {
+        let useraddedfailedmessage = NSLocalizedString("UserAddedFailed", comment: "")
+        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: useraddedfailedmessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
 //    func registerNewUser() {

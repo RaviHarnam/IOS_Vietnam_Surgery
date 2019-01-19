@@ -24,15 +24,16 @@ class UserDetailViewController: UIViewController {
     public var callback : CallbackProtocol?
     
     public var user : User?
+    public var userNumber : Int?
+    private var spinner : UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
         setupNavigationItems()
-        
+        spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
     }
     
- 
     public func setupNavigationItems() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked))
     }
@@ -53,25 +54,22 @@ class UserDetailViewController: UIViewController {
     }
     
     public func changeEmailAndRights () {
-        //user?.email = self.userEmailTextField.text
-        //user?.roles = []
-        //user?.roles.append(Role())
-        
         let putModel = UserPutModel()
         putModel.email = self.userEmailTextField.text
         putModel.role = self.rightsSegmentedControl.titleForSegment(at: rightsSegmentedControl.selectedSegmentIndex)
         
         //user?.role = self.rightsSegmentedControl.titleForSegment(at: rightsSegmentedControl.selectedSegmentIndex)
+        spinner?.show()
         UserAPIManager.EditUser(token: AppDelegate.authenticationToken!, user: putModel, userId: (self.user?.userid!)!).responseData(completionHandler: {
             (response) in
-            print(response)
+            self.spinner?.hide()
            
             if response.response?.statusCode == 200 {
-                //let decoder = JSONDecoder()
-                //let userDB = try? decoder.decode(User.self, from: response.data!)
-                self.user?.email = putModel.email
-                
-                self.callback?.setValue(data: self.user!)
+                let decoder = JSONDecoder()
+                let userDB = try? decoder.decode(User.self, from: response.data!)
+                var dic : [Int:User] = [:]
+                dic[self.userNumber!] = userDB
+                self.callback?.setValue(data: dic)
                 self.navigationController!.popViewController(animated: true)
             }
         })

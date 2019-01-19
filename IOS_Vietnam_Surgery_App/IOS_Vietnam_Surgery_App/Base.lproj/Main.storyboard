@@ -290,28 +290,36 @@
             </objects>
             <point key="canvasLocation" x="2596" y="-1705.097451274363"/>
         </scene>
-        <!--UserTableViewController-->
-        <scene sceneID="K4L-SZ-Aig">
+        <!--UserManagementViewController-->
+        <scene sceneID="Yzr-Xu-fFm">
             <objects>
-                <tableViewController storyboardIdentifier="UserTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BA6-Ss-XUs" userLabel="UserTableViewController" customClass="UserTableViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="36u-eP-Bvq">
+                <viewController storyboardIdentifier="UserManagementViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Za0-ea-fUo" userLabel="UserManagementViewController" customClass="UserManagementViewController" customModule="IOS_Vietnam_Surgery_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2fs-cu-zwI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t3f-W5-zI4">
+                                <rect key="frame" x="16" y="20" width="343" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="BA6-Ss-XUs" id="jbU-tu-aAt"/>
-                            <outlet property="delegate" destination="BA6-Ss-XUs" id="sJt-we-QW6"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="Ekd-wG-qFB"/>
-                    <navigationItem key="navigationItem" id="nzJ-y0-Mw9"/>
+                        <constraints>
+                            <constraint firstItem="t3f-W5-zI4" firstAttribute="leading" secondItem="aEo-9H-U7o" secondAttribute="leading" constant="16" id="XWm-cw-0qI"/>
+                            <constraint firstItem="t3f-W5-zI4" firstAttribute="top" secondItem="aEo-9H-U7o" secondAttribute="top" id="hPl-KF-uHM"/>
+                            <constraint firstItem="aEo-9H-U7o" firstAttribute="bottom" secondItem="t3f-W5-zI4" secondAttribute="bottom" id="lpp-t9-Z7L"/>
+                            <constraint firstItem="aEo-9H-U7o" firstAttribute="trailing" secondItem="t3f-W5-zI4" secondAttribute="trailing" constant="16" id="uw7-uc-sDp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aEo-9H-U7o"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="igj-Re-Uif"/>
                     <connections>
-                        <outlet property="UserTableView" destination="36u-eP-Bvq" id="6Ry-TG-49n"/>
+                        <outlet property="userTableView" destination="t3f-W5-zI4" id="cD1-bx-v0w"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EJ1-LV-0Vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SBB-gv-khv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2463" y="-956"/>
+            <point key="canvasLocation" x="2596" y="-889"/>
         </scene>
         <!--Add User View Controller-->
         <scene sceneID="Gb2-wP-16l">
@@ -353,13 +361,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSv-ct-Pl1">
-                                <rect key="frame" x="164.5" y="388.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="AddUserButton:" destination="pSV-vL-CRP" eventType="touchUpInside" id="6QD-ge-3fH"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lok-Mv-iKa">
                                 <rect key="frame" x="16" y="145.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -406,7 +407,6 @@
                             <constraint firstItem="0pv-op-56i" firstAttribute="top" secondItem="lok-Mv-iKa" secondAttribute="bottom" constant="16" id="B6p-Qi-dXb"/>
                             <constraint firstItem="lok-Mv-iKa" firstAttribute="top" secondItem="JcM-Nd-vH1" secondAttribute="bottom" constant="16" id="Bo4-R9-p4K"/>
                             <constraint firstItem="HzQ-gR-zd2" firstAttribute="leading" secondItem="eNc-3R-uhe" secondAttribute="leading" id="ESt-XE-iIk"/>
-                            <constraint firstItem="YSv-ct-Pl1" firstAttribute="centerY" secondItem="E62-zN-iae" secondAttribute="centerY" constant="60" id="GuC-O9-yzq"/>
                             <constraint firstItem="eNc-3R-uhe" firstAttribute="top" secondItem="E62-zN-iae" secondAttribute="top" constant="16" id="IF1-lb-iUe"/>
                             <constraint firstItem="lok-Mv-iKa" firstAttribute="centerY" secondItem="Abw-DE-7uF" secondAttribute="centerY" id="Kcn-dS-rui"/>
                             <constraint firstItem="E62-zN-iae" firstAttribute="trailing" secondItem="Abw-DE-7uF" secondAttribute="trailing" constant="16" id="NnZ-Bt-Qfi"/>
@@ -423,7 +423,6 @@
                             <constraint firstItem="HzQ-gR-zd2" firstAttribute="centerY" secondItem="a6f-gi-oSt" secondAttribute="centerY" id="a6u-eF-EvX"/>
                             <constraint firstItem="EpD-85-dwH" firstAttribute="centerX" secondItem="E62-zN-iae" secondAttribute="centerX" constant="40" id="c4P-LT-6yi"/>
                             <constraint firstItem="EpD-85-dwH" firstAttribute="leading" secondItem="a6f-gi-oSt" secondAttribute="leading" id="fJb-3K-bxh"/>
-                            <constraint firstItem="YSv-ct-Pl1" firstAttribute="centerX" secondItem="E62-zN-iae" secondAttribute="centerX" id="gja-3f-TQE"/>
                             <constraint firstItem="HzQ-gR-zd2" firstAttribute="top" secondItem="eNc-3R-uhe" secondAttribute="bottom" constant="16" id="pGl-y9-0gC"/>
                             <constraint firstItem="Abw-DE-7uF" firstAttribute="leading" secondItem="a6f-gi-oSt" secondAttribute="leading" id="pNA-Hk-jDS"/>
                             <constraint firstItem="E62-zN-iae" firstAttribute="trailing" secondItem="EpD-85-dwH" secondAttribute="trailing" constant="16" id="rLP-fD-p75"/>
@@ -433,7 +432,6 @@
                         <viewLayoutGuide key="safeArea" id="E62-zN-iae"/>
                     </view>
                     <connections>
-                        <outlet property="AddUserButton" destination="YSv-ct-Pl1" id="Omu-fy-q73"/>
                         <outlet property="ConfirmPasswordLabel" destination="lok-Mv-iKa" id="7Qm-oz-FCt"/>
                         <outlet property="ConfirmPasswordTextField" destination="Abw-DE-7uF" id="DTW-Dc-heW"/>
                         <outlet property="OptionUISegmentedControl" destination="EpD-85-dwH" id="l0x-SO-MOf"/>
@@ -703,7 +701,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="5UF-R7-pXO"/>
                         <segue destination="cPw-KF-45Q" kind="relationship" relationship="viewControllers" id="aNC-Ud-5gy"/>
-                        <segue destination="BA6-Ss-XUs" kind="relationship" relationship="viewControllers" id="gWC-vr-9Wa"/>
+                        <segue destination="Za0-ea-fUo" kind="relationship" relationship="viewControllers" id="edL-4I-m6J"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRo-DU-zR9" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,7 +12,6 @@ class FormTemplateViewController: UIViewController {
 
     @IBOutlet weak var chooseFormLabel: UILabel!
     @IBOutlet weak var formTemplateTableView: UITableView!
-    let tabBarCnt = UITabBarController()
     private var formTemplates : [Form]?
     private var spinner : UIActivityIndicatorView?
     private var refreshControl : UIRefreshControl?
@@ -20,10 +19,10 @@ class FormTemplateViewController: UIViewController {
     private var isFetching : Bool = false {
         willSet(newIsFetching) {
             if newIsFetching {
-                spinner?.startAnimating()
+                spinner?.show()
             }
             else {
-                spinner?.stopAnimating()
+                spinner?.hide()
             }
         }
     }
@@ -31,6 +30,7 @@ class FormTemplateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         
 //        let ctrl = TabBarHelper.createAdminTabBar()
 //        ctrl.view.frame = CGRect(x: 0, y: 896 , width: 414, height: 100)
@@ -53,33 +53,11 @@ class FormTemplateViewController: UIViewController {
         
         setupTableView()
         setupNavigationBar()
-        setupSpinner()
+        //setupSpinner()
         setupRefreshControl()
         getFormTemplatesAsync()
 //        createTabBarController()
 //        self.view.addSubview(ctrl.view)
-    }
-    
-    func createTabBarController() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginID")
-//
-        tabBarCnt.tabBar.tintColor = UIColor.black
-//
-//        let firstVc = UIViewController()
-//        firstVc.title = "First"
-//        firstVc.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(named: "icon"), tag: 0)
-//        let secondVc = loginVC
-//        secondVc.title = "Second"
-//        secondVc.tabBarItem = UITabBarItem.init(title: "Login", image: UIImage(named: "login"), tag: 0)
-//
-        //let controllerArray = TabBarHelper.createUserTabBar()
-        //tabBarCnt.viewControllers = controllerArray.map{ UINavigationController.init(rootViewController: $0)}
-        
-        //if AppDelegate.adminTab.view
-        //let usertab = AppDelegate.userTab
-        
-        //self.view.addSubview(usertab!.view)
     }
     
     func setupTableView() {
@@ -107,13 +85,13 @@ class FormTemplateViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Sync"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(syncCLicked))
     }
     
-    func setupSpinner() {
-        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-        spinner.center = view.center
-        spinner.hidesWhenStopped = true
-        self.spinner = spinner
-        view.addSubview(spinner)
-    }
+//    func setupSpinner() {
+//        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+//        spinner.center = view.center
+//        spinner.hidesWhenStopped = true
+//        self.spinner = spinner
+//        view.addSubview(spinner)
+//    }
     
     @objc func refresh(){
         getFormTemplatesAsync()
@@ -126,6 +104,8 @@ class FormTemplateViewController: UIViewController {
     }
     
     func getFormTemplatesAsync() {
+        isFetching = true
+        //spinner?.startAnimating()
         if BaseAPIManager.isConnectedToInternet() {
             getFormTemplatesFromInternetAsync()
         }
@@ -137,12 +117,14 @@ class FormTemplateViewController: UIViewController {
     func getFormTemplatesFromInternetAsync() {
         FormTemplateAPIManager.getFormTemplates().responseData(completionHandler: {
             (response) in
+            self.spinner?.hide()
             guard let responseData = response.data else { return }
             
             let decoder = JSONDecoder()
             if let templates = try? decoder.decode([Form].self, from: responseData) {
                 self.writeFormTemplatesToDisk(forms: templates)
                 self.formTemplates = templates
+                self.isFetching = false
                 DispatchQueue.main.async {
                     self.formTemplateTableView.reloadData()
                 }
@@ -173,6 +155,7 @@ class FormTemplateViewController: UIViewController {
             let string = try String(contentsOf: fileUrl, encoding: .utf8)
             let forms = try JSONDecoder().decode([Form].self, from: string.data(using: .utf8)!)
             self.formTemplates = forms
+            self.isFetching = false
             DispatchQueue.main.async {
                 self.formTemplateTableView.reloadData()
             }
@@ -233,7 +216,6 @@ extension FormTemplateViewController : UITableViewDelegate {
             vc.formData = template
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
 }
 

@@ -11,17 +11,18 @@ import UIKit
 
 public class AlertHelper {
     
-    
-    
-    public static func NoInternetAlert() -> UIAlertController {
-        
+    public static func NoInternetAlert(_ okCallback: (() -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: NSLocalizedString("NoInternet", comment: ""), message: NSLocalizedString("NoInternetMessage" , comment: ""), preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+            (action: UIAlertAction) in
+            if let okCallback = okCallback {
+                okCallback()
+            }
+        }))
         
         return alert
     }
-
-    
 }
+
+
