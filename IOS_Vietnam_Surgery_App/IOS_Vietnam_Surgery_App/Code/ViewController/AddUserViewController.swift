@@ -116,6 +116,7 @@ class AddUserViewController: UIViewController {
       
         guard let email = UserNameTextView.text, !email.isEmpty else {
             ValidationMessageToggle(toggleValue: false)
+             UserNameTextView.layer.borderColor = UIColor.red.cgColor
             ValidationMessageLabel.text = NSLocalizedString("EnterUserName", comment: "")
             return
         }
