@@ -170,7 +170,7 @@ public class FormFillInViewController : Eureka.FormViewController {
             switch field.type!.lowercased() {
             case "string":
                     section.append(TextRow() {
-                        $0.title = field.name
+                        $0.title = field.name! + (field.required?.lowercased() == "true" ? " *" : "")
                         $0.tag = field.name
                         $0.onChange {[unowned self] row in
                             if let fieldValue = row.value {
@@ -190,7 +190,7 @@ public class FormFillInViewController : Eureka.FormViewController {
                 break
             case "choice":
                 section.append(PushRow<String>() {
-                    $0.title = field.name
+                    $0.title = field.name! + (field.required?.lowercased() == "true" ? " *" : "")
                     $0.tag = field.name
                     $0.options = field.options!
                     $0.onChange {[unowned self] row in
@@ -205,7 +205,7 @@ public class FormFillInViewController : Eureka.FormViewController {
                 break
             case "number":
                 section.append(IntRow() {
-                    $0.title = field.name
+                    $0.title = field.name! + (field.required?.lowercased() == "true" ? " *" : "")
                     $0.tag = field.name
                     $0.onChange {[unowned self] row in
                         if let fieldValue = row.value {

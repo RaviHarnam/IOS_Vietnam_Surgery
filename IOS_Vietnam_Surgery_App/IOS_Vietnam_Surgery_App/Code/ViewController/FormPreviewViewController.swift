@@ -169,7 +169,6 @@ public class FormPreviewViewController : UIViewController {
             formData.formContent!.append(FormContentKeyValuePair(name: field.key, value: field.value))
         }
         
-        
         for image in formData.formPictures {
             formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 0.2)!))
         }
@@ -214,7 +213,6 @@ extension FormPreviewViewController : UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
         let headerview = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID) as! FormPreviewHeaderView
 
         let bgView = UIView()

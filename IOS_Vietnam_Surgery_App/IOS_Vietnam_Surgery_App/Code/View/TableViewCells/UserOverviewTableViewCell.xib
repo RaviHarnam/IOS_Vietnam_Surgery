@@ -23,15 +23,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxC-Wn-AaL">
+                        <rect key="frame" x="315" y="11.5" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Vzw-lF-RJ0" firstAttribute="leading" secondItem="p90-sy-AUX" secondAttribute="leadingMargin" id="5re-Fc-vfM"/>
+                    <constraint firstItem="vxC-Wn-AaL" firstAttribute="centerY" secondItem="p90-sy-AUX" secondAttribute="centerY" id="BQA-6d-fo7"/>
                     <constraint firstItem="Vzw-lF-RJ0" firstAttribute="bottom" secondItem="p90-sy-AUX" secondAttribute="bottomMargin" id="LaY-oi-Djy"/>
                     <constraint firstItem="Vzw-lF-RJ0" firstAttribute="top" secondItem="p90-sy-AUX" secondAttribute="topMargin" constant="1" id="TZg-0a-bUz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vxC-Wn-AaL" secondAttribute="trailing" constant="2" id="Z7B-eQ-Nxq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="UserNameLabel" destination="Vzw-lF-RJ0" id="v8B-0r-6BL"/>
+                <outlet property="userRoleLabel" destination="vxC-Wn-AaL" id="oXM-6Y-Rk2"/>
             </connections>
             <point key="canvasLocation" x="-12" y="60"/>
         </tableViewCell>

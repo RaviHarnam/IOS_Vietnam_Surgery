@@ -102,6 +102,12 @@ public class FormPictureViewController : UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
     }
     
+    func deletePicture() {
+        self.images.remove(at: imageNumber)
+        self.callback?.setValue(data: self.images)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func swipedRight() {
         goToNext()
     }
@@ -111,10 +117,10 @@ public class FormPictureViewController : UIViewController {
     }
     
     @objc func deleteClicked() {
-        self.images.remove(at: imageNumber)
-        self.callback?.setValue(data: self.images)
-        self.navigationController?.popViewController(animated: true)
-        
+        let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Confirm_delete_picture", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (action: UIAlertAction) in self.deletePicture() }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
     @objc func nextClicked() {

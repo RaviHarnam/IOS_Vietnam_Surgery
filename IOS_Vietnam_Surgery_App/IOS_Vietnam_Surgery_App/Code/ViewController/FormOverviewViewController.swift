@@ -8,12 +8,13 @@
 
 import UIKit
 
-class FormOverviewViewController: UIViewController {
+public class FormOverviewViewController: UIViewController {
     
     public var formData: Form?
     private var forms : [Form] = []
     var filteredFormData = [Form]()
     public var searchBar: UISearchBar?
+    private var spinner : UIActivityIndicatorView?
     private let refreshControl = UIRefreshControl()
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var tableViewFormoverview: UITableView!
@@ -21,17 +22,22 @@ class FormOverviewViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     
     @IBOutlet weak var progressViewLabel: UILabel!
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
+        
         setupTableView()
         setupNavigationBar()
         setupProgressView()
-       //setupSearchBar()
+        setupSearchBar()
         //getFormData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    
+    public override func viewDidAppear(_ animated: Bool) {
         setProgress(progress: 0)
+        //searchController.searchBar.becomeFirstResponder() fout doet zich niet meer voor, testen op andere devices
         getFormData()
     }
     
@@ -67,7 +73,26 @@ class FormOverviewViewController: UIViewController {
 
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredFormData = forms.filter({( form : Form) -> Bool in
-            return form.name?.lowercased().contains(searchText.lowercased()) ?? false
+            let searchText = searchText.lowercased()
+            print("SearchText: ", searchText)
+            let district = form.formContent!.first(
+                where: {$0.name == NSLocalizedString("District", comment: "")})?.value?.lowercased()
+            print("District: ", district)
+            let formName = form.name?.lowercased()
+            print("forname: ", formName)
+            
+            let name = form.formContent!.first(where: {$0.name == NSLocalizedString("Name", comment: "")})?.value?.lowercased()
+            print("name: ", name)
+            
+            let imageCount = String(form.formImagesBytes?.count ?? 0)
+            print("Imagecount: ", imageCount)
+            
+            let created = form.createdOn?.lowercased()
+            print("Created: ", created)
+            
+            print("Filtering?", (formName?.contains(searchText) ?? false))
+            
+            return (formName?.contains(searchText) ?? false) || (name?.contains(searchText) ?? false) || (district?.contains(searchText) ?? false) || (imageCount.contains(searchText)) || (created?.contains(searchText) ?? false)
         })
         
         DispatchQueue.main.async {
@@ -81,7 +106,6 @@ class FormOverviewViewController: UIViewController {
 
         self.tableViewFormoverview.dataSource = self
         self.tableViewFormoverview.delegate = self
-        
         self.tableViewFormoverview.rowHeight = 100
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -119,6 +143,8 @@ class FormOverviewViewController: UIViewController {
 
     func getFormData() {
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        spinner?.isHidden = false
+        spinner?.startAnimating()
         let decoder = JSONDecoder()
 
         do {
@@ -126,22 +152,22 @@ class FormOverviewViewController: UIViewController {
             // isfetchting = true voor activity indicator
 
             let directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
-            var actualDirContents = directoryContents//directoryContents.filter { !$0.absoluteString.contains(".Trash") || !$0.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: "")) }
+            let actualDirContents = directoryContents.filter { !$0.absoluteString.contains(".Trash") && !$0.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: "")) }
             
-            var idx = 0
-            for file in actualDirContents {
-                if file.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: ""))  {
-                    actualDirContents.remove(at: idx)
-                }
-                idx = idx + 1
-            }
-            idx = 0
-            for file in actualDirContents {
-                if file.absoluteString.contains(".Trash") {
-                    actualDirContents.remove(at: idx)
-                }
-                idx = idx + 1
-            }
+//            var idx = 0
+//            for file in actualDirContents {
+//                if file.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: ""))  {
+//                    actualDirContents.remove(at: idx)
+//                }
+//                idx = idx + 1
+//            }
+//            idx = 0
+//            for file in actualDirContents {
+//                if file.absoluteString.contains(".Trash") {
+//                    actualDirContents.remove(at: idx)
+//                }
+//                idx = idx + 1
+//            }
             
             forms = []
             if actualDirContents.count == 0 { setProgress(progress: 1) }
@@ -161,7 +187,10 @@ class FormOverviewViewController: UIViewController {
                 print(Float(index) / Float(actualDirContents.count))
                 setProgress(progress: Float(index) / Float(actualDirContents.count))
             }
-            self.tableViewFormoverview.reloadData()
+            DispatchQueue.main.async {
+                self.tableViewFormoverview.reloadData()
+            }
+            spinner?.hide()
         }
             // isfetching = false voor activity indicator
         catch {
@@ -361,7 +390,7 @@ class FormOverviewViewController: UIViewController {
 
 
 extension FormOverviewViewController : UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("isFiltering: " ,isFiltering())
         return isFiltering() ? filteredFormData.count : forms.count
     }
@@ -388,9 +417,9 @@ extension FormOverviewViewController : UITableViewDataSource {
         cell.CreatedLabelHeader.text = NSLocalizedString("CreatedLabelHeader", comment: "")
         
         
-        DispatchQueue.main.async {
-            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        }
+        
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        
     }
     
     
@@ -417,13 +446,12 @@ extension FormOverviewViewController : UITableViewDataSource {
 
 extension FormOverviewViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-       
         let form = self.forms[indexPath.row]
         
         navigateToFormPreview(form: form)
         
     }
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -467,14 +495,14 @@ extension FormOverviewViewController : UITableViewDelegate {
 
 extension FormOverviewViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-//        guard 1 == 2 else {
-//            return
-//        }
-//        if !searchController.searchBar.text!.isEmpty
-//     {
-//            filterContentForSearchText(searchController.searchBar.text!)
-//        }
-
+    public func updateSearchResults(for searchController: UISearchController) {
+    if !searchController.searchBar.text!.isEmpty {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    else {
+        DispatchQueue.main.async {
+            self.tableViewFormoverview.reloadData()
+        }
+        }
     }
 }

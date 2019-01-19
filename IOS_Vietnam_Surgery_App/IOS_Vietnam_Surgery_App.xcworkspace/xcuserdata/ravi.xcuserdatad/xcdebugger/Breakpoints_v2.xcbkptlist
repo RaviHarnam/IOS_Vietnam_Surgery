@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserTableViewController.swift"
-            timestampString = "569411908.32048"
+            timestampString = "569429512.461937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserTableViewController.swift"
-            timestampString = "569411908.320923"
+            timestampString = "569429512.462015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/LoginViewController.swift"
-            timestampString = "568918132.396371"
+            timestampString = "569518995.698752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "LoginViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.270806"
+            timestampString = "569538493.597816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "setContentText(cell:form:)"
             landmarkType = "7">
             <Locations>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.270884"
+            timestampString = "569538493.598358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/LoginViewController.swift"
-            timestampString = "568918132.39867"
+            timestampString = "569518995.698971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "UserLogin()"
             landmarkType = "7">
          </BreakpointContent>
@@ -182,62 +182,62 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
-            timestampString = "569350933.2709399"
+            timestampString = "569518995.6990089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "changeEmailAndRights()"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "IOS_Vietnam_Surgery_App.UserDetailViewController.changeEmailAndRights() -&gt; ()"
                   moduleName = "IOS_Vietnam_Surgery_App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
-                  timestampString = "569411908.474194"
+                  timestampString = "569511456.398296"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
                   offsetFromSymbolStart = "1157">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "IOS_Vietnam_Surgery_App.UserDetailViewController.changeEmailAndRights() -&gt; ()"
                   moduleName = "IOS_Vietnam_Surgery_App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
-                  timestampString = "569411908.475714"
+                  timestampString = "569511456.400223"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "2071">
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "2047">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data&gt;) -&gt; () in IOS_Vietnam_Surgery_App.UserDetailViewController.changeEmailAndRights() -&gt; ()"
                   moduleName = "IOS_Vietnam_Surgery_App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
-                  timestampString = "569411908.477234"
+                  timestampString = "569511456.4023679"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "73">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -245,15 +245,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
-            timestampString = "569350933.270981"
+            timestampString = "569518995.6990449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "changeEmailAndRights()"
             landmarkType = "7">
          </BreakpointContent>
@@ -265,45 +265,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserTableViewController.swift"
-            timestampString = "569411908.3213429"
+            timestampString = "569429512.462543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
             endingLineNumber = "260"
             landmarkName = "setValue(data:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IOS_Vietnam_Surgery_App.UserTableViewController.setValue(data: Any) -&gt; ()"
-                  moduleName = "IOS_Vietnam_Surgery_App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/UserTableViewController.swift"
-                  timestampString = "569411908.48452"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "260"
-                  endingLineNumber = "260"
-                  offsetFromSymbolStart = "291">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (IOS_Vietnam_Surgery_App.User) -&gt; Swift.Bool in IOS_Vietnam_Surgery_App.UserTableViewController.setValue(data: Any) -&gt; ()"
-                  moduleName = "IOS_Vietnam_Surgery_App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/UserTableViewController.swift"
-                  timestampString = "569411908.485972"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "260"
-                  endingLineNumber = "260"
-                  offsetFromSymbolStart = "34">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -313,11 +281,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271055"
+            timestampString = "569538493.598717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "deleteDataFromLocalStorage(filename:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -329,11 +297,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271091"
+            timestampString = "569538493.599027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "setProgress(progress:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -345,11 +313,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271135"
+            timestampString = "569538493.599322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "syncFormData()"
             landmarkType = "7">
             <Locations>
@@ -357,31 +325,31 @@
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "IOS_Vietnam_Surgery_App.FormOverviewViewController.syncFormData() -&gt; ()"
+                  symbolName = "function signature specialization &lt;Arg[3] = Value Promoted from Box&gt; of closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in IOS_Vietnam_Surgery_App.FormOverviewViewController.syncFormData() -&gt; ()"
                   moduleName = "IOS_Vietnam_Surgery_App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-                  timestampString = "568916637.028667"
+                  timestampString = "569438141.7157871"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "229"
-                  endingLineNumber = "229"
-                  offsetFromSymbolStart = "1936">
+                  startingLineNumber = "249"
+                  endingLineNumber = "249"
+                  offsetFromSymbolStart = "1001">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "IOS_Vietnam_Surgery_App.FormOverviewViewController.syncFormData() -&gt; ()"
+                  symbolName = "closure #1 (IOS_Vietnam_Surgery_App.FormContentKeyValuePair) -&gt; Swift.Bool in closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in IOS_Vietnam_Surgery_App.FormOverviewViewController.syncFormData() -&gt; ()"
                   moduleName = "IOS_Vietnam_Surgery_App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-                  timestampString = "568916637.030064"
+                  timestampString = "569438141.721831"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "229"
-                  endingLineNumber = "229"
-                  offsetFromSymbolStart = "1969">
+                  startingLineNumber = "249"
+                  endingLineNumber = "249"
+                  offsetFromSymbolStart = "25">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -393,11 +361,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormPictureViewController.swift"
-            timestampString = "568918132.400561"
+            timestampString = "569438612.17116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "deleteClicked()"
             landmarkType = "7">
          </BreakpointContent>
@@ -409,11 +377,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271183"
+            timestampString = "569538493.599627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "getFormData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -425,11 +393,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.2712179"
+            timestampString = "569538493.5999269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "syncFormData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -441,11 +409,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271252"
+            timestampString = "569538493.600212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "getFormData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -457,11 +425,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.2712851"
+            timestampString = "569538493.600464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "getFormData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -473,11 +441,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271319"
+            timestampString = "569538493.600679"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "getFormData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -489,11 +457,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271353"
+            timestampString = "569538493.60089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "FormOverviewViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -505,11 +473,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271386"
+            timestampString = "569538493.6011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "getFormData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -521,11 +489,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormTemplateViewController.swift"
-            timestampString = "569337858.0105619"
+            timestampString = "569518995.699538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "getFormTemplatesAsync()"
             landmarkType = "7">
          </BreakpointContent>
@@ -537,11 +505,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormTemplateViewController.swift"
-            timestampString = "569337858.010601"
+            timestampString = "569518995.6995749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "getFormTemplatesFromInternetAsync()"
             landmarkType = "7">
          </BreakpointContent>
@@ -553,11 +521,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormTemplateViewController.swift"
-            timestampString = "569337858.010635"
+            timestampString = "569518995.699617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "getFormTemplatesFromInternetAsync()"
             landmarkType = "7">
          </BreakpointContent>
@@ -569,11 +537,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormTemplateViewController.swift"
-            timestampString = "569337858.010669"
+            timestampString = "569518995.699653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "writeFormTemplatesToDisk(forms:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -581,15 +549,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormTemplateViewController.swift"
-            timestampString = "569337858.010702"
+            timestampString = "569518995.699688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "getFormTemplatesFromDisk()"
             landmarkType = "7">
          </BreakpointContent>
@@ -600,12 +568,204 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
-            timestampString = "569350933.271472"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
+            timestampString = "569518995.699723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "setupLabels()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormFillInViewController.swift"
+            timestampString = "569438612.173279"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "initializeFormFields()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IOS_Vietnam_Surgery_App.FormFillInViewController.initializeFormFields() -&gt; ()"
+                  moduleName = "IOS_Vietnam_Surgery_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/FormFillInViewController.swift"
+                  timestampString = "569415809.864221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "921">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Eureka.TextRow) -&gt; () in IOS_Vietnam_Surgery_App.FormFillInViewController.initializeFormFields() -&gt; ()"
+                  moduleName = "IOS_Vietnam_Surgery_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ravi/Documents/IOS_Vietnam_Surgery_master/IOS_Vietnam_Surgery_App/IOS_Vietnam_Surgery_App/Code/ViewController/FormFillInViewController.swift"
+                  timestampString = "569415809.8673559"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
+            timestampString = "569518995.699783"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "changeEmailAndRights()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserManagementViewController.swift"
+            timestampString = "569518995.699819"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserManagementViewController.swift"
+            timestampString = "569518995.699856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
+            timestampString = "569518995.699892"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "changeEmailAndRights()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
+            timestampString = "569538493.601398"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "syncFormData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
+            timestampString = "569538493.601606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "syncFormData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/API/BaseAPIManager.swift"
+            timestampString = "569518995.700001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "createActivityIndicatorOnView(view:yPositionPercentage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
+            timestampString = "569538493.6018209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "getFormData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormOverviewViewController.swift"
+            timestampString = "569538493.6020319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "getFormData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -616,13 +776,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserDetailViewController.swift"
-            timestampString = "569350933.2715091"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/UserManagementViewController.swift"
+            timestampString = "569518995.700119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "setupLabels()"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IOS_Vietnam_Surgery_App/Code/ViewController/FormTemplateViewController.swift"
+            timestampString = "569518995.700155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "getFormTemplatesFromInternetAsync()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

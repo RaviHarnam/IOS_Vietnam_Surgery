@@ -13,9 +13,7 @@ public class UserOverviewTableViewCell : UITableViewCell {
     
     @IBOutlet weak var UserNameLabel: UILabel!
     
-    @IBOutlet weak var editUserImage: UIImageView!
-    
-    @IBOutlet weak var deleteUserImage: UIImageView!
+    @IBOutlet weak var userRoleLabel: UILabel!
     
     public override func prepareForReuse() {
         UserNameLabel.text = ""

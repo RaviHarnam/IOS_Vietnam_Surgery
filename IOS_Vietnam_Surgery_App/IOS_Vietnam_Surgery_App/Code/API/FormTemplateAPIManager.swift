@@ -48,4 +48,16 @@ public class FormTemplateAPIManager : BaseAPIManager {
         
         return Alamofire.request(request)
     }
+    
+    public static func deleteFormTemplate(_ id: Int) -> DataRequest {
+        let url = super.apiBaseUrl + self.formPrefix + "/" + String(id)
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        if let authenticationtoken = AppDelegate.authenticationToken {
+            request.addValue("Bearer " + authenticationtoken, forHTTPHeaderField: "Authorization")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        
+        return Alamofire.request(request)
+    }
 }

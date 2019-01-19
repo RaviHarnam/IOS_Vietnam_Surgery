@@ -75,7 +75,9 @@ public class FormTemplateEditFieldViewController : UIViewController {
     func setupAppBar() {
         var barButtonItems : [UIBarButtonItem] = []
         barButtonItems.append(UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClicked)))
-        barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Delete"), style: .plain, target: self, action: #selector(deleteClicked)))
+        if isEditingForm == true {
+            barButtonItems.append(UIBarButtonItem(image: UIImage(named: "Delete"), style: .plain, target: self, action: #selector(deleteClicked)))
+        }
         navigationItem.rightBarButtonItems = barButtonItems
     }
     

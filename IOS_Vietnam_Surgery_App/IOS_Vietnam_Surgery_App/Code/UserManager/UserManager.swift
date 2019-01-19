@@ -27,7 +27,7 @@ class UserManager {
         
     }
     
-   static func Register(register: Register) {
+    static func Register(register: Register, callbackUser: @escaping (User?) -> ()) {
         let registerUser = register
         
         UserAPIManager.Register(register: registerUser).responseData(completionHandler: {
@@ -36,14 +36,15 @@ class UserManager {
             print (response)
             if let data = response.data{
                 let decoder = JSONDecoder()
-                let customResponse = try? decoder.decode(customHTTPResponse.self, from: data)
+                let user = try? decoder.decode(User.self, from: data)
                 
-                if(customResponse?.succes == true) {
+                if(response.response?.statusCode == 200) {
                     print("succesfully registred")
+                    callbackUser(user)
                 }
                 else {
                     print("not registered")
-                  
+                    callbackUser(nil)
                 }
             }
         })
@@ -101,16 +102,14 @@ class UserManager {
         var users : [User] = []
         print("Appdelegate.authentifcationToken: ", AppDelegate.authenticationToken)
         UserAPIManager.GetAllUsers(token: AppDelegate.authenticationToken).responseJSON(completionHandler: {
-            
             (response) in
             guard let jsonData = response.data else { return }
             //print("Get all accounts: ", response)
             
             let decoder = JSONDecoder()
-            var decodedUserObject = try? decoder.decode([User].self, from: jsonData)
+            let decodedUserObject = try? decoder.decode([User].self, from: jsonData)
             
             if let usersArray = decodedUserObject {
-               
                 for user in usersArray {
                     users.append(user)
                    // print(user.username)
