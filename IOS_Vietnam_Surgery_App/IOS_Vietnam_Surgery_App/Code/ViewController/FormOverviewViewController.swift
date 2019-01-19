@@ -113,6 +113,7 @@ class FormOverviewViewController: UIViewController {
 //
 //        navigationItem.titleView = searchBarΩ
         //setupSearchBar()
+        self.title = NSLocalizedString("FormOverviewViewControllerTabTitle", comment: "")
     }
     
 
@@ -121,15 +122,33 @@ class FormOverviewViewController: UIViewController {
         let decoder = JSONDecoder()
 
         do {
+            
+            // isfetchting = true voor activity indicator
 
             let directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
-            let actualDirContents = directoryContents.filter { !$0.absoluteString.contains(".Trash") }
+            var actualDirContents = directoryContents//directoryContents.filter { !$0.absoluteString.contains(".Trash") || !$0.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: "")) }
+            
+            var idx = 0
+            for file in actualDirContents {
+                if file.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: ""))  {
+                    actualDirContents.remove(at: idx)
+                }
+                idx = idx + 1
+            }
+            idx = 0
+            for file in actualDirContents {
+                if file.absoluteString.contains(".Trash") {
+                    actualDirContents.remove(at: idx)
+                }
+                idx = idx + 1
+            }
             
             forms = []
-            //if actualDirContents.count > 0 { setProgress(progress: 0) }
+            if actualDirContents.count == 0 { setProgress(progress: 1) }
             var index = 0
             for directoryContent in actualDirContents {
                 //if directoryContent.absoluteString.contains(".Trash") { continue }
+                print(directoryContent.absoluteString)
                 let string = try String(contentsOf: directoryContent, encoding: .utf8)
                 let data = string.data(using: .utf8)
                 
@@ -144,7 +163,10 @@ class FormOverviewViewController: UIViewController {
             }
             self.tableViewFormoverview.reloadData()
         }
+            // isfetching = false voor activity indicator
         catch {
+            // isfetching = false voor activity indicator
+            // allert
             print(error.localizedDescription)
         }
    }
@@ -232,8 +254,10 @@ class FormOverviewViewController: UIViewController {
                             let fileName = (formData)! + "_" + nameValue! + "_" + districtValue! + "_" + birthYearValue! + ".json"
                             index = index + 1
                             self.setProgress(progress: Float(index) / Float(formstosync.count * 2))
+                            print("Calling setProgress with progress: ", Float(index) / Float(formstosync.count * 2))
                             if self.deleteDataFromLocalStorage(filename: fileName) {
                                 index = index + 1
+                                print("Calling setProgress with progress: ", Float(index) / Float(formstosync.count * 2))
                                 self.setProgress(progress: Float(index) / Float(formstosync.count * 2))
                             }
                         }
@@ -264,6 +288,32 @@ class FormOverviewViewController: UIViewController {
         progressViewLabel.text = String(Int(progress * 100)) + "%"
     }
     
+    @objc func deleteForm(_ rowToDelete: Int) {
+        //if let row = sender.view?.tag {
+            let form = self.forms[rowToDelete]
+            
+            let name = form.formContent!.first(where: { $0.name == "Name" })!.value
+            let district = form.formContent!.first(where: { $0.name == "District" })!.value
+            let birthyear = form.formContent!.first(where: { $0.name == "Birthyear" })!.value
+            
+            let fileName = form.name! + "_" + name! + "_" + district! + "_" + birthyear! + ".json"
+            
+            guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+            
+            let fileUrl = docDirectoryUrl.appendingPathComponent(fileName)
+            
+            do {
+                try FileManager.default.removeItem(at: fileUrl)
+                self.forms.remove(at: rowToDelete)
+                DispatchQueue.main.async {
+                    self.tableViewFormoverview.reloadData()
+                }
+            }
+            catch {
+                print("Error writing: ", error)
+            }
+       // }
+    }
     
     func deleteDataFromLocalStorage(filename: String) -> Bool {
             let fileNameToDelete = filename
@@ -274,10 +324,7 @@ class FormOverviewViewController: UIViewController {
                 for file in directoryContents {
                     if file.absoluteString.contains(fileNameToDelete) {
                         do {
-        
-                            
                             try FileManager.default.trashItem(at: file.absoluteURL, resultingItemURL: nil)
-                            
                             
                             DispatchQueue.main.async {
                                 self.forms.removeAll()
@@ -326,8 +373,9 @@ extension FormOverviewViewController : UITableViewDataSource {
         let form = isFiltering() ? filteredFormData[indexPath.row] :  forms[indexPath.row]
         setHeaderText(cell: formoverviewcell)
         setContentText(cell: formoverviewcell, form: form)
-        
-    
+        //formoverviewcell.trashIconImage.image = UIImage(named: "Delete")
+        //formoverviewcell.trashIconImage.tag = indexPath.row
+        //formoverviewcell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deleteForm(sender:))))
 //        cell.textLabel?.text = form.username?
         
         return formoverviewcell
@@ -338,10 +386,14 @@ extension FormOverviewViewController : UITableViewDataSource {
         cell.DistrictLabelHeader.text = NSLocalizedString("DistrictLabelHeader", comment: "")
         cell.PhotoLabelHeader.text = NSLocalizedString("PhotoLabelHeader", comment: "")
         cell.CreatedLabelHeader.text = NSLocalizedString("CreatedLabelHeader", comment: "")
+        
+        
         DispatchQueue.main.async {
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         }
     }
+    
+    
     
     func setContentText (cell: FormOverviewTableViewCell, form: Form)
     {
@@ -373,6 +425,18 @@ extension FormOverviewViewController : UITableViewDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Confirmation_delete_form", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (action: UIAlertAction) in self.deleteForm(indexPath.row) }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
     
     private func navigateToFormPreview (form: Form) {
         
@@ -386,6 +450,7 @@ extension FormOverviewViewController : UITableViewDelegate {
         formPreviewVC.formContent = FormHelper.getFormContentDicFromArr(content: form.formContent!)
         let template = FormHelper.getFormTemplateFromJson(json: form.formTemplate!)
         formPreviewVC.formSections = template!.sections!
+        formPreviewVC.formFillInStep = template!.sections!.count + 1
        
         print("navigating to formpreview with: " + self.navigationController.debugDescription)
         navigationController!.pushViewController(formPreviewVC, animated: true)

@@ -75,3 +75,9 @@
 "BaseTemplate" = "{\"Sections\":[{\"Fields\":[{\"Required\":\"true\",\"Name\":\"Name\",\"Type\":\"String\"},{\"Required\":\"true\",\"Name\":\"Birthyear\",\"Type\":\"Number\"}],\"Name\":\"Personal Info\"},{\"Fields\":[{\"Required\":\"true\",\"Name\":\"District\",\"Type\":\"String\"}],\"Name\":\"Contact Info\"}]}";
 "InvalidFormTemplate" = "The form template is invalid. Check if the required fields are present. (Name, Birthyear, district)";
 "FormTemplateNothingChanged" = "The formtemplate didn't change and could not be saved.";
+"LocalTemplatesFileName" = "templates_local_file.json";
+"Error_no_internet_failed_loading_file" = "Failed loading templates from disk. Check if you have internet and try again through the sync button in the top-right";
+"Confirmation_delete_form" = "Are you sure you want to delete this form? Deleting cannot be undone.";
+"Email" = "Email";
+"Rights" = "Rights";
+"Confirm_delete_user" = "Are you sure you want to delete this user? Deleting cannot be undone.";

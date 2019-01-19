@@ -63,8 +63,7 @@ class FormTemplateViewController: UIViewController {
     func createTabBarController() {
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginID")
-//        
-        
+//
         tabBarCnt.tabBar.tintColor = UIColor.black
 //
 //        let firstVc = UIViewController()
@@ -86,6 +85,10 @@ class FormTemplateViewController: UIViewController {
     func setupTableView() {
         self.formTemplateTableView.estimatedRowHeight = 40
         self.formTemplateTableView.rowHeight = 40
+        let bgView = UIView()
+        bgView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        self.formTemplateTableView.backgroundView = bgView
+        self.formTemplateTableView.tableFooterView = UIView(frame: .zero)
         self.formTemplateTableView.dataSource = self
         self.formTemplateTableView.delegate = self
         self.formTemplateTableView.register(UINib(nibName: "SimpleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "SimpleLabelTableViewCell")
@@ -123,17 +126,63 @@ class FormTemplateViewController: UIViewController {
     }
     
     func getFormTemplatesAsync() {
+        if BaseAPIManager.isConnectedToInternet() {
+            getFormTemplatesFromInternetAsync()
+        }
+        else {
+            getFormTemplatesFromDisk()
+        }
+    }
+    
+    func getFormTemplatesFromInternetAsync() {
         FormTemplateAPIManager.getFormTemplates().responseData(completionHandler: {
             (response) in
             guard let responseData = response.data else { return }
             
             let decoder = JSONDecoder()
-            let templates = try? decoder.decode([Form].self, from: responseData)
-            self.formTemplates = templates
+            if let templates = try? decoder.decode([Form].self, from: responseData) {
+                self.writeFormTemplatesToDisk(forms: templates)
+                self.formTemplates = templates
+                DispatchQueue.main.async {
+                    self.formTemplateTableView.reloadData()
+                }
+            }
+        })
+    }
+    
+    func writeFormTemplatesToDisk(forms: [Form]) {
+        guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileName = NSLocalizedString("LocalTemplatesFileName", comment: "")
+        let fileUrl = docDirectoryUrl.appendingPathComponent(fileName)
+        
+        do {
+            let data = try JSONEncoder().encode(forms)
+            try data.write(to: fileUrl, options: [])
+        }
+        catch {
+            print("Failure writing templates file", error)
+        }
+    }
+    
+    func getFormTemplatesFromDisk() {
+        guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileName = NSLocalizedString("LocalTemplatesFileName", comment: "")
+        let fileUrl = docDirectoryUrl.appendingPathComponent(fileName)
+        
+        do {
+            let string = try String(contentsOf: fileUrl, encoding: .utf8)
+            let forms = try JSONDecoder().decode([Form].self, from: string.data(using: .utf8)!)
+            self.formTemplates = forms
             DispatchQueue.main.async {
                 self.formTemplateTableView.reloadData()
             }
-        })
+        }
+        catch {
+            print("Failure writing templates file", error)
+            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Error_no_internet_failed_loading_file", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     
     //Resizes the tableview if it currently is bigger than the size of the combined content
@@ -166,14 +215,10 @@ extension FormTemplateViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = tableView.dequeueReusableCell(withIdentifier: "SimpleLabelTableViewCell") as! SimpleLabelTableViewCell
         
-        DispatchQueue.main.async {
-            tableCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        }
+        tableCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
         if let template = formTemplates?[indexPath.row] {
-            //DispatchQueue.main.async {
-                 tableCell.simpleLabel.text = template.name
-            //}
+            tableCell.simpleLabel.text = template.name
         }
         return tableCell
     }

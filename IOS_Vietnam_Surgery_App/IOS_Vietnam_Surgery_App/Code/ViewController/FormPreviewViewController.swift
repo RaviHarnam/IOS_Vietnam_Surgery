@@ -16,6 +16,7 @@ public class FormPreviewViewController : UIViewController {
     
     @IBOutlet weak var formImagesCollectionView: UICollectionView!
     
+    @IBOutlet weak var scrollViewHeightContstraint: NSLayoutConstraint!
     public var formData: Form?
     
     public var formSections : [FormSection] = []
@@ -136,6 +137,7 @@ public class FormPreviewViewController : UIViewController {
         vc.formFillInStep = self.formFillInStep - 1
         vc.isPreexisting = true
         vc.formContent = self.formContent
+        vc.formSections = self.formSections
         vc.formData = self.formData
         vc.formPreviewCallback = self
         navigationController?.pushViewController(vc, animated: true)
@@ -166,6 +168,7 @@ public class FormPreviewViewController : UIViewController {
         for field in formContent {
             formData.formContent!.append(FormContentKeyValuePair(name: field.key, value: field.value))
         }
+        
         
         for image in formData.formPictures {
             formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 0.2)!))
