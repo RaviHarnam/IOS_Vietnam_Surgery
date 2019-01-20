@@ -37,14 +37,18 @@ class AddUserViewController: UIViewController {
     
     private var spinner : UIActivityIndicatorView?
     
-    private func alertMessage(email: String) {
+    private func sucessfullyAddedMessage(email: String) {
         
         let usermessage = "User " + email + " added successfully"
         let alert = UIAlertController(title: "Success ", message: usermessage, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        
-        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+            (action: UIAlertAction) in
+            
+             self.navigationController?.popViewController(animated: true)
+            
+        }))
+            
         self.present(alert, animated: true)
     }
     
@@ -112,52 +116,111 @@ class AddUserViewController: UIViewController {
     }
     
     @objc func saveClicked() {
+        guard validateForm() else {
+            return
+        }
+        
+        let registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
+        
+        registerUser(registerModel: registerModel)
+//                spinner?.show()
+//                UserManager.Register(register: registerModel, callbackUser: {
+//                    (user) in
+//                    self.spinner?.hide()
+//                    if let registereduser = user {
+//                        self.callback?.setValue(data: registereduser)
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                    else {
+//                        self.alerMessageUserAddFailed()
+//                    }
+//                })
+    }
+    
+    private func validateForm() -> Bool {
         ValidationMessageLabel.isHidden = true
-      
+        
+        
         guard let email = UserNameTextView.text, !email.isEmpty else {
             ValidationMessageToggle(toggleValue: false)
-             UserNameTextView.layer.borderColor = UIColor.red.cgColor
             ValidationMessageLabel.text = NSLocalizedString("EnterUserName", comment: "")
-            return
+            return false
+        }
+        
+        guard checkEmailWithRegex(email: email) else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("EmailRegex", comment: "")
+            return false
         }
         
         guard let password = PasswordTextView.text, !password.isEmpty else {
             ValidationMessageToggle(toggleValue: false)
             ValidationMessageLabel.text = NSLocalizedString("EnterPassword", comment: "")
-            return
+            return false
         }
         
         guard let confirmpassword = ConfirmPasswordTextField.text, !confirmpassword.isEmpty else {
             ValidationMessageToggle(toggleValue: false)
             ValidationMessageLabel.text = NSLocalizedString("EnterConfirmPassword", comment: "")
-            return
+            return false
         }
-        
-        
-        if (password.elementsEqual(confirmpassword)) {
-            alertMessage(email: email)
-            let registerModel = Register(password: PasswordTextView.text, confirmpassword: PasswordTextView.text, userrole: self.OptionUISegmentedControl.titleForSegment(at: self.OptionUISegmentedControl.selectedSegmentIndex), email: UserNameTextView.text)
-            spinner?.show()
-            UserManager.Register(register: registerModel, callbackUser: {
-                (user) in
-                self.spinner?.hide()
-                if let registereduser = user {
-                    self.callback?.setValue(data: registereduser)
-                    self.navigationController?.popViewController(animated: true)
-                }
-                else {
-                    self.alerMessageUserAddFailed()
-                }
-            })
-            //navigationController?.popViewController(animated: true)
-        }
-        else {
+        guard checkIfPasswordIsEqualToConfirmPassword(password: password, confirmpassword: confirmpassword) else {
             ValidationMessageToggle(toggleValue: false)
             ValidationMessageLabel.text = NSLocalizedString("PasswordNotEqual", comment: "")
-            return
+            return false
         }
+        guard checkPasswordWithRegex(password: password) else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("PasswordRegex", comment: "")
+            return false
+        }
+        
+   
+        
+     
+       return true
     }
     
+    func registerUser(registerModel: Register) {
+       
+        spinner?.show()
+        UserManager.Register(register: registerModel, callbackUser: {
+            (user) in
+            
+           
+            self.spinner?.hide()
+            if let registereduser = user {
+                self.callback?.setValue(data: registereduser)
+                self.sucessfullyAddedMessage(email: registerModel.email!)
+               
+                
+            }
+            else {
+                self.alerMessageUserAddFailed()
+            }
+        })
+    }
+    
+  
+    private func checkPasswordWithRegex (password: String) -> Bool {
+        let pattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$&*-=()_+]).{6,}$"
+        let result = password.range(of: pattern , options: .regularExpression) != nil
+        
+        return result
+    }
+    
+    private func checkEmailWithRegex(email: String) -> Bool {
+        let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let result = email.range(of: pattern, options: .regularExpression) != nil
+        
+        return result
+    }
+    
+    private func checkIfPasswordIsEqualToConfirmPassword (password: String, confirmpassword: String) -> Bool {
+        
+         return password.elementsEqual(confirmpassword)
+       
+    }
     private func alerMessageUserAddFailed () {
         let useraddedfailedmessage = NSLocalizedString("UserAddedFailed", comment: "")
         let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: useraddedfailedmessage, preferredStyle: .alert)

@@ -12,6 +12,7 @@ public class FormOverviewViewController: UIViewController {
     
     public var formData: Form?
     private var forms : [Form] = []
+    private var formsfromapi : [FormTemplatePlusContent] = []
     var filteredFormData = [Form]()
     public var searchBar: UISearchBar?
     private var spinner : UIActivityIndicatorView?
@@ -143,10 +144,12 @@ public class FormOverviewViewController: UIViewController {
 
     func getFormData() {
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        spinner?.isHidden = false
-        spinner?.startAnimating()
+//        spinner?.isHidden = false
+//        spinner?.startAnimating()
+        spinner?.show()
         let decoder = JSONDecoder()
-
+        
+        
         do {
             
             // isfetchting = true voor activity indicator
@@ -184,13 +187,18 @@ public class FormOverviewViewController: UIViewController {
                 //let progress = Float(index) / Float(directoryContents.count)
                 //print(progress)
                 index = index + 1
-                print(Float(index) / Float(actualDirContents.count))
-                setProgress(progress: Float(index) / Float(actualDirContents.count))
+                print("GetFormData Progress: ", Float(index) / Float(actualDirContents.count))
+                DispatchQueue.main.async {
+                    
+                    self.setProgress(progress: Float(index) / Float(actualDirContents.count))
+                }
+                
             }
             DispatchQueue.main.async {
                 self.tableViewFormoverview.reloadData()
             }
             spinner?.hide()
+          
         }
             // isfetching = false voor activity indicator
         catch {
@@ -237,7 +245,7 @@ public class FormOverviewViewController: UIViewController {
         }
         else
         {
-            var alert = AlertHelper.NoInternetAlert()
+            var alert = AlertHelper.noInternetAlert()
             self.present(alert, animated: true)
         }
     }))
@@ -304,16 +312,18 @@ public class FormOverviewViewController: UIViewController {
         if progressView.isHidden {
             progressView.isHidden = false
             progressViewLabel.isHidden = false
+            progressView.progress = 0
+            progressViewLabel.text = "0%"
+            return
         }
         
         if progress.isEqual(to: 1) {
             progressView.isHidden = true
-            progressViewLabel.text = "0%"
             progressViewLabel.isHidden = true
-            progressView.progress = 0.0
         }
         
-        progressView.progress = progress
+        self.progressView.setProgress(progress, animated: true)
+        
         progressViewLabel.text = String(Int(progress * 100)) + "%"
     }
     
@@ -386,6 +396,21 @@ public class FormOverviewViewController: UIViewController {
 //        alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
 //        self.present(alert, animated: true)
 //    }
+    
+    
+    func getAdminFormOverviewData (token: String, role: String) {
+        
+        FormManager.getAllFormContent(token: token, role: role, callBack: {
+            (formoverviewdataArray) in
+            self.spinner?.hide()
+            if let formoverviewdata = formoverviewdataArray  {
+                self.formsfromapi = formoverviewdata
+                DispatchQueue.main.async {
+                    self.tableViewFormoverview.reloadData()
+                }
+            }
+        })
+    }
 }
 
 

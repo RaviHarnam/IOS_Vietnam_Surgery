@@ -11,7 +11,7 @@ import UIKit
 
 public class AlertHelper {
     
-    public static func NoInternetAlert(_ okCallback: (() -> Void)? = nil) -> UIAlertController {
+    public static func noInternetAlert(_ okCallback: (() -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: NSLocalizedString("NoInternet", comment: ""), message: NSLocalizedString("NoInternetMessage" , comment: ""), preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
@@ -20,6 +20,14 @@ public class AlertHelper {
                 okCallback()
             }
         }))
+        
+        return alert
+    }
+    
+    public static func errorAlert() -> UIAlertController {
+        
+         let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("ErrorDeleteLoggedInUserMsg" , comment: ""), preferredStyle: .alert)
+         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
         return alert
     }

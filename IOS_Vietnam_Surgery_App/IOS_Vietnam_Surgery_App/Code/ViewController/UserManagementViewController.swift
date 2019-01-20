@@ -220,6 +220,7 @@ extension UserManagementViewController : UITableViewDelegate {
             vc.user = user
             vc.callback = self
             vc.userNumber = indexPath.row
+            vc.isCurrentLoggedInUser = user.username!.elementsEqual(AppDelegate.userName ?? "")
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -230,6 +231,14 @@ extension UserManagementViewController : UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            if self.users![indexPath.row].username == AppDelegate.userName {
+                //alert tonen
+                let alert = AlertHelper.errorAlert()
+                self.present(alert, animated: true)
+                
+                return
+            }
+            
             let alert = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: NSLocalizedString("Confirm_delete_user", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (action: UIAlertAction) in self.deleteUser(indexPath.row) }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
