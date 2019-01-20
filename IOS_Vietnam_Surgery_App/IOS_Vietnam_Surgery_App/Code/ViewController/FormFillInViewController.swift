@@ -16,6 +16,7 @@ public class FormFillInViewController : Eureka.FormViewController {
     
     @IBOutlet weak var formStep: UILabel!
     
+    @IBOutlet weak var requiredExplanationText: UILabel!
     
     public var formData: Form? {
         didSet {
@@ -37,7 +38,12 @@ public class FormFillInViewController : Eureka.FormViewController {
     
     public var formSections : [FormSection] = []
     
-    public var formContent : [String:String] = [:]
+    public var formContent : [String:String] {
+        get { return FormInputContainer.formContent }
+        set { FormInputContainer.formContent = newValue }
+    }
+    
+    //public var formContent : [String:String] = [:]
     
     public var formFillInStep : Int?
     
@@ -50,19 +56,40 @@ public class FormFillInViewController : Eureka.FormViewController {
         _ = self.view
         navigationController?.navigationBar.prefersLargeTitles = true
         updateTitle()
+        fillInSavedValues()
+        requiredExplanationText.text = NSLocalizedString("RequiredExplanationText", comment: "")
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         DispatchQueue.main.async {
             self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16).isActive = true
             self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16).isActive = true
             self.tableView.topAnchor.constraint(equalTo: self.formSectionHeader.bottomAnchor, constant: 16).isActive = true
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 16).isActive = true
-            
-            //self.tableView.setNeedsLayout()
-            //self.tableView.layoutIfNeeded()
         }
         setupAppbar()
         self.formSectionHeader.text = formSection?.name
         self.formStep.text = NSString.localizedStringWithFormat(NSLocalizedString("StepXOutOfY", comment: "") as NSString, formFillInStep! + 1, formSections.count + 2) as String
+    }
+    
+    func fillInSavedValues() {
+        if let district = AppDelegate.savedDistrictValue {
+            formContent[NSLocalizedString("District", comment: "")] = formContent[NSLocalizedString("District", comment: "")] ?? district
+        }
+        
+        if self.formSections.first(where: { $0.fields!.contains(where: { $0.name == NSLocalizedString("Province", comment: "") }) }) != nil {
+            if let province = AppDelegate.savedProvinceValue {
+                formContent[NSLocalizedString("Province", comment: "")] = formContent[NSLocalizedString("Province", comment: "")] ?? province
+            }
+        }
+        if self.formSections.first(where: { $0.fields!.contains(where: { $0.name == NSLocalizedString("Village", comment: "") }) }) != nil {
+            if let village = AppDelegate.savedVillageValue {
+                formContent[NSLocalizedString("Village", comment: "")] = formContent[NSLocalizedString("Village", comment: "")] ?? village
+            }
+        }
+        if self.formSections.first(where: { $0.fields!.contains(where: { $0.name == NSLocalizedString("Commune", comment: "") }) }) != nil {
+            if let commune = AppDelegate.savedCommuneValue {
+                formContent[NSLocalizedString("Commune", comment: "")] = formContent[NSLocalizedString("Commune", comment: "")] ?? commune
+            }
+        }
     }
     
     func updateTitle() {
@@ -201,6 +228,7 @@ public class FormFillInViewController : Eureka.FormViewController {
                     $0.validationOptions = .validatesOnDemand
                     if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
                     $0.value = formContent[field.name!] ?? field.required?.lowercased() == "true" ? $0.options?.first : ""
+                    formContent[field.name!] = $0.value
                 })
                 break
             case "number":
@@ -209,10 +237,11 @@ public class FormFillInViewController : Eureka.FormViewController {
                     $0.tag = field.name
                     $0.onChange {[unowned self] row in
                         if let fieldValue = row.value {
-                                self.formContent[field.name!] = String(fieldValue)
+                            self.formContent[field.name!] = String(fieldValue)
                         }
                     }
                     $0.validationOptions = .validatesOnDemand
+                    $0.formatter = nil
                     if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
                     $0.value = formContent[field.name!] != nil ? Int(formContent[field.name!]!) : nil
                 })

@@ -12,6 +12,9 @@
 "Name" = "Name";
 "District" = "District";
 "Birthyear" = "Birthyear";
+"Province" = "Province";
+"Village" = "Village";
+"Commune" = "Commune";
 "SaveAndNext" = "Save and next";
 "Save" = "Save";
 "Confirm" = "Confirm";
@@ -91,3 +94,4 @@
 "PasswordRegex" = "Password must contain at least 1 Uppercase, Lowercase and Numeric character and must be at least 6 characters long";
 "EmailRegex" = "Enter a valid emailaddress";
 "UserManagementEditViewControllerTitle" = "Edit User";
+"RequiredExplanationText" = "Questions names that end with a (*) are required.";

@@ -66,6 +66,7 @@
 		BF59671521DCD72400511F3C /* CallbackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59671421DCD72400511F3C /* CallbackProtocol.swift */; };
 		BF5D1FAF21D785BE00B7518B /* FormAddFieldFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5D1FAE21D785BE00B7518B /* FormAddFieldFooterView.xib */; };
 		BF5D1FB121D7870400B7518B /* FormAddFieldFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D1FB021D7870400B7518B /* FormAddFieldFooterView.swift */; };
+		BF5D79C221F367450040EC0E /* FormInputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D79C121F367450040EC0E /* FormInputContainer.swift */; };
 		BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */; };
 		BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */; };
 		BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */; };
@@ -156,6 +157,7 @@
 		BF59671421DCD72400511F3C /* CallbackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackProtocol.swift; sourceTree = "<group>"; };
 		BF5D1FAE21D785BE00B7518B /* FormAddFieldFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormAddFieldFooterView.xib; sourceTree = "<group>"; };
 		BF5D1FB021D7870400B7518B /* FormAddFieldFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAddFieldFooterView.swift; sourceTree = "<group>"; };
+		BF5D79C121F367450040EC0E /* FormInputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputContainer.swift; sourceTree = "<group>"; };
 		BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManagementViewController.swift; sourceTree = "<group>"; };
 		BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplateEditViewController.swift; sourceTree = "<group>"; };
 		BF6B4E0921AFF1C9001FC224 /* TableCellWithUITextfield.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCellWithUITextfield.xib; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				BF59671421DCD72400511F3C /* CallbackProtocol.swift */,
 				41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */,
 				41DC462E21E7D3010095A311 /* AlertHelper.swift */,
+				BF5D79C121F367450040EC0E /* FormInputContainer.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				BF42725621D8D81A00E31F0B /* SimpleTextFieldTableViewCell.swift in Sources */,
 				41B965CB21E54400004CBCC0 /* FormContent.swift in Sources */,
 				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
+				BF5D79C221F367450040EC0E /* FormInputContainer.swift in Sources */,
 				41AA235321C1095800D50B78 /* FormViewController.swift in Sources */,
 				41BAD37821F3888C00A08C9F /* FormManager.swift in Sources */,
 				41BAD37A21F3894100A08C9F /* FormTemplatePlusContent.swift in Sources */,

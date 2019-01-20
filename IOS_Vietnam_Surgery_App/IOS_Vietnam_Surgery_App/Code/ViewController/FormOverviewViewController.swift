@@ -192,7 +192,6 @@ public class FormOverviewViewController: UIViewController {
                     
                     self.setProgress(progress: Float(index) / Float(actualDirContents.count))
                 }
-                
             }
             DispatchQueue.main.async {
                 self.tableViewFormoverview.reloadData()
@@ -444,9 +443,7 @@ extension FormOverviewViewController : UITableViewDataSource {
         
         
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        
     }
-    
     
     
     func setContentText (cell: FormOverviewTableViewCell, form: Form)
@@ -470,15 +467,13 @@ extension FormOverviewViewController : UITableViewDataSource {
 }
 
 extension FormOverviewViewController : UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let form = self.forms[indexPath.row]
-        
         navigateToFormPreview(form: form)
-        
     }
     
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
@@ -492,13 +487,12 @@ extension FormOverviewViewController : UITableViewDelegate {
     }
     
     private func navigateToFormPreview (form: Form) {
-        
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let formPreviewVC = mainStoryboard.instantiateViewController(withIdentifier: "FormPreviewViewController") as! FormPreviewViewController
         formPreviewVC.isPreexisting = true
         let previewForm = form
-        previewForm.formPictures = FormHelper.decodeImageToUIImage(images: previewForm.formImagesBytes!)
+        formPreviewVC.formPictures = FormHelper.decodeImageToUIImage(images: previewForm.formImagesBytes!)
         formPreviewVC.formData = previewForm
         formPreviewVC.formContent = FormHelper.getFormContentDicFromArr(content: form.formContent!)
         let template = FormHelper.getFormTemplateFromJson(json: form.formTemplate!)

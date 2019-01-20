@@ -150,6 +150,7 @@ extension FormManagementViewController : UITableViewDataSource {
 
 extension FormManagementViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        FormInputContainer.clear()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditViewController") as! FormTemplateEditViewController
         vc.form = formTemplates[indexPath.row]

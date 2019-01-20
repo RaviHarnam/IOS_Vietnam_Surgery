@@ -21,7 +21,17 @@ public class FormPreviewViewController : UIViewController {
     
     public var formSections : [FormSection] = []
     
-    public var formContent : [String:String] = [:]
+    public var formContent : [String:String] {
+        get { return FormInputContainer.formContent }
+        set { FormInputContainer.formContent = newValue }
+    }
+    
+    public var formPictures : [UIImage] {
+        get { return FormInputContainer.formPictures }
+        set { FormInputContainer.formPictures = newValue }
+    }
+    
+    //public var formContent : [String:String] = [:]
     
     public var formFillInStep = 0
     
@@ -169,7 +179,12 @@ public class FormPreviewViewController : UIViewController {
             formData.formContent!.append(FormContentKeyValuePair(name: field.key, value: field.value))
         }
         
-        for image in formData.formPictures {
+        AppDelegate.savedDistrictValue = formContent[NSLocalizedString("District", comment: "")]!
+        AppDelegate.savedVillageValue = formContent[NSLocalizedString("Village", comment: "")]
+        AppDelegate.savedProvinceValue = formContent[NSLocalizedString("Province", comment: "")]
+        AppDelegate.savedCommuneValue = formContent[NSLocalizedString("Commune", comment: "")]
+        
+        for image in formPictures {
             formData.formImagesBytes!.append(Array(image.jpegData(compressionQuality: 0.2)!))
         }
         
@@ -180,19 +195,21 @@ public class FormPreviewViewController : UIViewController {
             fileName = existingFileName
         }
         else {
-            fileName = (self.formData?.name)! + "_" + formContent["Name"]! + "_" + formContent["District"]! + "_" + formContent["Birthyear"]! + ".json"
+            fileName = (self.formData?.name)! + "_" + formContent[NSLocalizedString("Name", comment: "")]! + "_" + formContent[NSLocalizedString("District", comment: "")]! + "_" + formContent[NSLocalizedString("Birthyear", comment: "")]! + ".json"
         }
         let fileUrl = docDirectoryUrl.appendingPathComponent(fileName)
         
         do {
             let data = try JSONEncoder().encode(formData)
             try data.write(to: fileUrl, options: [])
+            FormInputContainer.clear()
             navigationController?.popToRootViewController(animated: true)
             //navigateToTemplateView()
         }
         catch {
             print(error)
         }
+        
     }
     
     func navigateToTemplateView() {
@@ -278,12 +295,12 @@ extension FormPreviewViewController : UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.formData?.formPictures.count ?? 0
+        return self.formPictures.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewImageCell", for: indexPath) as! CollectionViewImageCell
-        cell.imageView.image = self.formData?.formPictures[indexPath.row]
+        cell.imageView.image = self.formPictures[indexPath.row]
         
         return cell
     }
@@ -327,10 +344,10 @@ extension FormPreviewViewController : UICollectionViewDelegate {
 extension FormPreviewViewController : CallbackProtocol {
     public func setValue(data: Any) {
         if let formContent = data as? [String:String] {
-            self.formContent = formContent
+            //self.formContent = formContent
         }
         else {
-            self.formData?.formPictures = data as! [UIImage]
+            //self.formData?.formPictures = data as! [UIImage]
         }
         self.dataChanged = true
     }

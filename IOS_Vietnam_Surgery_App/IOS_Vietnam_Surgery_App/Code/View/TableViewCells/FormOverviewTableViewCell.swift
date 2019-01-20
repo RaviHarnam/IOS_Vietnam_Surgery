@@ -25,7 +25,6 @@ public class FormOverviewTableViewCell : UITableViewCell {
     
     @IBOutlet weak var CreatedLabel: UILabel!
     
-    @IBOutlet weak var ChevronImage: UIImageView!
     
     @IBOutlet weak var PhotoLabel: UILabel!
     

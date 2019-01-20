@@ -508,14 +508,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMF-bB-jMK">
-                                <rect key="frame" x="16" y="38" width="55" height="26.5"/>
+                                <rect key="frame" x="16" y="66" width="55" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="570-NY-jA1">
-                                <rect key="frame" x="317" y="38" width="42" height="21"/>
+                                <rect key="frame" x="317" y="69" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqn-zp-Hn8">
+                                <rect key="frame" x="16" y="36" width="33" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -523,9 +529,11 @@
                         <color key="backgroundColor" name="LightGrayBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="570-NY-jA1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MMF-bB-jMK" secondAttribute="trailing" constant="100" id="0xU-vQ-YTw"/>
+                            <constraint firstItem="570-NY-jA1" firstAttribute="centerY" secondItem="MMF-bB-jMK" secondAttribute="centerY" id="6II-9g-WRD"/>
+                            <constraint firstItem="Jqn-zp-Hn8" firstAttribute="leading" secondItem="xYV-nL-ayT" secondAttribute="leading" constant="16" id="7Ts-w3-Mn4"/>
+                            <constraint firstItem="MMF-bB-jMK" firstAttribute="top" secondItem="Jqn-zp-Hn8" secondAttribute="bottom" constant="14" id="QFP-Ni-5wu"/>
                             <constraint firstItem="xYV-nL-ayT" firstAttribute="trailing" secondItem="570-NY-jA1" secondAttribute="trailing" constant="16" id="RsN-dD-gEh"/>
-                            <constraint firstItem="MMF-bB-jMK" firstAttribute="top" secondItem="xYV-nL-ayT" secondAttribute="top" constant="18" id="Thz-B6-5ww"/>
-                            <constraint firstItem="570-NY-jA1" firstAttribute="top" secondItem="xYV-nL-ayT" secondAttribute="top" constant="18" id="hrt-zE-xLl"/>
+                            <constraint firstItem="Jqn-zp-Hn8" firstAttribute="top" secondItem="xYV-nL-ayT" secondAttribute="top" constant="16" id="foV-iY-sZo"/>
                             <constraint firstItem="MMF-bB-jMK" firstAttribute="leading" secondItem="xYV-nL-ayT" secondAttribute="leading" constant="16" id="wnI-Ue-hcj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xYV-nL-ayT"/>
@@ -533,6 +541,7 @@
                     <connections>
                         <outlet property="formSectionHeader" destination="MMF-bB-jMK" id="Iek-DO-hLL"/>
                         <outlet property="formStep" destination="570-NY-jA1" id="T9h-nC-VEc"/>
+                        <outlet property="requiredExplanationText" destination="Jqn-zp-Hn8" id="38l-uN-2bZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sso-i5-TgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
