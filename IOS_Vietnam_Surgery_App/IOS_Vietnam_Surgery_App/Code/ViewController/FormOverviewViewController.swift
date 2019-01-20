@@ -184,6 +184,7 @@ public class FormOverviewViewController: UIViewController {
                 //let progress = Float(index) / Float(directoryContents.count)
                 //print(progress)
                 index = index + 1
+              
                 print(Float(index) / Float(actualDirContents.count))
                 setProgress(progress: Float(index) / Float(actualDirContents.count))
             }
