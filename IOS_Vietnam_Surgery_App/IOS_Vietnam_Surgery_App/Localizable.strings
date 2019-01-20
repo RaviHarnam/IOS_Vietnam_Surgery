@@ -12,6 +12,9 @@
 "Name" = "Name";
 "District" = "District";
 "Birthyear" = "Birthyear";
+"Province" = "Province";
+"Village" = "Village";
+"Commune" = "Commune";
 "SaveAndNext" = "Save and next";
 "Save" = "Save";
 "Confirm" = "Confirm";
@@ -87,3 +90,4 @@
 "UserRoleUser" = "User";
 "Error_delete_formtemplate" = "Error deleting this formtemplate. Check your internet connection and try again.";
 "Login" = "Login";
+"RequiredExplanationText" = "Questions names that end with a (*) are required.";

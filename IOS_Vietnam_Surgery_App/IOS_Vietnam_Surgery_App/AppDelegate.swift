@@ -32,8 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public static var userName : String?
     public static var userTab : UITabBarController?
     public static var adminTab : UITabBarController?
-   
-
+    
+    public static var savedDistrictValue : String?
+    public static var savedProvinceValue : String?
+    public static var savedVillageValue : String?
+    public static var savedCommuneValue : String?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
       

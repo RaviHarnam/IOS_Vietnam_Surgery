@@ -11,7 +11,11 @@ import UIKit
 
 public class FormPictureViewController : UIViewController {
     
-    public var images : [UIImage] = []
+    //public var images : [UIImage] = []
+    public var images : [UIImage] {
+        get { return FormInputContainer.formPictures }
+        set { FormInputContainer.formPictures = newValue }
+    }
     
     public var imageNumber : Int = 0
     
