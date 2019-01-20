@@ -24,7 +24,7 @@ class LogoutViewController: UIViewController {
         let alert = UIAlertController(title: NSLocalizedString("LogOut", comment: ""), message: NSLocalizedString("LogoutMsg", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: {
             (action: UIAlertAction) in
-            self.logOut(logginOut: self.loggingOut)
+                self.logOut()
             }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment:""), style: .cancel, handler: {
             (action: UIAlertAction) in
@@ -33,11 +33,11 @@ class LogoutViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    public func logOut(logginOut: Bool) {
-        if(logginOut) {
+    public func logOut() {
+        
             AppDelegate.authenticationToken = nil
             AppDelegate.userRole = nil
             AppDelegate.userName = nil
-        }
+        
     }
 }

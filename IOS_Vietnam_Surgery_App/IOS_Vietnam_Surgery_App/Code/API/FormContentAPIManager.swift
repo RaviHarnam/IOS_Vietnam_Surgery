@@ -40,4 +40,22 @@ public class FormContentAPIManager : BaseAPIManager {
         
        // return Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
     }
+    
+    public static func getFormDataFromDB(token: String?, role: String) -> DataRequest {
+        
+        let url = super.apiBaseUrl + self.formPrefix
+        
+        var parameters : [String:String] = [
+            
+            "token_type" : "bearer"
+        ]
+        var header: [String:String] = [:]
+        if let authenticationtoken = token {
+            
+            header = ["Authorization": "Bearer " + authenticationtoken]
+        }
+        
+        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard let jsonData = response.data else {return}})
+       
+    }
 }

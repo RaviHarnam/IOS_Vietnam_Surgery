@@ -26,12 +26,17 @@ class UserDetailViewController: UIViewController {
     public var user : User?
     public var userNumber : Int?
     private var spinner : UIActivityIndicatorView?
+    public var isCurrentLoggedInUser : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
         setupNavigationItems()
         spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
+        if isCurrentLoggedInUser == true {
+            rightsSegmentedControl.isEnabled = false
+        }
+        self.title = NSLocalizedString("UserManagementEditViewControllerTitle", comment: "")
     }
     
     public func setupNavigationItems() {

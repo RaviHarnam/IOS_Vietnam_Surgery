@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var UsernameField: UITextField!
     
     @IBOutlet weak var PasswordField: UITextField!
+    
+    @IBOutlet weak var ValidationMessageLabel: UILabel!
     private var spinner : UIActivityIndicatorView?
     
     private var isFetching : Bool = false {
@@ -28,6 +30,10 @@ class LoginViewController: UIViewController {
                 spinner?.hide()
             }
         }
+    }
+    
+    private func ValidationMessageToggle(toggleValue: Bool) {
+        ValidationMessageLabel.isHidden = toggleValue
     }
     
     func setupSpinner() {
@@ -48,6 +54,8 @@ class LoginViewController: UIViewController {
         view.backgroundColor = UIColor(named: "LightGrayBackgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Login"
+        ValidationMessageLabel.isHidden = true
+        ValidationMessageLabel.textColor = UIColor.red
         //setupSpinner()
         setupLoginPlaceHolders()
         setupNavigationBar()
@@ -82,10 +90,14 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginClicked() {
+        guard validateCredentials() else {
+            return
+        }
         isFetching = true
         UserLogin()
     }
     
+
     func UserLogin() {
         if (BaseAPIManager.isConnectedToInternet()) {
             isFetching = true
@@ -107,10 +119,29 @@ class LoginViewController: UIViewController {
             })
         }
         else {
-            let alert = AlertHelper.NoInternetAlert()
+            let alert = AlertHelper.noInternetAlert()
             self.present(alert, animated: true)
         }
     }
+    
+    func validateCredentials() -> Bool {
+        ValidationMessageLabel.isHidden = true
+        
+        guard let email = UsernameField.text, !email.isEmpty else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("EnterUserName", comment: "")
+            return false
+        }
+        
+        guard let password = PasswordField.text, !password.isEmpty else {
+            ValidationMessageToggle(toggleValue: false)
+            ValidationMessageLabel.text = NSLocalizedString("EnterPassword", comment: "")
+            return false
+            
+        }
+        return true
+    }
+        
     
 //    private func navigateToAdminInterface () {
 //

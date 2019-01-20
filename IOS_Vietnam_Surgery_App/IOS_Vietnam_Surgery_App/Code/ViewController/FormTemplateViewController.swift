@@ -29,7 +29,7 @@ class FormTemplateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        alertForNoInternetConnection(isInternetConnect: checkForInternetConnectivity())
         spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         
 //        let ctrl = TabBarHelper.createAdminTabBar()
@@ -58,6 +58,19 @@ class FormTemplateViewController: UIViewController {
         getFormTemplatesAsync()
 //        createTabBarController()
 //        self.view.addSubview(ctrl.view)
+    }
+    
+    func checkForInternetConnectivity() -> Bool {
+        return BaseAPIManager.isConnectedToInternet()
+    }
+    
+    func alertForNoInternetConnection(isInternetConnect : Bool) {
+        
+        if !isInternetConnect {
+            
+            var alert = AlertHelper.noInternetAlert()
+            self.present(alert, animated: true)
+        }
     }
     
     func setupTableView() {

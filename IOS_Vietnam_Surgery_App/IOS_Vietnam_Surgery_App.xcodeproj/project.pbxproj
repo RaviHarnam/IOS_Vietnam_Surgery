@@ -39,6 +39,9 @@
 		41B965C921E52F28004CBCC0 /* FormContentAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B965C821E52F28004CBCC0 /* FormContentAPIManager.swift */; };
 		41B965CB21E54400004CBCC0 /* FormContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B965CA21E54400004CBCC0 /* FormContent.swift */; };
 		41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BA948921C2916E00969EA4 /* UserAPIManager.swift */; };
+		41BAD37821F3888C00A08C9F /* FormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD37721F3888C00A08C9F /* FormManager.swift */; };
+		41BAD37A21F3894100A08C9F /* FormTemplatePlusContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD37921F3894100A08C9F /* FormTemplatePlusContent.swift */; };
+		41BAD37C21F38A1100A08C9F /* FormContentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD37B21F38A1100A08C9F /* FormContentApiModel.swift */; };
 		41C08A5321D642200077EA4B /* TabBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C08A5221D642200077EA4B /* TabBarHelper.swift */; };
 		41DC462B21E76BAB0095A311 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC462A21E76BAB0095A311 /* LogoutViewController.swift */; };
 		41DC462D21E7AFD30095A311 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */; };
@@ -126,6 +129,9 @@
 		41B965C821E52F28004CBCC0 /* FormContentAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentAPIManager.swift; sourceTree = "<group>"; };
 		41B965CA21E54400004CBCC0 /* FormContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContent.swift; sourceTree = "<group>"; };
 		41BA948921C2916E00969EA4 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
+		41BAD37721F3888C00A08C9F /* FormManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManager.swift; sourceTree = "<group>"; };
+		41BAD37921F3894100A08C9F /* FormTemplatePlusContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplatePlusContent.swift; sourceTree = "<group>"; };
+		41BAD37B21F38A1100A08C9F /* FormContentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentApiModel.swift; sourceTree = "<group>"; };
 		41C08A5221D642200077EA4B /* TabBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelper.swift; sourceTree = "<group>"; };
 		41DC462A21E76BAB0095A311 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
@@ -227,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */,
+				41BAD37721F3888C00A08C9F /* FormManager.swift */,
 			);
 			path = UserManager;
 			sourceTree = "<group>";
@@ -327,6 +334,8 @@
 				BF41922121E3A49C009222B0 /* FormPostPutModel.swift */,
 				41DC463021E7DEAF0095A311 /* UserPutModel.swift */,
 				41B45F5121EA1C6B00FA1EC8 /* Image.swift */,
+				41BAD37921F3894100A08C9F /* FormTemplatePlusContent.swift */,
+				41BAD37B21F38A1100A08C9F /* FormContentApiModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -582,9 +591,12 @@
 				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
 				BF5D79C221F367450040EC0E /* FormInputContainer.swift in Sources */,
 				41AA235321C1095800D50B78 /* FormViewController.swift in Sources */,
+				41BAD37821F3888C00A08C9F /* FormManager.swift in Sources */,
+				41BAD37A21F3894100A08C9F /* FormTemplatePlusContent.swift in Sources */,
 				41929CCC21DE164100DF469E /* CustomTabBarController.swift in Sources */,
 				BFEDD45321B538AC00E62918 /* ImageFrameView.swift in Sources */,
 				BF69CCBA21C291B4006848E6 /* FormManagementViewController.swift in Sources */,
+				41BAD37C21F38A1100A08C9F /* FormContentApiModel.swift in Sources */,
 				41DC463121E7DEAF0095A311 /* UserPutModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

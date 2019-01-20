@@ -89,5 +89,9 @@
 "UserRoleAdmin" = "Admin";
 "UserRoleUser" = "User";
 "Error_delete_formtemplate" = "Error deleting this formtemplate. Check your internet connection and try again.";
+"ErrorDeleteLoggedInUserMsg" = "You cannot delete yourself";
 "Login" = "Login";
+"PasswordRegex" = "Password must contain at least 1 Uppercase, Lowercase and Numeric character and must be at least 6 characters long";
+"EmailRegex" = "Enter a valid emailaddress";
+"UserManagementEditViewControllerTitle" = "Edit User";
 "RequiredExplanationText" = "Questions names that end with a (*) are required.";
