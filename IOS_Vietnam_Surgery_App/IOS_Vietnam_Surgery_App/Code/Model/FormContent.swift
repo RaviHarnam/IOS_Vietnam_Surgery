@@ -31,6 +31,14 @@ public class FormContent : Codable {
         formTemplateName = try container.decodeIfPresent(String.self, forKey: .formTemplateName)
     }
     
+    public func encoder(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(formid, forKey: .formid)
+        try container.encode(formContent, forKey: .formContent)
+        try container.encode(images, forKey: .images)
+        try container.encode(formTemplateName, forKey: .formTemplateName)
+    }
+    
     init() {
         
     }

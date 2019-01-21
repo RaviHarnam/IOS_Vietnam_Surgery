@@ -34,7 +34,7 @@
 "FormOverviewViewControllerTabTitle" = "Form Overview";
 "FormManagementViewControllerTabTitle" = "Form Management";
 "LogoutViewControllerTabTitle" = "Log out";
-"FormNameLabelHeader" = "Form name";
+"FormNameLabelHeader" = "Name";
 "DistrictLabelHeader" = "District";
 "PhotoLabelHeader" = "Photos";
 "CreatedLabelHeader" = "Created";
@@ -95,3 +95,8 @@
 "EmailRegex" = "Enter a valid emailaddress";
 "UserManagementEditViewControllerTitle" = "Edit User";
 "RequiredExplanationText" = "Questions names that end with a (*) are required.";
+"ErrorNotAllFormsSynced" = "%lu form(s) failed either uploading or removal from disk..";
+"Password" = "Password";
+"ConfirmPassword" = "ConfirmPassword";
+"RequiredFields" = "* Make sure to fill in a valid e-mailaddress \n* Password must contain at least 1 Uppercase, Lowercase and Numeric character and must be at least 6 characters long \n* Make sure that password is equal to the comfirmpassword ";
+"AddUser" = "Add User";

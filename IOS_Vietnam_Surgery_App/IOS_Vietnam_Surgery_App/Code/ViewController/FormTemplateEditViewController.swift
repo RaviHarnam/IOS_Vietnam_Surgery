@@ -39,11 +39,14 @@ public class FormTemplateEditViewController : UIViewController {
         super.viewDidLoad()
         setupTableView()
         navigationController?.navigationBar.prefersLargeTitles = true
+        //self.navigationItem.largeTitleDisplayMode = .never
+        //formTableView.contentInsetAdjustmentBehavior = .never
         formExplanationText.text = NSLocalizedString("FormTemplateEditExplanationText", comment: "")
         formNameTextField.placeholder = NSLocalizedString("", comment: "")
         formNameTextField.addTarget(self, action: #selector(formNameChanged), for: .editingChanged)
         spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         setupAppBar()
+        self.extendedLayoutIncludesOpaqueBars = true;
         updateTitle()
         let footerView = UIView()
         footerView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
@@ -60,13 +63,13 @@ public class FormTemplateEditViewController : UIViewController {
         }
     }
     
-//    public override func viewDidAppear(_ animated: Bool) {
-//        DispatchQueue.main.async {
-//            var frame = self.formTableView.frame
-//            frame.size.height = self.formTableView.contentSize.height
-//            self.formTableView.frame = frame
-//        }
-//    }
+    public override func viewWillLayoutSubviews() {
+        DispatchQueue.main.async {
+            var frame = self.formTableView.frame
+            frame.size.height = self.formTableView.contentSize.height
+            self.formTableView.frame = frame
+        }
+    }
     
     func setupForm() {
         _ = self.view

@@ -2,7 +2,7 @@
 //  UserManagementViewController.swift
 //  IOS_Vietnam_Surgery_App
 //
-//  Created by Informatica Haarlem on 17-01-19.
+//  Created by Ravi on 17-01-19.
 //  Copyright © 2019 Matermind. All rights reserved.
 //
 
@@ -90,7 +90,7 @@ public class UserManagementViewController : UIViewController {
     @objc func addTapped()
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let addUserVC = storyboard.instantiateViewController(withIdentifier: "AddUserViewController") as! AddUserViewController
+        let addUserVC = storyboard.instantiateViewController(withIdentifier: "UserRegisterViewController") as! UserRegisterViewController
         addUserVC.callback = self
         self.navigationController?.pushViewController(addUserVC, animated: true)
     }

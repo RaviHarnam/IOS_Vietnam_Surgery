@@ -38,6 +38,5 @@ class LogoutViewController: UIViewController {
             AppDelegate.authenticationToken = nil
             AppDelegate.userRole = nil
             AppDelegate.userName = nil
-        
     }
 }

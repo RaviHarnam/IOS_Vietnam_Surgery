@@ -15,6 +15,7 @@ class FormTemplateViewController: UIViewController {
     private var formTemplates : [Form]?
     private var spinner : UIActivityIndicatorView?
     private var refreshControl : UIRefreshControl?
+    public var dataChanged : Bool?
     
     private var isFetching : Bool = false {
         willSet(newIsFetching) {
@@ -60,6 +61,15 @@ class FormTemplateViewController: UIViewController {
 //        self.view.addSubview(ctrl.view)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if dataChanged == true {
+            DispatchQueue.main.async {
+                self.formTemplateTableView.reloadData()
+            }
+            dataChanged = false
+        }
+    }
+    
     func checkForInternetConnectivity() -> Bool {
         return BaseAPIManager.isConnectedToInternet()
     }
@@ -82,7 +92,7 @@ class FormTemplateViewController: UIViewController {
         self.formTemplateTableView.tableFooterView = UIView(frame: .zero)
         self.formTemplateTableView.dataSource = self
         self.formTemplateTableView.delegate = self
-        self.formTemplateTableView.register(UINib(nibName: "SimpleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "SimpleLabelTableViewCell")
+        self.formTemplateTableView.register(UINib(nibName: "DoubleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "DoubleLabelTableViewCell")
     }
     
     func setupRefreshControl() {
@@ -181,6 +191,23 @@ class FormTemplateViewController: UIViewController {
         }
     }
     
+    func getFilledInTemplateCount(_ templateName: String) -> Int {
+        guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return 0 }
+        let directoryContents = try? FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
+        let actualDirContents = directoryContents!.filter { !$0.absoluteString.contains(".Trash") && !$0.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: "")) }
+        var count = 0
+        for file in actualDirContents {
+            let fileName = file.lastPathComponent
+            let parts = fileName.split(separator: "_")
+         
+            print(parts.debugDescription)
+            if (parts.first?.elementsEqual(templateName))! {
+                count = count + 1
+            }
+        }
+        return count
+    }
+}
     //Resizes the tableview if it currently is bigger than the size of the combined content
 //    func resizeTableView() {
 //        if self.formTemplateTableView.frame.height > self.formTemplateTableView.contentSize.height {
@@ -191,7 +218,7 @@ class FormTemplateViewController: UIViewController {
 //            }
 //        }
 //    }
-}
+
 
 extension FormTemplateViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -209,12 +236,17 @@ extension FormTemplateViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = tableView.dequeueReusableCell(withIdentifier: "SimpleLabelTableViewCell") as! SimpleLabelTableViewCell
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "DoubleLabelTableViewCell") as! DoubleLabelTableViewCell
         
+        let bgView = UIView()
+        bgView.backgroundColor = UIColor.white
+        tableCell.backgroundView = bgView
+        //tableCell.backgroundView = Col
         tableCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
         if let template = formTemplates?[indexPath.row] {
-            tableCell.simpleLabel.text = template.name
+            tableCell.leftLabel.text = template.name
+            tableCell.rightLabel.text = String(getFilledInTemplateCount(template.name!))
         }
         return tableCell
     }

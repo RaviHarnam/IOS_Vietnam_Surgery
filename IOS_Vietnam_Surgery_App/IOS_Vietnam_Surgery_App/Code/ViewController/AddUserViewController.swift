@@ -10,7 +10,10 @@ import UIKit
 
 class AddUserViewController: UIViewController {
 
-   
+    private var option : String?
+    public var callback : CallbackProtocol?
+    private var spinner : UIActivityIndicatorView?
+    private var isClicked : Bool = false
     
     @IBOutlet weak var UserNameLabel: UILabel!
     
@@ -23,63 +26,14 @@ class AddUserViewController: UIViewController {
     @IBOutlet weak var ConfirmPasswordTextField: UITextField!
     
     @IBOutlet weak var ConfirmPasswordLabel: UILabel!
-   
     
     @IBOutlet weak var UserNameTextView: UITextField!
-    
-    private var option : String?
     
     @IBOutlet weak var PasswordTextView: UITextField!
     
     @IBOutlet weak var OptionUISegmentedControl: UISegmentedControl!
     
-    public var callback : CallbackProtocol?
-    
-    private var spinner : UIActivityIndicatorView?
-    
-    private func sucessfullyAddedMessage(email: String) {
-        
-        let usermessage = "User " + email + " added successfully"
-        let alert = UIAlertController(title: "Success ", message: usermessage, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
-            (action: UIAlertAction) in
-            
-             self.navigationController?.popViewController(animated: true)
-            
-        }))
-            
-        self.present(alert, animated: true)
-    }
-    
-    private func ValidationMessageToggle(toggleValue: Bool)
-    {
-        ValidationMessageLabel.isHidden = toggleValue
-    }
-    
-
-    
-//    @IBAction func optionChosen(_ sender: Any) {
-//        
-//        switch OptionUISegmentedControl.selectedSegmentIndex
-//        {
-//        case 0:
-//            self.option = "Admin"
-//            print(option)
-//        case 1:
-//            self.option = "User"
-//            print(option)
-//        default:
-//            break
-//        }
-//    }
-//    @IBAction func fieldScreenerButtonClick(_ sender: Any) {
-////        fieldScreenerButton.setTitleColor(UIColor.white, for: .normal)
-//        fieldScreenerButton.isSelected = true
-//        adminButton.isSelected = false
-////        adminButton.backgroundColor = UIColor.white
-//    }
-    private var isClicked : Bool = false
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +47,27 @@ class AddUserViewController: UIViewController {
         setupNavigationBar()
         setupLabels()
     }
+    
+    private func sucessfullyAddedMessage(email: String) {
+        
+        let usermessage = "User " + email + " added successfully"
+        let alert = UIAlertController(title: "Success ", message: usermessage, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+            (action: UIAlertAction) in
+            
+             self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    private func ValidationMessageToggle(toggleValue: Bool) {
+        ValidationMessageLabel.isHidden = toggleValue
+    }
+    
+   
+    
+
     
     func setupLabels() {
         UserNameLabel.text = "Email"
@@ -174,10 +149,6 @@ class AddUserViewController: UIViewController {
             ValidationMessageLabel.text = NSLocalizedString("PasswordRegex", comment: "")
             return false
         }
-        
-   
-        
-     
        return true
     }
     
@@ -187,13 +158,10 @@ class AddUserViewController: UIViewController {
         UserManager.Register(register: registerModel, callbackUser: {
             (user) in
             
-           
             self.spinner?.hide()
             if let registereduser = user {
                 self.callback?.setValue(data: registereduser)
                 self.sucessfullyAddedMessage(email: registerModel.email!)
-               
-                
             }
             else {
                 self.alerMessageUserAddFailed()
@@ -227,17 +195,4 @@ class AddUserViewController: UIViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
         self.present(alert, animated: true)
     }
-    
-//    func registerNewUser() {
-//        var usersToRegister : Register
-//        if(adminButton.isSelected) {
-//        usersToRegister = Register(username: UserNameLabel.text, password: PasswordLabel.text, confirmpassword: PasswordLabel.text, userrole:"Admin", email: "bla@nil.nl")
-//            UserManager.Register(register: usersToRegister)
-//        }
-//        else {
-//            usersToRegister = Register(username: UserNameLabel.text, password: PasswordLabel.text, confirmpassword: PasswordLabel.text, userrole:"User", email: "bla@nil.nl")
-//            UserManager.Register(register: usersToRegister)
-//        }
-//
-//    }
 }
