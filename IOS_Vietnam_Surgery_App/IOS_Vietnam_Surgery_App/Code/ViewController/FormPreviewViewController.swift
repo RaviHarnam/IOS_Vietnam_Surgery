@@ -127,7 +127,8 @@ public class FormPreviewViewController : UIViewController {
         formImagesCollectionView.register(UINib(nibName: "CollectionViewImageCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewImageCell")
         formImagesCollectionView.register(UINib(nibName: "FormPreviewHeaderCollectionView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FormPreviewHeaderCollectionView")
         let bgView = UIView()
-        view.backgroundColor = UIColor.red //ColorHelper.lightGrayBackgroundColor()
+        //view.backgroundColor = UIColor.red ColorHelper.lightGrayBackgroundColor()
+        view.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         formImagesCollectionView.backgroundView = bgView
         formImagesCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imagesClicked)))
     }
@@ -247,7 +248,7 @@ extension FormPreviewViewController : UITableViewDataSource {
         headerview.sectionNumber = section
         headerview.layoutMargins.top = 42
         headerview.layoutMargins.bottom = 42
-        headerview.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        //headerview.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         return headerview
     }
     

@@ -210,6 +210,7 @@ public class FormFillInViewController : Eureka.FormViewController {
                                 }
                             }
                         }
+                        $0.cell.height = ({ return 50 })
                         $0.validationOptions = .validatesOnDemand
                         if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
                         $0.value = formContent[field.name!] ?? ""
@@ -226,8 +227,9 @@ public class FormFillInViewController : Eureka.FormViewController {
                         }
                     }
                     $0.validationOptions = .validatesOnDemand
+                    $0.cell.height = ({ return 50 })
                     if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
-                    $0.value = formContent[field.name!] ?? field.required?.lowercased() == "true" ? $0.options?.first : ""
+                    $0.value = formContent[field.name!] ?? field.required?.lowercased() == "true" ? $0.options!.first : ""
                     formContent[field.name!] = $0.value
                 })
                 break
@@ -241,6 +243,7 @@ public class FormFillInViewController : Eureka.FormViewController {
                         }
                     }
                     $0.validationOptions = .validatesOnDemand
+                    $0.cell.height = ({ return 50 })
                     $0.formatter = nil
                     if field.required?.lowercased() == "true" { $0.add(rule: RuleRequired(msg: field.name!, id: field.name)) }
                     $0.value = formContent[field.name!] != nil ? Int(formContent[field.name!]!) : nil
