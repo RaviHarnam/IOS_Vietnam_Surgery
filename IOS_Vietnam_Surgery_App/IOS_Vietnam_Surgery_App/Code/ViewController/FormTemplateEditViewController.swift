@@ -198,8 +198,9 @@ extension FormTemplateEditViewController : UITableViewDataSource {
         
         let section = formSections[indexPath.section]
         if let fields = section.fields {
-            cell.leftLabel.text = fields[indexPath.row].name
-            cell.rightLabel.text = NSLocalizedString(fields[indexPath.row].type!, comment: "")
+            let field = fields[indexPath.row]
+            cell.leftLabel.text = field.name
+            cell.rightLabel.text = NSLocalizedString(field.type!, comment: "")
         }
         
         return cell
