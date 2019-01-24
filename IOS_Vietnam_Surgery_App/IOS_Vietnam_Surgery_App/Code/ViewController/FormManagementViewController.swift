@@ -15,7 +15,6 @@ public class FormManagementViewController : UIViewController {
     
     private var formTemplates : [Form] = []
     
-    
     private var dataChanged = false
     private var spinner : UIActivityIndicatorView?
     
@@ -106,7 +105,6 @@ public class FormManagementViewController : UIViewController {
                 DispatchQueue.main.async {
                     self.formTemplateTableView.reloadData()
                 }
-                print("Deleted form template with statuscode 200")
             }
             else {
                 self.showErrorAlert()
@@ -173,7 +171,7 @@ extension FormManagementViewController : UITableViewDelegate {
 
 extension FormManagementViewController : CallbackProtocol {
     public func setValue(data: Any) {
-        let dic = data as! Dictionary<Int?,FormPostPutModel>
+        let dic = data as! Dictionary<Int?,Form>
         if let kvp = dic.first {
             let form = kvp.value
             if let index = kvp.key {
@@ -182,11 +180,11 @@ extension FormManagementViewController : CallbackProtocol {
                 self.formTemplates[index].formTemplate = form.formTemplate
             }
             else {
-                let formModel = Form()
-                formModel.name = form.name
-                formModel.region = form.region
-                formModel.formTemplate = form.formTemplate
-                self.formTemplates.append(formModel)
+//                let formModel = Form()
+//                formModel.name = form.name
+//                formModel.region = form.region
+//                formModel.formTemplate = form.formTemplate
+                self.formTemplates.append(form)
             }
             self.dataChanged = true
         }

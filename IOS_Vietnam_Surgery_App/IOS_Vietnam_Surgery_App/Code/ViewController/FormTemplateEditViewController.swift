@@ -140,8 +140,24 @@ public class FormTemplateEditViewController : UIViewController {
                 (response) in
                 self.spinner?.hide()
                 if response.response?.statusCode == 200 {
-                    var dic : [Int?:FormPostPutModel] = [:]
-                    dic[nil] = form
+                    let decoder = JSONDecoder()
+                    print(String(data: response.data!, encoding: .utf8))
+                    //var string = String(data: response.data!, encoding: .utf8)!
+                    //string = string.replacingOccurrences(of: "\\\"", with: "\"")
+                    //let dbForm = try? decoder.decode(Int.self, from: response.data!)
+                    let idString = String(data: response.data!, encoding: .utf8)
+                    var dic : [Int?:Form] = [:]
+                    var returnForm = Form()
+                    
+                    returnForm.id = Int(idString!)
+                    print(returnForm.id)
+                    returnForm.name = form.name
+                    print(returnForm.name)
+                    returnForm.region = form.region
+                    print(returnForm.region)
+                    returnForm.formTemplate = form.formTemplate
+                    print(returnForm.formTemplate)
+                    dic[nil] = returnForm
                     self.updateFormManagement?.setValue(data: dic)
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -151,8 +167,14 @@ public class FormTemplateEditViewController : UIViewController {
             FormTemplateAPIManager.editFormTemplate((self.form?.id)!, form: form).response(completionHandler: {
                 (response) in
                 self.spinner?.hide()
+                print("Statuscode: ", response.response?.statusCode)
+                print("Data: ", String(data: response.data!, encoding: .utf8))
+                
+                
                 if response.response?.statusCode == 200 {
-                    var dic : [Int:FormPostPutModel] = [:]
+                    var dic : [Int:Form] = [:]
+                    let decoder = JSONDecoder()
+                    let form = try? decoder.decode(Form.self, from: response.data!)
                     dic[self.sectionNumber!] = form
                     self.updateFormManagement?.setValue(data: dic)
                     self.navigationController?.popViewController(animated: true)
@@ -194,7 +216,7 @@ extension FormTemplateEditViewController : UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoubleLabelTableViewCell") as! DoubleLabelTableViewCell
-        cell.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        cell.contentView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         
         let section = formSections[indexPath.section]
         if let fields = section.fields {

@@ -16,7 +16,6 @@
 		41698B4721C66DD900C261D5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41698B4621C66DD900C261D5 /* Role.swift */; };
 		418A9C6A21C396240022599A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A9C6921C396240022599A /* User.swift */; };
 		418AD79A21DE8B7300E7C2F8 /* FormOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */; };
-		418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */; };
 		418DDA8D21C2F77300FB0DA0 /* customHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */; };
 		418E576021D2B8C200F90E00 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E575F21D2B8C200F90E00 /* AddUserViewController.swift */; };
 		418E576221D2BFF900F90E00 /* AdminTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */; };
@@ -32,9 +31,6 @@
 		41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3221C19AFF00CD9FB4 /* Register.swift */; };
 		41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */; };
 		41A8FA3721C19D4300CD9FB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */; };
-		41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA234E21C1079C00D50B78 /* TabBarController.swift */; };
-		41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235021C1083E00D50B78 /* HomeViewController.swift */; };
-		41AA235321C1095800D50B78 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AA235221C1095800D50B78 /* FormViewController.swift */; };
 		41B45F5221EA1C6B00FA1EC8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B45F5121EA1C6B00FA1EC8 /* Image.swift */; };
 		41B965C921E52F28004CBCC0 /* FormContentAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B965C821E52F28004CBCC0 /* FormContentAPIManager.swift */; };
 		41B965CB21E54400004CBCC0 /* FormContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B965CA21E54400004CBCC0 /* FormContent.swift */; };
@@ -106,7 +102,6 @@
 		41698B4621C66DD900C261D5 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		418A9C6921C396240022599A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOverviewViewController.swift; sourceTree = "<group>"; };
-		418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationController.swift; sourceTree = "<group>"; };
 		418DDA8C21C2F77300FB0DA0 /* customHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customHTTPResponse.swift; sourceTree = "<group>"; };
 		418E575F21D2B8C200F90E00 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		418E576121D2BFF900F90E00 /* AdminTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarControllerViewController.swift; sourceTree = "<group>"; };
@@ -122,9 +117,6 @@
 		41A8FA3221C19AFF00CD9FB4 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		41A8FA3421C19B6F00CD9FB4 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		41AA234E21C1079C00D50B78 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		41AA235021C1083E00D50B78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		41AA235221C1095800D50B78 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		41B45F5121EA1C6B00FA1EC8 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		41B965C821E52F28004CBCC0 /* FormContentAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentAPIManager.swift; sourceTree = "<group>"; };
 		41B965CA21E54400004CBCC0 /* FormContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContent.swift; sourceTree = "<group>"; };
@@ -348,13 +340,9 @@
 				BF7AA59121AD85CB00904B6A /* FormFillInViewController.swift */,
 				BFEDD45021B535A800E62918 /* FormPicturesViewController.swift */,
 				BF34419121B69C4D00F23674 /* FormPreviewViewController.swift */,
-				41AA234E21C1079C00D50B78 /* TabBarController.swift */,
-				41AA235021C1083E00D50B78 /* HomeViewController.swift */,
-				41AA235221C1095800D50B78 /* FormViewController.swift */,
 				41A8FA3621C19D4300CD9FB4 /* LoginViewController.swift */,
 				BF69CCBB21C29A92006848E6 /* FormTemplateEditViewController.swift */,
 				BF69CCB921C291B4006848E6 /* FormManagementViewController.swift */,
-				418B6A1B21C7C2B00041FB97 /* AdminNavigationController.swift */,
 				BF3F005421CA9630004EAC09 /* FormPictureViewController.swift */,
 				BF41A86A21D4F5D500D088DC /* FormTemplateEditSectionViewController.swift */,
 				BF42725121D8CEDB00E31F0B /* FormTemplateEditFieldViewController.swift */,
@@ -539,12 +527,10 @@
 				41BA948A21C2916E00969EA4 /* UserAPIManager.swift in Sources */,
 				418E576021D2B8C200F90E00 /* AddUserViewController.swift in Sources */,
 				4137E22D219C364D0009DFBE /* FormTemplateViewController.swift in Sources */,
-				418B6A1C21C7C2B00041FB97 /* AdminNavigationController.swift in Sources */,
 				BF7AA57E21AD4C2F00904B6A /* FormTemplateAPIManager.swift in Sources */,
 				419732EE21E620B800525ADA /* UserOverviewTableViewCell.swift in Sources */,
 				41DC462D21E7AFD30095A311 /* DateTimeHelper.swift in Sources */,
 				4196949621F0CA3400365775 /* UserManagementViewController.swift in Sources */,
-				41AA234F21C1079C00D50B78 /* TabBarController.swift in Sources */,
 				BF59671521DCD72400511F3C /* CallbackProtocol.swift in Sources */,
 				41A8FA3321C19AFF00CD9FB4 /* Register.swift in Sources */,
 				BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */,
@@ -563,7 +549,6 @@
 				419F98F721DF5F790086A566 /* FormOverviewTableViewCell.swift in Sources */,
 				BF29DC4421D11228006F7173 /* ViewHelper.swift in Sources */,
 				BF3F005521CA9630004EAC09 /* FormPictureViewController.swift in Sources */,
-				41AA235121C1083E00D50B78 /* HomeViewController.swift in Sources */,
 				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
 				41B45F5221EA1C6B00FA1EC8 /* Image.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
@@ -590,7 +575,6 @@
 				41B965CB21E54400004CBCC0 /* FormContent.swift in Sources */,
 				BF7AA58021AD4CA700904B6A /* BaseAPIManager.swift in Sources */,
 				BF5D79C221F367450040EC0E /* FormInputContainer.swift in Sources */,
-				41AA235321C1095800D50B78 /* FormViewController.swift in Sources */,
 				41BAD37821F3888C00A08C9F /* FormManager.swift in Sources */,
 				41BAD37A21F3894100A08C9F /* FormTemplatePlusContent.swift in Sources */,
 				41929CCC21DE164100DF469E /* CustomTabBarController.swift in Sources */,
