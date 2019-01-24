@@ -420,8 +420,6 @@ public class FormOverviewViewController: UIViewController {
     }
     
     @objc func deleteForm(_ rowToDelete: Int) {
-        //if let row = sender.view?.tag {
-        
         spinner?.show()
         let form = self.forms[rowToDelete]
         
@@ -436,7 +434,6 @@ public class FormOverviewViewController: UIViewController {
         let fileUrl = docDirectoryUrl.appendingPathComponent(fileName)
         
         do {
-            
             try FileManager.default.removeItem(at: fileUrl)
             self.forms.remove(at: rowToDelete)
             if forms.count == 0 {

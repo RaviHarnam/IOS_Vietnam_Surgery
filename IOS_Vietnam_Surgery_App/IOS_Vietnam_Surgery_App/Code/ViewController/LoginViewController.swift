@@ -77,14 +77,12 @@ class LoginViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Login", comment: ""), style: .plain, target: self, action: #selector(loginClicked))
     }
     
-    @objc func usernameValueChanged ()
-    {
+    @objc func usernameValueChanged () {
         self.UsernameField.layer.borderWidth = 0
         self.UsernameField.layer.borderColor = nil
     }
     
-    @objc func passwordValueChanged ()
-    {
+    @objc func passwordValueChanged () {
         self.PasswordField.layer.borderWidth = 0
         self.PasswordField.layer.borderColor = nil
     }
@@ -106,11 +104,9 @@ class LoginViewController: UIViewController {
                 (result) in
                 self.isFetching = false
                 if(result) { //Succesfully logged in, appbar will do nav for us
-                    print("Wat zit er in result: ", result)
-                    //self.navigateToAdminInterface()∫
+                
                 }
                 else {
-                    print("Waarde result: ", result)
                     self.UsernameField.layer.borderWidth = 1
                     self.UsernameField.layer.borderColor = UIColor.red.cgColor
                     self.PasswordField.layer.borderWidth = 1
@@ -141,14 +137,4 @@ class LoginViewController: UIViewController {
         }
         return true
     }
-        
-    
-//    private func navigateToAdminInterface () {
-//
-//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//        let adminNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "UserTableViewController") as! UserTableViewController
-//        print("navigating to usertable with: " + self.navigationController.debugDescription)
-//        navigationController!.pushViewController(adminNavigationVC, animated: true)
-//    }
 }

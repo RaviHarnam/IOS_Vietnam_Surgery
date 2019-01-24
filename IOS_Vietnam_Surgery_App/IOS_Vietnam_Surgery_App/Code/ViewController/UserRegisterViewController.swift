@@ -11,8 +11,7 @@ import Eureka
 import UIKit
 
 public class UserRegisterViewController : Eureka.FormViewController {
-    
-    
+
     @IBOutlet weak var validationMessage: UILabel!
     
     private var spinner : UIActivityIndicatorView?
@@ -152,7 +151,6 @@ public class UserRegisterViewController : Eureka.FormViewController {
         
         if !password.elementsEqual(confirmPassword) {
             valid = false
-            
         }
         return valid
     }

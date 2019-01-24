@@ -39,8 +39,6 @@ public class FormTemplateEditViewController : UIViewController {
         super.viewDidLoad()
         setupTableView()
         navigationController?.navigationBar.prefersLargeTitles = true
-        //self.navigationItem.largeTitleDisplayMode = .never
-        //formTableView.contentInsetAdjustmentBehavior = .never
         formExplanationText.text = NSLocalizedString("FormTemplateEditExplanationText", comment: "")
         formNameTextField.placeholder = NSLocalizedString("", comment: "")
         formNameTextField.addTarget(self, action: #selector(formNameChanged), for: .editingChanged)
@@ -48,10 +46,6 @@ public class FormTemplateEditViewController : UIViewController {
         setupAppBar()
         self.extendedLayoutIncludesOpaqueBars = true;
         updateTitle()
-        let footerView = UIView()
-        footerView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
-        self.formTableView.tableFooterView = footerView
-        self.formTableView.backgroundView = footerView
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +93,11 @@ public class FormTemplateEditViewController : UIViewController {
         self.formTableView.delegate = self
         self.formTableView.register(UINib(nibName: "DoubleLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "DoubleLabelTableViewCell")
         self.formTableView.register(UINib(nibName: headerID, bundle: nil), forHeaderFooterViewReuseIdentifier: headerID)
+        
+        let footerView = UIView()
+        footerView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        self.formTableView.tableFooterView = footerView
+        self.formTableView.backgroundView = footerView
     }
     
     func setupAppBar() {
@@ -173,7 +172,6 @@ public class FormTemplateEditViewController : UIViewController {
                 print("Statuscode: ", response.response?.statusCode)
                 print("Data: ", String(data: response.data!, encoding: .utf8))
                 
-                
                 if response.response?.statusCode == 200 {
                     var dic : [Int:Form] = [:]
                     let decoder = JSONDecoder()
@@ -207,7 +205,6 @@ public class FormTemplateEditViewController : UIViewController {
     }
 }
 
-
 extension FormTemplateEditViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return formSections[section].fields?.count ?? 0
@@ -235,9 +232,6 @@ extension FormTemplateEditViewController : UITableViewDataSource {
         if let section = sender.view {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditSectionViewController") as! FormTemplateEditSectionViewController
-            //vc.formContent = self.formContent
-            //vc.formData = self.formData∫
-            //vc.formFillInStep = section.tag
             vc.section = self.formSections[section.tag]
             vc.sectionNumber = section.tag
             vc.sectionSaveDelegate = self

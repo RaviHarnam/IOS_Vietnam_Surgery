@@ -9,8 +9,6 @@
 import Foundation
 
 public class DateTimeHelper {
-    
-    
     static func getCurrentDateTimeString() -> String {
         let date = Date()
         let calender = Calendar.current
@@ -26,7 +24,5 @@ public class DateTimeHelper {
         let today_string = String(year!) + "-" + String(month!) + "-" + String(day!) + "-" + String(hour!)  + ":" + String(minute!) + ":" +  String(second!)
         
         return today_string
-        
-        
     }
 }

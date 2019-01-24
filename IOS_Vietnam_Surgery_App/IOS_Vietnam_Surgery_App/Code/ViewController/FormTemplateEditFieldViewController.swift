@@ -97,7 +97,6 @@ public class FormTemplateEditFieldViewController : UIViewController {
         
         delegateCallback?.setValue(data: field!)
         navigationController?.popViewController(animated: true)
-        //navigationController?.popViewController(animated: true)
     }
     
     @objc func deleteClicked() {
@@ -108,8 +107,7 @@ public class FormTemplateEditFieldViewController : UIViewController {
     public override func viewWillLayoutSubviews() {
         DispatchQueue.main.async {
             var frame = self.fieldAnswersTableView.frame
-            //let spacing = CGFloat(self.choiceFieldAnswers.count == 0 ? 2 : self.choiceFieldAnswers.count * 30)
-            frame.size.height = self.fieldAnswersTableView.contentSize.height //+ spacing
+            frame.size.height = self.fieldAnswersTableView.contentSize.height
             self.fieldAnswersTableView.frame = frame
         }
     }

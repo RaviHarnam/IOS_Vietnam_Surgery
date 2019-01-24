@@ -48,13 +48,6 @@ extension UIActivityIndicatorView {
     public func show() {
         self.isHidden = false
         self.startAnimating()
-            //        if let view = superView {
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
-            //                let alert = AlertHelper.NoInternetAlert(nil)
-            //
-            //            })
-            //
-            //        }
         }
         
     public func hide() {

@@ -63,7 +63,6 @@ class UserDetailViewController: UIViewController {
         putModel.email = self.userEmailTextField.text
         putModel.role = self.rightsSegmentedControl.titleForSegment(at: rightsSegmentedControl.selectedSegmentIndex)
         
-        //user?.role = self.rightsSegmentedControl.titleForSegment(at: rightsSegmentedControl.selectedSegmentIndex)
         spinner?.show()
         UserAPIManager.EditUser(token: AppDelegate.authenticationToken!, user: putModel, userId: (self.user?.userid!)!).responseData(completionHandler: {
             (response) in

@@ -65,10 +65,6 @@ class AddUserViewController: UIViewController {
         ValidationMessageLabel.isHidden = toggleValue
     }
     
-   
-    
-
-    
     func setupLabels() {
         UserNameLabel.text = "Email"
         PasswordLabel.text = "Password"
@@ -185,10 +181,9 @@ class AddUserViewController: UIViewController {
     }
     
     private func checkIfPasswordIsEqualToConfirmPassword (password: String, confirmpassword: String) -> Bool {
-        
          return password.elementsEqual(confirmpassword)
-       
     }
+    
     private func alerMessageUserAddFailed () {
         let useraddedfailedmessage = NSLocalizedString("UserAddedFailed", comment: "")
         let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: useraddedfailedmessage, preferredStyle: .alert)

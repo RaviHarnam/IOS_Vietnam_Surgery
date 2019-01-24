@@ -12,7 +12,6 @@ import Eureka
 
 public class FormHelper {
     public static func getFormTemplateFromJson(json: String) -> FormTemplate? {
-        //var json = json
         let data = json.data(using: .utf8)!
         let decoder = JSONDecoder()
         let formTemplate = try? decoder.decode(FormTemplate.self, from: data)
@@ -55,16 +54,8 @@ public class FormHelper {
         var controls : [FormChoiceField] = []
         guard let fields = section.fields else { return nil }
         for field in fields {
-            //let name = field.name!
             controls.append(field as! FormChoiceField)
-            //switch field.type!.lowercased() {
-//            case "string":
-//                //controls.append(createTextField(title: name))
-//                break
-//            default:
-//                break
-            }
-    //}
+        }
         return controls
     }
     
@@ -101,7 +92,7 @@ public class FormHelper {
                 for field in fields {
                     for checkField in checkDictionary {
                         if field.name == checkField.key as? String && field.required?.lowercased() == "true" {
-                            checkDictionary[checkField.key] = true //print(checkDictionary.updateValue(true, forKey: checkField))
+                            checkDictionary[checkField.key] = true
                         }
                     }
                 }
@@ -109,7 +100,7 @@ public class FormHelper {
         }
         
         return checkDictionary.allSatisfy({
-            $0.value as! Bool // == true
+            $0.value as! Bool
         })
     }
     

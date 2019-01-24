@@ -19,7 +19,6 @@ public class FormTemplateEditSectionViewController : UIViewController {
     public var sectionNumber : Int?
     public var form : Form?
     
-    //private let fieldTypes = ["TextField", "NumberField", "ChoiceField"]
     private var fieldTypesDic : [String:String] = [:]
     private var currentEditingField : Int?
     private var currentFieldTypeSelected : String? = NSLocalizedString("String", comment: "")
@@ -138,7 +137,6 @@ public class FormTemplateEditSectionViewController : UIViewController {
         self.currentEditingField = nil
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateEditFieldViewController") as! FormTemplateEditFieldViewController
-        //vc.fieldType = field?.type
         let field = FormChoiceField()
         let kvp = fieldTypesDic.first(where: { $0.value == currentFieldTypeSelected })
         field.type = kvp!.key
@@ -175,7 +173,6 @@ extension FormTemplateEditSectionViewController : UITableViewDataSource {
             }
             else {
                 cell.leftLabel.text = fields[indexPath.row].name
-            
                 cell.rightLabel.textColor = ColorHelper.lightGrayTextColor()
                 cell.rightLabel.text = fields[indexPath.row].type
             }
