@@ -140,4 +140,22 @@ public class FormHelper {
         }
         return imageArr
     }
+    
+    public static func getLocalStorageFileName(_ form: Form) -> String {
+        let nameValue = form.formContent?.first(where: {  $0.name?.lowercased() == "name" })!.value
+        let districtValue = form.formContent?.first(where: {$0.name?.lowercased() == "district"})!.value
+        let birthYearValue = form.formContent?.first(where:{$0.name?.lowercased() == "birthyear"})!.value
+        return getLocalStorageFileName(templateName: form.name!, name: nameValue!, district: districtValue!, birthyear: birthYearValue!)
+    }
+    
+    public static func getLocalStorageFileName(_ formContent: FormContent) -> String {
+        let nameValue = formContent.formContent?.first(where: {  $0.name?.lowercased() == "name" })!.value
+        let districtValue = formContent.formContent?.first(where: {$0.name?.lowercased() == "district"})!.value
+        let birthYearValue = formContent.formContent?.first(where:{$0.name?.lowercased() == "birthyear"})!.value
+        return getLocalStorageFileName(templateName: formContent.formTemplateName!, name: nameValue!, district: districtValue!, birthyear: birthYearValue!)
+    }
+    
+    private static func getLocalStorageFileName(templateName: String, name: String, district: String, birthyear: String) -> String {
+        return templateName + "_" + name + "_" + district + "_" + birthyear + ".json"
+    }
 }

@@ -30,6 +30,8 @@ public class FormOverviewTableViewCell : UITableViewCell {
     
     @IBOutlet weak var CreatedLabelHeader: UILabel!
     
+    @IBOutlet weak var BirthYearLabel: UILabel!
     
-    @IBOutlet weak var trashIconImage: UIImageView!
+    @IBOutlet weak var BirthYearHeader: UILabel!
+    
 }

@@ -13,6 +13,7 @@
 		4137E230219C364D0009DFBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E22E219C364D0009DFBE /* Main.storyboard */; };
 		4137E232219C364D0009DFBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4137E231219C364D0009DFBE /* Assets.xcassets */; };
 		4137E235219C364D0009DFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4137E233219C364D0009DFBE /* LaunchScreen.storyboard */; };
+		415D6E1721F61A980024B7D6 /* UserRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415D6E1621F61A980024B7D6 /* UserRegisterViewController.swift */; };
 		41698B4721C66DD900C261D5 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41698B4621C66DD900C261D5 /* Role.swift */; };
 		418A9C6A21C396240022599A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418A9C6921C396240022599A /* User.swift */; };
 		418AD79A21DE8B7300E7C2F8 /* FormOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */; };
@@ -38,6 +39,8 @@
 		41BAD37821F3888C00A08C9F /* FormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD37721F3888C00A08C9F /* FormManager.swift */; };
 		41BAD37A21F3894100A08C9F /* FormTemplatePlusContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD37921F3894100A08C9F /* FormTemplatePlusContent.swift */; };
 		41BAD37C21F38A1100A08C9F /* FormContentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD37B21F38A1100A08C9F /* FormContentApiModel.swift */; };
+		41BAD38421F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD38321F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.swift */; };
+		41BAD38C21F4F50800A08C9F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BAD38B21F4F50800A08C9F /* UILabel.swift */; };
 		41C08A5321D642200077EA4B /* TabBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C08A5221D642200077EA4B /* TabBarHelper.swift */; };
 		41DC462B21E76BAB0095A311 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC462A21E76BAB0095A311 /* LogoutViewController.swift */; };
 		41DC462D21E7AFD30095A311 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */; };
@@ -89,6 +92,16 @@
 		BFEDD45821B53E9D00E62918 /* CollectionViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEDD45721B53E9D00E62918 /* CollectionViewImageCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		41BAD38621F4CC1100A08C9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4137E21F219C364D0009DFBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4137E226219C364D0009DFBE;
+			remoteInfo = IOS_Vietnam_Surgery_App;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0818ADE739A6D7C3FD197991 /* Pods-IOS_Vietnam_Surgery_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS_Vietnam_Surgery_App/Pods-IOS_Vietnam_Surgery_App.debug.xcconfig"; sourceTree = "<group>"; };
 		4108311B21E698A40084C547 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +112,7 @@
 		4137E231219C364D0009DFBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4137E234219C364D0009DFBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4137E236219C364D0009DFBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		415D6E1621F61A980024B7D6 /* UserRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterViewController.swift; sourceTree = "<group>"; };
 		41698B4621C66DD900C261D5 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		418A9C6921C396240022599A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOverviewViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +138,10 @@
 		41BAD37721F3888C00A08C9F /* FormManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormManager.swift; sourceTree = "<group>"; };
 		41BAD37921F3894100A08C9F /* FormTemplatePlusContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTemplatePlusContent.swift; sourceTree = "<group>"; };
 		41BAD37B21F38A1100A08C9F /* FormContentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormContentApiModel.swift; sourceTree = "<group>"; };
+		41BAD38121F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOS_Vietnam_Surgery_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41BAD38321F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_Vietnam_Surgery_AppTests.swift; sourceTree = "<group>"; };
+		41BAD38521F4CC1100A08C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41BAD38B21F4F50800A08C9F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		41C08A5221D642200077EA4B /* TabBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarHelper.swift; sourceTree = "<group>"; };
 		41DC462A21E76BAB0095A311 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
@@ -185,6 +203,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41BAD37E21F4CC1100A08C9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -192,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				4137E229219C364D0009DFBE /* IOS_Vietnam_Surgery_App */,
+				41BAD38221F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests */,
 				4137E228219C364D0009DFBE /* Products */,
 				A1986386F6BB621F33D16339 /* Pods */,
 				8FFC101EF8FCC9B4A5BCC3C0 /* Frameworks */,
@@ -202,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */,
+				41BAD38121F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +255,15 @@
 				41BAD37721F3888C00A08C9F /* FormManager.swift */,
 			);
 			path = UserManager;
+			sourceTree = "<group>";
+		};
+		41BAD38221F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				41BAD38321F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.swift */,
+				41BAD38521F4CC1100A08C9F /* Info.plist */,
+			);
+			path = IOS_Vietnam_Surgery_AppTests;
 			sourceTree = "<group>";
 		};
 		8FFC101EF8FCC9B4A5BCC3C0 /* Frameworks */ = {
@@ -351,6 +387,7 @@
 				418AD79921DE8B7300E7C2F8 /* FormOverviewViewController.swift */,
 				4108311B21E698A40084C547 /* UserDetailViewController.swift */,
 				41DC462A21E76BAB0095A311 /* LogoutViewController.swift */,
+				415D6E1621F61A980024B7D6 /* UserRegisterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -367,6 +404,7 @@
 				41DC462C21E7AFD30095A311 /* DateTimeHelper.swift */,
 				41DC462E21E7D3010095A311 /* AlertHelper.swift */,
 				BF5D79C121F367450040EC0E /* FormInputContainer.swift */,
+				41BAD38B21F4F50800A08C9F /* UILabel.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -404,18 +442,40 @@
 			productReference = 4137E227219C364D0009DFBE /* IOS_Vietnam_Surgery_App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		41BAD38021F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41BAD38A21F4CC1100A08C9F /* Build configuration list for PBXNativeTarget "IOS_Vietnam_Surgery_AppTests" */;
+			buildPhases = (
+				41BAD37D21F4CC1100A08C9F /* Sources */,
+				41BAD37E21F4CC1100A08C9F /* Frameworks */,
+				41BAD37F21F4CC1100A08C9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41BAD38721F4CC1100A08C9F /* PBXTargetDependency */,
+			);
+			name = IOS_Vietnam_Surgery_AppTests;
+			productName = IOS_Vietnam_Surgery_AppTests;
+			productReference = 41BAD38121F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4137E21F219C364D0009DFBE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Matermind;
 				TargetAttributes = {
 					4137E226219C364D0009DFBE = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					41BAD38021F4CC1100A08C9F = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 4137E226219C364D0009DFBE;
 					};
 				};
 			};
@@ -433,6 +493,7 @@
 			projectRoot = "";
 			targets = (
 				4137E226219C364D0009DFBE /* IOS_Vietnam_Surgery_App */,
+				41BAD38021F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -458,6 +519,13 @@
 				4137E232219C364D0009DFBE /* Assets.xcassets in Resources */,
 				4137E230219C364D0009DFBE /* Main.storyboard in Resources */,
 				BF6B4E0A21AFF1C9001FC224 /* TableCellWithUITextfield.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41BAD37F21F4CC1100A08C9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +618,7 @@
 				BF29DC4421D11228006F7173 /* ViewHelper.swift in Sources */,
 				BF3F005521CA9630004EAC09 /* FormPictureViewController.swift in Sources */,
 				BF7AA59421AD86DF00904B6A /* FormHelper.swift in Sources */,
+				41BAD38C21F4F50800A08C9F /* UILabel.swift in Sources */,
 				41B45F5221EA1C6B00FA1EC8 /* Image.swift in Sources */,
 				4137E22B219C364D0009DFBE /* AppDelegate.swift in Sources */,
 				41A8FA3521C19B6F00CD9FB4 /* UserManager.swift in Sources */,
@@ -557,6 +626,7 @@
 				4108311C21E698A40084C547 /* UserDetailViewController.swift in Sources */,
 				BF7AA58B21AD55A800904B6A /* Form.swift in Sources */,
 				41698B4721C66DD900C261D5 /* Role.swift in Sources */,
+				415D6E1721F61A980024B7D6 /* UserRegisterViewController.swift in Sources */,
 				BF69CCBC21C29A92006848E6 /* FormTemplateEditViewController.swift in Sources */,
 				BF6B4E1421B0292E001FC224 /* FormChoiceField.swift in Sources */,
 				BFEDD45121B535A800E62918 /* FormPicturesViewController.swift in Sources */,
@@ -585,7 +655,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41BAD37D21F4CC1100A08C9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41BAD38421F4CC1100A08C9F /* IOS_Vietnam_Surgery_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		41BAD38721F4CC1100A08C9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4137E226219C364D0009DFBE /* IOS_Vietnam_Surgery_App */;
+			targetProxy = 41BAD38621F4CC1100A08C9F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4137E22E219C364D0009DFBE /* Main.storyboard */ = {
@@ -763,6 +849,46 @@
 			};
 			name = Release;
 		};
+		41BAD38821F4CC1100A08C9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = IOS_Vietnam_Surgery_AppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mastermind.IOS-Vietnam-Surgery-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOS_Vietnam_Surgery_App.app/IOS_Vietnam_Surgery_App";
+			};
+			name = Debug;
+		};
+		41BAD38921F4CC1100A08C9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = IOS_Vietnam_Surgery_AppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mastermind.IOS-Vietnam-Surgery-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IOS_Vietnam_Surgery_App.app/IOS_Vietnam_Surgery_App";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -780,6 +906,15 @@
 			buildConfigurations = (
 				4137E23A219C364D0009DFBE /* Debug */,
 				4137E23B219C364D0009DFBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41BAD38A21F4CC1100A08C9F /* Build configuration list for PBXNativeTarget "IOS_Vietnam_Surgery_AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41BAD38821F4CC1100A08C9F /* Debug */,
+				41BAD38921F4CC1100A08C9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

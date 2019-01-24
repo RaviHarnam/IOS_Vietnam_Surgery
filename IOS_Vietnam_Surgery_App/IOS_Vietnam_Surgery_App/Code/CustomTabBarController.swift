@@ -179,7 +179,6 @@ public class CustomTabBarController : UITabBarController {
         
         setTitles()
     }
-   
 }
 
 extension CustomTabBarController : LoggedInDelegate {
@@ -198,8 +197,7 @@ extension CustomTabBarController : LoggedInDelegate {
 }
 
 extension UITabBarController {
-    static func createViewController(VController: UIViewController, selectedImage: String) -> UIViewController
-    {
+    static func createViewController(VController: UIViewController, selectedImage: String) -> UIViewController {
         let viewController = VController
         viewController.tabBarItem.image = UIImage(named: selectedImage)
         

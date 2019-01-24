@@ -191,21 +191,23 @@ public class FormPreviewViewController : UIViewController {
         
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
-        var fileName = ""
-        if let existingFileName = self.preexistingFileName {
-            fileName = existingFileName
-        }
-        else {
-            fileName = (self.formData?.name)! + "_" + formContent[NSLocalizedString("Name", comment: "")]! + "_" + formContent[NSLocalizedString("District", comment: "")]! + "_" + formContent[NSLocalizedString("Birthyear", comment: "")]! + ".json"
-        }
-        let fileUrl = docDirectoryUrl.appendingPathComponent(fileName)
+        let fileName = (self.formData?.name)! + "_" + formContent[NSLocalizedString("Name", comment: "")]! + "_" + formContent[NSLocalizedString("District", comment: "")]! + "_" + formContent[NSLocalizedString("Birthyear", comment: "")]! + ".json"
         
+        let newFileUrl = docDirectoryUrl.appendingPathComponent(fileName)
+       
         do {
             let data = try JSONEncoder().encode(formData)
-            try data.write(to: fileUrl, options: [])
+            if isPreexisting {
+                let oldFileUrl = docDirectoryUrl.appendingPathComponent(preexistingFileName!)
+                try FileManager.default.moveItem(at: oldFileUrl, to: newFileUrl)
+                try data.write(to: newFileUrl, options: [])
+            }
+            else {
+                try data.write(to: newFileUrl, options: [])
+            }
             FormInputContainer.clear()
-            navigationController?.popToRootViewController(animated: true)
-            //navigateToTemplateView()
+            //navigationController?.popToRootViewController(animated: true)
+            navigateToTemplateView()
         }
         catch {
             print(error)
@@ -216,6 +218,7 @@ public class FormPreviewViewController : UIViewController {
     func navigateToTemplateView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FormTemplateViewController") as! FormTemplateViewController
+        vc.dataChanged = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -272,6 +275,12 @@ extension FormPreviewViewController : UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoubleLabelTableViewCell") as! DoubleLabelTableViewCell
+        
+        let bgView = UIView()
+        bgView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        cell.backgroundView = bgView
+        cell.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        cell.contentView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         
         let section = formSections[indexPath.section]
         if let field = section.fields?[indexPath.row] {
