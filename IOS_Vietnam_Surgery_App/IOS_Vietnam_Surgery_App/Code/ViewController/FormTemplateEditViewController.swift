@@ -142,23 +142,14 @@ public class FormTemplateEditViewController : UIViewController {
                 (response) in
                 self.spinner?.hide()
                 if response.response?.statusCode == 200 {
-                    let decoder = JSONDecoder()
-                    print(String(data: response.data!, encoding: .utf8))
-                    //var string = String(data: response.data!, encoding: .utf8)!
-                    //string = string.replacingOccurrences(of: "\\\"", with: "\"")
-                    //let dbForm = try? decoder.decode(Int.self, from: response.data!)
                     let idString = String(data: response.data!, encoding: .utf8)
                     var dic : [Int?:Form] = [:]
-                    var returnForm = Form()
+                    let returnForm = Form()
                     
                     returnForm.id = Int(idString!)
-                    print(returnForm.id)
                     returnForm.name = form.name
-                    print(returnForm.name)
                     returnForm.region = form.region
-                    print(returnForm.region)
                     returnForm.formTemplate = form.formTemplate
-                    print(returnForm.formTemplate)
                     dic[nil] = returnForm
                     self.updateFormManagement?.setValue(data: dic)
                     self.navigationController?.popViewController(animated: true)
@@ -169,9 +160,6 @@ public class FormTemplateEditViewController : UIViewController {
             FormTemplateAPIManager.editFormTemplate((self.form?.id)!, form: form).response(completionHandler: {
                 (response) in
                 self.spinner?.hide()
-                print("Statuscode: ", response.response?.statusCode)
-                print("Data: ", String(data: response.data!, encoding: .utf8))
-                
                 if response.response?.statusCode == 200 {
                     var dic : [Int:Form] = [:]
                     let decoder = JSONDecoder()
@@ -181,7 +169,6 @@ public class FormTemplateEditViewController : UIViewController {
                     self.navigationController?.popViewController(animated: true)
                 }
                 else {
-                    //TO:DO Add error alert or something. Check 400 to say nothing changed.
                     let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("FormTemplateNothingChanged", comment: ""), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: nil))
                     self.present(alert, animated: true)

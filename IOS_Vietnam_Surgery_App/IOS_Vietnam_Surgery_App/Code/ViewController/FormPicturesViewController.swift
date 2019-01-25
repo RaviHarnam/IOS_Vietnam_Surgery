@@ -42,7 +42,6 @@ public class FormPicturesViewController : UIViewController  {
         set { FormInputContainer.formPictures = newValue }
     }
     
-    //public var formContent : [String:String] = [:]
     
     public var formFillInStep = 0
     
@@ -72,7 +71,6 @@ public class FormPicturesViewController : UIViewController  {
     }
     
     @objc func goToPreview() {
-        //self.formPreviewCallback?.setValue(data: formPictures)
         
         navigationController?.popViewController(animated: true)
     }
@@ -127,7 +125,6 @@ public class FormPicturesViewController : UIViewController  {
 
 extension FormPicturesViewController : UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return 1 + (self.formData?.formPictures.count ?? 0)
         return 1 + formPictures.count
     }
     
@@ -143,7 +140,6 @@ extension FormPicturesViewController : UICollectionViewDataSource {
             cell.imageView.image = UIImage(named: "Camera")!
         }
         else {
-            //let image = self.formData?.formPictures[indexPath.row - 1]
             let image = self.formPictures[indexPath.row - 1]
             cell.imageView.image = image
             
@@ -179,7 +175,6 @@ extension FormPicturesViewController : UICollectionViewDelegate {
                     alert.addAction(UIAlertAction(title: "Ok (use Placeholder)", style: .default, handler: {
                         (alert: UIAlertAction) in
                        
-                        //self.formData?.formPictures.append(UIImage(named: "Placeholder")!)
                         self.formPictures.append(UIImage(named: "Placeholder")!)
                         DispatchQueue.main.async {
                             self.picturesCollectionView.reloadData()
@@ -202,7 +197,6 @@ extension FormPicturesViewController : UICollectionViewDelegate {
             let vc = storyboard.instantiateViewController(withIdentifier: "FormPictureViewController") as! FormPictureViewController
             vc.imageName = self.formContent[NSLocalizedString("Name", comment: "")]!
             vc.imageNumber = indexPath.row - 1
-            //vc.images = (self.formData?.formPictures)!
             vc.formFillInStep = self.formFillInStep
             vc.callback = self
             vc.formData = formData
@@ -213,32 +207,26 @@ extension FormPicturesViewController : UICollectionViewDelegate {
 }
 
 extension FormPicturesViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
         
-        //self.formData?.formPictures.append(image)
         self.formPictures.append(image)
         DispatchQueue.main.async {
             self.picturesCollectionView.reloadData()
         }
     }
-
+    
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     }
 }
 
 extension FormPicturesViewController : CallbackProtocol {
     public func setValue(data: Any) {
-        let images = data as! [UIImage]
-        //self.formData?.formPictures = images
         DispatchQueue.main.async {
             self.picturesCollectionView.reloadData()
         }
     }
-    
-    
 }

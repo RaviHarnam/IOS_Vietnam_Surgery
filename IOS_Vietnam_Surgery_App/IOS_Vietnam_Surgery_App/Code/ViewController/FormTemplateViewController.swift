@@ -33,32 +33,16 @@ class FormTemplateViewController: UIViewController {
         alertForNoInternetConnection(isInternetConnect: checkForInternetConnectivity())
         spinner = BaseAPIManager.createActivityIndicatorOnView(view: self.view)
         
-//        let ctrl = TabBarHelper.createAdminTabBar()
-//        ctrl.view.frame = CGRect(x: 0, y: 896 , width: 414, height: 100)
-
-//       if let viewctr  = ctrl.view {
-//        viewctr.frame = CGRect(x: 0, y: 896 , width: 414, height: 100)
-//
-//        self.view.addSubview(viewctr)
-//        }
-//        ctrl.tabBar.tintColor = UIColor.blue
-        
-      //  print("\(view?.frame.width)" + "H:" +  "\(view?.frame.height)")
-        
         navigationController?.navigationBar.prefersLargeTitles = false
         self.view.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         self.title = NSLocalizedString("FormTemplateViewControllerTabTitle", comment: "")
-        //self.chooseFormLabel.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
-        //self.chooseFormLabel.textColor = ColorHelper.lightGrayTextColor()
-      
+
         
         setupTableView()
         setupNavigationBar()
-        //setupSpinner()
         setupRefreshControl()
         getFormTemplatesAsync()
-//        createTabBarController()
-//        self.view.addSubview(ctrl.view)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,13 +92,6 @@ class FormTemplateViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Sync"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(syncCLicked))
     }
     
-//    func setupSpinner() {
-//        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-//        spinner.center = view.center
-//        spinner.hidesWhenStopped = true
-//        self.spinner = spinner
-//        view.addSubview(spinner)
-//    }
     
     @objc func refresh(){
         getFormTemplatesAsync()
@@ -128,7 +105,6 @@ class FormTemplateViewController: UIViewController {
     
     func getFormTemplatesAsync() {
         isFetching = true
-        //spinner?.startAnimating()
         if BaseAPIManager.isConnectedToInternet() {
             getFormTemplatesFromInternetAsync()
         }

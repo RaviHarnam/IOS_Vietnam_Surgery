@@ -35,7 +35,7 @@ public class FormOverviewViewController: UIViewController {
         
         //getFormData()
         refreshControl.beginRefreshing()
-        getFormData()
+        refresh()
     }
     
     
@@ -117,7 +117,14 @@ public class FormOverviewViewController: UIViewController {
         print("Is refreshing?: ", refreshControl.isRefreshing)
         //if refreshControl.isRefreshing {
             //refreshControl.beginRefreshing()
-            getFormData()
+        guard !isFetching else { return }
+        isFetching = true
+        getFormData(callback: {
+            self.isFetching = false
+            self.refreshControl.endRefreshing()
+        })
+        //isFetching = false
+        //self.refreshControl.endRefreshing()
             //self.refreshControl.endRefreshing()
         //}
         resetProgress()
@@ -193,9 +200,10 @@ public class FormOverviewViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func getFormData() {
+    func getFormData(callback: @escaping () -> Void) {
+        //self.isFetching = true
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        isFetching = true
+        
         var directoryContents: [URL]
         spinner?.show()
         let decoder = JSONDecoder()
@@ -229,17 +237,20 @@ public class FormOverviewViewController: UIViewController {
                         self.setProgress(progress: Float(index) / Float(actualDirContents.count))
                     }
                 }
-                
-              
+        
                 DispatchQueue.main.async {
-                    self.refreshControl.endRefreshing()
+                    //self.refreshControl.endRefreshing()
+                    //self.isFetching = false
                     print(self.refreshControl.isRefreshing)
                     UIView.animate(withDuration: 0.5, animations: {
                         self.tableViewFormoverview.contentOffset = CGPoint.zero
                     })
                     self.tableViewFormoverview.reloadData()
                     self.spinner?.hide()
-                    self.isFetching = false
+                }
+                
+                DispatchQueue.main.async {
+                    callback()
                 }
             }
         }
@@ -281,8 +292,6 @@ public class FormOverviewViewController: UIViewController {
             FormContentAPIManager.syncFormContent(form: form).response(completionHandler: {
                 (response) in
                 do {
-                    print("Response Statuscode", response.response?.statusCode)
-                    print("Response Message: ", String(data: response.data!, encoding: .utf8))
                     if response.response?.statusCode == 200 {
                         if let data = response.data {
                             let decoder = JSONDecoder()
@@ -293,9 +302,6 @@ public class FormOverviewViewController: UIViewController {
                             if self.deleteDataFromLocalStorage(filename: fileName) {
                                 progressIndex = progressIndex + 1
                                 self.setProgress(progress: Float(progressIndex) / Float(forms.count * 2))
-                                //self.forms.remove(at: formIndex)
-                                //let index = self.forms.firstIndex(where: $0 == )
-                                //self.forms.remove(at: <#T##Int#>)
                             }
                             else {
                                 failedCount = failedCount + 1
@@ -327,7 +333,7 @@ public class FormOverviewViewController: UIViewController {
                 }))
                 self.present(alert, animated: true)
             }
-            self.getFormData()
+            //self.getFormData()
         }
     }
     
@@ -396,9 +402,6 @@ public class FormOverviewViewController: UIViewController {
                 }))
                 self.present(alert, animated: true)
             }
-        }
-        else {
-            print("Authenticatie voor sync is: " , AppDelegate.authenticationToken)
         }
         
         checkIfTherAreForms(formcount: forms.count)
@@ -498,7 +501,6 @@ public class FormOverviewViewController: UIViewController {
     }
 }
 
-
 extension FormOverviewViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isFiltering() ? filteredFormData.count : forms.count
@@ -511,6 +513,10 @@ extension FormOverviewViewController : UITableViewDataSource {
         setHeaderText(cell: formoverviewcell)
         setContentText(cell: formoverviewcell, form: form)
       
+        if indexPath.row == self.forms.count {
+            isFetching = false
+        }
+        
         return formoverviewcell
     }
     
