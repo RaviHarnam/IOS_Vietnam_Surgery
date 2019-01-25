@@ -85,24 +85,13 @@ public class FormOverviewViewController: UIViewController {
             print("SearchText: ", searchText)
             let district = form.formContent!.first(
                 where: {$0.name == NSLocalizedString("District", comment: "")})?.value?.lowercased()
-            print("District: ", district)
             let formName = form.name?.lowercased()
-            print("forname: ", formName)
-            
             let name = form.formContent!.first(where: {$0.name == NSLocalizedString("Name", comment: "")})?.value?.lowercased()
-            print("name: ", name)
-            
             let imageCount = String(form.formImagesBytes?.count ?? 0)
-            print("Imagecount: ", imageCount)
-            
             let created = form.createdOn?.lowercased()
-            print("Created: ", created)
             
             let birthyear = form.formContent!.first(
                 where: {$0.name == NSLocalizedString("Birthyear", comment: "")})?.value?.lowercased()
-            
-            print("Filtering?", (formName?.contains(searchText) ?? false))
-            
             return (formName?.contains(searchText) ?? false) || (name?.contains(searchText) ?? false) || (district?.contains(searchText) ?? false) || (imageCount.contains(searchText)) || (created?.contains(searchText) ?? false) || (birthyear?.contains(searchText) ?? false)
         })
         
@@ -236,15 +225,9 @@ public class FormOverviewViewController: UIViewController {
                     print("Adding a form on index: " + String(index) + " with isFetching: " + String(self.isFetching))
                     print("GetFormData Progress: ", Float(index) / Float(actualDirContents.count))
                     
-                    // if((actualDirContents.count - 1) == index) {
-                    
                     DispatchQueue.main.async {
                         self.setProgress(progress: Float(index) / Float(actualDirContents.count))
                     }
-                    //}
-                    //else {
-                    //     self.setProgress(progress: Float(index) / Float(actualDirContents.count))
-                    // }
                 }
                 
               
@@ -419,12 +402,6 @@ public class FormOverviewViewController: UIViewController {
         }
         
         checkIfTherAreForms(formcount: forms.count)
-//        if forms.count == 0 {
-//            self.navigationItem.rightBarButtonItem?.isEnabled = false
-//        }
-//        DispatchQueue.main.async {
-//            self.tableViewFormoverview.reloadData()
-//        }
     }
     
     func failedFormsToUpload(failedCount: Int) {
@@ -478,31 +455,16 @@ public class FormOverviewViewController: UIViewController {
     }
     
     func deleteDataFromLocalStorage(filename: String) -> Bool {
-        let fileNameToDelete = filename
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false }
         
+        let fileUrl = docDirectoryUrl.appendingPathComponent(filename)
         do {
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
-            ///for file in directoryContents {
-            //    if file.absoluteString.contains(fileNameToDelete) {
-            let fileUrl = docDirectoryUrl.appendingPathComponent(filename)
-                    do {
-                        try FileManager.default.trashItem(at: fileUrl, resultingItemURL: nil)
-                        return true
-                    }
-                    catch {
-                        //print("Error deleting file: ", file.absoluteString)
-                        print(error)
-                        return false
-                    }
-             //   }
-            //}
+            try FileManager.default.trashItem(at: fileUrl, resultingItemURL: nil)
+            return true
         }
         catch {
-            print(error.localizedDescription)
             return false
         }
-        return false
     }
     
     func setProgress(progress: Float) {
@@ -523,7 +485,6 @@ public class FormOverviewViewController: UIViewController {
 
     
     func getAdminFormOverviewData (token: String, role: String) {
-        
         FormManager.getAllFormContent(token: token, role: role, callBack: {
             (formoverviewdataArray) in
             self.spinner?.hide()
@@ -540,10 +501,6 @@ public class FormOverviewViewController: UIViewController {
 
 extension FormOverviewViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("isFiltering: " ,isFiltering())
-        //var filteredformData = filteredFormData.count
-        //print("Filtered Form Data Array: " , filtered)
-        
         return isFiltering() ? filteredFormData.count : forms.count
     }
     
@@ -636,7 +593,6 @@ extension FormOverviewViewController : UITableViewDelegate {
 
 
 extension FormOverviewViewController: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
     public func updateSearchResults(for searchController: UISearchController) {
         if !searchController.searchBar.text!.isEmpty {
             filterContentForSearchText(searchController.searchBar.text!)
