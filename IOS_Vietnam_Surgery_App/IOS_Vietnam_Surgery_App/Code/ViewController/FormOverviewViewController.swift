@@ -33,36 +33,26 @@ public class FormOverviewViewController: UIViewController {
         setupProgressView()
         setupSearchBar()
         
-        //getFormData()
-        refreshControl.beginRefreshing()
-        refresh()
     }
     
     
     public override func viewDidAppear(_ animated: Bool) {
         self.resetProgress()
-       // searchController.searchBar.becomeFirstResponder()
-        //refreshControl.beginRefreshing()
-        //getFormData()
+        refreshControl.beginRefreshing()
+        refresh()
+
 
     }
     
     func setupProgressView() {
         progressView.transform = progressView.transform.scaledBy(x: 1, y: 10)
-        //setProgress(progress: 0)
-        //progressView.progress = 0.0
-        //progressView.isHidden = true
-        //progressViewLabel.text = "0%"
-        //progressViewLabel.isHidden = true
     }
     
     func setupSearchBar () {
-        // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search on name only"
-        ///navigationItem.searchController = searchController
         searchController.searchBar.sizeToFit()
         self.tableViewFormoverview.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
@@ -126,18 +116,13 @@ public class FormOverviewViewController: UIViewController {
     
     @objc func refresh() {
         print("Is refreshing?: ", refreshControl.isRefreshing)
-        //if refreshControl.isRefreshing {
-            //refreshControl.beginRefreshing()
+
         guard !isFetching else { return }
         isFetching = true
         getFormData(callback: {
             self.isFetching = false
             self.refreshControl.endRefreshing()
         })
-        //isFetching = false
-        //self.refreshControl.endRefreshing()
-            //self.refreshControl.endRefreshing()
-        //}
         resetProgress()
     }
 
@@ -301,7 +286,6 @@ public class FormOverviewViewController: UIViewController {
         var failedCount = 0
         let forms = getFormsToSync()
         for form in forms {
-            //DispatchQueue.global().async(group: dispatchGroup) {
             dispatchGroup.enter()
             FormContentAPIManager.syncFormContent(form: form).response(completionHandler: {
                 (response) in
@@ -315,15 +299,17 @@ public class FormOverviewViewController: UIViewController {
                             progressIndex = progressIndex + 1
                             self.setProgress(progress: Float(progressIndex) / Float(forms.count * 2))
                             let fileName = FormHelper.getLocalStorageFileName(formObject)
-                            if self.deleteDataFromLocalStorage(filename: fileName) {
-                                progressIndex = progressIndex + 1
-                                self.setProgress(progress: Float(progressIndex) / Float(forms.count * 2))
-                                //self.forms.remove(at: formIndex)
-                                //let index = self.forms.firstIndex(where: $0 == )
-                                //self.forms.remove(at: <#T##Int#>)
-                            }
-                            else {
-                                failedCount = failedCount + 1
+                            DispatchQueue.global(qos: .background).async {
+                                if self.deleteDataFromLocalStorage(filename: fileName) {
+                                    progressIndex = progressIndex + 1
+                                    DispatchQueue.main.async {
+                                     
+                                    self.setProgress(progress: Float(progressIndex) / Float(forms.count * 2))
+                                    }
+                                }
+                                else {
+                                    failedCount = failedCount + 1
+                                }
                             }
                             formIndex = formIndex + 1
                         }
@@ -334,17 +320,13 @@ public class FormOverviewViewController: UIViewController {
                 }
                 dispatchGroup.leave()
             })
-            
-            //}
         }
         
         print(dispatchGroup.debugDescription)
-        //dispatchGroup.wait()
         
         dispatchGroup.notify(queue: .main) {
             if failedCount > 0 {
-                //NSString.localizedStringWithFormat(NSLocalizedString("StepXOutOfY", comment: "") as NSString, formFillInStep! + 1, formSections.count + 2) as String
-                //let message = NSString.localizedStringWithFormat(NSLocalizedString("ErrorNotAllFormsSynced", comment: <#T##String#>), <#T##args: CVarArg...##CVarArg#>)
+         
                 let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSString.localizedStringWithFormat(NSLocalizedString("ErrorNotAllFormsSynced", comment: "") as NSString, failedCount) as String, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: {
                     (action: UIAlertAction) in
@@ -352,7 +334,10 @@ public class FormOverviewViewController: UIViewController {
                 }))
                 self.present(alert, animated: true)
             }
-            //self.getFormData()
+            DispatchQueue.main.async {
+                self.refreshControl.beginRefreshing()
+                self.refresh()
+            }
         }
     }
     
@@ -391,6 +376,8 @@ public class FormOverviewViewController: UIViewController {
                             index = index + 1
                             self.setProgress(progress: Float(index) / Float(formstosync.count * 2))
                             print("Calling setProgress with progress: ", Float(index) / Float(formstosync.count * 2))
+                            DispatchQueue.global(qos: .background).async {
+                            
                             
                             if self.deleteDataFromLocalStorage(filename: fileName) {
                                 index = index + 1
@@ -399,8 +386,10 @@ public class FormOverviewViewController: UIViewController {
                                 self.setProgress(progress: Float(index) / Float(formstosync.count * 2))
                                 
                             }
+                            
                             else {
                                 succeeded = false
+                            }
                             }
                             formNumber = formNumber + 1
                         }
