@@ -165,6 +165,7 @@ extension FormTemplateEditSectionViewController : UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoubleLabelTableViewCell") as! DoubleLabelTableViewCell
+        cell.contentView.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         
         if let fields = self.section!.fields {
             if fields.count == 0 {

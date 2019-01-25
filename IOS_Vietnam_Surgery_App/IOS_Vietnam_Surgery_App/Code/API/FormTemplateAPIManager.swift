@@ -38,7 +38,7 @@ public class FormTemplateAPIManager : BaseAPIManager {
         let url = super.apiBaseUrl + self.formPrefix + "/" + String(id)
         var request = URLRequest(url: URL(string: url)!)
         print(form.formTemplate)
-        form.formTemplate = form.formTemplate?.replacingOccurrences(of: "\\", with: "\"")
+        //form.formTemplate = form.formTemplate?.replacingOccurrences(of: "\\", with: "\"")
         print(form.formTemplate)
         request.httpMethod = HTTPMethod.put.rawValue
         if let authenticationtoken = AppDelegate.authenticationToken {
