@@ -22,7 +22,6 @@ public class FormContentAPIManager : BaseAPIManager {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        print(String(data: jsondata!, encoding: .utf8))
         request.httpBody = jsondata
         request.setValue("Bearer " + AppDelegate.authenticationToken!, forHTTPHeaderField: "Authorization")
         
@@ -36,7 +35,7 @@ public class FormContentAPIManager : BaseAPIManager {
         
         let url = super.apiBaseUrl + self.formPrefix
         
-        var parameters : [String:String] = [
+        let parameters : [String:String] = [
             
             "token_type" : "bearer"
         ]
@@ -46,7 +45,7 @@ public class FormContentAPIManager : BaseAPIManager {
             header = ["Authorization": "Bearer " + authenticationtoken]
         }
         
-        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard let jsonData = response.data else {return}})
+        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: {(response) in guard response.data != nil else {return}})
        
     }
 }

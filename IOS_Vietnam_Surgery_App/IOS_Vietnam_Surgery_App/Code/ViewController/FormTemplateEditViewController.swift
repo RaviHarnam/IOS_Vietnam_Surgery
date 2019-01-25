@@ -144,9 +144,7 @@ public class FormTemplateEditViewController : UIViewController {
                 if response.response?.statusCode == 200 {
                     let decoder = JSONDecoder()
                     print(String(data: response.data!, encoding: .utf8))
-                    //var string = String(data: response.data!, encoding: .utf8)!
-                    //string = string.replacingOccurrences(of: "\\\"", with: "\"")
-                    //let dbForm = try? decoder.decode(Int.self, from: response.data!)
+
                     let idString = String(data: response.data!, encoding: .utf8)
                     var dic : [Int?:Form] = [:]
                     var returnForm = Form()
