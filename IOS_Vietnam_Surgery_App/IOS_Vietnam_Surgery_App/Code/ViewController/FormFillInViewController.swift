@@ -186,7 +186,7 @@ public class FormFillInViewController : Eureka.FormViewController {
             formSections = sections
             guard FormHelper.validateFieldsInSection(section: formSection!) else { return }
             
-            formUIControls = FormHelper.getUIControlsFromFormSection(section: formSection!)
+            formUIControls = formSection?.fields  //FormHelper.getUIControlsFromFormSection(section: formSection!)
         }
     }
     
