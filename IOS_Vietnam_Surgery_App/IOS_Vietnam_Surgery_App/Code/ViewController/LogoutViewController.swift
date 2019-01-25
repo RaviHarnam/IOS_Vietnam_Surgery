@@ -34,9 +34,8 @@ class LogoutViewController: UIViewController {
     }
     
     public func logOut() {
-        
-            AppDelegate.authenticationToken = nil
-            AppDelegate.userRole = nil
-            AppDelegate.userName = nil
+        AppDelegate.authenticationToken = nil
+        AppDelegate.userRole = nil
+        AppDelegate.userName = nil
     }
 }

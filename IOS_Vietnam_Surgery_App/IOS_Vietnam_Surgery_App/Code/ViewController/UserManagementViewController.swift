@@ -13,7 +13,7 @@ public class UserManagementViewController : UIViewController {
     
     private let refreshControl = UIRefreshControl()
     
-    var users: [User]?
+    private var users: [User]?
     
     private var dataChanged = false
     
@@ -21,7 +21,7 @@ public class UserManagementViewController : UIViewController {
     
     private var filteredUserData : [User] = []
     public var searchBar: UISearchBar?
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
     
     private var spinner : UIActivityIndicatorView?
     
@@ -81,23 +81,20 @@ public class UserManagementViewController : UIViewController {
         self.refreshControl.endRefreshing()
     }
     
-    func setupNavigationBarItems()
-    {
+    func setupNavigationBarItems() {
         navigationController?.navigationBar.prefersLargeTitles = false
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
-    @objc func addTapped()
-    {
+    
+    @objc func addTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let addUserVC = storyboard.instantiateViewController(withIdentifier: "UserRegisterViewController") as! UserRegisterViewController
         addUserVC.callback = self
         self.navigationController?.pushViewController(addUserVC, animated: true)
     }
     
-    
-    public func getAllUsers()
-    {
+    public func getAllUsers() {
         self.spinner?.show()
         UserManager.getAllUsers(callBack: {
             (usersArray) in
@@ -129,57 +126,24 @@ public class UserManagementViewController : UIViewController {
         })
     }
     
-    @objc func alertForLogout() {
-        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to log out?", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            
-            self.LogOut()
-            
-        }))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true)
-        
-    }
-    
-    public func LogOut()
-    {
-        print("AuthToken heeft waarde: " , AppDelegate.authenticationToken)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //       let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        //        let removeSuccessful: Bool = KeychainWrapper.standard.removeObject(forKey: RegisterViewController.tokenkey)
-        
+    public func LogOut() {
         AppDelegate.authenticationToken = nil
         AppDelegate.userRole = nil
-        print("AuthToken heeft waarde: " , AppDelegate.authenticationToken)
-        // self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        print(self.users?.count)
         if let users = self.users {
-            
             filteredUserData = users.filter({( user : User) -> Bool in
                 let searchText = searchText.lowercased()
-                print("SearchText: ", searchText)
                 
-                var email = user.email?.lowercased()
-                print("Email is: ", email)
-                
+                let email = user.email?.lowercased()
                 var role : String? = nil
                 if let roleid = user.userrole?.first?.roleid {
                     role = (roleid.elementsEqual("1") ? NSLocalizedString("UserRoleAdmin", comment: "") : NSLocalizedString("UserRoleUser", comment: "")).lowercased()
-                    print("Role is: ", role)
                 }
-                var ValueForFilteredObj = email?.contains(searchText) ?? false
-                print ("ValueForFilteredObj: ", ValueForFilteredObj)
                 return (email?.contains(searchText) ?? false) || (role?.contains(searchText) ?? false)
             })
         }
-        
-        print(filteredUserData.count)
-        
         DispatchQueue.main.async {
             self.userTableView.reloadData()
         }
@@ -187,27 +151,23 @@ public class UserManagementViewController : UIViewController {
 }
 
 extension UserManagementViewController : UITableViewDataSource {
-    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserOverviewTableViewCell", for: indexPath) as! UserOverviewTableViewCell
-        
         let user = isFiltering() ? filteredUserData[indexPath.row] : users![indexPath.row]
-            
-            cell.UserNameLabel.text = user.email
-            
-            if let role = user.userrole?.first {
-                if(role.roleid == "1") {
-                    cell.userRoleLabel.text = NSLocalizedString("UserRoleAdmin", comment: "")
-                }
-                else {
-                    cell.userRoleLabel.text = NSLocalizedString("UserRoleUser", comment: "")
-                }
+        cell.UserNameLabel.text = user.email
+        
+        if let role = user.userrole?.first {
+            if(role.roleid == "1") {
+                cell.userRoleLabel.text = NSLocalizedString("UserRoleAdmin", comment: "")
             }
+            else {
+                cell.userRoleLabel.text = NSLocalizedString("UserRoleUser", comment: "")
+            }
+        }
         return cell
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.users?.count ?? 0)
         return isFiltering() ? filteredUserData.count : users?.count ?? 0
     }
 }
@@ -232,10 +192,8 @@ extension UserManagementViewController : UITableViewDelegate {
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if self.users![indexPath.row].username == AppDelegate.userName {
-                //alert tonen
                 let alert = AlertHelper.errorAlert()
                 self.present(alert, animated: true)
-                
                 return
             }
             
@@ -248,28 +206,22 @@ extension UserManagementViewController : UITableViewDelegate {
 }
 
 extension UserManagementViewController: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
     public func updateSearchResults(for searchController: UISearchController) {
-        //        guard 1 == 2 else {
-        //            return
-        //        }
         if !searchController.searchBar.text!.isEmpty {
             filterContentForSearchText(searchController.searchBar.text!)
-        } else {
-            
+        }
+        else {
             DispatchQueue.main.async {
                 self.userTableView.reloadData()
             }
-            
         }
-        
     }
 }
 
 extension UserManagementViewController : CallbackProtocol {
     public func setValue(data: Any) {
         if let user = data as? User {
-           self.users?.append(user)
+            self.users?.append(user)
             self.dataChanged = true
         }
         else if let userDic = data as? [Int:User] {

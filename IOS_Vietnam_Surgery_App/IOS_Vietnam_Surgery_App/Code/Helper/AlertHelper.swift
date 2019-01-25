@@ -25,7 +25,6 @@ public class AlertHelper {
     }
     
     public static func errorAlert() -> UIAlertController {
-        
          let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("ErrorDeleteLoggedInUserMsg" , comment: ""), preferredStyle: .alert)
          alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         

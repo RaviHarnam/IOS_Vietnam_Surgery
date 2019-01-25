@@ -191,7 +191,7 @@ public class FormPreviewViewController : UIViewController {
         
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
-        let fileName = (self.formData?.name)! + "_" + formContent[NSLocalizedString("Name", comment: "")]! + "_" + formContent[NSLocalizedString("District", comment: "")]! + "_" + formContent[NSLocalizedString("Birthyear", comment: "")]! + ".json"
+        let fileName = FormHelper.getLocalStorageFileName(formData)
         
         let newFileUrl = docDirectoryUrl.appendingPathComponent(fileName)
        
@@ -206,7 +206,6 @@ public class FormPreviewViewController : UIViewController {
                 try data.write(to: newFileUrl, options: [])
             }
             FormInputContainer.clear()
-            //navigationController?.popToRootViewController(animated: true)
             navigateToTemplateView()
         }
         catch {
@@ -248,7 +247,6 @@ extension FormPreviewViewController : UITableViewDataSource {
         headerview.sectionNumber = section
         headerview.layoutMargins.top = 42
         headerview.layoutMargins.bottom = 42
-        //headerview.backgroundColor = ColorHelper.lightGrayBackgroundColor()
         return headerview
     }
     
@@ -353,12 +351,7 @@ extension FormPreviewViewController : UICollectionViewDelegate {
 
 extension FormPreviewViewController : CallbackProtocol {
     public func setValue(data: Any) {
-        if let formContent = data as? [String:String] {
-            //self.formContent = formContent
-        }
-        else {
-            //self.formData?.formPictures = data as! [UIImage]
-        }
+       
         self.dataChanged = true
     }
 }

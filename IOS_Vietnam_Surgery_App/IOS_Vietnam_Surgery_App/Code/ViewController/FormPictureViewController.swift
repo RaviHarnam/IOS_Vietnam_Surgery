@@ -56,7 +56,6 @@ public class FormPictureViewController : UIViewController {
         else {
             nextBarButtonItem.isEnabled = false
             nextBarButtonItem.title = ""
-            //nextBarButtonItem.image =
         }
     }
     

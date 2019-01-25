@@ -208,17 +208,6 @@ class FormTemplateViewController: UIViewController {
         return count
     }
 }
-    //Resizes the tableview if it currently is bigger than the size of the combined content
-//    func resizeTableView() {
-//        if self.formTemplateTableView.frame.height > self.formTemplateTableView.contentSize.height {
-//            DispatchQueue.main.async {
-//                var frame = self.formTemplateTableView.frame
-//                frame.size.height = self.formTemplateTableView.contentSize.height //CGFloat(self.formTemplates?.count ?? 0 * 40) //
-//                self.formTemplateTableView.frame = frame
-//            }
-//        }
-//    }
-
 
 extension FormTemplateViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

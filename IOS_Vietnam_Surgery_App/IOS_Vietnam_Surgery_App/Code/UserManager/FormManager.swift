@@ -9,10 +9,7 @@
 import Foundation
 
 public class FormManager {
-    
-    
     static func getAllFormContent(token: String, role: String,callBack: @escaping ([FormTemplatePlusContent]?) -> ()) {
-        
         var formtemplatepluscontents : [FormTemplatePlusContent] = []
         FormContentAPIManager.getFormDataFromDB(token: token, role: role).responseJSON(completionHandler: {
             (response) in
@@ -25,10 +22,8 @@ public class FormManager {
             if let formtemplatepluscontentArray = decodedUserObject {
                 for formteplatepluscontent in formtemplatepluscontentArray {
                     formtemplatepluscontents.append(formteplatepluscontent)
-             
                 }
                 callBack(formtemplatepluscontents)
-                
             }
             else{
                 callBack(nil)
