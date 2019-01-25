@@ -18,6 +18,7 @@ public class FormOverviewViewController: UIViewController {
     private var spinner : UIActivityIndicatorView?
     private let refreshControl = UIRefreshControl()
     private let searchController = UISearchController(searchResultsController: nil)
+    private var isFetching = false
     @IBOutlet weak var tableViewFormoverview: UITableView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressViewLabel: UILabel!
@@ -119,7 +120,9 @@ public class FormOverviewViewController: UIViewController {
     }
     
     @objc func refresh() {
-        getFormData()
+        if !isFetching {
+             getFormData()
+        }
         self.refreshControl.endRefreshing()
     }
     
@@ -187,54 +190,55 @@ public class FormOverviewViewController: UIViewController {
     
     func getFormData() {
         guard let docDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        //        spinner?.isHidden = false
-        //        spinner?.startAnimating()
+        isFetching = true
+        var directoryContents: [URL]
         spinner?.show()
         let decoder = JSONDecoder()
         
-        
         do {
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
+             directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
             let actualDirContents = directoryContents.filter { !$0.absoluteString.contains(".Trash") && !$0.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: "")) }
             
-            forms = []
+            self.forms = []
             if actualDirContents.count == 0 {
-                setProgress(progress: 1)
+                self.setProgress(progress: 1)
             }
             else {
-                navigationItem.rightBarButtonItem?.isEnabled = true
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
-            var index = 0
             
-            for directoryContent in actualDirContents {
-                //if directoryContent.absoluteString.contains(".Trash") { continue }
-                //print(directoryContent.absoluteString)
-                let string = try String(contentsOf: directoryContent, encoding: .utf8)
-                let data = string.data(using: .utf8)
-                
-                let decodedUserObject = try? decoder.decode(Form.self, from: data!)
-                
-                forms.append(decodedUserObject!)
-                //let progress = Float(index) / Float(directoryContents.count)
-                //print(progress)
-                index = index + 1
-                print("GetFormData Progress: ", Float(index) / Float(actualDirContents.count))
-                //DispatchQueue.main.async {
-                self.setProgress(progress: Float(index) / Float(actualDirContents.count))
-                //}
+            DispatchQueue.global(qos: .background).async {
+                for index in 1...actualDirContents.count {
+                    
+                    let string = try? String(contentsOf: actualDirContents[index - 1], encoding: .utf8)
+                    let data = string!.data(using: .utf8)
+                    
+                    let decodedUserObject = try? decoder.decode(Form.self, from: data!)
+                    
+                    self.forms.append(decodedUserObject!)
+                    
+                    print("GetFormData Progress: ", Float(index) / Float(actualDirContents.count))
+                    
+                    // if((actualDirContents.count - 1) == index) {
+                    
+                    DispatchQueue.main.async {
+                        self.setProgress(progress: Float(index) / Float(actualDirContents.count))
+                    }
+                    //}
+                    //else {
+                    //     self.setProgress(progress: Float(index) / Float(actualDirContents.count))
+                    // }
+                }
+                self.isFetching = false
+                DispatchQueue.main.async {
+                    self.tableViewFormoverview.reloadData()
+                     self.spinner?.hide()
+                }
             }
-            DispatchQueue.main.async {
-                self.tableViewFormoverview.reloadData()
-            }
-            spinner?.hide()
-            //self.setProgress(progress: 1.0)
-            //resetProgress()
-            
         }
-            // isfetching = false voor activity indicator
         catch {
-            // isfetching = false voor activity indicator
-            // allert
+            
+            // allert inbouwen
             print(error.localizedDescription)
         }
     }
