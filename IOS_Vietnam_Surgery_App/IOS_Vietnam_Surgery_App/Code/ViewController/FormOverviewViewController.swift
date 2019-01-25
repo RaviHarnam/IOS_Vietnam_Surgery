@@ -22,6 +22,7 @@ public class FormOverviewViewController: UIViewController {
     @IBOutlet weak var tableViewFormoverview: UITableView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressViewLabel: UILabel!
+    private let lock = NSLock()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -197,7 +198,6 @@ public class FormOverviewViewController: UIViewController {
             directoryContents = try FileManager.default.contentsOfDirectory(at: docDirectoryUrl, includingPropertiesForKeys: nil, options: [])
             let actualDirContents = directoryContents.filter { !$0.absoluteString.contains(".Trash") && !$0.absoluteString.contains(NSLocalizedString("LocalTemplatesFileName", comment: "")) }
             
-            self.forms = []
             if actualDirContents.count == 0 {
                 self.setProgress(progress: 1)
             }
@@ -207,6 +207,8 @@ public class FormOverviewViewController: UIViewController {
             
             DispatchQueue.global(qos: .background).async {
                 self.isFetching = true
+                self.lock.lock()
+                self.forms = []
                 for index in 1...actualDirContents.count {
                     let string = try? String(contentsOf: actualDirContents[index - 1], encoding: .utf8)
                     let data = string!.data(using: .utf8)
@@ -222,7 +224,7 @@ public class FormOverviewViewController: UIViewController {
                         self.setProgress(progress: Float(index) / Float(actualDirContents.count))
                     }
                 }
-                
+                self.lock.unlock()
                 DispatchQueue.main.async {
                     //self.refreshControl.endRefreshing()
                     //self.isFetching = false
@@ -323,80 +325,6 @@ public class FormOverviewViewController: UIViewController {
                 self.refresh()
             }
         }
-    }
-    
-    
-    func syncFormData() {
-        resetProgress()
-        var formstosync : [FormContent] = []
-        
-        if(AppDelegate.authenticationToken != nil) {
-            for form in self.forms {
-                formstosync.append(FormContent(formid: form.id, formContent: form.formContent!, images: form.formImagesBytes!))
-            }
-            var index = 0
-            print("Progress before syncing: ", progressView.progress)
-            if formstosync.count > 0 { setProgress(progress: 0) }
-            var failedCount = 0
-            var formNumber = 0
-            for formtosync in formstosync {
-                var succeeded = true
-                FormContentAPIManager.syncFormContent(form: formtosync).responseJSON(completionHandler: {
-                    (response) in
-                    
-                    //Response 200, bepaal template naam via response formcontent - naam terugzoeken in folder = deleten
-                    if response.response?.statusCode == 200 {
-                        self.setProgress(progress: self.progressView.progress)
-                        if let jsondata = response.data {
-                            let decoder = JSONDecoder()
-                            
-                            let decodedFormContentObject = try? decoder.decode(FormContent.self, from: jsondata)
-                            let nameValue = decodedFormContentObject?.formContent?.first(where: {  $0.name?.lowercased() == "name" })!.value
-                            let districtValue = decodedFormContentObject?.formContent?.first(where: {$0.name?.lowercased() == "district"})!.value
-                            let birthYearValue = decodedFormContentObject?.formContent?.first(where:{$0.name?.lowercased() == "birthyear"})!.value
-                            let formData = decodedFormContentObject?.formTemplateName
-                            
-                            let fileName = (formData)! + "_" + nameValue! + "_" + districtValue! + "_" + birthYearValue! + ".json"
-                            index = index + 1
-                            self.setProgress(progress: Float(index) / Float(formstosync.count * 2))
-                            print("Calling setProgress with progress: ", Float(index) / Float(formstosync.count * 2))
-                            DispatchQueue.global(qos: .background).async {
-                                
-                                
-                                if self.deleteDataFromLocalStorage(filename: fileName) {
-                                    index = index + 1
-                                    print("Calling setProgress with progress: ", Float(index) / Float(formstosync.count * 2))
-                                    self.forms.remove(at: formNumber)
-                                    self.setProgress(progress: Float(index) / Float(formstosync.count * 2))
-                                    
-                                }
-                                    
-                                else {
-                                    succeeded = false
-                                }
-                            }
-                            formNumber = formNumber + 1
-                        }
-                    }
-                    else {
-                        succeeded = false
-                    }
-                    if !succeeded {
-                        failedCount = failedCount + 1
-                    }
-                })
-            }
-            if failedCount > 0 {
-                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("ErrorNotAllFormsSynced", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: {
-                    (action: UIAlertAction) in
-                    self.resetProgress()
-                }))
-                self.present(alert, animated: true)
-            }
-        }
-        
-        checkIfTherAreForms(formcount: forms.count)
     }
     
     func failedFormsToUpload(failedCount: Int) {
