@@ -34,13 +34,16 @@ public class FormOverviewViewController: UIViewController {
         setupSearchBar()
         
         //getFormData()
+        refreshControl.beginRefreshing()
+        getFormData()
     }
     
     
     public override func viewDidAppear(_ animated: Bool) {
-	        resetProgress()
-        //searchController.searchBar.becomeFirstResponder() fout doet zich niet meer voor, testen op andere devices
-        getFormData()
+        self.resetProgress()
+       // searchController.searchBar.becomeFirstResponder()
+        //refreshControl.beginRefreshing()
+        //getFormData()
 
     }
     
@@ -56,12 +59,14 @@ public class FormOverviewViewController: UIViewController {
     func setupSearchBar () {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search on name only"
-        navigationItem.searchController = searchController
+        ///navigationItem.searchController = searchController
+        searchController.searchBar.sizeToFit()
+        self.tableViewFormoverview.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
-        
-        
+        self.tableViewFormoverview.contentOffset = CGPoint(x: Double(0.0), y: Double(searchController.searchBar.frame.height))
     }
     // MARK: - Private instance methods
     
@@ -120,10 +125,21 @@ public class FormOverviewViewController: UIViewController {
     }
     
     @objc func refresh() {
-        if !isFetching {
-             getFormData()
-        }
-        self.refreshControl.endRefreshing()
+        print("Is refreshing?: ", refreshControl.isRefreshing)
+        //if refreshControl.isRefreshing {
+            //refreshControl.beginRefreshing()
+            getFormData()
+            //self.refreshControl.endRefreshing()
+        //}
+        resetProgress()
+    }
+
+    private func resetProgress() {
+        progressView.progress = 0
+        progressViewLabel.text = "0%"
+        progressView.isHidden = true
+        progressViewLabel.isHidden = true
+        
     }
     
     func setupNavigationBar() {
@@ -208,8 +224,8 @@ public class FormOverviewViewController: UIViewController {
             }
             
             DispatchQueue.global(qos: .background).async {
+                self.isFetching = true
                 for index in 1...actualDirContents.count {
-                    
                     let string = try? String(contentsOf: actualDirContents[index - 1], encoding: .utf8)
                     let data = string!.data(using: .utf8)
                     
@@ -217,6 +233,7 @@ public class FormOverviewViewController: UIViewController {
                     
                     self.forms.append(decodedUserObject!)
                     
+                    print("Adding a form on index: " + String(index) + " with isFetching: " + String(self.isFetching))
                     print("GetFormData Progress: ", Float(index) / Float(actualDirContents.count))
                     
                     // if((actualDirContents.count - 1) == index) {
@@ -229,17 +246,24 @@ public class FormOverviewViewController: UIViewController {
                     //     self.setProgress(progress: Float(index) / Float(actualDirContents.count))
                     // }
                 }
-                self.isFetching = false
+                
+              
                 DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                    print(self.refreshControl.isRefreshing)
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.tableViewFormoverview.contentOffset = CGPoint.zero
+                    })
                     self.tableViewFormoverview.reloadData()
-                     self.spinner?.hide()
+                    self.spinner?.hide()
+                    self.isFetching = false
                 }
             }
         }
         catch {
-            
             // allert inbouwen
             print(error.localizedDescription)
+            return
         }
     }
     
@@ -496,13 +520,7 @@ public class FormOverviewViewController: UIViewController {
         progressViewLabel.text = String(Int(progress * 100)) + "%"
     }
     
-    private func resetProgress() {
-        progressView.progress = 0
-        progressViewLabel.text = "0%"
-        progressView.isHidden = true
-        progressViewLabel.isHidden = true
-      
-    }
+
     
     func getAdminFormOverviewData (token: String, role: String) {
         
@@ -523,13 +541,16 @@ public class FormOverviewViewController: UIViewController {
 extension FormOverviewViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("isFiltering: " ,isFiltering())
+        //var filteredformData = filteredFormData.count
+        //print("Filtered Form Data Array: " , filtered)
+        
         return isFiltering() ? filteredFormData.count : forms.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let formoverviewcell = tableView.dequeueReusableCell(withIdentifier: "FormOverviewTableViewCell", for: indexPath) as! FormOverviewTableViewCell
         
-        let form = isFiltering() ? filteredFormData[indexPath.row] :  forms[indexPath.row]
+        let form = isFiltering() ? filteredFormData[indexPath.row] : forms[indexPath.row]
         setHeaderText(cell: formoverviewcell)
         setContentText(cell: formoverviewcell, form: form)
       
