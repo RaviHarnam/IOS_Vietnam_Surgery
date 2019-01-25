@@ -207,7 +207,8 @@ public class FormOverviewViewController: UIViewController {
             
             DispatchQueue.global(qos: .background).async {
                 self.isFetching = true
-                self.lock.lock()
+                //self.lock.lock()
+                objc_sync_enter(self.forms)
                 self.forms = []
                 for index in 1...actualDirContents.count {
                     let string = try? String(contentsOf: actualDirContents[index - 1], encoding: .utf8)
@@ -224,7 +225,8 @@ public class FormOverviewViewController: UIViewController {
                         self.setProgress(progress: Float(index) / Float(actualDirContents.count))
                     }
                 }
-                self.lock.unlock()
+                objc_sync_exit(self.forms)
+                //self.lock.unlock()
                 DispatchQueue.main.async {
                     //self.refreshControl.endRefreshing()
                     //self.isFetching = false
