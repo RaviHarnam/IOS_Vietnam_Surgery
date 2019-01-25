@@ -15,7 +15,6 @@ public class FormHelper {
         let data = json.data(using: .utf8)!
         let decoder = JSONDecoder()
         let formTemplate = try? decoder.decode(FormTemplate.self, from: data)
-        
         return formTemplate
     }
     
@@ -23,40 +22,6 @@ public class FormHelper {
         let encoder = JSONEncoder()
         let json = try! encoder.encode(template)
         return String(data: json, encoding: .utf8)
-    }
-    
-    public static func getUIControlsFromSection(section: FormSection) -> [(String,BaseRow)]? {
-        var controls : [(String,BaseRow)] = []
-        guard let fields = section.fields else { return nil }
-        for field in fields {
-            let name = field.name!
-            switch field.type!.lowercased() {
-                case "string":
-                    controls.append((name,TextRow(tag: name)))
-                    break
-                case "int":
-                    controls.append((name,IntRow(tag: name)))
-                    break
-                case "datetime":
-                    controls.append((name,DateTimeRow(tag: name)))
-                    break
-                case "choice":
-                    controls.append((name,PushRow<String>(tag: name)))
-                    break
-                default:
-                    break
-            }
-        }
-        return controls
-    }
-    
-    public static func getUIControlsFromFormSection(section: FormSection) -> [FormChoiceField]? {
-        var controls : [FormChoiceField] = []
-        guard let fields = section.fields else { return nil }
-        for field in fields {
-            controls.append(field as! FormChoiceField)
-        }
-        return controls
     }
     
     public static func validateFieldsInSection(section: FormSection) -> Bool {

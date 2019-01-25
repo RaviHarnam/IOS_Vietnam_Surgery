@@ -10,29 +10,22 @@ import Foundation
 import Alamofire
 import SwiftKeychainWrapper
 
-class UserManager {
-    
-    func checkIfUserIsAdmin() {
-        
-    }
+public class UserManager {
     
     static func Register(register: Register, callbackUser: @escaping (User?) -> ()) {
         let registerUser = register
         
         UserAPIManager.Register(register: registerUser).responseData(completionHandler: {
             (response) in
-            
             print (response)
             if let data = response.data{
                 let decoder = JSONDecoder()
                 let user = try? decoder.decode(User.self, from: data)
                 
                 if(response.response?.statusCode == 200) {
-                    print("succesfully registred")
                     callbackUser(user)
                 }
                 else {
-                    print("not registered")
                     callbackUser(nil)
                 }
             }
@@ -40,15 +33,10 @@ class UserManager {
     }
     
     static func UserLogIn(login: Login, callBack: @escaping (Bool) -> ()) {
-        
         let loginUser = login
-        
         UserAPIManager.Login(login: loginUser).responseJSON(completionHandler: {
             (response) in
-            
-            print("response data : ",response)
             if let data = response.data {
-                print("Data: ", data)
                 let decoder = JSONDecoder()
                 
                 if let authresponse = try? decoder.decode(AuthenticationToken.self, from: data) {
@@ -66,17 +54,11 @@ class UserManager {
                     callBack(false)
                 }
             }
-            else {
-                print("login failed")
-            }
         })
     }
     
-    
     static func getAllUsers(callBack: @escaping ([User]?) -> ()) {
-        
         var users : [User] = []
-        print("Appdelegate.authentifcationToken: ", AppDelegate.authenticationToken)
         UserAPIManager.GetAllUsers(token: AppDelegate.authenticationToken).responseJSON(completionHandler: {
             (response) in
             

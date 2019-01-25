@@ -36,7 +36,7 @@ public class FormTemplateAPIManager : BaseAPIManager {
     public static func editFormTemplate(_ id: Int , form: FormPostPutModel) -> DataRequest {
         let url = super.apiBaseUrl + self.formPrefix + "/" + String(id)
         var request = URLRequest(url: URL(string: url)!)
-        form.formTemplate = form.formTemplate?.replacingOccurrences(of: "\\", with: "\"")
+        
         request.httpMethod = HTTPMethod.put.rawValue
         if let authenticationtoken = AppDelegate.authenticationToken {
             request.addValue("Bearer " + authenticationtoken, forHTTPHeaderField: "Authorization")

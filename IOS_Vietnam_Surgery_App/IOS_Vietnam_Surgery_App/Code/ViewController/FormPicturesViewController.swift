@@ -207,7 +207,6 @@ extension FormPicturesViewController : UICollectionViewDelegate {
 }
 
 extension FormPicturesViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
@@ -219,18 +218,15 @@ extension FormPicturesViewController : UIImagePickerControllerDelegate, UINaviga
             self.picturesCollectionView.reloadData()
         }
     }
-
+    
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     }
 }
 
 extension FormPicturesViewController : CallbackProtocol {
     public func setValue(data: Any) {
-        let images = data as! [UIImage]
         DispatchQueue.main.async {
             self.picturesCollectionView.reloadData()
         }
     }
-    
-    
 }

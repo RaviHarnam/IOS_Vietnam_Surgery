@@ -190,16 +190,6 @@ extension FormTemplateViewController : UITableViewDataSource {
         return self.formTemplates?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
-        let label = UILabel()
-        
-        label.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
-        label.textColor = ColorHelper.lightGrayTextColor()
-        label.backgroundColor = ColorHelper.lightGrayBackgroundColor()
-        
-        return label
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell = tableView.dequeueReusableCell(withIdentifier: "DoubleLabelTableViewCell") as! DoubleLabelTableViewCell
         
@@ -226,6 +216,16 @@ extension FormTemplateViewController : UITableViewDelegate {
             vc.formData = template
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        
+        label.text = NSLocalizedString("formTemplateTableViewControllerTitle", comment: "")
+        label.textColor = ColorHelper.lightGrayTextColor()
+        label.backgroundColor = ColorHelper.lightGrayBackgroundColor()
+        
+        return label
     }
 }
 
